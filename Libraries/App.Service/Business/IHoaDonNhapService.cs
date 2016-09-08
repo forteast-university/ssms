@@ -17,15 +17,15 @@ using App.Core.Domain;
 namespace App.Service.Business
 {
     /// <summary>
-    /// Interface IChatLieuService
+    /// Interface IHoaDonNhapService
     /// </summary>
-    public interface IChatLieuService : ICommonService<ChatLieu>
+    public interface IHoaDonNhapService : ICommonService<HoaDonNhap>
     {
         /// <summary>
-        /// Gets chat lieu by team.
+        /// Gets hoa don nhap by team.
         /// </summary>
-        /// <param name="maChatLieu"> ma chat lieu.</param>
-        /// <returns>List&lt;ChatLieu&gt;.</returns>
-        List<ChatLieu> GetChatLieuByTeam(string maChatLieu);
+        /// <param name="SoHDN">so hoa don nhap.</param>
+        /// <returns>List&lt;HoaDonNhap&gt;.</returns>
+        List<HoaDonNhap> GetHoaDonNhapByTeam(string SoHDN);
     }
 }

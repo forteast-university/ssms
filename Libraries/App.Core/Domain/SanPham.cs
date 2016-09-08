@@ -31,7 +31,7 @@ namespace App.Core.Domain
             //this.ChiTietHDN = new HashSet<ChiTietHDN>();
         }
     
-        //public int ID { get; set; }
+        public int ID { get; set; }
         /// <summary>
         /// Gets or sets the ma giay dep.
         /// </summary>

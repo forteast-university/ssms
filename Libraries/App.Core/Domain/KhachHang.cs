@@ -30,7 +30,7 @@ namespace App.Core.Domain
             //this.HoaDonBan = new HashSet<HoaDonBan>();
         }
     
-        //public int ID { get; set; }
+        public int ID { get; set; }
         /// <summary>
         /// Gets or sets the ma khach.
         /// </summary>
