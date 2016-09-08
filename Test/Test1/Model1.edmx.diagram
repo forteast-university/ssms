@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7379d60313a24d6894ecfa3e7374bfc9" Name="Diagram1">
+        <EntityTypeShape EntityType="ssmsModel.ChatLieu" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="ssmsModel.ChiTietHDB" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ssmsModel.ChiTietHDN" Width="1.5" PointX="8.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ssmsModel.CongViec" Width="1.5" PointX="1.5" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ssmsModel.DoiTuong" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ssmsModel.HoaDonBan" Width="1.5" PointX="3" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ssmsModel.HoaDonNhap" Width="1.5" PointX="6" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ssmsModel.KhachHang" Width="1.5" PointX="0.75" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="ssmsModel.KichCo" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ssmsModel.Mau" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ssmsModel.Mua" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ssmsModel.NhaCungCap" Width="1.5" PointX="3.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ssmsModel.NhanVien" Width="1.5" PointX="0.75" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ssmsModel.NuocSanXuat" Width="1.5" PointX="0.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ssmsModel.SanPham" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ssmsModel.TheLoai" Width="1.5" PointX="0.75" PointY="17.875" IsExpanded="true" />
+        <AssociationConnector Association="ssmsModel.FK_SanPham_ChatLieu" ManuallyRouted="false" />
+        <AssociationConnector Association="ssmsModel.FK_ChiTietHDB_HoaDonBan" ManuallyRouted="false" />
+        <AssociationConnector Association="ssmsModel.FK_ChiTietHDB_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="ssmsModel.FK_ChiTietHDN_HoaDonNhap" ManuallyRouted="false" />
+        <AssociationConnector Association="ssmsModel.FK_ChiTietHDN_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="ssmsModel.FK_NhanVien_CongViec" ManuallyRouted="false" />
+        <AssociationConnector Association="ssmsModel.FK_SanPham_DoiTuong" ManuallyRouted="false" />
+        <AssociationConnector Association="ssmsModel.FK_HoaDonBan_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="ssmsModel.FK_HoaDonBan_NhanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="ssmsModel.FK_HoaDonNhap_NhaCungCap" ManuallyRouted="false" />
+        <AssociationConnector Association="ssmsModel.FK_HoaDonNhap_NhanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="ssmsModel.FK_SanPham_KichCo" ManuallyRouted="false" />
+        <AssociationConnector Association="ssmsModel.FK_SanPham_Mau" ManuallyRouted="false" />
+        <AssociationConnector Association="ssmsModel.FK_SanPham_Mua" ManuallyRouted="false" />
+        <AssociationConnector Association="ssmsModel.FK_SanPham_NuocSanXuat" ManuallyRouted="false" />
+        <AssociationConnector Association="ssmsModel.FK_SanPham_TheLoai" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
