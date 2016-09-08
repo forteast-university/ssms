@@ -7,22 +7,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Controllers;
 using App.Core.Domain;
+using App.Core.Infrastructure;
+using App.Models;
 using App.Service.Business;
 using Autofac;
 
 namespace App.Views {
 
-    //[TypeDescriptionProvider(typeof(AbstractCommunicatorProvider))]
-    public partial class MainFacade : Form {
-
+    public partial class MainFacade : Form{
+        private readonly Autofac.IContainer app = AppFacade.Container;
+        
         public MainFacade(){
             InitializeComponent();
+            app = AppFacade.Container;
         }
 
         private void button1_Click(object sender, EventArgs e){
+            app.Resolve <IBaseController<ChatLieuModel>>().View();
 
-            var a = App.Container.Resolve<IChatLieuController>();
-                 a.View();
+
+
             
             //var source = new BindingSource{DataSource = chatLieuService.GetAll()};
 

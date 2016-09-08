@@ -13,6 +13,7 @@
 // ***********************************************************************
 
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace App.Core.Domain{
     /// <summary>
@@ -24,6 +25,8 @@ namespace App.Core.Domain{
         /// </summary>
         /// <value>The identifier.</value>
         //[Key]
+        //[Key]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         /// <summary>

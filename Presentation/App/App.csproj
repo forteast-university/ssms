@@ -56,8 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ChatLieuController.cs" />
+    <Compile Include="Controllers\IBaseController.cs" />
     <Compile Include="Controllers\IChatLieuController.cs" />
-    <Compile Include="Controllers\IView.cs" />
+    <Compile Include="Views\IView.cs" />
+    <Compile Include="Extensions\MappingExtensions.cs" />
     <Compile Include="Models\AppModel.cs" />
     <Compile Include="Views\ChatLieuView.cs">
       <SubType>Form</SubType>
@@ -84,6 +86,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Views\ChatLieuView.resx">
       <DependentUpon>ChatLieuView.cs</DependentUpon>
@@ -121,7 +124,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Extensions\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>

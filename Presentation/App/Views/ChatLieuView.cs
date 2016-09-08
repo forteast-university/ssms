@@ -1,43 +1,46 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using App.Controllers;
 using App.Models;
 
-namespace App.Views{
-    public partial class ChatLieuView : Form, IView{
-        private IChatLieuController controller;
+namespace App.Views {
+    public partial class ChatLieuView : Form {
+        private readonly IBaseController<ChatLieuModel> controller;
 
-        public ChatLieuView(){
-            InitializeComponent();
-            Console.WriteLine("ChatLieuView:InitializeComponent");
-        }
-
-        public void SetController(IChatLieuController value){
+        public ChatLieuView(IBaseController<ChatLieuModel> value) {
             controller = value;
-        }
-
-        public void ClearGrid(){
-            throw new NotImplementedException();
+            InitializeComponent();
         }
 
         public void View(){
             ShowDialog();
         }
 
-        public void Create(){
-            throw new NotImplementedException();
+        public void PostView(IEnumerable<ChatLieuModel> value) {
+            Console.WriteLine("Count:" + value.Count());
+            dataGridView.DataSource = new BindingSource { DataSource = value };
+            var dataGridViewColumn = dataGridView.Columns["ID"];
+            if (dataGridViewColumn != null)
+                dataGridViewColumn.Visible = false;
+            
         }
 
-        public void Delete(){
-            throw new NotImplementedException();
-        }
-
-        private void button1_Click(object sender, EventArgs e){
-            var a = new ChatLieuModel{
-                MaChatLieu = "4",
-                TenChatLieu = "5",
+        private void bntLuu_Click(object sender, EventArgs e) {
+            var a = new ChatLieuModel {
+                MaChatLieu = txtMaChatLieu.Text,
+                TenChatLieu = txtTenChatLieu.Text,
             };
             controller.Insert(a);
+        }
+
+        private void bntLuaChon_Click(object sender, EventArgs e) {
+
+        }
+
+        private void bntHuy_Click(object sender, EventArgs e) {
+            Hide();
         }
     }
 }

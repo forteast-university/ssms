@@ -26,14 +26,12 @@ namespace App {
         /// <summary>
         /// The container
         /// </summary>
-        public static IContainer Container;
         [STAThread]
         public static void Main() {
             var engine = AppFacade.Initialize(false);
-            Container = engine.ContainerManager.Container;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(Container.Resolve<MainFacade>());
+            Application.Run(AppFacade.Container.Resolve<MainFacade>());
             //using (var scope = engine.ContainerManager.Container.BeginLifetimeScope()) {
             //    Application.Run(scope.Resolve<MainFrame>());        
             //scope.Resolve<Form1>().DisplayView(); //Display the child form

@@ -114,4 +114,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Creating_is_done" xml:space="preserve">
+    <value>Tạo thành công</value>
+    <comment>Tạo thành công</comment>
+  </data>
+  <data name="Insert_Success" xml:space="preserve">
+    <value>Thành công</value>
+    <comment>Thành công</comment>
+  </data>
 </root>

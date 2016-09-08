@@ -1,10 +1,12 @@
-﻿using App.Core.Domain;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using App.Core.Domain;
 
 namespace App.Data.Mapping{
     public class ChatLieuMap : AppEntityTypeConfiguration<ChatLieu>{
         public ChatLieuMap(){
             ToTable("ChatLieu");
             HasKey(c => c.MaChatLieu);
+            Property(obj => obj.ID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("ID");
         }
     }
 
@@ -13,6 +15,7 @@ namespace App.Data.Mapping{
             this.ToTable("ChiTietHDB")
                 .HasKey(c => c.ID)
                 .HasRequired(f => f.HoaDonBan);
+            Property(obj => obj.ID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("ID");
         }
     }
 
@@ -21,6 +24,7 @@ namespace App.Data.Mapping{
             ToTable("ChiTietHDN").
                 HasKey(c => c.ID).
                 HasRequired(f => f.HoaDonNhap);
+            Property(obj => obj.ID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("ID");
         }
     }
 
@@ -28,6 +32,7 @@ namespace App.Data.Mapping{
         public CongViecMap(){
             ToTable("CongViec");
             HasKey(c => c.MaCV);
+            Property(obj => obj.ID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("ID");
         }
     }
 
@@ -35,6 +40,7 @@ namespace App.Data.Mapping{
         public DoiTuongMap(){
             ToTable("DoiTuong");
             HasKey(c => c.MaDoiTuong);
+            Property(obj => obj.ID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("ID");
         }
     }
 
@@ -42,6 +48,7 @@ namespace App.Data.Mapping{
         public HoaDonBanMap(){
             ToTable("HoaDonBan");
             HasKey(c => c.SoHDB);
+            Property(obj => obj.ID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("ID");
         }
     }
 
@@ -49,6 +56,7 @@ namespace App.Data.Mapping{
         public HoaDonNhapMap(){
             ToTable("HoaDonNhap");
             HasKey(c => c.SoHDN);
+            Property(obj => obj.ID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("ID");
         }
     }
 
@@ -56,6 +64,7 @@ namespace App.Data.Mapping{
         public KhachHangMap(){
             ToTable("KhachHang");
             HasKey(c => c.MaKhach);
+            Property(obj => obj.ID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("ID");
         }
     }
 
@@ -63,6 +72,7 @@ namespace App.Data.Mapping{
         public KichCoMap(){
             ToTable("KichCo");
             HasKey(c => c.MaCo);
+            Property(obj => obj.ID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("ID");
         }
     }
 
@@ -70,6 +80,7 @@ namespace App.Data.Mapping{
         public MauMap(){
             ToTable("Mau");
             HasKey(c => c.MaMau);
+            Property(obj => obj.ID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("ID");
         }
     }
 
@@ -77,6 +88,7 @@ namespace App.Data.Mapping{
         public MuaMap(){
             ToTable("Mua");
             HasKey(c => c.MaMua);
+            Property(obj => obj.ID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("ID");
         }
     }
 
@@ -84,6 +96,7 @@ namespace App.Data.Mapping{
         public NhaCungCapMap(){
             ToTable("NhaCungCap");
             HasKey(c => c.MaNCC);
+            Property(obj => obj.ID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("ID");
         }
     }
 
@@ -98,6 +111,7 @@ namespace App.Data.Mapping{
         public NuanXuatMap(){
             ToTable("NuanXuat");
             HasKey(c => c.MaNuocSX);
+            Property(obj => obj.ID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("ID");
         }
     }
 
@@ -105,6 +119,7 @@ namespace App.Data.Mapping{
         public SanPhamMap(){
             ToTable("SanPham");
             HasKey(c => c.MaGiayDep);
+            Property(obj => obj.ID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("ID");
         }
     }
 
@@ -112,6 +127,7 @@ namespace App.Data.Mapping{
         public TheLoaiMap(){
             ToTable("TheLoai");
             HasKey(c => c.MaLoai);
+            Property(obj => obj.ID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("ID");
         }
     }
 }

@@ -17,6 +17,7 @@ using App.Core.Caching;
 using App.Core.Configuration;
 using App.Core.Infrastructure;
 using App.Core.Infrastructure.DependencyManagement;
+using App.Models;
 using App.Service.Business;
 using App.Views;
 using Autofac;
@@ -41,8 +42,8 @@ namespace App.Infrastructure {
             //builder.RegisterType<ChatLieuController>().WithParameter(ResolvedParameter.ForNamed<ICacheManager>("0"));
             //builder.RegisterType<ChatLieuController>().WithParameter(ResolvedParameter.ForNamed<IChatLieuController>("0"));
 
-            builder.RegisterType<ChatLieuController>().As<IChatLieuController>().SingleInstance();
-            builder.RegisterType<MainFacade>().WithParameter(ResolvedParameter.ForNamed<ICacheManager>("1"));
+            builder.RegisterType<ChatLieuController>().As<IBaseController<ChatLieuModel>>().SingleInstance();
+            builder.RegisterType<MainFacade>();//.WithParameter(ResolvedParameter.ForNamed<ICacheManager>("1"));
         }
 
         /// <summary>

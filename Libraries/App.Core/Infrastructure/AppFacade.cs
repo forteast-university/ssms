@@ -14,6 +14,7 @@
 using System.Runtime.CompilerServices;
 using App.Core.Configuration;
 using System.Configuration;
+using Autofac;
 
 namespace App.Core.Infrastructure {
     /// <summary>
@@ -62,7 +63,12 @@ namespace App.Core.Infrastructure {
                 return Singleton<IEngine>.Instance;
             }
         }
-
+        public static IContainer Container {
+            get {
+                return Current.ContainerManager.Container;
+            }
+        }
+         
         #endregion
     }
 }

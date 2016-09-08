@@ -20,7 +20,7 @@ namespace App.Core.Domain
     /// <summary>
     /// Class KhachHang.
     /// </summary>
-    public partial class KhachHang
+    public partial class KhachHang :BaseEntity
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="KhachHang"/> class.

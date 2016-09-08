@@ -39,8 +39,9 @@ namespace App.Core.Infrastructure {
         /// <summary>
         /// Run startup tasks
         /// </summary>
-        protected virtual void RunStartupTasks() {
-            var typeFinder = containerManager.Resolve<ITypeFinder>();
+        protected virtual void RunStartupTasks(){
+            var a = containerManager.Container.BeginLifetimeScope();
+            var typeFinder = containerManager.Resolve<ITypeFinder>("",a);
             var startUpTaskTypes = typeFinder.FindClassesOfType<IStartupTask>();
             var startUpTasks = new List<IStartupTask>();
             foreach (var startUpTaskType in startUpTaskTypes)
@@ -108,11 +109,7 @@ namespace App.Core.Infrastructure {
         public void Initialize(ServerConfig config) {
             //register dependencies
             RegisterDependencies(config);
-
-            //startup tasks
-            //if(!config.IgnoreStartupTasks) {
-            //    RunStartupTasks();
-            //}
+            RunStartupTasks();
 
         }
 

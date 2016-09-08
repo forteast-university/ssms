@@ -4,126 +4,119 @@
 // Created          : 08-29-2016
 //
 // Last Modified By : Hung Le
-// Last Modified On : 08-29-2016
+// Last Modified On : 09-08-2016
 // ***********************************************************************
 // <copyright file="AutoMapperConfiguration.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
 // </copyright>
-// <summary>
-// I have resovled some conflict between AutoMapper 4.1 vs AutoMapper 5.2
-// </summary>
+// <summary>I have resovled some conflict between AutoMapper 4.1 vs AutoMapper 5.2</summary>
 // ***********************************************************************
-using App.Core.Domain;
-using AutoMapper;
-using App.Models;
 
-namespace App.Infrastructure {
+using App.Core.Domain;
+using App.Models;
+using AutoMapper;
+using AutoMapper.Mappers;
+
+namespace App.Infrastructure{
     /// <summary>
     /// Class AutoMapperConfiguration.
     /// </summary>
-    public class AutoMapperConfiguration {
+    public class AutoMapperConfiguration{
         /// <summary>
         /// The _mapper configuration. Only use for AutoMapper 5.2
         /// </summary>
-        //private static MapperConfiguration mapperConfiguration;
+        private static ConfigurationStore mapperConfiguration;
+
         /// <summary>
         /// The _mapper. Only use for AutoMapper 5.2
         /// </summary>
-        //private static IMapper mapper;
+        private static IMappingEngine mapper;
+
+        ///// <summary>
+        ///// Mapper
+        ///// </summary>
+        ///// <value>The mapper. Only use for AutoMapper 5.2</value>
+        /// <summary>
+        /// Gets the mapper.
+        /// </summary>
+        /// <value>The mapper.</value>
+        public static IMappingEngine Mapper{
+            get { return mapper; }
+        }
+
+        ///// <summary>
+        ///// Mapper configuration
+        ///// Only use for AutoMapper 5.2
+        ///// </summary>
+        ///// <value>The mapper configuration.</value>
+        /// <summary>
+        /// Gets the mapper configuration.
+        /// </summary>
+        /// <value>The mapper configuration.</value>
+        public static ConfigurationStore MapperConfiguration{
+            get { return mapperConfiguration; }
+        }
 
         /// <summary>
         /// Initializes this instance.
-        /// Mapper.Initialize(cfg => {
-        ///        cfg.CreateMap<{0}Model, {0}>();
-        ///        cfg.CreateMap<{0}, {0}Model>();
-        ///    });
         /// </summary>
-        public static void Init() {
+        public static void Init(){
+            mapperConfiguration = new ConfigurationStore(new TypeMapFactory(), MapperRegistry.Mappers);
 
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<ChatLieuModel, ChatLieu>();
-                cfg.CreateMap<ChatLieu, ChatLieuModel>();
-            });
+            //AutoMapper.Mapper.Initialize(cfg => {
+            mapperConfiguration.CreateMap<ChatLieuModel, ChatLieu>();
+            mapperConfiguration.CreateMap<ChatLieu, ChatLieuModel>();
 
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<ChiTietHdbModel, ChiTietHDB>();
-                cfg.CreateMap<ChiTietHDB, ChiTietHdbModel>();
-            });
+            mapperConfiguration.CreateMap<ChiTietHdbModel, ChiTietHDB>();
+            mapperConfiguration.CreateMap<ChiTietHDB, ChiTietHdbModel>();
 
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<ChiTietHdnModel, ChiTietHDN>();
-                cfg.CreateMap<ChiTietHDN, ChiTietHdnModel>();
-            });
+            mapperConfiguration.CreateMap<ChiTietHdnModel, ChiTietHDN>();
+            mapperConfiguration.CreateMap<ChiTietHDN, ChiTietHdnModel>();
 
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<CongViecModel, CongViec>();
-                cfg.CreateMap<CongViec, CongViecModel>();
-            });
+            mapperConfiguration.CreateMap<CongViecModel, CongViec>();
+            mapperConfiguration.CreateMap<CongViec, CongViecModel>();
 
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<DoiTuongModel, DoiTuong>();
-                cfg.CreateMap<DoiTuong, DoiTuongModel>();
-            });
+            mapperConfiguration.CreateMap<DoiTuongModel, DoiTuong>();
+            mapperConfiguration.CreateMap<DoiTuong, DoiTuongModel>();
 
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<HoaDonBanModel, HoaDonBan>();
-                cfg.CreateMap<HoaDonBan, HoaDonBanModel>();
-            });
+            mapperConfiguration.CreateMap<HoaDonBanModel, HoaDonBan>();
+            mapperConfiguration.CreateMap<HoaDonBan, HoaDonBanModel>();
 
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<HoaDonNhapModel, HoaDonNhap>();
-                cfg.CreateMap<HoaDonNhap, HoaDonNhapModel>();
-            });
+            mapperConfiguration.CreateMap<HoaDonNhapModel, HoaDonNhap>();
+            mapperConfiguration.CreateMap<HoaDonNhap, HoaDonNhapModel>();
 
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<KhachHangModel, KhachHang>();
-                cfg.CreateMap<KhachHang, KhachHangModel>();
-            });
+            mapperConfiguration.CreateMap<KhachHangModel, KhachHang>();
+            mapperConfiguration.CreateMap<KhachHang, KhachHangModel>();
 
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<KichCoModel, KichCo>();
-                cfg.CreateMap<KichCo, KichCoModel>();
-            });
+            mapperConfiguration.CreateMap<KichCoModel, KichCo>();
+            mapperConfiguration.CreateMap<KichCo, KichCoModel>();
 
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<MauModel, Mau>();
-                cfg.CreateMap<Mau, MauModel>();
-            });
+            mapperConfiguration.CreateMap<MauModel, Mau>();
+            mapperConfiguration.CreateMap<Mau, MauModel>();
 
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<MuaModel, Mua>();
-                cfg.CreateMap<Mua, MuaModel>();
-            });
+            mapperConfiguration.CreateMap<MuaModel, Mua>();
+            mapperConfiguration.CreateMap<Mua, MuaModel>();
 
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<NhaCungCapModel, NhaCungCap>();
-                cfg.CreateMap<NhaCungCap, NhaCungCapModel>();
-            });
+            mapperConfiguration.CreateMap<NhaCungCapModel, NhaCungCap>();
+            mapperConfiguration.CreateMap<NhaCungCap, NhaCungCapModel>();
 
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<NhanVienModel, NhanVien>();
-                cfg.CreateMap<NhanVien, NhanVienModel>();
-            });
+            mapperConfiguration.CreateMap<NhanVienModel, NhanVien>();
+            mapperConfiguration.CreateMap<NhanVien, NhanVienModel>();
 
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<NuocSanXuatModel, NuocSanXuat>();
-                cfg.CreateMap<NuocSanXuat, NuocSanXuatModel>();
-            });
+            mapperConfiguration.CreateMap<NuocSanXuatModel, NuocSanXuat>();
+            mapperConfiguration.CreateMap<NuocSanXuat, NuocSanXuatModel>();
 
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<SanPhamModel, SanPham>();
-                cfg.CreateMap<SanPham, SanPhamModel>();
-            });
+            mapperConfiguration.CreateMap<SanPhamModel, SanPham>();
+            mapperConfiguration.CreateMap<SanPham, SanPhamModel>();
 
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<TheLoaiModel, TheLoai>();
-                cfg.CreateMap<TheLoai, TheLoaiModel>();
-            });
-
+            mapperConfiguration.CreateMap<TheLoaiModel, TheLoai>();
+            mapperConfiguration.CreateMap<TheLoai, TheLoaiModel>();
+            //});
+               
+            mapper = new MappingEngine(mapperConfiguration);
 
             //Only use for AutoMapper 5.2
             //mapperConfiguration = new MapperConfiguration(c => {
-
             //    #region ProductApplicationModel, ProductApplication
             //    c.CreateMap<ChatLieuModel, ChatLieu>()
             //        //.ForMember(a => a.ID, b => b.Ignore())
@@ -135,25 +128,5 @@ namespace App.Infrastructure {
             //});
             //mapper = mapperConfiguration.CreateMapper();
         }
-
-        ///// <summary>
-        ///// Mapper
-        ///// </summary>
-        ///// <value>The mapper. Only use for AutoMapper 5.2</value>
-        //public static IMapper Mapper {
-        //    get {
-        //        return mapper;
-        //    }
-        //}
-        ///// <summary>
-        ///// Mapper configuration
-        ///// Only use for AutoMapper 5.2
-        ///// </summary>
-        ///// <value>The mapper configuration.</value>
-        //public static MapperConfiguration MapperConfiguration {
-        //    get {
-        //        return mapperConfiguration;
-        //    }
-        //}
     }
 }
