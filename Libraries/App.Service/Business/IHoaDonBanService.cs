@@ -13,6 +13,6 @@ namespace App.Service.Business
         /// </summary>
         /// <param name="SoHDB">so hoa don ban.</param>
         /// <returns>List&lt;HoaDonBan&gt;.</returns>
-        List<HoaDonBan> GetHoaDonNhapByTeam(string SoHDB);
+        List<HoaDonBan> GetHoaDonBanByTeam(string SoHDB);
     }
 }

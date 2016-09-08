@@ -24,7 +24,7 @@ namespace App.Service.Business
     /// <summary>
     ///     Class ChiTietHDNService.
     /// </summary>
-    public class ChiTietHDNService : AbstractService, ChiTietHDNService
+    public class ChiTietHDNService : AbstractService, IChiTietHDNService
     {
         private readonly IRepository<ChiTietHDN> product;
 

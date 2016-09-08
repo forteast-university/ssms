@@ -40,6 +40,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractService.cs" />
+    <Compile Include="Business\ChiTietHDBService.cs" />
+    <Compile Include="Business\ChiTietHDNService.cs" />
+    <Compile Include="Business\CongViecService.cs" />
+    <Compile Include="Business\DoiTuongService.cs" />
+    <Compile Include="Business\HoaDonBanService.cs" />
+    <Compile Include="Business\HoaDonNhapService.cs" />
+    <Compile Include="Business\IChiTietHDBService.cs" />
+    <Compile Include="Business\IChiTietHDNService.cs" />
+    <Compile Include="Business\ICongViecService.cs" />
+    <Compile Include="Business\IDoiTuongService.cs" />
+    <Compile Include="Business\IHoaDonBanService.cs" />
+    <Compile Include="Business\IHoaDonNhapService.cs" />
+    <Compile Include="Business\IKhachHangService.cs" />
+    <Compile Include="Business\IKichCoService.cs" />
+    <Compile Include="Business\IMauService.cs" />
+    <Compile Include="Business\IMuaService.cs" />
+    <Compile Include="Business\INhaCungCapService.cs" />
+    <Compile Include="Business\INhanVienService.cs" />
+    <Compile Include="Business\INuocSanXuatService.cs" />
+    <Compile Include="Business\ISanPhamService.cs" />
+    <Compile Include="Business\ITheLoaiService.cs" />
+    <Compile Include="Business\KhachHangService.cs" />
+    <Compile Include="Business\KichCoService.cs" />
+    <Compile Include="Business\MauService.cs" />
+    <Compile Include="Business\MuaService.cs" />
+    <Compile Include="Business\NhaCungCapService.cs" />
+    <Compile Include="Business\NhanVienService.cs" />
+    <Compile Include="Business\NuocSanXuatService.cs" />
+    <Compile Include="Business\SanPhamService.cs" />
+    <Compile Include="Business\TheLoaiService.cs" />
     <Compile Include="ICommonService.cs" />
     <Compile Include="Business\IChatLieuService.cs" />
     <Compile Include="Business\ChatLieuService.cs" />

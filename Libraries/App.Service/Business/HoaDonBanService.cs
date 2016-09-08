@@ -126,7 +126,7 @@ namespace App.Service.Business
             var a = db.SqlQuery<int>(sp.ToSpString("DeleteHoaDonBans"), sp.GetObject()).ToList().FirstOrDefault();
             return (a == 1);
         }
-
+        
         public List<HoaDonBan> GetHoaDonBanByTeam(string SoHDB)
         {
             var query = from a in product.Table where a.SoHDB != SoHDB select a;
