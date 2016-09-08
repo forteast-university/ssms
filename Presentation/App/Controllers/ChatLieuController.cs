@@ -34,20 +34,16 @@ namespace App.Controllers {
         }
 
         public void Insert(ChatLieuModel value){
-            var entity = value.ToEntity();
-
-            //var entity = new ChatLieu{
-            //    MaChatLieu = value.MaChatLieu,
-            //    TenChatLieu = value.TenChatLieu
-            //};
-
-            chatLieuService.Insert(entity);
-            
-            MessageBox.Show(Resources.Creating_is_done, 
-                Resources.Insert_Success, 
-                MessageBoxButtons.OK);
-
-            PostView();
+            try{
+                var entity = value.ToEntity();
+                chatLieuService.Insert(entity);
+                PostView();
+            }
+            catch (Exception ex){
+                MessageBox.Show(Resources.Insert_unsuccessful, 
+                    Resources.Insert_Fault, MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);    
+            }
         }
 
         public void Update(ChatLieuModel value){

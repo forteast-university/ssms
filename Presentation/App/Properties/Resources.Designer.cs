@@ -70,11 +70,29 @@ namespace App.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thất bại.
+        /// </summary>
+        internal static string Insert_Fault {
+            get {
+                return ResourceManager.GetString("Insert_Fault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thành công.
         /// </summary>
         internal static string Insert_Success {
             get {
                 return ResourceManager.GetString("Insert_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cập nhật không thành công.
+        /// </summary>
+        internal static string Insert_unsuccessful {
+            get {
+                return ResourceManager.GetString("Insert_unsuccessful", resourceCulture);
             }
         }
     }

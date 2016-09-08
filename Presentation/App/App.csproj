@@ -58,7 +58,6 @@
     <Compile Include="Controllers\ChatLieuController.cs" />
     <Compile Include="Controllers\IBaseController.cs" />
     <Compile Include="Controllers\IChatLieuController.cs" />
-    <Compile Include="Views\IView.cs" />
     <Compile Include="Extensions\MappingExtensions.cs" />
     <Compile Include="Models\AppModel.cs" />
     <Compile Include="Views\ChatLieuView.cs">

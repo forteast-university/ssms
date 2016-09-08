@@ -14,7 +14,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using App.Core.Domain;
 using App.Infrastructure;
 using App.Models;
@@ -98,6 +101,33 @@ namespace App.Extensions{
             ////};
             //return k.Serialize(superset);
             return "";
+        }
+        public static BaseEntity CurrentSelected(this DataGridView grid, IEnumerable<BaseEntity> value) {
+            if (grid.SelectedCells.Count > 0) {
+                int selectedrowindex = grid.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = grid.Rows[selectedrowindex];
+                string rowindex = Convert.ToString(selectedRow.Cells["ID"].Value);
+                return value.FirstOrDefault(c => c.ID == Convert.ToInt32(rowindex));
+
+           }
+           return null;
+        }
+
+        public static DataGridView PopulateDataGridViewWithDataSet(this DataGridView dgv, DataSet ds, string dataTable) {
+            dgv.Rows.Clear();
+            int rowCount = 0;
+
+            foreach (DataRow dr in ds.Tables[dataTable].Rows) {
+                int row = dgv.Rows.Add();
+                int colCount = 0;
+
+                foreach (DataColumn col in ds.Tables[dataTable].Columns) {
+                    dgv.Rows[rowCount].Cells[colCount].Value = dr[colCount].ToString();
+                    colCount++;
+                }
+                rowCount++;
+            }
+            return dgv;
         }
 
         /// <summary>

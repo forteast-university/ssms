@@ -1,4 +1,6 @@
-﻿namespace App.Views {
+﻿using System.Windows.Forms;
+
+namespace App.Views {
     partial class ChatLieuView {
         /// <summary>
         /// Required designer variable.
@@ -88,11 +90,20 @@
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(12, 68);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             this.dataGridView.Size = new System.Drawing.Size(347, 321);
             this.dataGridView.TabIndex = 6;
+            this.dataGridView.CellClick += new DataGridViewCellEventHandler(this.dgv_CellClick);
+            this.dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.MultiSelect = false;
+            this.dataGridView.RowPrePaint += new DataGridViewRowPrePaintEventHandler(dgv_RowPrePaint);
+            this.dataGridView.RowHeadersVisible = false;
+            this.dataGridView.AllowUserToResizeRows = false;
             // 
             // bntLuaChon
             // 

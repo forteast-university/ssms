@@ -122,4 +122,12 @@
     <value>Thành công</value>
     <comment>Thành công</comment>
   </data>
+  <data name="Insert_unsuccessful" xml:space="preserve">
+    <value>Cập nhật không thành công</value>
+    <comment>Cập nhật không thành công</comment>
+  </data>
+  <data name="Insert_Fault" xml:space="preserve">
+    <value>Thất bại</value>
+    <comment>Thất bại</comment>
+  </data>
 </root>
