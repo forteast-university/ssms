@@ -12,8 +12,10 @@
 // <summary></summary>
 // ***********************************************************************
 
+using App.Controllers;
 using App.Core.Caching;
 using App.Core.Configuration;
+using App.Core.Infrastructure;
 using App.Core.Infrastructure.DependencyManagement;
 using App.Service.Business;
 using App.Views;
@@ -32,11 +34,15 @@ namespace App.Infrastructure {
         /// <param name="typeFinder">Type finder</param>
         /// <param name="config">Config</param>
         /// <exception cref="System.NotImplementedException"></exception>
-        public void Register(ContainerBuilder builder, App.Core.Infrastructure.ITypeFinder typeFinder, ServerConfig config) {
+        public void Register(ContainerBuilder builder, ITypeFinder typeFinder, ServerConfig config) {
+            //
             //we cache presentation models between requests
-            
             //builder.RegisterType<ErrorController>().WithParameter(ResolvedParameter.ForNamed<ICacheManager>("app_cache_static"));
-            builder.RegisterType<MainFrame>().WithParameter(ResolvedParameter.ForNamed<IChatLieuService>("1"));
+            //builder.RegisterType<ChatLieuController>().WithParameter(ResolvedParameter.ForNamed<ICacheManager>("0"));
+            //builder.RegisterType<ChatLieuController>().WithParameter(ResolvedParameter.ForNamed<IChatLieuController>("0"));
+
+            builder.RegisterType<ChatLieuController>().As<IChatLieuController>().SingleInstance();
+            builder.RegisterType<MainFacade>().WithParameter(ResolvedParameter.ForNamed<ICacheManager>("1"));
         }
 
         /// <summary>

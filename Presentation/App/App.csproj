@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>App.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper">
       <HintPath>..\..\packages\AutoMapper.3.0.2\AutoMapper.dll</HintPath>
@@ -52,21 +55,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\ProductModel.cs" />
-    <Compile Include="Views\AbstractCommunicatorProvider.cs" />
-    <Compile Include="Views\BaseFrame.cs">
+    <Compile Include="Controllers\ChatLieuController.cs" />
+    <Compile Include="Controllers\IChatLieuController.cs" />
+    <Compile Include="Controllers\IView.cs" />
+    <Compile Include="Models\AppModel.cs" />
+    <Compile Include="Views\ChatLieuView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\MainFrame.cs">
+    <Compile Include="Views\ChatLieuView.Designer.cs">
+      <DependentUpon>ChatLieuView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainFacade.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\MainFrame.Designer.cs">
-      <DependentUpon>MainFrame.cs</DependentUpon>
+    <Compile Include="Views\MainFacade.Designer.cs">
+      <DependentUpon>MainFacade.cs</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\AutoMapperConfiguration.cs" />
     <Compile Include="Infrastructure\AutoMapperStartupTask.cs" />
     <Compile Include="Infrastructure\DependencyRegistrar.cs" />
-    <Compile Include="Views\Program.cs" />
+    <Compile Include="App.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -77,8 +85,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\MainFrame.resx">
-      <DependentUpon>MainFrame.cs</DependentUpon>
+    <EmbeddedResource Include="Views\ChatLieuView.resx">
+      <DependentUpon>ChatLieuView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MainFacade.resx">
+      <DependentUpon>MainFacade.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">

@@ -38,10 +38,7 @@ namespace App.Data {
         public AppContext(string nameOrConnectionString = "")
             : base(nameOrConnectionString) {
             base.Configuration.ProxyCreationEnabled = false;
-            //public AppContext(): base("name=AppEntities") {
-            //((IObjectContextApppter) this).ObjectContext.ContextOptions.LazyLoadingEnabled = true;
-            
-            base.Configuration.ProxyCreationEnabled = false;
+            //((IObjectContextAdapter) this).ObjectContext.ContextOptions.LazyLoadingEnabled = true;
         }
 
         #endregion

@@ -1,5 +1,5 @@
 ﻿namespace App.Views {
-    partial class MainFrame {
+    partial class MainFacade {
         /// <summary>
         /// Required designer variable.
         /// </summary>
