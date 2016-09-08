@@ -24,16 +24,16 @@ namespace App.Service.Business{
     ///     Class ChatLieuService.
     /// </summary>
     public class ChatLieuService : AbstractService, IChatLieuService{
-        private readonly IRepository<ChatLieu> product;
+        private readonly IRepository<ChatLieu> chatlieu;
 
-        public ChatLieuService(IRepository<ChatLieu> product, IDataProvider data, IDbContext db){
-            this.product = product;
+        public ChatLieuService(IRepository<ChatLieu> chatlieu, IDataProvider data, IDbContext db){
+            this.chatlieu = chatlieu;
             this.data = data;
             this.db = db;
         }
 
         public ChatLieu GetById(int id){
-            return product.GetById(id);
+            return chatlieu.GetById(id);
         }
 
         public IEnumerable<ChatLieu> GetListByPaging(string value, string index, int page, int size, string sort, out int total){
@@ -54,49 +54,49 @@ namespace App.Service.Business{
 
         public IEnumerable<ChatLieu> GetList(int id){
             //todo: need to optimize
-            var query = from p in product.Table
+            var query = from p in chatlieu.Table
                 where p.ID == id
                 select p;
             return query.ToList();
         }
 
         public IEnumerable<ChatLieu> GetTop(int top){
-            var q = product.Table.Take(top);
+            var q = chatlieu.Table.Take(top);
             return q.ToList();
         }
 
         public IEnumerable<ChatLieu> GetAll(){
             //todo: need to optimize
-            return product.Table.ToList();
+            return chatlieu.Table.ToList();
         }
 
         public void Insert(ChatLieu entity){
-            product.Insert(entity);
+            chatlieu.Insert(entity);
         }
 
         public void Insert(IEnumerable<ChatLieu> entities){
             foreach (var entity in entities){
-                product.Insert(entity);
+                chatlieu.Insert(entity);
             }
         }
 
         public void Update(ChatLieu entity){
-            product.Update(entity);
+            chatlieu.Update(entity);
         }
 
         public void Update(IEnumerable<ChatLieu> entities){
             foreach (var entity in entities){
-                product.Update(entity);
+                chatlieu.Update(entity);
             }
         }
 
         public void Delete(ChatLieu entity){
-            product.Delete(entity);
+            chatlieu.Delete(entity);
         }
 
         public void Delete(IEnumerable<ChatLieu> entities){
             foreach (var entity in entities){
-                product.Delete(entity);
+                chatlieu.Delete(entity);
             }
         }
 
@@ -110,7 +110,7 @@ namespace App.Service.Business{
         }
 
         public List<ChatLieu> GetChatLieuByTeam(string maChatLieu){
-            var query = from a in product.Table where a.MaChatLieu != maChatLieu select a;
+            var query = from a in chatlieu.Table where a.MaChatLieu != maChatLieu select a;
             var list = query.ToList();
             return list;
         }
