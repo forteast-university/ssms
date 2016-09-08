@@ -1,5 +1,5 @@
 ﻿// ***********************************************************************
-// Assembly         : ADA.Core
+// Assembly         : App.Core
 // Author           : Hung Le
 // Created          : 08-18-2016
 //
@@ -17,7 +17,7 @@ using System.Reflection;
 //using System.Web;
 //using System.Web.Hosting;
 
-namespace ADA.Core.Infrastructure {
+namespace App.Core.Infrastructure {
     /// <summary>
     /// Provides information about types in the current web application.
     /// Optionally this class can look at all assemblies in the bin folder.

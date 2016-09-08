@@ -1,6 +1,6 @@
 ﻿using System;
-using ADA.Core;
-using ADA.Core.Data;
+using App.Core;
+using App.Core.Data;
 //using Nop.Core;
 
 namespace App.Data

@@ -1,5 +1,5 @@
 ﻿// ***********************************************************************
-// Assembly         : ADA.Core
+// Assembly         : App.Core
 // Author           : Hung Le
 // Created          : 08-18-2016
 //
@@ -14,7 +14,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace ADA.Core
+namespace App.Core
 {
     /// <summary>
     /// Represents errors that occur during application execution

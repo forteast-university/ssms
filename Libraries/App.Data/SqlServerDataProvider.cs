@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Text;
 //using System.Web.Hosting;
-using ADA.Core.Data;
+using App.Core.Data;
 using App.Data.Initializers;
 
 namespace App.Data

@@ -1,5 +1,5 @@
 ﻿// ***********************************************************************
-// Assembly         : ADA.Core
+// Assembly         : App.Core
 // Author           : Hung Le
 // Created          : 08-18-2016
 //
@@ -11,10 +11,10 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using ADA.Core.Configuration;
+using App.Core.Configuration;
 using Autofac;
 
-namespace ADA.Core.Infrastructure.DependencyManagement
+namespace App.Core.Infrastructure.DependencyManagement
 {
     /// <summary>
     /// Dependency registrar interface

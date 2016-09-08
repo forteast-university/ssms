@@ -1,5 +1,5 @@
 ﻿// ***********************************************************************
-// Assembly         : ADA.Core
+// Assembly         : App.Core
 // Author           : Hung Le
 // Created          : 08-18-2016
 //
@@ -12,10 +12,10 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
-using ADA.Core.Configuration;
-using ADA.Core.Infrastructure.DependencyManagement;
+using App.Core.Configuration;
+using App.Core.Infrastructure.DependencyManagement;
 
-namespace ADA.Core.Infrastructure
+namespace App.Core.Infrastructure
 {
     /// <summary>
     /// Classes implementing this interface can serve as a portal for the

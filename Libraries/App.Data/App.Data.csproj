@@ -69,7 +69,7 @@
     <Compile Include="Initializers\DropCreateCeDatabaseIfModelChanges.cs" />
     <Compile Include="Initializers\SqlCeInitializer.cs" />
     <Compile Include="Mapping\AppEntityTypeConfiguration.cs" />
-    <Compile Include="Mapping\Map\ChatLieuMap.cs" />
+    <Compile Include="Mapping\EntityMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryableExtensions.cs" />
     <Compile Include="SpHelper.cs" />

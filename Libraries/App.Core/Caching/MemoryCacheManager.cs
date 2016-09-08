@@ -1,5 +1,5 @@
 // ***********************************************************************
-// Assembly         : ADA.Core
+// Assembly         : App.Core
 // Author           : Hung Le
 // Created          : 08-18-2016
 //
@@ -15,7 +15,7 @@ using System;
 using System.Linq;
 using System.Runtime.Caching;
 
-namespace ADA.Core.Caching
+namespace App.Core.Caching
 {
     /// <summary>
     /// Represents a manager for caching between HTTP requests (long term caching)

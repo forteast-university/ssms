@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : App.Data
+// Author           : Hung Le
+// Created          : 09-07-2016
+//
+// Last Modified By : Hung Le
+// Last Modified On : 09-07-2016
+// ***********************************************************************
+// <copyright file="CreateCeDatabaseIfNotExists.cs" company="Thanh Dong University">
+//     Copyright (c) Thanh Dong University. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Data.Entity;
 using System.Transactions;
 
@@ -14,6 +27,12 @@ namespace App.Data.Initializers
     {
         #region Strategy implementation
 
+        /// <summary>
+        /// Initializes the database.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <exception cref="System.ArgumentNullException">context</exception>
+        /// <exception cref="System.InvalidOperationException"></exception>
         public override void InitializeDatabase(TContext context)
         {
             if (context == null)
@@ -30,7 +49,7 @@ namespace App.Data.Initializers
 
             if (databaseExists)
             {
-                // If there is no metadata either in the model or in the databaase, then
+                // If there is no metAppta either in the model or in the databaase, then
                 // we assume that the database matches the model because the common cases for
                 // these scenarios are database/model first and/or an existing database.
                 if (!context.Database.CompatibleWithModel(throwIfNoMetadata: false))
@@ -51,7 +70,7 @@ namespace App.Data.Initializers
         #region Seeding methods
 
         /// <summary>
-        /// A that should be overridden to actually add data to the context for seeding. 
+        /// A that should be overridden to actually add data to the context for seeding.
         /// The default implementation does nothing.
         /// </summary>
         /// <param name="context">The context to seed.</param>

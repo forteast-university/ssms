@@ -1,5 +1,5 @@
 ﻿// ***********************************************************************
-// Assembly         : ADA.Core
+// Assembly         : App.Core
 // Author           : Hung Le
 // Created          : 08-18-2016
 //
@@ -15,7 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace ADA.Core.Infrastructure
+namespace App.Core.Infrastructure
 {
     /// <summary>
     /// Classes implementing this interface provide information about types

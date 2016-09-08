@@ -2,7 +2,7 @@
 using System.Linq;
 using App.Core.Domain;
 
-namespace ADA.Core.Data
+namespace App.Core.Data
 {
     /// <summary>
     /// Repository

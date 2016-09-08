@@ -1,5 +1,5 @@
 // ***********************************************************************
-// Assembly         : ADA.Core
+// Assembly         : App.Core
 // Author           : Hung Le
 // Created          : 08-18-2016
 //
@@ -11,7 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace ADA.Core.Caching {
+namespace App.Core.Caching {
     /// <summary>
     /// Represents a AppNullCache (caches nothing)
     /// </summary>

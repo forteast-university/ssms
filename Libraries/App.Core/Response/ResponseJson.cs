@@ -1,17 +1,17 @@
 ﻿// ***********************************************************************
-// Assembly         : ADA.Framework
+// Assembly         : App.Framework
 // Author           : Hung Le
 // Created          : 08-18-2016
 //
 // Last Modified By : Hung Le
-// Last Modified On : 08-20-2016
+// Last Modified On : 08-29-2016
 // ***********************************************************************
 // <copyright file="ResponseJson.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace ADA.Core.Response
+namespace App.Core.Response
 {
     /// <summary>
     /// Class ResponseJson.

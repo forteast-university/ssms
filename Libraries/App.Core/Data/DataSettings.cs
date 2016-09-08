@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ADA.Core.Data
+namespace App.Core.Data
 {
     /// <summary>
     /// Data settings (connection string information)

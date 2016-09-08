@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
 // Assembly         : App.Data
-// Author           : Duc Huynh
-// Created          : 07-28-2016
+// Author           : Hung Le
+// Created          : 08-29-2016
 //
-// Last Modified By : Duc Huynh
-// Last Modified On : 07-28-2016
+// Last Modified By : Hung Le
+// Last Modified On : 08-29-2016
 // ***********************************************************************
 // <copyright file="SearchOptionalList.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
@@ -12,7 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace ADA.Core.Utility {
+namespace App.Core.Utility {
 
     /// <summary>
     /// Class SearchOptionalList.

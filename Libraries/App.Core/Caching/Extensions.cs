@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace ADA.Core.Caching
+namespace App.Core.Caching
 {
     /// <summary>
     /// Extensions

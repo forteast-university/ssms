@@ -1,6 +1,6 @@
 using System;
 
-namespace ADA.Core.Caching
+namespace App.Core.Caching
 {
     /// <summary>
     /// Cache manager interface

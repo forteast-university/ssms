@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace ADA.Core.Data
+namespace App.Core.Data
 {
     /// <summary>
     /// Manager of data settings (connection string)
@@ -86,7 +86,7 @@ namespace ADA.Core.Data
         {
             if (String.IsNullOrEmpty(filePath))
             {
-                filePath = Path.Combine(CommonHelper.MapPath("~/App_Data/"), filename);
+                filePath = Path.Combine(CommonHelper.MapPath("~/"), filename);
                 //throw new Exception(filePath + "hung");
             }
             if (File.Exists(filePath))
@@ -94,7 +94,7 @@ namespace ADA.Core.Data
                 string text = File.ReadAllText(filePath);
                 return ParseSettings(text);
             }
-            //"name=ServerMapperEntities";
+            //"name=AppEntities";
             return new DataSettings();
         }
 
@@ -107,7 +107,7 @@ namespace ADA.Core.Data
             if (settings == null)
                 throw new ArgumentNullException("settings");
             
-            string filePath = Path.Combine(CommonHelper.MapPath("~/App_Data/"), filename);
+            string filePath = Path.Combine(CommonHelper.MapPath("~/"), filename);
             if (!File.Exists(filePath))
             {
                 using (File.Create(filePath))

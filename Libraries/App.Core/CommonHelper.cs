@@ -12,7 +12,7 @@ using System.Threading;
 using System.Web;
 //using System.Web.Hosting;
 
-namespace ADA.Core {
+namespace App.Core {
     /// <summary>
     /// Represents a common helper
     /// </summary>

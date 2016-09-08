@@ -1,10 +1,10 @@
 // ***********************************************************************
 // Assembly         : App.Data
 // Author           : Hung Le
-// Created          : 08-19-2016
+// Created          : 08-29-2016
 //
 // Last Modified By : Hung Le
-// Last Modified On : 08-19-2016
+// Last Modified On : 08-29-2016
 // ***********************************************************************
 // <copyright file="AppContext.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
@@ -38,8 +38,8 @@ namespace App.Data {
         public AppContext(string nameOrConnectionString = "")
             : base(nameOrConnectionString) {
             base.Configuration.ProxyCreationEnabled = false;
-            //public AppContext(): base("name=ServerMapperEntities") {
-            //((IObjectContextAdapter) this).ObjectContext.ContextOptions.LazyLoadingEnabled = true;
+            //public AppContext(): base("name=AppEntities") {
+            //((IObjectContextApppter) this).ObjectContext.ContextOptions.LazyLoadingEnabled = true;
             
             base.Configuration.ProxyCreationEnabled = false;
         }
@@ -81,7 +81,9 @@ namespace App.Data {
 
             base.OnModelCreating(modelBuilder);
         }
-
+        public void FixEfProviderServicesProblem() {
+            var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
+        }
         /// <summary>
         /// Attach an entity to the context or return an already attached entity (if it was already attached)
         /// </summary>

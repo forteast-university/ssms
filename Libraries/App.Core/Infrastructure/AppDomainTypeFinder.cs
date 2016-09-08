@@ -1,5 +1,5 @@
 ﻿// ***********************************************************************
-// Assembly         : ADA.Core
+// Assembly         : App.Core
 // Author           : Hung Le
 // Created          : 08-18-2016
 //
@@ -18,7 +18,7 @@ using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
-namespace ADA.Core.Infrastructure {
+namespace App.Core.Infrastructure {
     /// <summary>
     /// A class that finds types needed by App by looping assemblies in the
     /// currently executing AppDomain. Only assemblies whose names matches
@@ -36,7 +36,7 @@ namespace ADA.Core.Infrastructure {
         /// <summary>
         /// The load application domain assemblies
         /// </summary>
-        private bool loadAppDomainAssemblies = true;
+        private bool loAppppDomainAssemblies = true;
         /// <summary>
         /// The assembly skip loading pattern
         /// </summary>
@@ -66,9 +66,9 @@ namespace ADA.Core.Infrastructure {
         /// Gets or sets whether App should iterate assemblies in the app domain when loading App types. Loading patterns are applied when loading these assemblies.
         /// </summary>
         /// <value><c>true</c> if [load application domain assemblies]; otherwise, <c>false</c>.</value>
-        public bool LoadAppDomainAssemblies {
-            get { return loadAppDomainAssemblies; }
-            set { loadAppDomainAssemblies = value; }
+        public bool LoAppppDomainAssemblies {
+            get { return loAppppDomainAssemblies; }
+            set { loAppppDomainAssemblies = value; }
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace ADA.Core.Infrastructure {
             var addedAssemblyNames = new List<string>();
             var assemblies = new List<Assembly>();
 
-            if(LoadAppDomainAssemblies)
+            if(LoAppppDomainAssemblies)
                 AddAssembliesInAppDomain(addedAssemblyNames, assemblies);
             AddConfiguredAssemblies(addedAssemblyNames, assemblies);
 

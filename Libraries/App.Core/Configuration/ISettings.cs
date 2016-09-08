@@ -1,5 +1,5 @@
 ﻿
-namespace ADA.Core.Configuration
+namespace App.Core.Configuration
 {
     /// <summary>
     /// Setting interface

@@ -1,10 +1,10 @@
 // ***********************************************************************
 // Assembly         : App.Data
 // Author           : Hung Le
-// Created          : 08-19-2016
+// Created          : 08-29-2016
 //
 // Last Modified By : Hung Le
-// Last Modified On : 08-19-2016
+// Last Modified On : 08-29-2016
 // ***********************************************************************
 // <copyright file="EfRepository.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
@@ -17,7 +17,7 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.Validation;
 using System.Linq;
-using ADA.Core.Data;
+using App.Core.Data;
 using App.Core.Domain;
 
 namespace App.Data {

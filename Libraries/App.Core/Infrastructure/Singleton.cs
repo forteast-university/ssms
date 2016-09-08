@@ -1,5 +1,5 @@
 ﻿// ***********************************************************************
-// Assembly         : ADA.Core
+// Assembly         : App.Core
 // Author           : Hung Le
 // Created          : 08-18-2016
 //
@@ -14,7 +14,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ADA.Core.Infrastructure
+namespace App.Core.Infrastructure
 {
     /// <summary>
     /// A statically compiled "singleton" used to store objects throughout the

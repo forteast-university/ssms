@@ -1,5 +1,5 @@
 ﻿// ***********************************************************************
-// Assembly         : ADA.Core
+// Assembly         : App.Core
 // Author           : Hung Le
 // Created          : 08-18-2016
 //
@@ -12,7 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace ADA.Core.Infrastructure
+namespace App.Core.Infrastructure
 {
     /// <summary>
     /// Interface which should be implemented by tasks run on startup

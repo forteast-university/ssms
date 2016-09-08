@@ -1,7 +1,7 @@
 ﻿
 using System.Data.Common;
 
-namespace ADA.Core.Data {
+namespace App.Core.Data {
     /// <summary>
     /// Data provider interface
     /// </summary>

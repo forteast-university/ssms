@@ -1,10 +1,10 @@
 // ***********************************************************************
 // Assembly         : App.Data
 // Author           : Hung Le
-// Created          : 08-19-2016
+// Created          : 08-29-2016
 //
 // Last Modified By : Hung Le
-// Last Modified On : 08-19-2016
+// Last Modified On : 08-29-2016
 // ***********************************************************************
 // <copyright file="DbContextExtensions.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
@@ -160,14 +160,14 @@ namespace App.Data
             //this code works only with Entity Framework.
             //If you want to support other database, then use the code above (commented)
 
-            var adapter = ((IObjectContextAdapter)context).ObjectContext;
-            var storageModel = (StoreItemCollection)adapter.MetadataWorkspace.GetItemCollection(DataSpace.SSpace);
+            var Apppter = ((IObjectContextAdapter)context).ObjectContext;
+            var storageModel = (StoreItemCollection)Apppter.MetadataWorkspace.GetItemCollection(DataSpace.SSpace);
             var containers = storageModel.GetItems<EntityContainer>();
             var entitySetBase = containers.SelectMany(c => c.BaseEntitySets.Where(bes => bes.Name == typeof(T).Name)).First();
 
             // Here are variables that will hold table and schema name
             string tableName = entitySetBase.MetadataProperties.First(p => p.Name == "Table").Value.ToString();
-            //string schemaName = productEntitySetBase.MetadataProperties.First(p => p.Name == "Schema").Value.ToString();
+            //string schemaName = productEntitySetBase.MetApptaProperties.First(p => p.Name == "Schema").Value.ToString();
             return tableName;
         }
 
@@ -196,9 +196,9 @@ namespace App.Data
             //original: http://stackoverflow.com/questions/5081109/entity-framework-4-0-automatically-truncate-trim-string-before-insert
            
             var entType = Type.GetType(entityTypeName);
-            var adapter = ((IObjectContextAdapter)context).ObjectContext;
-            var metadataWorkspace = adapter.MetadataWorkspace;
-            var q = from meta in metadataWorkspace.GetItems(DataSpace.CSpace).Where(m => m.BuiltInTypeKind == BuiltInTypeKind.EntityType)
+            var Apppter = ((IObjectContextAdapter)context).ObjectContext;
+            var metApptaWorkspace = Apppter.MetadataWorkspace;
+            var q = from meta in metApptaWorkspace.GetItems(DataSpace.CSpace).Where(m => m.BuiltInTypeKind == BuiltInTypeKind.EntityType)
                     from p in (meta as EntityType).Properties.Where(p => columnNames.Contains(p.Name) && p.TypeUsage.EdmType.Name == "String")
                     select p;
 

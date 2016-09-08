@@ -1,5 +1,5 @@
 ﻿// ***********************************************************************
-// Assembly         : ADA.Core
+// Assembly         : App.Core
 // Author           : Hung Le
 // Created          : 08-18-2016
 //
@@ -12,10 +12,10 @@
 // <summary></summary>
 // ***********************************************************************
 using System.Runtime.CompilerServices;
-using ADA.Core.Configuration;
+using App.Core.Configuration;
 using System.Configuration;
 
-namespace ADA.Core.Infrastructure {
+namespace App.Core.Infrastructure {
     /// <summary>
     /// Provides access to the singleton instance of the App engine.
     /// </summary>

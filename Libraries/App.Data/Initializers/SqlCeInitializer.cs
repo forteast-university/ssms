@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
 // Assembly         : App.Data
 // Author           : Hung Le
-// Created          : 08-19-2016
+// Created          : 08-29-2016
 //
 // Last Modified By : Hung Le
-// Last Modified On : 08-19-2016
+// Last Modified On : 08-29-2016
 // ***********************************************************************
 // <copyright file="SqlCeInitializer.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.

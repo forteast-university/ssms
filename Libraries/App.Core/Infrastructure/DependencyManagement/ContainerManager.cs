@@ -1,5 +1,5 @@
 ﻿// ***********************************************************************
-// Assembly         : ADA.Core
+// Assembly         : App.Core
 // Author           : Hung Le
 // Created          : 08-18-2016
 //
@@ -20,7 +20,7 @@ using Autofac;
 using Autofac.Core.Lifetime;
 //using Autofac.Integration.Mvc;
 
-namespace ADA.Core.Infrastructure.DependencyManagement
+namespace App.Core.Infrastructure.DependencyManagement
 {
     /// <summary>
     /// Container manager

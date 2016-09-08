@@ -1,5 +1,5 @@
 ﻿// ***********************************************************************
-// Assembly         : ADA.Core
+// Assembly         : App.Core
 // Author           : Hung Le
 // Created          : 08-18-2016
 //
@@ -15,12 +15,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 //using System.Web.Mvc;
-using ADA.Core.Configuration;
-using ADA.Core.Infrastructure.DependencyManagement;
+using App.Core.Configuration;
+using App.Core.Infrastructure.DependencyManagement;
 using Autofac;
 //using Autofac.Integration.Mvc;
 
-namespace ADA.Core.Infrastructure {
+namespace App.Core.Infrastructure {
     /// <summary>
     /// Engine
     /// </summary>
@@ -93,7 +93,7 @@ namespace ADA.Core.Infrastructure {
 
             //set dependency resolver
             //DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-            container = builder.Build();
+            //container = builder.Build();
 
         }
 
@@ -110,9 +110,9 @@ namespace ADA.Core.Infrastructure {
             RegisterDependencies(config);
 
             //startup tasks
-            if(!config.IgnoreStartupTasks) {
-                RunStartupTasks();
-            }
+            //if(!config.IgnoreStartupTasks) {
+            //    RunStartupTasks();
+            //}
 
         }
 

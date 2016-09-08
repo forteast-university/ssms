@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ADA.Core.Data
+namespace App.Core.Data
 {
     /// <summary>
     /// Data settings helper

@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
-// Assembly         : ADA.Core
+// Assembly         : App.Core
 // Author           : Hung Le
-// Created          : 08-19-2016
+// Created          : 08-29-2016
 //
 // Last Modified By : Hung Le
-// Last Modified On : 08-19-2016
+// Last Modified On : 08-29-2016
 // ***********************************************************************
 // <copyright file="IPagedList.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 
-namespace ADA.Core
+namespace App.Core
 {
     /// <summary>
     /// Paged list interface
