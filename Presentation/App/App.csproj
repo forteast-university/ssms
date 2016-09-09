@@ -55,6 +55,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CongViecController.cs" />
+    <Compile Include="Controllers\DoiTuongController.cs" />
+    <Compile Include="Controllers\MauController.cs" />
+    <Compile Include="Controllers\NuocSanXuatController.cs" />
     <Compile Include="Controllers\TheLoaiController.cs" />
     <Compile Include="Controllers\KichCoController.cs" />
     <Compile Include="Controllers\MuaController.cs" />

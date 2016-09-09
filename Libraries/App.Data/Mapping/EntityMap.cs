@@ -107,9 +107,9 @@ namespace App.Data.Mapping{
         }
     }
 
-    public class NuanXuatMap : AppEntityTypeConfiguration<NuocSanXuat>{
-        public NuanXuatMap(){
-            ToTable("NuanXuat");
+    public class NuocXuatMap : AppEntityTypeConfiguration<NuocSanXuat>{
+        public NuocXuatMap(){
+            ToTable("NuocSanXuat");
             HasKey(c => c.ID);
             Property(obj => obj.ID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("ID");
         }
