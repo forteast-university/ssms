@@ -55,12 +55,40 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\TheLoaiController.cs" />
+    <Compile Include="Controllers\KichCoController.cs" />
+    <Compile Include="Controllers\MuaController.cs" />
+    <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\NhaCungCapController.cs" />
     <Compile Include="Controllers\ChatLieuController.cs" />
     <Compile Include="Controllers\Interface\IBaseController.cs" />
     <Compile Include="Controllers\Interface\IChatLieuController.cs" />
     <Compile Include="Extensions\MappingExtensions.cs" />
     <Compile Include="Models\AppModel.cs" />
+    <Compile Include="Views\TheLoaiView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TheLoaiView.Designer.cs">
+      <DependentUpon>TheLoaiView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KichCoView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\KichCoView.Designer.cs">
+      <DependentUpon>KichCoView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MuaView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MuaView.Designer.cs">
+      <DependentUpon>MuaView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KhachHangView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\KhachHangView.Designer.cs">
+      <DependentUpon>KhachHangView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\NhaCungCapView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,12 +101,6 @@
     <Compile Include="Views\ChatLieuView.Designer.cs">
       <DependentUpon>ChatLieuView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CongViecView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\CongViecView.Designer.cs">
-      <DependentUpon>CongViecView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\MainFacade.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,12 +112,6 @@
     <Compile Include="Infrastructure\DependencyRegistrar.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\MauView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\MauView.Designer.cs">
-      <DependentUpon>MauView.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -106,20 +122,26 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\TheLoaiView.resx">
+      <DependentUpon>TheLoaiView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\KichCoView.resx">
+      <DependentUpon>KichCoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MuaView.resx">
+      <DependentUpon>MuaView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\KhachHangView.resx">
+      <DependentUpon>KhachHangView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\NhaCungCapView.resx">
       <DependentUpon>NhaCungCapView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ChatLieuView.resx">
       <DependentUpon>ChatLieuView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CongViecView.resx">
-      <DependentUpon>CongViecView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\MainFacade.resx">
       <DependentUpon>MainFacade.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\MauView.resx">
-      <DependentUpon>MauView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
