@@ -95,5 +95,14 @@ namespace App.Properties {
                 return ResourceManager.GetString("Insert_unsuccessful", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thông báo.
+        /// </summary>
+        internal static string View_Confirm {
+            get {
+                return ResourceManager.GetString("View_Confirm", resourceCulture);
+            }
+        }
     }
 }

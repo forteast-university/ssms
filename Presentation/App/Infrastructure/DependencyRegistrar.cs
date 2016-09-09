@@ -13,6 +13,7 @@
 // ***********************************************************************
 
 using App.Controllers;
+using App.Controllers.Interface;
 using App.Core.Caching;
 using App.Core.Configuration;
 using App.Core.Infrastructure;
@@ -43,6 +44,7 @@ namespace App.Infrastructure {
             //builder.RegisterType<ChatLieuController>().WithParameter(ResolvedParameter.ForNamed<IChatLieuController>("0"));
 
             builder.RegisterType<ChatLieuController>().As<IBaseController<ChatLieuModel>>().SingleInstance();
+            builder.RegisterType<NhaCungCapController>().As<IBaseController<NhaCungCapModel>>().SingleInstance();
             builder.RegisterType<MainFacade>();//.WithParameter(ResolvedParameter.ForNamed<ICacheManager>("1"));
         }
 

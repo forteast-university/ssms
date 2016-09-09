@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Controllers;
+using App.Controllers.Interface;
 using App.Core.Domain;
 using App.Core.Infrastructure;
 using App.Models;
@@ -23,7 +24,8 @@ namespace App.Views {
         }
 
         private void button1_Click(object sender, EventArgs e){
-            app.Resolve <IBaseController<ChatLieuModel>>().View();
+            //app.Resolve <IBaseController<ChatLieuModel>>().View();
+            app.Resolve <IBaseController<NhaCungCapModel>>().View();
 
 
 

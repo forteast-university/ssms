@@ -26,27 +26,27 @@ namespace App.Views{
     /// <summary>
     ///     Class ChatLieuView.
     /// </summary>
-    public partial class ChatLieuView : Form{
+    public partial class NhaCungCapView : Form{
         /// <summary>
         ///     The controller
         /// </summary>
-        private readonly IBaseController<ChatLieuModel> controller;
+        private readonly IBaseController<NhaCungCapModel> controller;
 
         /// <summary>
         ///     The value chat lieu model
         /// </summary>
-        private IEnumerable<ChatLieuModel> chatLieuModelList;
+        private IEnumerable<NhaCungCapModel> currentModelList;
 
         /// <summary>
         ///     The current model
         /// </summary>
-        private ChatLieuModel currentModel;
+        private NhaCungCapModel currentModel;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ChatLieuView" /> class.
         /// </summary>
         /// <param name="value">The value.</param>
-        public ChatLieuView(IBaseController<ChatLieuModel> value){
+        public NhaCungCapView(IBaseController<NhaCungCapModel> value) {
             controller = value;
             InitializeComponent();
             bntLuaChon.Enabled = false;
@@ -64,8 +64,8 @@ namespace App.Views{
         ///     Posts the view.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void PostView(IEnumerable<ChatLieuModel> value){
-            chatLieuModelList = value;
+        public void PostView(IEnumerable<NhaCungCapModel> value){
+            currentModelList = value;
 
             dataGridView.Columns.Clear();
             var c = new DataGridViewCheckBoxColumn{Name = "CB", HeaderText = "", Width = 24, ReadOnly = true};
@@ -89,63 +89,70 @@ namespace App.Views{
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void bntLuu_Click(object sender, EventArgs e){
 
-            if (txtMaChatLieu.Text == ""){
-                MessageBox.Show("Mã chất liệu không được để rỗng");
+            if (txtMaNCC.Text == ""){
+                MessageBox.Show("Mã nhà cung cấp không được để rỗng");
                 return;
             }
-            if (txtTenChatLieu.Text == ""){
-                MessageBox.Show("Tên chất liệu không được để rỗng");
+            if (txtTenNCC.Text == ""){
+                MessageBox.Show("Tên nhà cung cấp không được để rỗng");
                 return;
             }
 
-            currentModel = (ChatLieuModel) dataGridView.CurrentSelected(chatLieuModelList);
+            currentModel = (NhaCungCapModel) dataGridView.CurrentSelected(currentModelList);
             if (currentModel != null){
 
-                var cm = chatLieuModelList.Where(c => c.MaChatLieu == txtMaChatLieu.Text &&
+                var cm = currentModelList.Where(c => c.MaNCC == txtMaNCC.Text &&
                     c.ID != currentModel.ID);
                 if (cm.Any()) {
-                    MessageBox.Show("Mã chất liệu đã tồn tại trong một bản ghi khác");
+                    MessageBox.Show("Mã nhà cung cấp đã tồn tại trong một bản ghi khác");
                     return;
                 }
-                var ct = chatLieuModelList.Where(c => c.TenChatLieu == txtTenChatLieu.Text &&
+                var ct = currentModelList.Where(c => c.TenNCC == txtTenNCC.Text &&
                     c.ID != currentModel.ID);
                 if (ct.Any()) {
-                    MessageBox.Show("Tên chất liệu đã tồn tại trong một bản ghi khác");
+                    MessageBox.Show("Tên nhà cung cấp đã tồn tại trong một bản ghi khác");
                     return;
                 }
 
-                currentModel.MaChatLieu = txtMaChatLieu.Text;
-                currentModel.TenChatLieu = txtTenChatLieu.Text;
-                controller.Update(currentModel);
-                //re-update UI
-                
-                dataGridView.UpdateView("MaChatLieu", currentModel.MaChatLieu);
-                dataGridView.UpdateView("TenChatLieu", currentModel.TenChatLieu);
+                currentModel.MaNCC = txtMaNCC.Text;
+                currentModel.TenNCC = txtTenNCC.Text;
+                currentModel.DiaChi = txtDiaChi.Text;
+                currentModel.DienThoai = txtDienThoai.Text;
 
-                txtMaChatLieu.Focus();
-                txtMaChatLieu.SelectAll();
+                controller.Update(currentModel);
+
+                //re-update UI
+                dataGridView.UpdateView("MaNCC", currentModel.MaNCC);
+                dataGridView.UpdateView("TenNCC", currentModel.TenNCC);
+                dataGridView.UpdateView("DiaChi", currentModel.DiaChi);
+                dataGridView.UpdateView("DienThoai", currentModel.DienThoai);
+
+                txtMaNCC.Focus();
+                txtMaNCC.SelectAll();
                 bntTaoMoi.Enabled = true;
                 bntLuu.Enabled = true;
             }
             else{
-                var cm = chatLieuModelList.Where(c => c.MaChatLieu == txtMaChatLieu.Text);
+                var cm = currentModelList.Where(c => c.MaNCC == txtMaNCC.Text);
                 if (cm.Any()) {
-                    MessageBox.Show("Mã chất liệu đã tồn tại");
+                    MessageBox.Show("Mã nhà cung cấp đã tồn tại");
                     return;
                 }
-                var ct = chatLieuModelList.Where(c => c.TenChatLieu == txtTenChatLieu.Text);
+                var ct = currentModelList.Where(c => c.TenNCC == txtTenNCC.Text);
                 if (ct.Any()) {
-                    MessageBox.Show("Tên chất liệu đã tồn tại");
+                    MessageBox.Show("Tên nhà cung cấp đã tồn tại");
                     return;
                 }
-                currentModel = new ChatLieuModel{
-                    MaChatLieu = txtMaChatLieu.Text,
-                    TenChatLieu = txtTenChatLieu.Text,
+                currentModel = new NhaCungCapModel{
+                    MaNCC = txtMaNCC.Text,
+                    TenNCC = txtTenNCC.Text,
+                    DiaChi = txtDiaChi.Text,
+                    DienThoai = txtDienThoai.Text,
                 };
 
                 controller.Insert(currentModel);
-                txtMaChatLieu.Focus();
-                txtMaChatLieu.SelectAll();
+                txtMaNCC.Focus();
+                txtMaNCC.SelectAll();
                 //txtTenChatLieu.Text = "";
                 controller.ReviewGrid();
                 bntTaoMoi.Enabled = true;
@@ -159,8 +166,8 @@ namespace App.Views{
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void bntLuaChon_Click(object sender, EventArgs e){
-            currentModel = (ChatLieuModel) dataGridView.CurrentSelected(chatLieuModelList);
-            MessageBox.Show(currentModel.MaChatLieu);
+            currentModel = (NhaCungCapModel) dataGridView.CurrentSelected(currentModelList);
+            MessageBox.Show(currentModel.MaNCC);
         }
 
         /// <summary>
@@ -210,10 +217,12 @@ namespace App.Views{
             bntLuaChon.Enabled = (dataGridView.CurrentRow != null);
             bntXoa.Enabled = selectedRows.Count > 0;
 
-            currentModel = (ChatLieuModel) dataGridView.CurrentSelected(chatLieuModelList);
+            currentModel = (NhaCungCapModel) dataGridView.CurrentSelected(currentModelList);
             if (currentModel != null){
-                txtMaChatLieu.Text = currentModel.MaChatLieu;
-                txtTenChatLieu.Text = currentModel.TenChatLieu;
+                txtMaNCC.Text = currentModel.MaNCC;
+                txtTenNCC.Text = currentModel.TenNCC;
+                txtDiaChi.Text = currentModel.DiaChi;
+                txtDienThoai.Text = currentModel.DienThoai;
             }
             bntLuu.Enabled = true;
             bntTaoMoi.Enabled = true;
@@ -252,7 +261,7 @@ namespace App.Views{
                 where Convert.ToBoolean(row.Cells["CB"].Value)
                 select row).ToList();
             if (
-                MessageBox.Show(string.Format("Bạn có muốn xóa {0} chất liệu này?", selectedRows.Count),
+                MessageBox.Show(string.Format("Bạn có muốn xóa {0} nhà cung cấp này?", selectedRows.Count), 
                 Resources.View_Confirm,
                     MessageBoxButtons.YesNo) == DialogResult.Yes){
                 var s = (from row in dataGridView.Rows.Cast<DataGridViewRow>() where Convert.ToBoolean(row.Cells["CB"].Value) select row.Cells["ID"].Value.ToString()).ToList();
@@ -274,9 +283,11 @@ namespace App.Views{
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void bntTaoMoi_Click(object sender, EventArgs e){
             dataGridView.ClearSelection();
-            txtMaChatLieu.Text = "";
-            txtTenChatLieu.Text = "";
-            txtMaChatLieu.Focus();
+            txtMaNCC.Text = "";
+            txtTenNCC.Text = "";
+            txtDiaChi.Text = "";
+            txtDienThoai.Text = "";
+            txtMaNCC.Focus();
             bntLuaChon.Enabled = false;
             bntTaoMoi.Enabled = false;
             bntLuu.Enabled = true;

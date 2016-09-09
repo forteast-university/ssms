@@ -55,11 +55,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\NhaCungCapController.cs" />
     <Compile Include="Controllers\ChatLieuController.cs" />
-    <Compile Include="Controllers\IBaseController.cs" />
-    <Compile Include="Controllers\IChatLieuController.cs" />
+    <Compile Include="Controllers\Interface\IBaseController.cs" />
+    <Compile Include="Controllers\Interface\IChatLieuController.cs" />
     <Compile Include="Extensions\MappingExtensions.cs" />
     <Compile Include="Models\AppModel.cs" />
+    <Compile Include="Views\NhaCungCapView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\NhaCungCapView.Designer.cs">
+      <DependentUpon>NhaCungCapView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChatLieuView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +94,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\NhaCungCapView.resx">
+      <DependentUpon>NhaCungCapView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ChatLieuView.resx">
       <DependentUpon>ChatLieuView.cs</DependentUpon>
     </EmbeddedResource>

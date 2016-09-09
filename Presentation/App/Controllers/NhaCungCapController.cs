@@ -6,7 +6,7 @@
 // Last Modified By : Hung Le
 // Last Modified On : 09-09-2016
 // ***********************************************************************
-// <copyright file="ChatLieuController.cs" company="Thanh Dong University">
+// <copyright file="NhaCungCapController.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -28,27 +28,27 @@ using AutoMapper;
 
 namespace App.Controllers {
     /// <summary>
-    /// Class ChatLieuController.
+    /// Class NhaCungCapController.
     /// </summary>
-    public partial class ChatLieuController: IBaseController<ChatLieuModel> {
+    public partial class NhaCungCapController: IBaseController<NhaCungCapModel> {
 
         /// <summary>
         /// The chat lieu service
         /// </summary>
-        private readonly IChatLieuService chatLieuService;
+        private readonly INhaCungCapService chatLieuService;
 
         /// <summary>
         /// The view
         /// </summary>
-        private readonly ChatLieuView view;
+        private readonly NhaCungCapView view;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChatLieuController"/> class.
+        /// Initializes a new instance of the <see cref="NhaCungCapController"/> class.
         /// </summary>
         /// <param name="chatLieuService">The chat lieu service.</param>
-        public ChatLieuController(IChatLieuService chatLieuService) {
+        public NhaCungCapController(INhaCungCapService chatLieuService) {
             this.chatLieuService = chatLieuService;
-            view = new ChatLieuView(this);
+            view = new NhaCungCapView(this);
         }
         /// <summary>
         /// Views this instance.
@@ -76,7 +76,7 @@ namespace App.Controllers {
         /// Inserts the specified value.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void Insert(ChatLieuModel value) {
+        public void Insert(NhaCungCapModel value) {
             try {
                 var entity = value.ToEntity();
                 chatLieuService.Insert(entity);
@@ -86,15 +86,15 @@ namespace App.Controllers {
                     MessageBoxIcon.Error);
             }
         }
-        protected virtual ChatLieu ModelToEntity(ChatLieuModel model) {
-            ChatLieu a = chatLieuService.GetById(model.ID);
+        protected virtual NhaCungCap ModelToEntity(NhaCungCapModel model) {
+            NhaCungCap a = chatLieuService.GetById(model.ID);
             return a == null ? null : model.ToEntity(a);
         }
         /// <summary>
         /// Updates the specified value.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void Update(ChatLieuModel value)
+        public void Update(NhaCungCapModel value)
         {
             var entity = ModelToEntity(value);
             chatLieuService.Update(entity);
@@ -113,7 +113,7 @@ namespace App.Controllers {
         /// Deletes the specified value.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void Delete(ChatLieuModel value) {
+        public void Delete(NhaCungCapModel value) {
             Delete(value.ID);
         }
         /// <summary>
