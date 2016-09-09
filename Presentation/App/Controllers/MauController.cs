@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : App
+// Author           : Cang Nguyen
+// Created          : 09-09-2016
+//
+// Last Modified By : Cang Nguyen
+// Last Modified On : 09-09-2016
+// ***********************************************************************
+// <copyright file="MauController.cs" company="Thanh Dong University">
+//     Copyright (c) Thanh Dong University. All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,7 +45,7 @@ namespace App.Controllers
         private readonly MauView view;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MauController"/> class.
+        /// Initializes a new instance of the <see cref="MauController" /> class.
         /// </summary>
         /// <param name="MauService">The mau service.</param>
         public MauController(IMauService MauService)
@@ -83,6 +96,11 @@ namespace App.Controllers
                     MessageBoxIcon.Error);
             }
         }
+        /// <summary>
+        /// Models to entity.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>Mau.</returns>
         protected virtual Mau ModelToEntity(MauModel model)
         {
             Mau a = MauService.GetById(model.ID);

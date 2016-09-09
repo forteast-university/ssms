@@ -65,6 +65,30 @@
     <Compile Include="Controllers\Interface\IChatLieuController.cs" />
     <Compile Include="Extensions\MappingExtensions.cs" />
     <Compile Include="Models\AppModel.cs" />
+    <Compile Include="Views\CongViecView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CongViecView.Designer.cs">
+      <DependentUpon>CongViecView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DoiTuongView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DoiTuongView.Designer.cs">
+      <DependentUpon>DoiTuongView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MauView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MauView.Designer.cs">
+      <DependentUpon>MauView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NuocSanXuatView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\NuocSanXuatView.Designer.cs">
+      <DependentUpon>NuocSanXuatView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\TheLoaiView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +146,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\CongViecView.resx">
+      <DependentUpon>CongViecView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DoiTuongView.resx">
+      <DependentUpon>DoiTuongView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MauView.resx">
+      <DependentUpon>MauView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NuocSanXuatView.resx">
+      <DependentUpon>NuocSanXuatView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\TheLoaiView.resx">
       <DependentUpon>TheLoaiView.cs</DependentUpon>
     </EmbeddedResource>
