@@ -11,22 +11,20 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-
-namespace App.Core.Domain
-{
+using System.ComponentModel;
+using System.ComponentModel;
+namespace App.Core.Domain {
     using System;
     using System.Collections.Generic;
 
     /// <summary>
     /// Class HoaDonBan.
     /// </summary>
-    public partial class HoaDonBan : BaseEntity
-    {
+    public partial class HoaDonBan: BaseEntity {
         /// <summary>
         /// Initializes a new instance of the <see cref="HoaDonBan"/> class.
         /// </summary>
-        public HoaDonBan()
-        {
+        public HoaDonBan() {
             //this.ChiTietHDB = new HashSet<ChiTietHDB>();
         }
 
@@ -35,26 +33,31 @@ namespace App.Core.Domain
         /// Gets or sets the so HDB.
         /// </summary>
         /// <value>The so HDB.</value>
+        [DisplayName("Mã HDB")]
         public string SoHDB { get; set; }
         /// <summary>
         /// Gets or sets the ngay ban.
         /// </summary>
         /// <value>The ngay ban.</value>
+        [DisplayName("Ngày bán")]
         public Nullable<System.DateTime> NgayBan { get; set; }
         /// <summary>
         /// Gets or sets the tong tien.
         /// </summary>
         /// <value>The tong tien.</value>
+        [DisplayName("Tổng tiền")]
         public Nullable<decimal> TongTien { get; set; }
         /// <summary>
         /// Gets or sets the ma nv.
         /// </summary>
         /// <value>The ma nv.</value>
+        [DisplayName("Mã nhân viên")]
         public string MaNV { get; set; }
         /// <summary>
         /// Gets or sets the ma khach.
         /// </summary>
         /// <value>The ma khach.</value>
+        [DisplayName("Mã khách")]
         public string MaKhach { get; set; }
         /// <summary>
         /// Gets or sets the khach hang identifier.
@@ -66,7 +69,7 @@ namespace App.Core.Domain
         /// </summary>
         /// <value>The nhan vien identifier.</value>
         public Nullable<int> NhanVienID { get; set; }
-    
+
         // public virtual ICollection<ChiTietHDB> ChiTietHDB { get; set; }
         /// <summary>
         /// Gets or sets the khach hang.

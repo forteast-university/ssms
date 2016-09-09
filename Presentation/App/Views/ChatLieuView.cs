@@ -68,7 +68,7 @@ namespace App.Views{
             chatLieuModelList = value;
 
             dataGridView.Columns.Clear();
-            var c = new DataGridViewCheckBoxColumn{Name = "CB", HeaderText = "", Width = 24, ReadOnly = true};
+            var c = new DataGridViewCheckBoxColumn{Name = "CB", HeaderText = "", Width = 24, AutoSizeMode = DataGridViewAutoSizeColumnMode.None, ReadOnly = true};
             dataGridView.Columns.Add(c);
 
             dataGridView.DataSource = new BindingSource{DataSource = value};

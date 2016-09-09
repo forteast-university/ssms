@@ -37,6 +37,7 @@ namespace App.Views {
             InitializeComponent();
             app = AppFacade.Container;
             InitializeFirst();
+            LoadSanPhamView();
             
         }
         public void Eventlistener<T>(object sender, AppEvent<T> e) {
@@ -54,6 +55,16 @@ namespace App.Views {
                 Alert(exception.Message);
             }
         }
+
+
+        private void LoadSanPhamView()
+        {
+            var a = new SanPhanListView(null);
+            a.TopLevel = false;
+            panel1.Controls.Add(a);
+            a.Show();
+        }
+
 
         /// <summary>
         /// Handles the Click event of the bntChatLieu control.

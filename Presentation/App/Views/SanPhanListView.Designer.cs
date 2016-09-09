@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 
 namespace App.Views {
-    partial class ChatLieuView {
+    partial class SanPhanListView {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -27,8 +27,8 @@ namespace App.Views {
         private void InitializeComponent() {
             this.bntLuu = new System.Windows.Forms.Button();
             this.bntHuy = new System.Windows.Forms.Button();
-            this.txtMaChatLieu = new System.Windows.Forms.TextBox();
-            this.txtTenChatLieu = new System.Windows.Forms.TextBox();
+            this.txtMaGiayDep = new System.Windows.Forms.TextBox();
+            this.txtTenGiayDep = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -58,44 +58,43 @@ namespace App.Views {
             this.bntHuy.UseVisualStyleBackColor = true;
             this.bntHuy.Click += new System.EventHandler(this.bntHuy_Click);
             // 
-            // txtMaChatLieu
+            // txtMaGiayDep
             // 
-            this.txtMaChatLieu.Location = new System.Drawing.Point(88, 12);
-            this.txtMaChatLieu.Name = "txtMaChatLieu";
-            this.txtMaChatLieu.Size = new System.Drawing.Size(180, 20);
-            this.txtMaChatLieu.TabIndex = 2;
+            this.txtMaGiayDep.Location = new System.Drawing.Point(88, 12);
+            this.txtMaGiayDep.Name = "txtMaGiayDep";
+            this.txtMaGiayDep.Size = new System.Drawing.Size(180, 20);
+            this.txtMaGiayDep.TabIndex = 2;
             // 
-            // txtTenChatLieu
+            // txtTenGiayDep
             // 
-            this.txtTenChatLieu.Location = new System.Drawing.Point(88, 39);
-            this.txtTenChatLieu.Name = "txtTenChatLieu";
-            this.txtTenChatLieu.Size = new System.Drawing.Size(180, 20);
-            this.txtTenChatLieu.TabIndex = 3;
+            this.txtTenGiayDep.Location = new System.Drawing.Point(88, 39);
+            this.txtTenGiayDep.Name = "txtTenGiayDep";
+            this.txtTenGiayDep.Size = new System.Drawing.Size(180, 20);
+            this.txtTenGiayDep.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Mã chất liệu";
+            this.label1.Text = "Mã sản phẩm";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(10, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Tên chất liệu";
+            this.label2.Text = "Tên sản phẩm";
             // 
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AllowUserToResizeRows = false; 
-            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView.AllowUserToResizeRows = false; this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(12, 68);
             this.dataGridView.MultiSelect = false;
@@ -139,7 +138,7 @@ namespace App.Views {
             this.bntTaoMoi.UseVisualStyleBackColor = true;
             this.bntTaoMoi.Click += new System.EventHandler(this.bntTaoMoi_Click);
             // 
-            // ChatLieuView
+            // SanPhanListView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -150,12 +149,12 @@ namespace App.Views {
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtTenChatLieu);
-            this.Controls.Add(this.txtMaChatLieu);
+            this.Controls.Add(this.txtTenGiayDep);
+            this.Controls.Add(this.txtMaGiayDep);
             this.Controls.Add(this.bntHuy);
             this.Controls.Add(this.bntLuu);
-            this.Name = "ChatLieuView";
-            this.Text = "Chất Liệu";
+            this.Name = "SanPhanListView";
+            this.Text = "sản phẩm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -166,8 +165,8 @@ namespace App.Views {
 
         private System.Windows.Forms.Button bntLuu;
         private System.Windows.Forms.Button bntHuy;
-        private System.Windows.Forms.TextBox txtMaChatLieu;
-        private System.Windows.Forms.TextBox txtTenChatLieu;
+        private System.Windows.Forms.TextBox txtMaGiayDep;
+        private System.Windows.Forms.TextBox txtTenGiayDep;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView;

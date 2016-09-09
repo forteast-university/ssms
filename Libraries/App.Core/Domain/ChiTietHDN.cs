@@ -12,46 +12,51 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace App.Core.Domain
-{
+using System.ComponentModel;
+namespace App.Core.Domain {
     using System;
     using System.Collections.Generic;
 
     /// <summary>
     /// Class ChiTietHDN.
     /// </summary>
-    public partial class ChiTietHDN  :BaseEntity
-    {
+    public partial class ChiTietHDN: BaseEntity {
 
         /// <summary>
         /// Gets or sets the so luong.
         /// </summary>
         /// <value>The so luong.</value>
+        [DisplayName("Số lượng")]
         public Nullable<int> SoLuong { get; set; }
         /// <summary>
         /// Gets or sets the don gia.
         /// </summary>
         /// <value>The don gia.</value>
+        [DisplayName("Đơn giá")]
         public Nullable<decimal> DonGia { get; set; }
         /// <summary>
         /// Gets or sets the giam gia.
         /// </summary>
         /// <value>The giam gia.</value>
+        [DisplayName("Giảm giá")]
         public string GiamGia { get; set; }
         /// <summary>
         /// Gets or sets the thanh tien.
         /// </summary>
         /// <value>The thanh tien.</value>
+        [DisplayName("Thành tiền")]
         public Nullable<decimal> ThanhTien { get; set; }
         /// <summary>
         /// Gets or sets the so HDN.
         /// </summary>
         /// <value>The so HDN.</value>
+        [DisplayName("Số hóa đơn nhập")]
         public string SoHDN { get; set; }
         /// <summary>
         /// Gets or sets the ma giay dep.
         /// </summary>
         /// <value>The ma giay dep.</value>
+        [DisplayName("Mã sản phẩm")]
         public string MaGiayDep { get; set; }
         /// <summary>
         /// Gets or sets the san pham identifier.

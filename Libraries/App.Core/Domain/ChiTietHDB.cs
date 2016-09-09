@@ -1,4 +1,4 @@
-// ***********************************************************************
+﻿// ***********************************************************************
 // Assembly         : App.Core
 // Author           : Hung Le
 // Created          : 09-09-2016
@@ -12,60 +12,66 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace App.Core.Domain
-{
-    using System;
-    using System.Collections.Generic;
-
+using System.ComponentModel;
+namespace App.Core.Domain {
     /// <summary>
-    /// Class ChiTietHDB.
+    ///     Class ChiTietHDB.
     /// </summary>
-    public partial class ChiTietHDB: BaseEntity
-    {
-
+    public class ChiTietHDB: BaseEntity {
         /// <summary>
-        /// Gets or sets the so luong.
+        ///     Gets or sets the so luong.
         /// </summary>
         /// <value>The so luong.</value>
-        public Nullable<int> SoLuong { get; set; }
-        /// <summary>
-        /// Gets or sets the giam gia.
-        /// </summary>
-        /// <value>The giam gia.</value>
-        public string GiamGia { get; set; }
-        /// <summary>
-        /// Gets or sets the thanh tien.
-        /// </summary>
-        /// <value>The thanh tien.</value>
-        public string ThanhTien { get; set; }
-        /// <summary>
-        /// Gets or sets the ma giay dep.
-        /// </summary>
-        /// <value>The ma giay dep.</value>
-        public string MaGiayDep { get; set; }
-        /// <summary>
-        /// Gets or sets the so HDB.
-        /// </summary>
-        /// <value>The so HDB.</value>
-        public string SoHDB { get; set; }
-        /// <summary>
-        /// Gets or sets the san pham identifier.
-        /// </summary>
-        /// <value>The san pham identifier.</value>
-        public Nullable<int> SanPhamID { get; set; }
-        /// <summary>
-        /// Gets or sets the hoa don ban identifier.
-        /// </summary>
-        /// <value>The hoa don ban identifier.</value>
-        public Nullable<int> HoaDonBanID { get; set; }
+        public int? SoLuong { get; set; }
 
         /// <summary>
-        /// Gets or sets the hoa don ban.
+        ///     Gets or sets the giam gia.
+        /// </summary>
+        /// <value>The giam gia.</value>
+        [DisplayName("Giảm giá")]
+        public string GiamGia { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the thanh tien.
+        /// </summary>
+        /// <value>The thanh tien.</value>
+        [DisplayName("Thành tiền")]
+        public string ThanhTien { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the ma giay dep.
+        /// </summary>
+        /// <value>The ma giay dep.</value>
+        [DisplayName("Mã giầy dép")]
+        public string MaGiayDep { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the so HDB.
+        /// </summary>
+        /// <value>The so HDB.</value>
+        [DisplayName("Số hóa đơn bán")]
+        public string SoHDB { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the san pham identifier.
+        /// </summary>
+        /// <value>The san pham identifier.</value>
+        public int? SanPhamID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the hoa don ban identifier.
+        /// </summary>
+        /// <value>The hoa don ban identifier.</value>
+        public int? HoaDonBanID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the hoa don ban.
         /// </summary>
         /// <value>The hoa don ban.</value>
         public virtual HoaDonBan HoaDonBan { get; set; }
+
         /// <summary>
-        /// Gets or sets the san pham.
+        ///     Gets or sets the san pham.
         /// </summary>
         /// <value>The san pham.</value>
         public virtual SanPham SanPham { get; set; }

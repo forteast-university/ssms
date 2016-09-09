@@ -12,21 +12,19 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace App.Core.Domain
-{
+using System.ComponentModel;
+namespace App.Core.Domain {
     using System;
     using System.Collections.Generic;
 
     /// <summary>
     /// Class SanPham.
     /// </summary>
-    public partial class SanPham : BaseEntity
-    {
+    public partial class SanPham: BaseEntity {
         /// <summary>
         /// Initializes a new instance of the <see cref="SanPham"/> class.
         /// </summary>
-        public SanPham()
-        {
+        public SanPham() {
             //this.ChiTietHDB = new HashSet<ChiTietHDB>();
             //this.ChiTietHDN = new HashSet<ChiTietHDN>();
         }
@@ -36,66 +34,79 @@ namespace App.Core.Domain
         /// Gets or sets the ma giay dep.
         /// </summary>
         /// <value>The ma giay dep.</value>
+        [DisplayName("Mã sản phẩm")]
         public string MaGiayDep { get; set; }
         /// <summary>
         /// Gets or sets the ten giay dep.
         /// </summary>
         /// <value>The ten giay dep.</value>
+        [DisplayName("Tên sản phẩm")]
         public string TenGiayDep { get; set; }
         /// <summary>
         /// Gets or sets the so luong.
         /// </summary>
         /// <value>The so luong.</value>
+        [DisplayName("Số lượng")]
         public Nullable<int> SoLuong { get; set; }
         /// <summary>
         /// Gets or sets the anh.
         /// </summary>
         /// <value>The anh.</value>
+        [DisplayName("Link ảnh")]
         public string Anh { get; set; }
         /// <summary>
         /// Gets or sets the don gia nhap.
         /// </summary>
         /// <value>The don gia nhap.</value>
+        [DisplayName("Đơn giá nhập")]
         public Nullable<decimal> DonGiaNhap { get; set; }
         /// <summary>
         /// Gets or sets the don gia ban.
         /// </summary>
         /// <value>The don gia ban.</value>
+        [DisplayName("Đơn giá bán")]
         public Nullable<decimal> DonGiaBan { get; set; }
         /// <summary>
         /// Gets or sets the ma loai.
         /// </summary>
         /// <value>The ma loai.</value>
+        [DisplayName("Mã loại")]
         public string MaLoai { get; set; }
         /// <summary>
         /// Gets or sets the ma co.
         /// </summary>
         /// <value>The ma co.</value>
+        [DisplayName("Mã cỡ")]
         public string MaCo { get; set; }
         /// <summary>
         /// Gets or sets the ma chat lieu.
         /// </summary>
         /// <value>The ma chat lieu.</value>
+        [DisplayName("Mã chất liệu")]
         public string MaChatLieu { get; set; }
         /// <summary>
         /// Gets or sets the ma mau.
         /// </summary>
         /// <value>The ma mau.</value>
+        [DisplayName("Mã màu")]
         public string MaMau { get; set; }
         /// <summary>
         /// Gets or sets the ma doi tuong.
         /// </summary>
         /// <value>The ma doi tuong.</value>
+        [DisplayName("Mã đối tượng")]
         public string MaDoiTuong { get; set; }
         /// <summary>
         /// Gets or sets the ma mua.
         /// </summary>
         /// <value>The ma mua.</value>
+        [DisplayName("Mã mùa")]
         public string MaMua { get; set; }
         /// <summary>
         /// Gets or sets the ma nuoc sx.
         /// </summary>
         /// <value>The ma nuoc sx.</value>
+        [DisplayName("Nước sản xuất")]
         public string MaNuocSX { get; set; }
         /// <summary>
         /// Gets or sets the loai identifier.

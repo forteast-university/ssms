@@ -38,7 +38,7 @@ namespace App.Controllers{
         ///     The view
         /// </summary>
         private readonly DangNhapView view;
-
+        
         public void CloseParent() {
 
             var a = new AppEvent<NhanVienModel>{value = new NhanVienModel{

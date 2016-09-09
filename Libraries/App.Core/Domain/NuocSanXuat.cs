@@ -12,21 +12,19 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace App.Core.Domain
-{
+using System.ComponentModel;
+namespace App.Core.Domain {
     using System;
     using System.Collections.Generic;
 
     /// <summary>
     /// Class NuocSanXuat.
     /// </summary>
-    public partial class NuocSanXuat : BaseEntity
-    {
+    public partial class NuocSanXuat: BaseEntity {
         /// <summary>
         /// Initializes a new instance of the <see cref="NuocSanXuat"/> class.
         /// </summary>
-        public NuocSanXuat()
-        {
+        public NuocSanXuat() {
             //this.SanPham = new HashSet<SanPham>();
         }
 
@@ -35,13 +33,15 @@ namespace App.Core.Domain
         /// Gets or sets the ma nuoc sx.
         /// </summary>
         /// <value>The ma nuoc sx.</value>
+        [DisplayName("Mã nước sản xuất")]
         public string MaNuocSX { get; set; }
         /// <summary>
         /// Gets or sets the ten nuoc sx.
         /// </summary>
         /// <value>The ten nuoc sx.</value>
+        [DisplayName("Nước sản xuất")]
         public string TenNuocSX { get; set; }
-    
+
         // public virtual ICollection<SanPham> SanPham { get; set; }
     }
 }

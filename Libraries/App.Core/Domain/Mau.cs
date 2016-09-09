@@ -12,21 +12,19 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace App.Core.Domain
-{
+using System.ComponentModel;
+namespace App.Core.Domain {
     using System;
     using System.Collections.Generic;
 
     /// <summary>
     /// Class Mau.
     /// </summary>
-    public partial class Mau : BaseEntity
-    {
+    public partial class Mau: BaseEntity {
         /// <summary>
         /// Initializes a new instance of the <see cref="Mau"/> class.
         /// </summary>
-        public Mau()
-        {
+        public Mau() {
             //this.SanPham = new HashSet<SanPham>();
         }
 
@@ -35,13 +33,15 @@ namespace App.Core.Domain
         /// Gets or sets the ma mau.
         /// </summary>
         /// <value>The ma mau.</value>
+        [DisplayName("Mã màu")]
         public string MaMau { get; set; }
         /// <summary>
         /// Gets or sets the ten mau.
         /// </summary>
         /// <value>The ten mau.</value>
+        [DisplayName("Tên màu")]
         public string TenMau { get; set; }
-    
+
         // public virtual ICollection<SanPham> SanPham { get; set; }
     }
 }

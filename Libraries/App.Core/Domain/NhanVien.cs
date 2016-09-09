@@ -12,21 +12,19 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace App.Core.Domain
-{
+using System.ComponentModel;
+namespace App.Core.Domain {
     using System;
     using System.Collections.Generic;
 
     /// <summary>
     /// Class NhanVien.
     /// </summary>
-    public partial class NhanVien : BaseEntity
-    {
+    public partial class NhanVien: BaseEntity {
         /// <summary>
         /// Initializes a new instance of the <see cref="NhanVien"/> class.
         /// </summary>
-        public NhanVien()
-        {
+        public NhanVien() {
             //this.HoaDonBan = new HashSet<HoaDonBan>();
             //this.HoaDonNhap = new HashSet<HoaDonNhap>();
         }
@@ -36,41 +34,49 @@ namespace App.Core.Domain
         /// Gets or sets the ma nhan vien.
         /// </summary>
         /// <value>The ma nhan vien.</value>
+        [DisplayName("Mã nhân viên")]
         public string MaNhanVien { get; set; }
         /// <summary>
         /// Gets or sets the ten nhan vien.
         /// </summary>
         /// <value>The ten nhan vien.</value>
+        [DisplayName("Tên nhân viên")]
         public string TenNhanVien { get; set; }
         /// <summary>
         /// Gets or sets the gioi tinh.
         /// </summary>
         /// <value>The gioi tinh.</value>
+        [DisplayName("Giới tính")]
         public string GioiTinh { get; set; }
         /// <summary>
         /// Gets or sets the ngay sinh.
         /// </summary>
         /// <value>The ngay sinh.</value>
+        [DisplayName("Ngày sinh")]
         public Nullable<System.DateTime> NgaySinh { get; set; }
         /// <summary>
         /// Gets or sets the dien thoai.
         /// </summary>
         /// <value>The dien thoai.</value>
+        [DisplayName("Điện thoại")]
         public string DienThoai { get; set; }
         /// <summary>
         /// Gets or sets the dia chi.
         /// </summary>
         /// <value>The dia chi.</value>
+        [DisplayName("Địa chỉ")]
         public string DiaChi { get; set; }
         /// <summary>
         /// Gets or sets the mat khau.
         /// </summary>
         /// <value>The mat khau.</value>
+        [DisplayName("Mật khẩu")]
         public string MatKhau { get; set; }
         /// <summary>
         /// Gets or sets the ma cv.
         /// </summary>
         /// <value>The ma cv.</value>
+        [DisplayName("Mã công việc")]
         public string MaCV { get; set; }
         /// <summary>
         /// Gets or sets the cong viec identifier.

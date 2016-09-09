@@ -6,7 +6,7 @@
 // Last Modified By : Hung Le
 // Last Modified On : 09-09-2016
 // ***********************************************************************
-// <copyright file="ChatLieuView.cs" company="Thanh Dong University">
+// <copyright file="SanPhanListView.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -24,29 +24,29 @@ using App.Properties;
 
 namespace App.Views{
     /// <summary>
-    ///     Class ChatLieuView.
+    ///     Class SanPhanListView.
     /// </summary>
-    public partial class KhachHangView : Form{
+    public partial class SanPhanListView : Form{
         /// <summary>
         ///     The controller
         /// </summary>
-        private readonly IBaseController<KhachHangModel> controller;
+        private readonly IBaseController<SanPhamModel> controller;
 
         /// <summary>
         ///     The value chat lieu model
         /// </summary>
-        private IEnumerable<KhachHangModel> currentModelList;
+        private IEnumerable<SanPhamModel> currentModelList;
 
         /// <summary>
         ///     The current model
         /// </summary>
-        private KhachHangModel currentModel;
+        private SanPhamModel currentModel;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ChatLieuView" /> class.
+        ///     Initializes a new instance of the <see cref="SanPhanListView" /> class.
         /// </summary>
         /// <param name="value">The value.</param>
-        public KhachHangView(IBaseController<KhachHangModel> value) {
+        public SanPhanListView(IBaseController<SanPhamModel> value){
             controller = value;
             InitializeComponent();
             bntLuaChon.Enabled = false;
@@ -64,7 +64,7 @@ namespace App.Views{
         ///     Posts the view.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void PostView(IEnumerable<KhachHangModel> value){
+        public void PostView(IEnumerable<SanPhamModel> value){
             currentModelList = value;
 
             dataGridView.Columns.Clear();
@@ -89,72 +89,64 @@ namespace App.Views{
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void bntLuu_Click(object sender, EventArgs e){
 
-            if (txtMaKhach.Text == ""){
-                MessageBox.Show("Mã khách hàng không được để rỗng");
+            if (txtMaGiayDep.Text == ""){
+                MessageBox.Show("Mã sản phẩm không được để rỗng");
                 return;
             }
-            if (txtTenKhach.Text == ""){
-                MessageBox.Show("Tên khách hàng không được để rỗng");
+            if (txtTenGiayDep.Text == ""){
+                MessageBox.Show("Tên sản phẩm không được để rỗng");
                 return;
             }
 
-            currentModel = (KhachHangModel) dataGridView.CurrentSelected(currentModelList);
+            currentModel = (SanPhamModel) dataGridView.CurrentSelected(currentModelList);
             if (currentModel != null){
 
-                var cm = currentModelList.Where(c => c.MaKhach == txtMaKhach.Text &&
+                var cm = currentModelList.Where(c => c.MaGiayDep == txtMaGiayDep.Text &&
                     c.ID != currentModel.ID);
                 if (cm.Any()) {
-                    MessageBox.Show("Mã khách hàng đã tồn tại trong một bản ghi khác");
+                    MessageBox.Show("Mã sản phẩm đã tồn tại trong một bản ghi khác");
+                    return;
+                }
+                var ct = currentModelList.Where(c => c.TenGiayDep == txtTenGiayDep.Text &&
+                    c.ID != currentModel.ID);
+                if (ct.Any()) {
+                    MessageBox.Show("Tên sản phẩm đã tồn tại trong một bản ghi khác");
                     return;
                 }
 
-                //var ct = currentModelList.Where(c => c.TenKhach == txtTenKhach.Text &&
-                //    c.ID != currentModel.ID);
-                //if (ct.Any()) {
-                //    MessageBox.Show("Tên khách hàng đã tồn tại trong một bản ghi khác");
-                //    return;
-                //}
-
-                currentModel.MaKhach = txtMaKhach.Text;
-                currentModel.TenKhach = txtTenKhach.Text;
-                currentModel.DiaChi = txtDiaChi.Text;
-                currentModel.DienThoai = txtDienThoai.Text;
-
+                currentModel.MaGiayDep = txtMaGiayDep.Text;
+                currentModel.TenGiayDep = txtTenGiayDep.Text;
                 controller.Update(currentModel);
-
                 //re-update UI
-                dataGridView.UpdateView("MaKhach", currentModel.MaKhach);
-                dataGridView.UpdateView("TenKhach", currentModel.TenKhach);
-                dataGridView.UpdateView("DiaChi", currentModel.DiaChi);
-                dataGridView.UpdateView("DienThoai", currentModel.DienThoai);
+                
+                dataGridView.UpdateView("MaGiayDep", currentModel.MaGiayDep);
+                dataGridView.UpdateView("TenGiayDep", currentModel.TenGiayDep);
 
-                txtMaKhach.Focus();
-                txtMaKhach.SelectAll();
+                txtMaGiayDep.Focus();
+                txtMaGiayDep.SelectAll();
                 bntTaoMoi.Enabled = true;
                 bntLuu.Enabled = true;
             }
             else{
-                var cm = currentModelList.Where(c => c.MaKhach == txtMaKhach.Text);
+                var cm = currentModelList.Where(c => c.MaGiayDep == txtMaGiayDep.Text);
                 if (cm.Any()) {
-                    MessageBox.Show("Mã khách hàng đã tồn tại");
+                    MessageBox.Show("Mã sản phẩm đã tồn tại");
                     return;
                 }
-                //var ct = currentModelList.Where(c => c.TenKhach == txtTenKhach.Text);
-                //if (ct.Any()) {
-                //    MessageBox.Show("Tên khách hàng đã tồn tại");
-                //    return;
-                //}
-                currentModel = new KhachHangModel{
-                    MaKhach = txtMaKhach.Text,
-                    TenKhach = txtTenKhach.Text,
-                    DiaChi = txtDiaChi.Text,
-                    DienThoai = txtDienThoai.Text,
+                var ct = currentModelList.Where(c => c.TenGiayDep == txtTenGiayDep.Text);
+                if (ct.Any()) {
+                    MessageBox.Show("Tên sản phẩm đã tồn tại");
+                    return;
+                }
+                currentModel = new SanPhamModel{
+                    MaGiayDep = txtMaGiayDep.Text,
+                    TenGiayDep = txtTenGiayDep.Text,
                 };
 
                 controller.Insert(currentModel);
-                txtMaKhach.Focus();
-                txtMaKhach.SelectAll();
-                //txtTenChatLieu.Text = "";
+                txtMaGiayDep.Focus();
+                txtMaGiayDep.SelectAll();
+                //txtTenGiayDep.Text = "";
                 controller.ReviewGrid();
                 bntTaoMoi.Enabled = true;
                 bntLuu.Enabled = true;
@@ -167,8 +159,8 @@ namespace App.Views{
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void bntLuaChon_Click(object sender, EventArgs e){
-            currentModel = (KhachHangModel) dataGridView.CurrentSelected(currentModelList);
-            MessageBox.Show(currentModel.MaKhach);
+            currentModel = (SanPhamModel) dataGridView.CurrentSelected(currentModelList);
+            MessageBox.Show(currentModel.MaGiayDep);
         }
 
         /// <summary>
@@ -218,12 +210,10 @@ namespace App.Views{
             bntLuaChon.Enabled = (dataGridView.CurrentRow != null);
             bntXoa.Enabled = selectedRows.Count > 0;
 
-            currentModel = (KhachHangModel) dataGridView.CurrentSelected(currentModelList);
+            currentModel = (SanPhamModel) dataGridView.CurrentSelected(currentModelList);
             if (currentModel != null){
-                txtMaKhach.Text = currentModel.MaKhach;
-                txtTenKhach.Text = currentModel.TenKhach;
-                txtDiaChi.Text = currentModel.DiaChi;
-                txtDienThoai.Text = currentModel.DienThoai;
+                txtMaGiayDep.Text = currentModel.MaGiayDep;
+                txtTenGiayDep.Text = currentModel.TenGiayDep;
             }
             bntLuu.Enabled = true;
             bntTaoMoi.Enabled = true;
@@ -262,7 +252,7 @@ namespace App.Views{
                 where Convert.ToBoolean(row.Cells["CB"].Value)
                 select row).ToList();
             if (
-                MessageBox.Show(string.Format("Bạn có muốn xóa {0} khách hàng này?", selectedRows.Count), 
+                MessageBox.Show(string.Format("Bạn có muốn xóa {0} sản phẩm này?", selectedRows.Count),
                 Resources.View_Confirm,
                     MessageBoxButtons.YesNo) == DialogResult.Yes){
                 var s = (from row in dataGridView.Rows.Cast<DataGridViewRow>() where Convert.ToBoolean(row.Cells["CB"].Value) select row.Cells["ID"].Value.ToString()).ToList();
@@ -284,11 +274,9 @@ namespace App.Views{
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void bntTaoMoi_Click(object sender, EventArgs e){
             dataGridView.ClearSelection();
-            txtMaKhach.Text = "";
-            txtTenKhach.Text = "";
-            txtDiaChi.Text = "";
-            txtDienThoai.Text = "";
-            txtMaKhach.Focus();
+            txtMaGiayDep.Text = "";
+            txtTenGiayDep.Text = "";
+            txtMaGiayDep.Focus();
             bntLuaChon.Enabled = false;
             bntTaoMoi.Enabled = false;
             bntLuu.Enabled = true;

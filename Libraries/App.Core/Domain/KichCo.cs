@@ -12,21 +12,19 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace App.Core.Domain
-{
+using System.ComponentModel;
+namespace App.Core.Domain {
     using System;
     using System.Collections.Generic;
 
     /// <summary>
     /// Class KichCo.
     /// </summary>
-    public partial class KichCo : BaseEntity
-    {
+    public partial class KichCo: BaseEntity {
         /// <summary>
         /// Initializes a new instance of the <see cref="KichCo"/> class.
         /// </summary>
-        public KichCo()
-        {
+        public KichCo() {
             //this.SanPham = new HashSet<SanPham>();
         }
 
@@ -35,13 +33,15 @@ namespace App.Core.Domain
         /// Gets or sets the ma co.
         /// </summary>
         /// <value>The ma co.</value>
+        [DisplayName("Mã cỡ")]
         public string MaCo { get; set; }
         /// <summary>
         /// Gets or sets the ten co.
         /// </summary>
         /// <value>The ten co.</value>
+        [DisplayName("Tên cỡ")]
         public string TenCo { get; set; }
-    
+
         // public virtual ICollection<SanPham> SanPham { get; set; }
     }
 }

@@ -21,6 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F3A90672-F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{BA597FFF-D91C-4040-9709-677E23CA424B}"
 	ProjectSection(SolutionItems) = preProject
+		Database\diagram.png = Database\diagram.png
 		Database\schema.sql = Database\schema.sql
 		Database\update.sql = Database\update.sql
 	EndProjectSection
