@@ -86,17 +86,25 @@ namespace App.Core.Data
         {
             if (String.IsNullOrEmpty(filePath))
             {
-                filePath = Path.Combine(CommonHelper.MapPath("~/"), filename);
+                filePath = Path.Combine(CommonHelper.MapPath("~/Settings/"), filename);
                 //throw new Exception(filePath + "hung");
             }
             if (File.Exists(filePath))
             {
                 string text = File.ReadAllText(filePath);
-                return ParseSettings(text);
+                CacheSettings = ParseSettings(text);
+                return CacheSettings;
             }
             //"name=AppEntities";
-            return new DataSettings();
+            CacheSettings = new DataSettings();
+            return CacheSettings;
         }
+
+        /// <summary>
+        /// Gets or sets the cache settings.
+        /// </summary>
+        /// <value>The cache settings.</value>
+        public DataSettings CacheSettings { get; set; }
 
         /// <summary>
         /// Save settings to a file

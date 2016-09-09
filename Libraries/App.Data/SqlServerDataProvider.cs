@@ -9,6 +9,7 @@ using System.Text;
 //using System.Web.Hosting;
 using App.Core.Data;
 using App.Data.Initializers;
+using App.Core;
 
 namespace App.Data
 {
@@ -93,18 +94,14 @@ namespace App.Data
         /// </summary>
         public virtual void SetDatabaseInitializer()
         {
-
-            ////pass some table names to ensure that we have App installed
-            //var tablesToValidate = new[] { "Product", "ProductApplication"};
-            ////custom commands (stored proedures, indexes)
-            //var customCommands = new List<string>();
-            ////use webHelper.MapPath instead of HostingEnvironment.MapPath which is not available in unit tests
-            //customCommands.AddRange(ParseCommands(HostingEnvironment.MapPath("~/App_Data/schema.sql"), false));
-            ////use webHelper.MapPath instead of HostingEnvironment.MapPath which is not available in unit tests
-            //customCommands.AddRange(ParseCommands(HostingEnvironment.MapPath("~/App_Data/update.sql"), false));
-            //var initializer = new CreateTablesIfNotExist<AppContext>(tablesToValidate, customCommands.ToArray());
-            //Database.SetInitializer(initializer);
-            ////Database.SetInitializer<AppContext>(null);
+            //pass some table names to ensure that we have App installed
+            var tablesToValidate = new[] { "ChatLieu", "SanPham","KhachHang" };
+            var customCommands = new List<string>();
+            customCommands.AddRange(ParseCommands(Path.Combine(CommonHelper.MapPath("~/Settings/"), "schema.sql"), false));
+            customCommands.AddRange(ParseCommands(Path.Combine(CommonHelper.MapPath("~/Settings/"),"update.sql"), false));
+            var initializer = new CreateTablesIfNotExist<AppContext>(tablesToValidate, customCommands.ToArray());
+            Database.SetInitializer(initializer);
+            //Database.SetInitializer<AppContext>(null);
         }
 
         /// <summary>

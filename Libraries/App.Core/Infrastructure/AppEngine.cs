@@ -11,24 +11,26 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
+//using System.Web.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-//using System.Web.Mvc;
 using App.Core.Configuration;
 using App.Core.Infrastructure.DependencyManagement;
 using Autofac;
+
 //using Autofac.Integration.Mvc;
 
-namespace App.Core.Infrastructure {
+namespace App.Core.Infrastructure{
     /// <summary>
-    /// Engine
+    ///     Engine
     /// </summary>
-    public class AppEngine: IEngine {
+    public class AppEngine : IEngine{
         #region Fields
 
         /// <summary>
-        /// The container manager
+        ///     The container manager
         /// </summary>
         private ContainerManager containerManager;
 
@@ -37,32 +39,30 @@ namespace App.Core.Infrastructure {
         #region Utilities
 
         /// <summary>
-        /// Run startup tasks
+        ///     Run startup tasks
         /// </summary>
         protected virtual void RunStartupTasks(){
-            var a = containerManager.Container.BeginLifetimeScope();
-            var typeFinder = containerManager.Resolve<ITypeFinder>("",a);
-            var startUpTaskTypes = typeFinder.FindClassesOfType<IStartupTask>();
+            ILifetimeScope a = containerManager.Container.BeginLifetimeScope();
+            var typeFinder = containerManager.Resolve<ITypeFinder>("", a);
+            IEnumerable<Type> startUpTaskTypes = typeFinder.FindClassesOfType<IStartupTask>();
             var startUpTasks = new List<IStartupTask>();
-            foreach (var startUpTaskType in startUpTaskTypes)
-            {
-                startUpTasks.Add((IStartupTask)Activator.CreateInstance(startUpTaskType));
+            foreach (Type startUpTaskType in startUpTaskTypes){
+                startUpTasks.Add((IStartupTask) Activator.CreateInstance(startUpTaskType));
             }
             //sort
             startUpTasks = startUpTasks.AsQueryable().OrderBy(st => st.Order).ToList();
-            foreach (var startUpTask in startUpTasks)
-            {
+            foreach (IStartupTask startUpTask in startUpTasks){
                 startUpTask.Execute();
             }
         }
 
         /// <summary>
-        /// Register dependencies
+        ///     Register dependencies
         /// </summary>
         /// <param name="config">Config</param>
-        protected virtual void RegisterDependencies(ServerConfig config) {
+        protected virtual void RegisterDependencies(ServerConfig config){
             var builder = new ContainerBuilder();
-            var container = builder.Build();
+            IContainer container = builder.Build();
             containerManager = new ContainerManager(container);
 
             //we create new instance of ContainerBuilder
@@ -78,16 +78,14 @@ namespace App.Core.Infrastructure {
 
             //register dependencies provided by other assemblies
             builder = new ContainerBuilder();
-            var drTypes = typeFinder.FindClassesOfType<IDependencyRegistrar>();
+            IEnumerable<Type> drTypes = typeFinder.FindClassesOfType<IDependencyRegistrar>();
             var drInstances = new List<IDependencyRegistrar>();
-            foreach (var drType in drTypes)
-            {
+            foreach (Type drType in drTypes){
                 drInstances.Add((IDependencyRegistrar) Activator.CreateInstance(drType));
             }
             //sort
             drInstances = drInstances.AsQueryable().OrderBy(t => t.Order).ToList();
-            foreach (var dependencyRegistrar in drInstances)
-            {
+            foreach (IDependencyRegistrar dependencyRegistrar in drInstances){
                 dependencyRegistrar.Register(builder, typeFinder, config);
             }
             builder.Update(container);
@@ -95,7 +93,6 @@ namespace App.Core.Infrastructure {
             //set dependency resolver
             //DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             //container = builder.Build();
-
         }
 
         #endregion
@@ -103,40 +100,39 @@ namespace App.Core.Infrastructure {
         #region Methods
 
         /// <summary>
-        /// Initialize components and plugins in the app environment.
+        ///     Initialize components and plugins in the app environment.
         /// </summary>
         /// <param name="config">Config</param>
-        public void Initialize(ServerConfig config) {
+        public void Initialize(ServerConfig config){
             //register dependencies
             RegisterDependencies(config);
             RunStartupTasks();
-
         }
 
         /// <summary>
-        /// Resolve dependency
+        ///     Resolve dependency
         /// </summary>
         /// <typeparam name="T">T</typeparam>
         /// <returns>T.</returns>
-        public T Resolve<T>() where T: class {
+        public T Resolve<T>() where T : class{
             return ContainerManager.Resolve<T>();
         }
 
         /// <summary>
-        /// Resolve dependency
+        ///     Resolve dependency
         /// </summary>
         /// <param name="type">Type</param>
         /// <returns>System.Object.</returns>
-        public object Resolve(Type type) {
+        public object Resolve(Type type){
             return ContainerManager.Resolve(type);
         }
 
         /// <summary>
-        /// Resolve dependencies
+        ///     Resolve dependencies
         /// </summary>
         /// <typeparam name="T">T</typeparam>
         /// <returns>T[].</returns>
-        public T[] ResolveAll<T>() {
+        public T[] ResolveAll<T>(){
             return ContainerManager.ResolveAll<T>();
         }
 
@@ -145,10 +141,10 @@ namespace App.Core.Infrastructure {
         #region Properties
 
         /// <summary>
-        /// Container manager
+        ///     Container manager
         /// </summary>
         /// <value>The container manager.</value>
-        public ContainerManager ContainerManager {
+        public ContainerManager ContainerManager{
             get { return containerManager; }
         }
 

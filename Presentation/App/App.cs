@@ -28,7 +28,7 @@ namespace App {
         /// </summary>
         [STAThread]
         public static void Main() {
-            var engine = AppFacade.Initialize(false);
+            AppFacade.Initialize(false);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(AppFacade.Container.Resolve<MainFacade>());

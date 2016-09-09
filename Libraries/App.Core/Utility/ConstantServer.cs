@@ -47,22 +47,5 @@ namespace App.Core.Utility {
             /// </summary>
             ProductApplication = 4
         }
-
-        /// <summary>
-        /// The serve r_ optional list
-        /// </summary>
-        public static List<SearchOptionalList> OptionalList(){
-            return new List<SearchOptionalList>{
-                new SearchOptionalList{Id = 1, Selected = false, Value = "Server"},
-                new SearchOptionalList{Id = 2, Selected = false, Value = "URL"},
-                new SearchOptionalList{Id = 3, Selected = false, Value = "Product"},
-                new SearchOptionalList{Id = 4, Selected = false, Value = "Application"}
-            };
-        } 
-        public static IEnumerable<string> ServerEnvironment = new List<string> { "DEV", "PPD", "PROD", "DR" };
-        /// <summary>
-        /// The serve r_ type
-        /// </summary>
-        public static IEnumerable<string> ServerType = new List<string> { "FTP", "SMTP", "Web", "App", "Database", "Web API" };
     }
 }

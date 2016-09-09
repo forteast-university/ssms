@@ -36,7 +36,7 @@ namespace App.Framework.Infrastructure{
         public void Register(ContainerBuilder builder, ITypeFinder typeFinder, ServerConfig config){
             var dataSettingsManager = new DataSettingsManager();
             DataSettings dataProviderSettings = dataSettingsManager.LoadSettings();
-            builder.Register(c => dataSettingsManager.LoadSettings()).As<DataSettings>();
+            builder.Register(c => dataSettingsManager.CacheSettings).As<DataSettings>();
             builder.Register(x => new EfDataProviderManager(x.Resolve<DataSettings>()))
                 .As<BaseDataProviderManager>()
                 .InstancePerDependency();
@@ -46,7 +46,7 @@ namespace App.Framework.Infrastructure{
                 .InstancePerDependency();
 
             if (dataProviderSettings != null && dataProviderSettings.IsValid()){
-                var efDataProviderManager = new EfDataProviderManager(dataSettingsManager.LoadSettings());
+                var efDataProviderManager = new EfDataProviderManager(dataSettingsManager.CacheSettings);
                 IDataProvider dataProvider = efDataProviderManager.LoadDataProvider();
                 dataProvider.InitConnectionFactory();
                 builder.Register<IDbContext>(c => new AppContext(dataProviderSettings.DataConnectionString))
@@ -54,7 +54,7 @@ namespace App.Framework.Infrastructure{
             }
             else{
                 builder.Register<IDbContext>(
-                    c => new AppContext(dataSettingsManager.LoadSettings().DataConnectionString))
+                    c => new AppContext(dataSettingsManager.CacheSettings.DataConnectionString))
                     .InstancePerLifetimeScope();
             }
 
@@ -66,9 +66,25 @@ namespace App.Framework.Infrastructure{
             builder.RegisterType<MemoryCacheManager>().As<ICacheManager>().Named<ICacheManager>("app_cache_static").SingleInstance();
 
             /*************************************************************  
-                BUSINESS OR SERVCIES
+                REGISTER TYPE SERVCIES
             *************************************************************/
             builder.RegisterType<ChatLieuService>().As<IChatLieuService>().SingleInstance();
+            builder.RegisterType<ChiTietHDBService>().As<IChiTietHDBService>().SingleInstance();
+            builder.RegisterType<ChiTietHDNService>().As<IChiTietHDNService>().SingleInstance();
+            builder.RegisterType<CongViecService>().As<ICongViecService>().SingleInstance();
+            builder.RegisterType<DoiTuongService>().As<IDoiTuongService>().SingleInstance();
+            builder.RegisterType<HoaDonBanService>().As<IHoaDonBanService>().SingleInstance();
+            builder.RegisterType<HoaDonNhapService>().As<IHoaDonNhapService>().SingleInstance();
+            builder.RegisterType<KhachHangService>().As<IKhachHangService>().SingleInstance();
+            builder.RegisterType<KichCoService>().As<IKichCoService>().SingleInstance();
+            builder.RegisterType<MauService>().As<IMauService>().SingleInstance();
+            builder.RegisterType<MuaService>().As<IMuaService>().SingleInstance();
+            builder.RegisterType<NhaCungCapService>().As<INhaCungCapService>().SingleInstance();
+            builder.RegisterType<NhanVienService>().As<INhanVienService>().SingleInstance();
+            builder.RegisterType<NuocSanXuatService>().As<INuocSanXuatService>().SingleInstance();
+            builder.RegisterType<SanPhamService>().As<ISanPhamService>().SingleInstance();
+            builder.RegisterType<TheLoaiService>().As<ITheLoaiService>().SingleInstance();
+
         }
 
         /// <summary>

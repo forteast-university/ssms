@@ -12,7 +12,9 @@
 // <summary></summary>
 // ***********************************************************************
 using App.Core;
+using App.Core.Data;
 using App.Core.Infrastructure;
+using Autofac;
 
 namespace App.Data
 {
@@ -26,14 +28,13 @@ namespace App.Data
         /// </summary>
         public void Execute()
         {
-           // var settings = AppFacade.Current.Resolve<DataSettings>();
-           // if (settings != null && settings.IsValid())
-           // {
-           //     var provider = AppFacade.Current.Resolve<IDataProvider>();
-           //     if (provider == null)
-           //         throw new AppException("No IDataProvider found");
-           //     provider.SetDatabaseInitializer();
-           // }
+            var settings = AppFacade.Container.Resolve<DataSettings>();
+            if (settings != null && settings.IsValid()) {
+                var provider = AppFacade.Container.Resolve<IDataProvider>();
+                if (provider == null)
+                    throw new AppException("No IDataProvider found");
+                provider.SetDatabaseInitializer();
+            }
         }
 
         /// <summary>
