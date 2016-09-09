@@ -23,6 +23,7 @@ namespace App.Controllers{
         /// Views this instance.
         /// </summary>
         void View();
+        void ReviewGrid();
         /// <summary>
         /// Inserts the specified value.
         /// </summary>

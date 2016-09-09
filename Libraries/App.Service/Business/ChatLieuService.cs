@@ -33,7 +33,13 @@ namespace App.Service.Business{
         }
 
         public ChatLieu GetById(int id){
-            return chatlieu.GetById(id);
+            //return chatlieu.GetById(id);
+
+            var query = (from p in chatlieu.Table
+                        where p.ID == id
+                        select p).FirstOrDefault();
+            return query;
+
         }
 
         public IEnumerable<ChatLieu> GetListByPaging(string value, string index, int page, int size, string sort, out int total){

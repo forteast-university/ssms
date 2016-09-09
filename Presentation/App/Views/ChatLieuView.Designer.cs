@@ -33,6 +33,8 @@ namespace App.Views {
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.bntLuaChon = new System.Windows.Forms.Button();
+            this.bntXoa = new System.Windows.Forms.Button();
+            this.bntTaoMoi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,22 +94,23 @@ namespace App.Views {
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(12, 68);
+            this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
+            this.dataGridView.RowHeadersVisible = false;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(347, 321);
             this.dataGridView.TabIndex = 6;
-            this.dataGridView.CellClick += new DataGridViewCellEventHandler(this.dgv_CellClick);
-            this.dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.MultiSelect = false;
-            this.dataGridView.RowPrePaint += new DataGridViewRowPrePaintEventHandler(dgv_RowPrePaint);
-            this.dataGridView.RowHeadersVisible = false;
-            this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
+            this.dataGridView.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgv_RowPrePaint);
+            this.dataGridView.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.dataGridView1_PreviewKeyDown);
             // 
             // bntLuaChon
             // 
-            this.bntLuaChon.Location = new System.Drawing.Point(13, 395);
+            this.bntLuaChon.Location = new System.Drawing.Point(94, 395);
             this.bntLuaChon.Name = "bntLuaChon";
             this.bntLuaChon.Size = new System.Drawing.Size(75, 23);
             this.bntLuaChon.TabIndex = 7;
@@ -115,11 +118,33 @@ namespace App.Views {
             this.bntLuaChon.UseVisualStyleBackColor = true;
             this.bntLuaChon.Click += new System.EventHandler(this.bntLuaChon_Click);
             // 
+            // bntXoa
+            // 
+            this.bntXoa.Location = new System.Drawing.Point(13, 395);
+            this.bntXoa.Name = "bntXoa";
+            this.bntXoa.Size = new System.Drawing.Size(75, 23);
+            this.bntXoa.TabIndex = 8;
+            this.bntXoa.Text = "Xóa";
+            this.bntXoa.UseVisualStyleBackColor = true;
+            this.bntXoa.Click += new System.EventHandler(this.bntXoa_Click);
+            // 
+            // bntTaoMoi
+            // 
+            this.bntTaoMoi.Location = new System.Drawing.Point(284, 8);
+            this.bntTaoMoi.Name = "bntTaoMoi";
+            this.bntTaoMoi.Size = new System.Drawing.Size(75, 23);
+            this.bntTaoMoi.TabIndex = 9;
+            this.bntTaoMoi.Text = "Tạo mới";
+            this.bntTaoMoi.UseVisualStyleBackColor = true;
+            this.bntTaoMoi.Click += new System.EventHandler(this.bntTaoMoi_Click);
+            // 
             // ChatLieuView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(368, 430);
+            this.Controls.Add(this.bntTaoMoi);
+            this.Controls.Add(this.bntXoa);
             this.Controls.Add(this.bntLuaChon);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.label2);
@@ -146,5 +171,7 @@ namespace App.Views {
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button bntLuaChon;
+        private Button bntXoa;
+        private Button bntTaoMoi;
     }
 }
