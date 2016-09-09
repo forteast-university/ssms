@@ -4,7 +4,7 @@
 // Created          : 09-08-2016
 //
 // Last Modified By : Hung Le
-// Last Modified On : 09-08-2016
+// Last Modified On : 09-09-2016
 // ***********************************************************************
 // <copyright file="IChatLieuController.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
@@ -16,11 +16,15 @@ namespace App.Controllers.Interface{
     /// <summary>
     /// Interface IChatLieuController
     /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IBaseController<T> {
         /// <summary>
         /// Views this instance.
         /// </summary>
         void View();
+        /// <summary>
+        /// Reviews the grid.
+        /// </summary>
         void ReviewGrid();
         /// <summary>
         /// Inserts the specified value.

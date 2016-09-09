@@ -44,7 +44,25 @@ namespace App.Infrastructure {
             //builder.RegisterType<ChatLieuController>().WithParameter(ResolvedParameter.ForNamed<IChatLieuController>("0"));
 
             builder.RegisterType<ChatLieuController>().As<IBaseController<ChatLieuModel>>().SingleInstance();
+            builder.RegisterType<CongViecController>().As<IBaseController<CongViecModel>>().SingleInstance();
+            builder.RegisterType<KhachHangController>().As<IBaseController<KhachHangModel>>().SingleInstance();
+            builder.RegisterType<KichCoController>().As<IBaseController<KichCoModel>>().SingleInstance();
+            builder.RegisterType<MauController>().As<IBaseController<MauModel>>().SingleInstance();
+            builder.RegisterType<MuaController>().As<IBaseController<MuaModel>>().SingleInstance();
             builder.RegisterType<NhaCungCapController>().As<IBaseController<NhaCungCapModel>>().SingleInstance();
+            builder.RegisterType<NuocSanXuatController>().As<IBaseController<NuocSanXuatModel>>().SingleInstance();
+            builder.RegisterType<TheLoaiController>().As<IBaseController<TheLoaiModel>>().SingleInstance();
+
+
+          //  builder.RegisterType<ChiTietHDBController>().As<IBaseController<ChiTietHDBModel>>().SingleInstance();
+          //  builder.RegisterType<ChiTietHDNController>().As<IBaseController<ChiTietHDNModel>>().SingleInstance();
+          //  builder.RegisterType<DoiTuongController>().As<IBaseController<DoiTuongModel>>().SingleInstance();
+          //  builder.RegisterType<HoaDonBanController>().As<IBaseController<HoaDonBanModel>>().SingleInstance();
+          //  builder.RegisterType<HoaDonNhapController>().As<IBaseController<HoaDonNhapModel>>().SingleInstance();
+          //  builder.RegisterType<NhanVienController>().As<IBaseController<NhanVienModel>>().SingleInstance();
+          //  builder.RegisterType<SanPhamController>().As<IBaseController<SanPhamModel>>().SingleInstance();
+
+
             builder.RegisterType<MainFacade>();//.WithParameter(ResolvedParameter.ForNamed<ICacheManager>("1"));
         }
 
