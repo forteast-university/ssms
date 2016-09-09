@@ -53,6 +53,9 @@ namespace App.Controllers
             this.MauService = MauService;
             view = new MauView(this);
         }
+
+        public event EventHandler<AppEvent<MauModel>> Notification;
+
         /// <summary>
         /// Views this instance.
         /// </summary>

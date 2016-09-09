@@ -94,18 +94,18 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(10, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 35;
-            this.label2.Text = "Tên màu";
+            this.label2.Text = "Tên nước";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
+            this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 34;
-            this.label1.Text = "Mã màu";
+            this.label1.Text = "Mã nước";
             // 
             // txtTenNuocSanXuat
             // 
@@ -157,7 +157,7 @@
             this.Controls.Add(this.bntHuy);
             this.Controls.Add(this.bntLuu);
             this.Name = "NuocSanXuatView";
-            this.Text = "NuocSanXuatView";
+            this.Text = "Nước Sản Xuất";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

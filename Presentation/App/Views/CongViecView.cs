@@ -19,7 +19,7 @@ namespace App.Views
         /// <summary>
         ///     The value chat lieu model
         /// </summary>
-        private IEnumerable<CongViecModel> CongViecModelList;
+        private IEnumerable<CongViecModel> currentModelList;
 
         /// <summary>
         ///     The current model
@@ -38,7 +38,7 @@ namespace App.Views
         /// </summary>
         /// <param name="value">The value.</param>
         public void PostView(IEnumerable<CongViecModel> value){
-            CongViecModelList = value;
+            currentModelList = value;
 
             dataGridView.Columns.Clear();
             var c = new DataGridViewCheckBoxColumn{Name = "CB", HeaderText = "", Width = 24, ReadOnly = true};
@@ -92,7 +92,7 @@ namespace App.Views
             bntLuaChon.Enabled = (dataGridView.CurrentRow != null);
             bntXoa.Enabled = selectedRows.Count > 0;
 
-            currentModel = (CongViecModel)dataGridView.CurrentSelected(CongViecModelList);
+            currentModel = (CongViecModel)dataGridView.CurrentSelected(currentModelList);
             if (currentModel != null)
             {
                 txtMaCongViec.Text = currentModel.MaCV;
@@ -129,18 +129,18 @@ namespace App.Views
                 return;
             }
 
-            currentModel = (CongViecModel)dataGridView.CurrentSelected(CongViecModelList);
+            currentModel = (CongViecModel)dataGridView.CurrentSelected(currentModelList);
             if (currentModel != null)
             {
 
-                var cm = CongViecModelList.Where(c => c.MaCV == txtMaCongViec.Text &&
+                var cm = currentModelList.Where(c => c.MaCV == txtMaCongViec.Text &&
                     c.ID != currentModel.ID);
                 if (cm.Any())
                 {
                     MessageBox.Show("Mã công việc đã tồn tại trong một bản ghi khác");
                     return;
                 }
-                var ct = CongViecModelList.Where(c => c.TenCV == txtCongViec.Text &&
+                var ct = currentModelList.Where(c => c.TenCV == txtCongViec.Text &&
                     c.ID != currentModel.ID);
                 if (ct.Any())
                 {
@@ -163,13 +163,13 @@ namespace App.Views
             }
             else
             {
-                var cm = CongViecModelList.Where(c => c.MaCV == txtMaCongViec.Text);
+                var cm = currentModelList.Where(c => c.MaCV == txtMaCongViec.Text);
                 if (cm.Any())
                 {
                     MessageBox.Show("Mã công việc đã tồn tại");
                     return;
                 }
-                var ct = CongViecModelList.Where(c => c.TenCV == txtCongViec.Text);
+                var ct = currentModelList.Where(c => c.TenCV == txtCongViec.Text);
                 if (ct.Any())
                 {
                     MessageBox.Show("Tên công việc đã tồn tại");
@@ -210,7 +210,7 @@ namespace App.Views
    
         private void bntLuaChon_Click(object sender, EventArgs e)
         {
-            currentModel = (CongViecModel)dataGridView.CurrentSelected(CongViecModelList);
+            currentModel = (CongViecModel)dataGridView.CurrentSelected(currentModelList);
             MessageBox.Show(currentModel.MaCV);
         }
 

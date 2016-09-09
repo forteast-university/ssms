@@ -53,6 +53,9 @@ namespace App.Controllers
             this.currentService = currentService;
             view = new DoiTuongView(this);
         }
+
+        public event EventHandler<AppEvent<DoiTuongModel>> Notification;
+
         /// <summary>
         /// Views this instance.
         /// </summary>

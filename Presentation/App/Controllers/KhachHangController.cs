@@ -50,6 +50,9 @@ namespace App.Controllers {
             this.currentService = currentService;
             view = new KhachHangView(this);
         }
+
+        public event EventHandler<AppEvent<KhachHangModel>> Notification;
+
         /// <summary>
         /// Views this instance.
         /// </summary>

@@ -57,8 +57,11 @@
   <ItemGroup>
     <Compile Include="Controllers\CongViecController.cs" />
     <Compile Include="Controllers\DoiTuongController.cs" />
-    <Compile Include="Controllers\MauController.cs" />
+    <Compile Include="Controllers\Interface\IApp.cs" />
+    <Compile Include="Controllers\Interface\INhanVienController.cs" />
+    <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\NuocSanXuatController.cs" />
+    <Compile Include="Controllers\MauController.cs" />
     <Compile Include="Controllers\TheLoaiController.cs" />
     <Compile Include="Controllers\KichCoController.cs" />
     <Compile Include="Controllers\MuaController.cs" />
@@ -67,6 +70,7 @@
     <Compile Include="Controllers\ChatLieuController.cs" />
     <Compile Include="Controllers\Interface\IBaseController.cs" />
     <Compile Include="Controllers\Interface\IChatLieuController.cs" />
+    <Compile Include="Extensions\Mediator.cs" />
     <Compile Include="Extensions\MappingExtensions.cs" />
     <Compile Include="Models\AppModel.cs" />
     <Compile Include="Views\CongViecView.cs">
@@ -74,6 +78,12 @@
     </Compile>
     <Compile Include="Views\CongViecView.Designer.cs">
       <DependentUpon>CongViecView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DangNhapView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DangNhapView.Designer.cs">
+      <DependentUpon>DangNhapView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\DoiTuongView.cs">
       <SubType>Form</SubType>
@@ -129,11 +139,11 @@
     <Compile Include="Views\ChatLieuView.Designer.cs">
       <DependentUpon>ChatLieuView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainFacade.cs">
+    <Compile Include="Views\AppMediator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\MainFacade.Designer.cs">
-      <DependentUpon>MainFacade.cs</DependentUpon>
+    <Compile Include="Views\AppMediator.Designer.cs">
+      <DependentUpon>AppMediator.cs</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\AutoMapperConfiguration.cs" />
     <Compile Include="Infrastructure\AutoMapperStartupTask.cs" />
@@ -152,6 +162,9 @@
     </Compile>
     <EmbeddedResource Include="Views\CongViecView.resx">
       <DependentUpon>CongViecView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DangNhapView.resx">
+      <DependentUpon>DangNhapView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DoiTuongView.resx">
       <DependentUpon>DoiTuongView.cs</DependentUpon>
@@ -180,8 +193,8 @@
     <EmbeddedResource Include="Views\ChatLieuView.resx">
       <DependentUpon>ChatLieuView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\MainFacade.resx">
-      <DependentUpon>MainFacade.cs</DependentUpon>
+    <EmbeddedResource Include="Views\AppMediator.resx">
+      <DependentUpon>AppMediator.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">

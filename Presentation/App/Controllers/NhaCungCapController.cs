@@ -50,6 +50,9 @@ namespace App.Controllers {
             this.chatLieuService = chatLieuService;
             view = new NhaCungCapView(this);
         }
+
+        public event EventHandler<AppEvent<NhaCungCapModel>> Notification;
+
         /// <summary>
         /// Views this instance.
         /// </summary>

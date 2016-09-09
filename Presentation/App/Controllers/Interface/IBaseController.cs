@@ -12,6 +12,9 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System;
+using App.Extensions;
+
 namespace App.Controllers.Interface{
     /// <summary>
     /// Interface IChatLieuController
@@ -21,6 +24,7 @@ namespace App.Controllers.Interface{
         /// <summary>
         /// Views this instance.
         /// </summary>
+        event EventHandler<AppEvent<T>> Notification;
         void View();
         /// <summary>
         /// Reviews the grid.

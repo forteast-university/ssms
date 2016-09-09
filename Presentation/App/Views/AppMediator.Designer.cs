@@ -1,5 +1,5 @@
 ﻿namespace App.Views {
-    partial class MainFacade {
+    partial class AppMediator {
         /// <summary>
         /// Required designer variable.
         /// </summary>

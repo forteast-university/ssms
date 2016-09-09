@@ -50,6 +50,9 @@ namespace App.Controllers {
             this.currentService = currentService;
             view = new KichCoView(this);
         }
+
+        public event EventHandler<AppEvent<KichCoModel>> Notification;
+
         /// <summary>
         /// Views this instance.
         /// </summary>

@@ -10,8 +10,9 @@ namespace App.Service.Business
         /// <summary>
         /// Gets nhan vien by team.
         /// </summary>
-        /// <param name="MaNhanVien">ma nhan vien.</param>
+        /// <param name="maNhanVien">ma nhan vien.</param>
         /// <returns>List&lt;NhanVien&gt;.</returns>
-        List<NhanVien> GetNhanVienByTeam(string MaNhanVien);
+        List<NhanVien> GetNhanVienByTeam(string maNhanVien);
+        NhanVien GetNhanVienByMaNhanVien(string maNhanVien);
     }
 }

@@ -50,6 +50,9 @@ namespace App.Controllers {
             this.currentService = currentService;
             view = new MuaView(this);
         }
+
+        public event EventHandler<AppEvent<MuaModel>> Notification;
+
         /// <summary>
         /// Views this instance.
         /// </summary>

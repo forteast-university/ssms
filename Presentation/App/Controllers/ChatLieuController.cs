@@ -42,6 +42,8 @@ namespace App.Controllers {
         /// </summary>
         private readonly ChatLieuView view;
 
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatLieuController"/> class.
         /// </summary>
@@ -50,6 +52,9 @@ namespace App.Controllers {
             this.chatLieuService = chatLieuService;
             view = new ChatLieuView(this);
         }
+
+        public event EventHandler<AppEvent<ChatLieuModel>> Notification;
+
         /// <summary>
         /// Views this instance.
         /// </summary>

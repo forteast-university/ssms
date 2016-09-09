@@ -50,6 +50,9 @@ namespace App.Controllers {
             this.currentService = currentService;
             view = new TheLoaiView(this);
         }
+
+        public event EventHandler<AppEvent<TheLoaiModel>> Notification;
+
         /// <summary>
         /// Views this instance.
         /// </summary>

@@ -50,6 +50,9 @@ namespace App.Controllers {
             this.currentService = currentService;
             view = new NuocSanXuatView(this);
         }
+
+        public event EventHandler<AppEvent<NuocSanXuatModel>> Notification;
+
         /// <summary>
         /// Views this instance.
         /// </summary>

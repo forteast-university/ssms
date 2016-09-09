@@ -40,6 +40,9 @@ namespace App.Controllers
             this.CongViecService = CongViecService;
             view = new CongViecView(this);
         }
+
+        public event EventHandler<AppEvent<CongViecModel>> Notification;
+
         /// <summary>
         /// Views this instance.
         /// </summary>

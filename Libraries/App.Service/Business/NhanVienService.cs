@@ -127,11 +127,16 @@ namespace App.Service.Business
             return (a == 1);
         }
 
-        public List<NhanVien> GetNhanVienByTeam(string MaNhanVien)
+        public List<NhanVien> GetNhanVienByTeam(string maNhanVien)
         {
-            var query = from a in repos.Table where a.MaNhanVien != MaNhanVien select a;
+            var query = from a in repos.Table where a.MaNhanVien != maNhanVien select a;
             var list = query.ToList();
             return list;
+        }
+
+        public NhanVien GetNhanVienByMaNhanVien(string maNhanVien){
+            var query = from a in repos.Table where a.MaNhanVien != maNhanVien select a;
+            return query.FirstOrDefault();
         }
     }
 }

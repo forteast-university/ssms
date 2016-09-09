@@ -3,7 +3,7 @@
 // Author           : Hung Le
 // Created          : 09-07-2016
 //
-// Last Modified By : Hung Le
+// Last Modified By : Hung Le, Cang Nguyen
 // Last Modified On : 09-07-2016
 // ***********************************************************************
 // <copyright file="Program.cs" company="Thanh Dong University">
@@ -23,19 +23,12 @@ namespace App {
     /// Class Program.
     /// </summary>
     public static class App{
-        /// <summary>
-        /// The container
-        /// </summary>
         [STAThread]
         public static void Main() {
             AppFacade.Initialize(false);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(AppFacade.Container.Resolve<MainFacade>());
-            //using (var scope = engine.ContainerManager.Container.BeginLifetimeScope()) {
-            //    Application.Run(scope.Resolve<MainFrame>());        
-            //scope.Resolve<Form1>().DisplayView(); //Display the child form
-            //}
+            Application.Run(AppFacade.Container.Resolve<AppMediator>());
         }
     }
 }
