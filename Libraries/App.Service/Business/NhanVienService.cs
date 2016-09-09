@@ -26,18 +26,18 @@ namespace App.Service.Business
     /// </summary>
     public class NhanVienService : AbstractService, INhanVienService
     {
-        private readonly IRepository<NhanVien> product;
+        private readonly IRepository<NhanVien> repos;
 
-        public NhanVienService(IRepository<NhanVien> product, IDataProvider data, IDbContext db)
+        public NhanVienService(IRepository<NhanVien> repos, IDataProvider data, IDbContext db)
         {
-            this.product = product;
+            this.repos = repos;
             this.data = data;
             this.db = db;
         }
 
         public NhanVien GetById(int id)
         {
-            return product.GetById(id);
+            return repos.GetById(id);
         }
 
         public IEnumerable<NhanVien> GetListByPaging(string value, string index, int page, int size, string sort, out int total)
@@ -60,7 +60,7 @@ namespace App.Service.Business
         public IEnumerable<NhanVien> GetList(int id)
         {
             //todo: need to optimize
-            var query = from p in product.Table
+            var query = from p in repos.Table
                         where p.ID == id
                         select p;
             return query.ToList();
@@ -68,52 +68,52 @@ namespace App.Service.Business
 
         public IEnumerable<NhanVien> GetTop(int top)
         {
-            var q = product.Table.Take(top);
+            var q = repos.Table.Take(top);
             return q.ToList();
         }
 
         public IEnumerable<NhanVien> GetAll()
         {
             //todo: need to optimize
-            return product.Table.ToList();
+            return repos.Table.ToList();
         }
 
         public void Insert(NhanVien entity)
         {
-            product.Insert(entity);
+            repos.Insert(entity);
         }
 
         public void Insert(IEnumerable<NhanVien> entities)
         {
             foreach (var entity in entities)
             {
-                product.Insert(entity);
+                repos.Insert(entity);
             }
         }
 
         public void Update(NhanVien entity)
         {
-            product.Update(entity);
+            repos.Update(entity);
         }
 
         public void Update(IEnumerable<NhanVien> entities)
         {
             foreach (var entity in entities)
             {
-                product.Update(entity);
+                repos.Update(entity);
             }
         }
 
         public void Delete(NhanVien entity)
         {
-            product.Delete(entity);
+            repos.Delete(entity);
         }
 
         public void Delete(IEnumerable<NhanVien> entities)
         {
             foreach (var entity in entities)
             {
-                product.Delete(entity);
+                repos.Delete(entity);
             }
         }
 
@@ -129,7 +129,7 @@ namespace App.Service.Business
 
         public List<NhanVien> GetNhanVienByTeam(string MaNhanVien)
         {
-            var query = from a in product.Table where a.MaNhanVien != MaNhanVien select a;
+            var query = from a in repos.Table where a.MaNhanVien != MaNhanVien select a;
             var list = query.ToList();
             return list;
         }

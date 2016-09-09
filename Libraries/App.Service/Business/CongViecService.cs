@@ -26,18 +26,18 @@ namespace App.Service.Business
     /// </summary>
     public class CongViecService : AbstractService, ICongViecService
     {
-        private readonly IRepository<CongViec> product;
+        private readonly IRepository<CongViec> repos;
 
-        public CongViecService(IRepository<CongViec> product, IDataProvider data, IDbContext db)
+        public CongViecService(IRepository<CongViec> repos, IDataProvider data, IDbContext db)
         {
-            this.product = product;
+            this.repos = repos;
             this.data = data;
             this.db = db;
         }
 
         public CongViec GetById(int id)
         {
-            return product.GetById(id);
+            return repos.GetById(id);
         }
 
         public IEnumerable<CongViec> GetListByPaging(string value, string index, int page, int size, string sort, out int total)
@@ -60,7 +60,7 @@ namespace App.Service.Business
         public IEnumerable<CongViec> GetList(int id)
         {
             //todo: need to optimize
-            var query = from p in product.Table
+            var query = from p in repos.Table
                         where p.ID == id
                         select p;
             return query.ToList();
@@ -68,52 +68,52 @@ namespace App.Service.Business
 
         public IEnumerable<CongViec> GetTop(int top)
         {
-            var q = product.Table.Take(top);
+            var q = repos.Table.Take(top);
             return q.ToList();
         }
 
         public IEnumerable<CongViec> GetAll()
         {
             //todo: need to optimize
-            return product.Table.ToList();
+            return repos.Table.ToList();
         }
 
         public void Insert(CongViec entity)
         {
-            product.Insert(entity);
+            repos.Insert(entity);
         }
 
         public void Insert(IEnumerable<CongViec> entities)
         {
             foreach (var entity in entities)
             {
-                product.Insert(entity);
+                repos.Insert(entity);
             }
         }
 
         public void Update(CongViec entity)
         {
-            product.Update(entity);
+            repos.Update(entity);
         }
 
         public void Update(IEnumerable<CongViec> entities)
         {
             foreach (var entity in entities)
             {
-                product.Update(entity);
+                repos.Update(entity);
             }
         }
 
         public void Delete(CongViec entity)
         {
-            product.Delete(entity);
+            repos.Delete(entity);
         }
 
         public void Delete(IEnumerable<CongViec> entities)
         {
             foreach (var entity in entities)
             {
-                product.Delete(entity);
+                repos.Delete(entity);
             }
         }
 
@@ -129,7 +129,7 @@ namespace App.Service.Business
 
         public List<CongViec> GetCongViecByTeam(string MaCV)
         {
-            var query = from a in product.Table where a.MaCV != MaCV select a;
+            var query = from a in repos.Table where a.MaCV != MaCV select a;
             var list = query.ToList();
             return list;
         }

@@ -39,11 +39,11 @@ namespace App.Core.Utility {
             /// </summary>
             Url = 2,
             /// <summary>
-            /// The product
+            /// The repos
             /// </summary>
             Product = 3,
             /// <summary>
-            /// The product application
+            /// The repos application
             /// </summary>
             ProductApplication = 4
         }

@@ -26,18 +26,18 @@ namespace App.Service.Business
     /// </summary>
     public class HoaDonNhapService : AbstractService, IHoaDonNhapService
     {
-        private readonly IRepository<HoaDonNhap> product;
+        private readonly IRepository<HoaDonNhap> repos;
 
-        public HoaDonNhapService(IRepository<HoaDonNhap> product, IDataProvider data, IDbContext db)
+        public HoaDonNhapService(IRepository<HoaDonNhap> repos, IDataProvider data, IDbContext db)
         {
-            this.product = product;
+            this.repos = repos;
             this.data = data;
             this.db = db;
         }
 
         public HoaDonNhap GetById(int id)
         {
-            return product.GetById(id);
+            return repos.GetById(id);
         }
 
         public IEnumerable<HoaDonNhap> GetListByPaging(string value, string index, int page, int size, string sort, out int total)
@@ -60,7 +60,7 @@ namespace App.Service.Business
         public IEnumerable<HoaDonNhap> GetList(int id)
         {
             //todo: need to optimize
-            var query = from p in product.Table
+            var query = from p in repos.Table
                         where p.ID == id
                         select p;
             return query.ToList();
@@ -68,52 +68,52 @@ namespace App.Service.Business
 
         public IEnumerable<HoaDonNhap> GetTop(int top)
         {
-            var q = product.Table.Take(top);
+            var q = repos.Table.Take(top);
             return q.ToList();
         }
 
         public IEnumerable<HoaDonNhap> GetAll()
         {
             //todo: need to optimize
-            return product.Table.ToList();
+            return repos.Table.ToList();
         }
 
         public void Insert(HoaDonNhap entity)
         {
-            product.Insert(entity);
+            repos.Insert(entity);
         }
 
         public void Insert(IEnumerable<HoaDonNhap> entities)
         {
             foreach (var entity in entities)
             {
-                product.Insert(entity);
+                repos.Insert(entity);
             }
         }
 
         public void Update(HoaDonNhap entity)
         {
-            product.Update(entity);
+            repos.Update(entity);
         }
 
         public void Update(IEnumerable<HoaDonNhap> entities)
         {
             foreach (var entity in entities)
             {
-                product.Update(entity);
+                repos.Update(entity);
             }
         }
 
         public void Delete(HoaDonNhap entity)
         {
-            product.Delete(entity);
+            repos.Delete(entity);
         }
 
         public void Delete(IEnumerable<HoaDonNhap> entities)
         {
             foreach (var entity in entities)
             {
-                product.Delete(entity);
+                repos.Delete(entity);
             }
         }
 
@@ -129,7 +129,7 @@ namespace App.Service.Business
 
         public List<HoaDonNhap> GetHoaDonNhapByTeam(string SoHDN)
         {
-            var query = from a in product.Table where a.SoHDN != SoHDN select a;
+            var query = from a in repos.Table where a.SoHDN != SoHDN select a;
             var list = query.ToList();
             return list;
         }

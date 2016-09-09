@@ -26,18 +26,18 @@ namespace App.Service.Business
     /// </summary>
     public class NuocSanXuatService : AbstractService, INuocSanXuatService
     {
-        private readonly IRepository<NuocSanXuat> product;
+        private readonly IRepository<NuocSanXuat> repos;
 
-        public NuocSanXuatService(IRepository<NuocSanXuat> product, IDataProvider data, IDbContext db)
+        public NuocSanXuatService(IRepository<NuocSanXuat> repos, IDataProvider data, IDbContext db)
         {
-            this.product = product;
+            this.repos = repos;
             this.data = data;
             this.db = db;
         }
 
         public NuocSanXuat GetById(int id)
         {
-            return product.GetById(id);
+            return repos.GetById(id);
         }
 
         public IEnumerable<NuocSanXuat> GetListByPaging(string value, string index, int page, int size, string sort, out int total)
@@ -60,7 +60,7 @@ namespace App.Service.Business
         public IEnumerable<NuocSanXuat> GetList(int id)
         {
             //todo: need to optimize
-            var query = from p in product.Table
+            var query = from p in repos.Table
                         where p.ID == id
                         select p;
             return query.ToList();
@@ -68,52 +68,52 @@ namespace App.Service.Business
 
         public IEnumerable<NuocSanXuat> GetTop(int top)
         {
-            var q = product.Table.Take(top);
+            var q = repos.Table.Take(top);
             return q.ToList();
         }
 
         public IEnumerable<NuocSanXuat> GetAll()
         {
             //todo: need to optimize
-            return product.Table.ToList();
+            return repos.Table.ToList();
         }
 
         public void Insert(NuocSanXuat entity)
         {
-            product.Insert(entity);
+            repos.Insert(entity);
         }
 
         public void Insert(IEnumerable<NuocSanXuat> entities)
         {
             foreach (var entity in entities)
             {
-                product.Insert(entity);
+                repos.Insert(entity);
             }
         }
 
         public void Update(NuocSanXuat entity)
         {
-            product.Update(entity);
+            repos.Update(entity);
         }
 
         public void Update(IEnumerable<NuocSanXuat> entities)
         {
             foreach (var entity in entities)
             {
-                product.Update(entity);
+                repos.Update(entity);
             }
         }
 
         public void Delete(NuocSanXuat entity)
         {
-            product.Delete(entity);
+            repos.Delete(entity);
         }
 
         public void Delete(IEnumerable<NuocSanXuat> entities)
         {
             foreach (var entity in entities)
             {
-                product.Delete(entity);
+                repos.Delete(entity);
             }
         }
 
@@ -129,7 +129,7 @@ namespace App.Service.Business
 
         public List<NuocSanXuat> GetNuocSanXuatByTeam(string MaNuocSX)
         {
-            var query = from a in product.Table where a.MaNuocSX != MaNuocSX select a;
+            var query = from a in repos.Table where a.MaNuocSX != MaNuocSX select a;
             var list = query.ToList();
             return list;
         }

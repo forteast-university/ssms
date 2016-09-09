@@ -26,18 +26,18 @@ namespace App.Service.Business
     /// </summary>
     public class NhaCungCapService : AbstractService, INhaCungCapService
     {
-        private readonly IRepository<NhaCungCap> product;
+        private readonly IRepository<NhaCungCap> repos;
 
-        public NhaCungCapService(IRepository<NhaCungCap> product, IDataProvider data, IDbContext db)
+        public NhaCungCapService(IRepository<NhaCungCap> repos, IDataProvider data, IDbContext db)
         {
-            this.product = product;
+            this.repos = repos;
             this.data = data;
             this.db = db;
         }
 
         public NhaCungCap GetById(int id)
         {
-            return product.GetById(id);
+            return repos.GetById(id);
         }
 
         public IEnumerable<NhaCungCap> GetListByPaging(string value, string index, int page, int size, string sort, out int total)
@@ -60,7 +60,7 @@ namespace App.Service.Business
         public IEnumerable<NhaCungCap> GetList(int id)
         {
             //todo: need to optimize
-            var query = from p in product.Table
+            var query = from p in repos.Table
                         where p.ID == id
                         select p;
             return query.ToList();
@@ -68,52 +68,52 @@ namespace App.Service.Business
 
         public IEnumerable<NhaCungCap> GetTop(int top)
         {
-            var q = product.Table.Take(top);
+            var q = repos.Table.Take(top);
             return q.ToList();
         }
 
         public IEnumerable<NhaCungCap> GetAll()
         {
             //todo: need to optimize
-            return product.Table.ToList();
+            return repos.Table.ToList();
         }
 
         public void Insert(NhaCungCap entity)
         {
-            product.Insert(entity);
+            repos.Insert(entity);
         }
 
         public void Insert(IEnumerable<NhaCungCap> entities)
         {
             foreach (var entity in entities)
             {
-                product.Insert(entity);
+                repos.Insert(entity);
             }
         }
 
         public void Update(NhaCungCap entity)
         {
-            product.Update(entity);
+            repos.Update(entity);
         }
 
         public void Update(IEnumerable<NhaCungCap> entities)
         {
             foreach (var entity in entities)
             {
-                product.Update(entity);
+                repos.Update(entity);
             }
         }
 
         public void Delete(NhaCungCap entity)
         {
-            product.Delete(entity);
+            repos.Delete(entity);
         }
 
         public void Delete(IEnumerable<NhaCungCap> entities)
         {
             foreach (var entity in entities)
             {
-                product.Delete(entity);
+                repos.Delete(entity);
             }
         }
 
@@ -129,7 +129,7 @@ namespace App.Service.Business
 
         public List<NhaCungCap> GetNhaCungCapByTeam(string MaNCC)
         {
-            var query = from a in product.Table where a.MaNCC != MaNCC select a;
+            var query = from a in repos.Table where a.MaNCC != MaNCC select a;
             var list = query.ToList();
             return list;
         }

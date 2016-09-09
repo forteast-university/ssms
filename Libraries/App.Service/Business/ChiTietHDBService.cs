@@ -26,18 +26,18 @@ namespace App.Service.Business
     /// </summary>
     public class ChiTietHDBService : AbstractService, IChiTietHDBService
     {
-        private readonly IRepository<ChiTietHDB> product;
+        private readonly IRepository<ChiTietHDB> repos;
 
-        public ChiTietHDBService(IRepository<ChiTietHDB> product, IDataProvider data, IDbContext db)
+        public ChiTietHDBService(IRepository<ChiTietHDB> repos, IDataProvider data, IDbContext db)
         {
-            this.product = product;
+            this.repos = repos;
             this.data = data;
             this.db = db;
         }
 
         public ChiTietHDB GetById(int id)
         {
-            return product.GetById(id);
+            return repos.GetById(id);
         }
 
         public IEnumerable<ChiTietHDB> GetListByPaging(string value, string index, int page, int size, string sort, out int total)
@@ -60,7 +60,7 @@ namespace App.Service.Business
         public IEnumerable<ChiTietHDB> GetList(int id)
         {
             //todo: need to optimize
-            var query = from p in product.Table
+            var query = from p in repos.Table
                         where p.ID == id
                         select p;
             return query.ToList();
@@ -68,52 +68,52 @@ namespace App.Service.Business
 
         public IEnumerable<ChiTietHDB> GetTop(int top)
         {
-            var q = product.Table.Take(top);
+            var q = repos.Table.Take(top);
             return q.ToList();
         }
 
         public IEnumerable<ChiTietHDB> GetAll()
         {
             //todo: need to optimize
-            return product.Table.ToList();
+            return repos.Table.ToList();
         }
 
         public void Insert(ChiTietHDB entity)
         {
-            product.Insert(entity);
+            repos.Insert(entity);
         }
 
         public void Insert(IEnumerable<ChiTietHDB> entities)
         {
             foreach (var entity in entities)
             {
-                product.Insert(entity);
+                repos.Insert(entity);
             }
         }
 
         public void Update(ChiTietHDB entity)
         {
-            product.Update(entity);
+            repos.Update(entity);
         }
 
         public void Update(IEnumerable<ChiTietHDB> entities)
         {
             foreach (var entity in entities)
             {
-                product.Update(entity);
+                repos.Update(entity);
             }
         }
 
         public void Delete(ChiTietHDB entity)
         {
-            product.Delete(entity);
+            repos.Delete(entity);
         }
 
         public void Delete(IEnumerable<ChiTietHDB> entities)
         {
             foreach (var entity in entities)
             {
-                product.Delete(entity);
+                repos.Delete(entity);
             }
         }
 
@@ -129,7 +129,7 @@ namespace App.Service.Business
 
         public List<ChiTietHDB> GetChiTietHoaDonBanByTeam(string SoHDB)
         {
-            var query = from a in product.Table where a.SoHDB != SoHDB select a;
+            var query = from a in repos.Table where a.SoHDB != SoHDB select a;
             var list = query.ToList();
             return list;
         }
