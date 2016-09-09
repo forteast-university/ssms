@@ -1,10 +1,10 @@
 // ***********************************************************************
 // Assembly         : App.Core
 // Author           : Hung Le
-// Created          : 09-07-2016
+// Created          : 09-09-2016
 //
 // Last Modified By : Hung Le
-// Last Modified On : 09-07-2016
+// Last Modified On : 09-09-2016
 // ***********************************************************************
 // <copyright file="ChiTietHDN.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
@@ -20,19 +20,9 @@ namespace App.Core.Domain
     /// <summary>
     /// Class ChiTietHDN.
     /// </summary>
-    public partial class ChiTietHDN: BaseEntity
+    public partial class ChiTietHDN  :BaseEntity
     {
-        //public int ID { get; set; }
-        /// <summary>
-        /// Gets or sets the so HDN.
-        /// </summary>
-        /// <value>The so HDN.</value>
-        public string SoHDN { get; set; }
-        /// <summary>
-        /// Gets or sets the ma giay dep.
-        /// </summary>
-        /// <value>The ma giay dep.</value>
-        public string MaGiayDep { get; set; }
+
         /// <summary>
         /// Gets or sets the so luong.
         /// </summary>
@@ -53,6 +43,26 @@ namespace App.Core.Domain
         /// </summary>
         /// <value>The thanh tien.</value>
         public Nullable<decimal> ThanhTien { get; set; }
+        /// <summary>
+        /// Gets or sets the so HDN.
+        /// </summary>
+        /// <value>The so HDN.</value>
+        public string SoHDN { get; set; }
+        /// <summary>
+        /// Gets or sets the ma giay dep.
+        /// </summary>
+        /// <value>The ma giay dep.</value>
+        public string MaGiayDep { get; set; }
+        /// <summary>
+        /// Gets or sets the san pham identifier.
+        /// </summary>
+        /// <value>The san pham identifier.</value>
+        public Nullable<int> SanPhamID { get; set; }
+        /// <summary>
+        /// Gets or sets the hoa don nhap identifier.
+        /// </summary>
+        /// <value>The hoa don nhap identifier.</value>
+        public Nullable<int> HoaDonNhapID { get; set; }
 
         /// <summary>
         /// Gets or sets the hoa don nhap.

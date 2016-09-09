@@ -1,18 +1,16 @@
 // ***********************************************************************
 // Assembly         : App.Core
 // Author           : Hung Le
-// Created          : 09-07-2016
+// Created          : 09-09-2016
 //
 // Last Modified By : Hung Le
-// Last Modified On : 09-07-2016
+// Last Modified On : 09-09-2016
 // ***********************************************************************
 // <copyright file="ChiTietHDB.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-
-using System.ComponentModel.DataAnnotations;
 
 namespace App.Core.Domain
 {
@@ -24,12 +22,7 @@ namespace App.Core.Domain
     /// </summary>
     public partial class ChiTietHDB: BaseEntity
     {
-        //public int ID { get; set; }
-        /// <summary>
-        /// Gets or sets the ma giay dep.
-        /// </summary>
-        /// <value>The ma giay dep.</value>
-        public string MaGiayDep { get; set; }
+
         /// <summary>
         /// Gets or sets the so luong.
         /// </summary>
@@ -46,10 +39,25 @@ namespace App.Core.Domain
         /// <value>The thanh tien.</value>
         public string ThanhTien { get; set; }
         /// <summary>
+        /// Gets or sets the ma giay dep.
+        /// </summary>
+        /// <value>The ma giay dep.</value>
+        public string MaGiayDep { get; set; }
+        /// <summary>
         /// Gets or sets the so HDB.
         /// </summary>
         /// <value>The so HDB.</value>
         public string SoHDB { get; set; }
+        /// <summary>
+        /// Gets or sets the san pham identifier.
+        /// </summary>
+        /// <value>The san pham identifier.</value>
+        public Nullable<int> SanPhamID { get; set; }
+        /// <summary>
+        /// Gets or sets the hoa don ban identifier.
+        /// </summary>
+        /// <value>The hoa don ban identifier.</value>
+        public Nullable<int> HoaDonBanID { get; set; }
 
         /// <summary>
         /// Gets or sets the hoa don ban.

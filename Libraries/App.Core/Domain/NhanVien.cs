@@ -1,10 +1,10 @@
 // ***********************************************************************
 // Assembly         : App.Core
 // Author           : Hung Le
-// Created          : 09-07-2016
+// Created          : 09-09-2016
 //
 // Last Modified By : Hung Le
-// Last Modified On : 09-07-2016
+// Last Modified On : 09-09-2016
 // ***********************************************************************
 // <copyright file="NhanVien.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
@@ -20,7 +20,7 @@ namespace App.Core.Domain
     /// <summary>
     /// Class NhanVien.
     /// </summary>
-    public partial class NhanVien: BaseEntity
+    public partial class NhanVien : BaseEntity
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="NhanVien"/> class.
@@ -30,8 +30,8 @@ namespace App.Core.Domain
             //this.HoaDonBan = new HashSet<HoaDonBan>();
             //this.HoaDonNhap = new HashSet<HoaDonNhap>();
         }
-    
-        //public int ID { get; set; }
+
+
         /// <summary>
         /// Gets or sets the ma nhan vien.
         /// </summary>
@@ -63,22 +63,27 @@ namespace App.Core.Domain
         /// <value>The dia chi.</value>
         public string DiaChi { get; set; }
         /// <summary>
+        /// Gets or sets the mat khau.
+        /// </summary>
+        /// <value>The mat khau.</value>
+        public string MatKhau { get; set; }
+        /// <summary>
         /// Gets or sets the ma cv.
         /// </summary>
         /// <value>The ma cv.</value>
         public string MaCV { get; set; }
         /// <summary>
-        /// Gets or sets the mat khau.
+        /// Gets or sets the cong viec identifier.
         /// </summary>
-        /// <value>The mat khau.</value>
-        public string MatKhau { get; set; }
+        /// <value>The cong viec identifier.</value>
+        public Nullable<int> CongViecID { get; set; }
 
         /// <summary>
         /// Gets or sets the cong viec.
         /// </summary>
         /// <value>The cong viec.</value>
         public virtual CongViec CongViec { get; set; }
-        //public virtual ICollection<HoaDonBan> HoaDonBan { get; set; }
-        //public virtual ICollection<HoaDonNhap> HoaDonNhap { get; set; }
+        // public virtual ICollection<HoaDonBan> HoaDonBan { get; set; }
+        // public virtual ICollection<HoaDonNhap> HoaDonNhap { get; set; }
     }
 }

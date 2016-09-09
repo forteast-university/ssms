@@ -102,6 +102,11 @@ namespace App.Extensions{
             //return k.Serialize(superset);
             return "";
         }
+        public static void UpdateView(this DataGridView dataGridView,string key, string value){
+            if (dataGridView.CurrentRow != null)
+                dataGridView.Rows[dataGridView.CurrentRow.Index].Cells[key].Value = value;
+        }
+
         public static BaseEntity CurrentSelected(this DataGridView grid, IEnumerable<BaseEntity> value) {
             if (grid.SelectedCells.Count > 0) {
                 int selectedrowindex = grid.SelectedCells[0].RowIndex;

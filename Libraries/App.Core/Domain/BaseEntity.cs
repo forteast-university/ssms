@@ -24,9 +24,7 @@ namespace App.Core.Domain{
         ///     Gets or sets the entity identifier
         /// </summary>
         /// <value>The identifier.</value>
-        //[Key]
-        //[Key]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int ID { get; set; }
 
         /// <summary>

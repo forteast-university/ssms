@@ -113,8 +113,7 @@ namespace App.Controllers {
         /// </summary>
         /// <param name="value">The value.</param>
         public void Delete(ChatLieuModel value) {
-            var entity = ModelToEntity(value);
-            chatLieuService.Delete(entity);
+            Delete(value.ID);
         }
         /// <summary>
         /// Deletes the specified value.

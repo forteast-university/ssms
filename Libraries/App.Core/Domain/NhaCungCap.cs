@@ -1,10 +1,10 @@
 // ***********************************************************************
 // Assembly         : App.Core
 // Author           : Hung Le
-// Created          : 09-07-2016
+// Created          : 09-09-2016
 //
 // Last Modified By : Hung Le
-// Last Modified On : 09-07-2016
+// Last Modified On : 09-09-2016
 // ***********************************************************************
 // <copyright file="NhaCungCap.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
@@ -20,7 +20,7 @@ namespace App.Core.Domain
     /// <summary>
     /// Class NhaCungCap.
     /// </summary>
-    public partial class NhaCungCap: BaseEntity
+    public partial class NhaCungCap : BaseEntity
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="NhaCungCap"/> class.
@@ -29,8 +29,8 @@ namespace App.Core.Domain
         {
             //this.HoaDonNhap = new HashSet<HoaDonNhap>();
         }
-    
-        //public int ID { get; set; }
+
+
         /// <summary>
         /// Gets or sets the ma NCC.
         /// </summary>
@@ -52,6 +52,6 @@ namespace App.Core.Domain
         /// <value>The dien thoai.</value>
         public string DienThoai { get; set; }
     
-        //public virtual ICollection<HoaDonNhap> HoaDonNhap { get; set; }
+        // public virtual ICollection<HoaDonNhap> HoaDonNhap { get; set; }
     }
 }
