@@ -118,7 +118,7 @@ namespace App.Views{
                 //re-update UI
                 
                 dataGridView.UpdateView("MaChatLieu", currentModel.MaChatLieu);
-                dataGridView.UpdateView("TenChatLieu", currentModel.MaChatLieu);
+                dataGridView.UpdateView("TenChatLieu", currentModel.TenChatLieu);
 
                 txtMaChatLieu.Focus();
                 txtMaChatLieu.SelectAll();
