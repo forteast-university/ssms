@@ -25,8 +25,8 @@ namespace App.Views {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.bntLuu = new System.Windows.Forms.Button();
-            this.txtMaGiayDep = new System.Windows.Forms.TextBox();
+            this.bntTimKiem = new System.Windows.Forms.Button();
+            this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.bntLuaChon = new System.Windows.Forms.Button();
@@ -35,22 +35,22 @@ namespace App.Views {
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // bntLuu
+            // bntTimKiem
             // 
-            this.bntLuu.Location = new System.Drawing.Point(311, 9);
-            this.bntLuu.Name = "bntLuu";
-            this.bntLuu.Size = new System.Drawing.Size(75, 23);
-            this.bntLuu.TabIndex = 0;
-            this.bntLuu.Text = "Tìm kiếm";
-            this.bntLuu.UseVisualStyleBackColor = true;
-            this.bntLuu.Click += new System.EventHandler(this.bntLuu_Click);
+            this.bntTimKiem.Location = new System.Drawing.Point(311, 9);
+            this.bntTimKiem.Name = "bntTimKiem";
+            this.bntTimKiem.Size = new System.Drawing.Size(75, 23);
+            this.bntTimKiem.TabIndex = 0;
+            this.bntTimKiem.Text = "Tìm kiếm";
+            this.bntTimKiem.UseVisualStyleBackColor = true;
+            this.bntTimKiem.Click += new System.EventHandler(this.bntTimKiem_Click);
             // 
-            // txtMaGiayDep
+            // txtTimKiem
             // 
-            this.txtMaGiayDep.Location = new System.Drawing.Point(88, 11);
-            this.txtMaGiayDep.Name = "txtMaGiayDep";
-            this.txtMaGiayDep.Size = new System.Drawing.Size(217, 20);
-            this.txtMaGiayDep.TabIndex = 2;
+            this.txtTimKiem.Location = new System.Drawing.Point(88, 11);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.Size = new System.Drawing.Size(217, 20);
+            this.txtTimKiem.TabIndex = 2;
             // 
             // label1
             // 
@@ -127,8 +127,8 @@ namespace App.Views {
             this.Controls.Add(this.bntLuaChon);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtMaGiayDep);
-            this.Controls.Add(this.bntLuu);
+            this.Controls.Add(this.txtTimKiem);
+            this.Controls.Add(this.bntTimKiem);
             this.Name = "SanPhanListView";
             this.Text = "sản phẩm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
@@ -139,8 +139,8 @@ namespace App.Views {
 
         #endregion
 
-        private System.Windows.Forms.Button bntLuu;
-        private System.Windows.Forms.TextBox txtMaGiayDep;
+        private System.Windows.Forms.Button bntTimKiem;
+        private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button bntLuaChon;
