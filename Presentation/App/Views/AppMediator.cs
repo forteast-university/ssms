@@ -19,12 +19,13 @@ using App.Models;
 using Autofac;
 using Autofac.Core.Registration;
 using App.Extensions;
+using System.Drawing;
 
 namespace App.Views {
     /// <summary>
     /// Class AppMediator.
     /// </summary>
-    public partial class AppMediator : Form {
+    public partial class AppMediator: Form {
         /// <summary>
         /// The application
         /// </summary>
@@ -36,13 +37,13 @@ namespace App.Views {
         public AppMediator() {
             InitializeComponent();
             app = AppFacade.Container;
-            InitializeFirst();
+            //InitializeFirst();
             LoadSanPhamView();
-            
+
         }
         public void Eventlistener<T>(object sender, AppEvent<T> e) {
             var key = sender.ToString();
-            if (key == Mediator.DANGNHAP_KHONG_THANH_CONG) {
+            if(key == Mediator.DANGNHAP_KHONG_THANH_CONG) {
                 Application.Exit();
             }
         }
@@ -51,17 +52,16 @@ namespace App.Views {
                 var a = app.Resolve<INhanVienController<NhanVienModel>>();
                 a.Notification += Eventlistener;
                 a.ShowDangNhap();
-            } catch (ComponentNotRegisteredException exception) {
+            } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
         }
 
-
-        private void LoadSanPhamView()
-        {
-            var a = new SanPhanListView(null);
-            a.TopLevel = false;
-            panel1.Controls.Add(a);
+        private void LoadSanPhamView() {
+            var b = app.Resolve<ISanPhamController<SanPhamModel>>();
+            var a = new SanPhanListView(b) { TopLevel = false, Parent = this, Dock = DockStyle.Fill, FormBorderStyle = FormBorderStyle.None };
+            panel.Controls.Add(a);
+            b.SetSanPhamListView(a);
             a.Show();
         }
 
@@ -76,7 +76,7 @@ namespace App.Views {
                 var a = app.Resolve<IBaseController<ChatLieuModel>>();
                 a.Notification += Eventlistener;
                 a.View();
-            } catch (ComponentNotRegisteredException exception) {
+            } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
         }
@@ -91,7 +91,7 @@ namespace App.Views {
                 var a = app.Resolve<IBaseController<MauModel>>();
                 a.Notification += Eventlistener;
                 a.View();
-            } catch (ComponentNotRegisteredException exception) {
+            } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
         }
@@ -106,7 +106,7 @@ namespace App.Views {
                 var a = app.Resolve<IBaseController<DoiTuongModel>>();
                 a.Notification += Eventlistener;
                 a.View();
-            } catch (ComponentNotRegisteredException exception) {
+            } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
         }
@@ -121,7 +121,7 @@ namespace App.Views {
                 var a = app.Resolve<IBaseController<NuocSanXuatModel>>();
                 a.Notification += Eventlistener;
                 a.View();
-            } catch (ComponentNotRegisteredException exception) {
+            } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
         }
@@ -136,7 +136,7 @@ namespace App.Views {
                 var a = app.Resolve<IBaseController<TheLoaiModel>>();
                 a.Notification += Eventlistener;
                 a.View();
-            } catch (ComponentNotRegisteredException exception) {
+            } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
         }
@@ -151,7 +151,7 @@ namespace App.Views {
                 var a = app.Resolve<IBaseController<TheLoaiModel>>();
                 a.Notification += Eventlistener;
                 a.View();
-            } catch (ComponentNotRegisteredException exception) {
+            } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
         }
@@ -166,7 +166,7 @@ namespace App.Views {
                 var a = app.Resolve<IBaseController<MuaModel>>();
                 a.Notification += Eventlistener;
                 a.View();
-            } catch (ComponentNotRegisteredException exception) {
+            } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
         }
@@ -181,7 +181,7 @@ namespace App.Views {
                 var a = app.Resolve<IBaseController<CongViecModel>>();
                 a.Notification += Eventlistener;
                 a.View();
-            } catch (ComponentNotRegisteredException exception) {
+            } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
         }
@@ -196,7 +196,7 @@ namespace App.Views {
                 var a = app.Resolve<IBaseController<NhanVienModel>>();
                 a.Notification += Eventlistener;
                 a.View();
-            } catch (ComponentNotRegisteredException exception) {
+            } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
         }
@@ -211,7 +211,7 @@ namespace App.Views {
                 var a = app.Resolve<IBaseController<NhaCungCapModel>>();
                 a.Notification += Eventlistener;
                 a.View();
-            } catch (ComponentNotRegisteredException exception) {
+            } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
         }
@@ -226,7 +226,7 @@ namespace App.Views {
                 var a = app.Resolve<IBaseController<KhachHangModel>>();
                 a.Notification += Eventlistener;
                 a.View();
-            } catch (ComponentNotRegisteredException exception) {
+            } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
         }
@@ -241,7 +241,7 @@ namespace App.Views {
                 var a = app.Resolve<IBaseController<HoaDonNhapModel>>();
                 a.Notification += Eventlistener;
                 a.View();
-            } catch (ComponentNotRegisteredException exception) {
+            } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
         }
@@ -256,7 +256,7 @@ namespace App.Views {
                 var a = app.Resolve<IBaseController<HoaDonBanModel>>();
                 a.Notification += Eventlistener;
                 a.View();
-            } catch (ComponentNotRegisteredException exception) {
+            } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
         }

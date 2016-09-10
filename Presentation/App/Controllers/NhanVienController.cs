@@ -63,7 +63,6 @@ namespace App.Controllers{
             }
             view.Hide();
         }
-
         public event EventHandler<AppEvent<NhanVienModel>> Notification;
 
         /// <summary>

@@ -4,7 +4,7 @@
 // Created          : 08-29-2016
 //
 // Last Modified By : Hung Le
-// Last Modified On : 09-08-2016
+// Last Modified On : 09-10-2016
 // ***********************************************************************
 // <copyright file="MappingExtensions.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
@@ -83,7 +83,66 @@ namespace App.Extensions{
             byte[] base64EncodedBytes = Convert.FromBase64String(m);
             return Encoding.UTF8.GetString(base64EncodedBytes);
         }
+        /// <summary>
+        /// To the int32.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="superset">The superset.</param>
+        /// <returns>System.Int32.</returns>
+        public static int ToInt32<T>(this T superset) {
+            var m = superset as string;
+            if(m == null)
+                return 0;
+            if(m.Trim() == "")
+                return 0;
 
+            return Convert.ToInt32(m);
+        }
+        /// <summary>
+        /// To the decimal.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="superset">The superset.</param>
+        /// <returns>System.Decimal.</returns>
+        public static decimal ToDecimal<T>(this T superset) {
+            var m = superset as string;
+            if(m == null)
+                return 0;
+            if(m.Trim() == "")
+                return 0;
+
+            return Convert.ToDecimal(m);
+        }
+        /// <summary>
+        /// To the double.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="superset">The superset.</param>
+        /// <returns>System.Double.</returns>
+        public static double ToDouble<T>(this T superset) {
+            var m = superset as string;
+            if(m == null)
+                return 0;
+            if(m.Trim() == "")
+                return 0;
+
+            return Convert.ToDouble(m);
+        }
+        /// <summary>
+        /// To the boolean.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="superset">The superset.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        public static bool ToBoolean<T>(this T superset) {
+            var m = superset as string;
+            if(m == null)
+                return false;
+            if(m.Trim() == "")
+                return false;
+
+            return Convert.ToBoolean(m);
+        }
         /// <summary>
         /// Serializes the specified superset.
         /// </summary>
@@ -102,11 +161,23 @@ namespace App.Extensions{
             //return k.Serialize(superset);
             return "";
         }
+        /// <summary>
+        /// Updates the view.
+        /// </summary>
+        /// <param name="dataGridView">The data grid view.</param>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
         public static void UpdateView(this DataGridView dataGridView,string key, string value){
             if (dataGridView.CurrentRow != null)
                 dataGridView.Rows[dataGridView.CurrentRow.Index].Cells[key].Value = value;
         }
 
+        /// <summary>
+        /// Currents the selected.
+        /// </summary>
+        /// <param name="grid">The grid.</param>
+        /// <param name="value">The value.</param>
+        /// <returns>BaseEntity.</returns>
         public static BaseEntity CurrentSelected(this DataGridView grid, IEnumerable<BaseEntity> value) {
             if (grid.SelectedCells.Count > 0) {
                 int selectedrowindex = grid.SelectedCells[0].RowIndex;
@@ -118,6 +189,13 @@ namespace App.Extensions{
            return null;
         }
 
+        /// <summary>
+        /// Populates the data grid view with data set.
+        /// </summary>
+        /// <param name="dgv">The DGV.</param>
+        /// <param name="ds">The ds.</param>
+        /// <param name="dataTable">The data table.</param>
+        /// <returns>DataGridView.</returns>
         public static DataGridView PopulateDataGridViewWithDataSet(this DataGridView dgv, DataSet ds, string dataTable) {
             dgv.Rows.Clear();
             int rowCount = 0;

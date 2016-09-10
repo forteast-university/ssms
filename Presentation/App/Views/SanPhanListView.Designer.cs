@@ -26,11 +26,8 @@ namespace App.Views {
         /// </summary>
         private void InitializeComponent() {
             this.bntLuu = new System.Windows.Forms.Button();
-            this.bntHuy = new System.Windows.Forms.Button();
             this.txtMaGiayDep = new System.Windows.Forms.TextBox();
-            this.txtTenGiayDep = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.bntLuaChon = new System.Windows.Forms.Button();
             this.bntXoa = new System.Windows.Forms.Button();
@@ -40,77 +37,57 @@ namespace App.Views {
             // 
             // bntLuu
             // 
-            this.bntLuu.Location = new System.Drawing.Point(284, 37);
+            this.bntLuu.Location = new System.Drawing.Point(311, 9);
             this.bntLuu.Name = "bntLuu";
             this.bntLuu.Size = new System.Drawing.Size(75, 23);
             this.bntLuu.TabIndex = 0;
-            this.bntLuu.Text = "Lưu";
+            this.bntLuu.Text = "Tìm kiếm";
             this.bntLuu.UseVisualStyleBackColor = true;
             this.bntLuu.Click += new System.EventHandler(this.bntLuu_Click);
             // 
-            // bntHuy
-            // 
-            this.bntHuy.Location = new System.Drawing.Point(284, 395);
-            this.bntHuy.Name = "bntHuy";
-            this.bntHuy.Size = new System.Drawing.Size(75, 23);
-            this.bntHuy.TabIndex = 1;
-            this.bntHuy.Text = "Hủy bỏ";
-            this.bntHuy.UseVisualStyleBackColor = true;
-            this.bntHuy.Click += new System.EventHandler(this.bntHuy_Click);
-            // 
             // txtMaGiayDep
             // 
-            this.txtMaGiayDep.Location = new System.Drawing.Point(88, 12);
+            this.txtMaGiayDep.Location = new System.Drawing.Point(88, 11);
             this.txtMaGiayDep.Name = "txtMaGiayDep";
-            this.txtMaGiayDep.Size = new System.Drawing.Size(180, 20);
+            this.txtMaGiayDep.Size = new System.Drawing.Size(217, 20);
             this.txtMaGiayDep.TabIndex = 2;
-            // 
-            // txtTenGiayDep
-            // 
-            this.txtTenGiayDep.Location = new System.Drawing.Point(88, 39);
-            this.txtTenGiayDep.Name = "txtTenGiayDep";
-            this.txtTenGiayDep.Size = new System.Drawing.Size(180, 20);
-            this.txtTenGiayDep.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 12);
+            this.label1.Location = new System.Drawing.Point(12, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
+            this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Mã sản phẩm";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Tên sản phẩm";
+            this.label1.Text = "Sản phẩm";
             // 
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AllowUserToResizeRows = false; this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(12, 68);
+            this.dataGridView.Location = new System.Drawing.Point(12, 38);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(347, 321);
+            this.dataGridView.Size = new System.Drawing.Size(456, 217);
             this.dataGridView.TabIndex = 6;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
+            this.dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
             this.dataGridView.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgv_RowPrePaint);
             this.dataGridView.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.dataGridView1_PreviewKeyDown);
             // 
             // bntLuaChon
             // 
-            this.bntLuaChon.Location = new System.Drawing.Point(94, 395);
+            this.bntLuaChon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bntLuaChon.Location = new System.Drawing.Point(94, 261);
             this.bntLuaChon.Name = "bntLuaChon";
             this.bntLuaChon.Size = new System.Drawing.Size(75, 23);
             this.bntLuaChon.TabIndex = 7;
@@ -120,7 +97,8 @@ namespace App.Views {
             // 
             // bntXoa
             // 
-            this.bntXoa.Location = new System.Drawing.Point(13, 395);
+            this.bntXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bntXoa.Location = new System.Drawing.Point(13, 261);
             this.bntXoa.Name = "bntXoa";
             this.bntXoa.Size = new System.Drawing.Size(75, 23);
             this.bntXoa.TabIndex = 8;
@@ -130,7 +108,8 @@ namespace App.Views {
             // 
             // bntTaoMoi
             // 
-            this.bntTaoMoi.Location = new System.Drawing.Point(284, 8);
+            this.bntTaoMoi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bntTaoMoi.Location = new System.Drawing.Point(393, 9);
             this.bntTaoMoi.Name = "bntTaoMoi";
             this.bntTaoMoi.Size = new System.Drawing.Size(75, 23);
             this.bntTaoMoi.TabIndex = 9;
@@ -142,16 +121,13 @@ namespace App.Views {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 430);
+            this.ClientSize = new System.Drawing.Size(482, 296);
             this.Controls.Add(this.bntTaoMoi);
             this.Controls.Add(this.bntXoa);
             this.Controls.Add(this.bntLuaChon);
             this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtTenGiayDep);
             this.Controls.Add(this.txtMaGiayDep);
-            this.Controls.Add(this.bntHuy);
             this.Controls.Add(this.bntLuu);
             this.Name = "SanPhanListView";
             this.Text = "sản phẩm";
@@ -164,11 +140,8 @@ namespace App.Views {
         #endregion
 
         private System.Windows.Forms.Button bntLuu;
-        private System.Windows.Forms.Button bntHuy;
         private System.Windows.Forms.TextBox txtMaGiayDep;
-        private System.Windows.Forms.TextBox txtTenGiayDep;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button bntLuaChon;
         private Button bntXoa;

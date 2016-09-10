@@ -49,16 +49,16 @@
             this.bntDoiTuong = new System.Windows.Forms.Button();
             this.bntMau = new System.Windows.Forms.Button();
             this.bntChatLieu = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.tabMain = new System.Windows.Forms.TabControl();
+            this.tabSanPham = new System.Windows.Forms.TabPage();
+            this.panel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabMain.SuspendLayout();
+            this.tabSanPham.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -75,7 +75,7 @@
             this.hướngDẫnToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(676, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(717, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -124,7 +124,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(643, 380);
+            this.tabPage3.Size = new System.Drawing.Size(684, 381);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Cấu hình";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -299,40 +299,47 @@
             this.bntChatLieu.UseVisualStyleBackColor = true;
             this.bntChatLieu.Click += new System.EventHandler(this.bntChatLieu_Click);
             // 
-            // tabControl1
+            // tabMain
             // 
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(13, 28);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(651, 406);
-            this.tabControl1.TabIndex = 3;
+            this.tabMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabMain.Controls.Add(this.tabPage3);
+            this.tabMain.Controls.Add(this.tabSanPham);
+            this.tabMain.Location = new System.Drawing.Point(13, 28);
+            this.tabMain.Name = "tabMain";
+            this.tabMain.SelectedIndex = 0;
+            this.tabMain.Size = new System.Drawing.Size(692, 407);
+            this.tabMain.TabIndex = 3;
             // 
-            // tabPage1
+            // tabSanPham
             // 
-            this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(643, 380);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabSanPham.Controls.Add(this.panel);
+            this.tabSanPham.Location = new System.Drawing.Point(4, 22);
+            this.tabSanPham.Margin = new System.Windows.Forms.Padding(0);
+            this.tabSanPham.Name = "tabSanPham";
+            this.tabSanPham.Size = new System.Drawing.Size(684, 381);
+            this.tabSanPham.TabIndex = 3;
+            this.tabSanPham.Text = "Sản phẩm";
+            this.tabSanPham.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // panel
             // 
-            this.panel1.Location = new System.Drawing.Point(7, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(630, 370);
-            this.panel1.TabIndex = 0;
+            this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel.Location = new System.Drawing.Point(4, 1);
+            this.panel.Margin = new System.Windows.Forms.Padding(0);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(677, 377);
+            this.panel.TabIndex = 0;
             // 
             // AppMediator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 446);
-            this.Controls.Add(this.tabControl1);
+            this.ClientSize = new System.Drawing.Size(717, 447);
+            this.Controls.Add(this.tabMain);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "AppMediator";
@@ -343,8 +350,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.tabMain.ResumeLayout(false);
+            this.tabSanPham.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -377,9 +384,9 @@
         private System.Windows.Forms.Button bntDoiTuong;
         private System.Windows.Forms.Button bntMau;
         private System.Windows.Forms.Button bntChatLieu;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TabControl tabMain;
+        private System.Windows.Forms.TabPage tabSanPham;
+        private System.Windows.Forms.Panel panel;
     }
 }
 

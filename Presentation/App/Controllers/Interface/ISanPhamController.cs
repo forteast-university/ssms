@@ -22,11 +22,10 @@ namespace App.Controllers.Interface{
     /// <summary>
     /// Interface IChatLieuController
     /// </summary>
-    public interface INhanVienController<T> : IBaseController<T> {
+    public interface ISanPhamController<T>: IBaseController<T> {
 
-        IList<NhanVienModel> Get(string value);
-        void ShowDangNhap();
-        void CloseParent();
-        void DangNhap(T value);
+        void HideSanPhamView();
+        void ShowSanPhamView(T value);
+        void SetSanPhamListView(Form value);
     }
 }

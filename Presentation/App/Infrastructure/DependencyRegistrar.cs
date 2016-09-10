@@ -54,12 +54,13 @@ namespace App.Infrastructure {
             builder.RegisterType<TheLoaiController>().As<IBaseController<TheLoaiModel>>().SingleInstance();
             builder.RegisterType<DoiTuongController>().As<IBaseController<DoiTuongModel>>().SingleInstance();
             builder.RegisterType<NhanVienController>().As<INhanVienController<NhanVienModel>>().SingleInstance();
+            builder.RegisterType<SanPhamController>().As<ISanPhamController<SanPhamModel>>().SingleInstance();
 
           //  builder.RegisterType<ChiTietHDBController>().As<IBaseController<ChiTietHDBModel>>().SingleInstance();
           //  builder.RegisterType<ChiTietHDNController>().As<IBaseController<ChiTietHDNModel>>().SingleInstance();
           //  builder.RegisterType<HoaDonBanController>().As<IBaseController<HoaDonBanModel>>().SingleInstance();
           //  builder.RegisterType<HoaDonNhapController>().As<IBaseController<HoaDonNhapModel>>().SingleInstance();
-          //  builder.RegisterType<SanPhamController>().As<IBaseController<SanPhamModel>>().SingleInstance();
+            
 
             builder.RegisterType<AppMediator>();
         }

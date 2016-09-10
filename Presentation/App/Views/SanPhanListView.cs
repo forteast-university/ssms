@@ -30,7 +30,7 @@ namespace App.Views{
         /// <summary>
         ///     The controller
         /// </summary>
-        private readonly IBaseController<SanPhamModel> controller;
+        private readonly ISanPhamController<SanPhamModel> controller;
 
         /// <summary>
         ///     The value chat lieu model
@@ -46,7 +46,7 @@ namespace App.Views{
         ///     Initializes a new instance of the <see cref="SanPhanListView" /> class.
         /// </summary>
         /// <param name="value">The value.</param>
-        public SanPhanListView(IBaseController<SanPhamModel> value){
+        public SanPhanListView(ISanPhamController<SanPhamModel> value){
             controller = value;
             InitializeComponent();
             bntLuaChon.Enabled = false;
@@ -89,68 +89,68 @@ namespace App.Views{
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void bntLuu_Click(object sender, EventArgs e){
 
-            if (txtMaGiayDep.Text == ""){
-                MessageBox.Show("Mã sản phẩm không được để rỗng");
-                return;
-            }
-            if (txtTenGiayDep.Text == ""){
-                MessageBox.Show("Tên sản phẩm không được để rỗng");
-                return;
-            }
+            // todo: tìm kiếm
+            //if (txtMaGiayDep.Text == ""){
+            //    MessageBox.Show("Mã sản phẩm không được để rỗng");
+            //    return;
+            //}
+            //if (txtTenGiayDep.Text == ""){
+            //    MessageBox.Show("Tên sản phẩm không được để rỗng");
+            //    return;
+            //}
+            //currentModel = (SanPhamModel) dataGridView.CurrentSelected(currentModelList);
+            //if (currentModel != null){
 
-            currentModel = (SanPhamModel) dataGridView.CurrentSelected(currentModelList);
-            if (currentModel != null){
+            //    var cm = currentModelList.Where(c => c.MaGiayDep == txtMaGiayDep.Text &&
+            //        c.ID != currentModel.ID);
+            //    if (cm.Any()) {
+            //        MessageBox.Show("Mã sản phẩm đã tồn tại trong một bản ghi khác");
+            //        return;
+            //    }
+            //    var ct = currentModelList.Where(c => c.TenGiayDep == txtTenGiayDep.Text &&
+            //        c.ID != currentModel.ID);
+            //    if (ct.Any()) {
+            //        MessageBox.Show("Tên sản phẩm đã tồn tại trong một bản ghi khác");
+            //        return;
+            //    }
 
-                var cm = currentModelList.Where(c => c.MaGiayDep == txtMaGiayDep.Text &&
-                    c.ID != currentModel.ID);
-                if (cm.Any()) {
-                    MessageBox.Show("Mã sản phẩm đã tồn tại trong một bản ghi khác");
-                    return;
-                }
-                var ct = currentModelList.Where(c => c.TenGiayDep == txtTenGiayDep.Text &&
-                    c.ID != currentModel.ID);
-                if (ct.Any()) {
-                    MessageBox.Show("Tên sản phẩm đã tồn tại trong một bản ghi khác");
-                    return;
-                }
-
-                currentModel.MaGiayDep = txtMaGiayDep.Text;
-                currentModel.TenGiayDep = txtTenGiayDep.Text;
-                controller.Update(currentModel);
-                //re-update UI
+            //    currentModel.MaGiayDep = txtMaGiayDep.Text;
+            //    currentModel.TenGiayDep = txtTenGiayDep.Text;
+            //    controller.Update(currentModel);
+            //    //re-update UI
                 
-                dataGridView.UpdateView("MaGiayDep", currentModel.MaGiayDep);
-                dataGridView.UpdateView("TenGiayDep", currentModel.TenGiayDep);
+            //    dataGridView.UpdateView("MaGiayDep", currentModel.MaGiayDep);
+            //    dataGridView.UpdateView("TenGiayDep", currentModel.TenGiayDep);
 
-                txtMaGiayDep.Focus();
-                txtMaGiayDep.SelectAll();
-                bntTaoMoi.Enabled = true;
-                bntLuu.Enabled = true;
-            }
-            else{
-                var cm = currentModelList.Where(c => c.MaGiayDep == txtMaGiayDep.Text);
-                if (cm.Any()) {
-                    MessageBox.Show("Mã sản phẩm đã tồn tại");
-                    return;
-                }
-                var ct = currentModelList.Where(c => c.TenGiayDep == txtTenGiayDep.Text);
-                if (ct.Any()) {
-                    MessageBox.Show("Tên sản phẩm đã tồn tại");
-                    return;
-                }
-                currentModel = new SanPhamModel{
-                    MaGiayDep = txtMaGiayDep.Text,
-                    TenGiayDep = txtTenGiayDep.Text,
-                };
+            //    txtMaGiayDep.Focus();
+            //    txtMaGiayDep.SelectAll();
+            //    bntTaoMoi.Enabled = true;
+            //    bntLuu.Enabled = true;
+            //}
+            //else{
+            //    var cm = currentModelList.Where(c => c.MaGiayDep == txtMaGiayDep.Text);
+            //    if (cm.Any()) {
+            //        MessageBox.Show("Mã sản phẩm đã tồn tại");
+            //        return;
+            //    }
+            //    var ct = currentModelList.Where(c => c.TenGiayDep == txtTenGiayDep.Text);
+            //    if (ct.Any()) {
+            //        MessageBox.Show("Tên sản phẩm đã tồn tại");
+            //        return;
+            //    }
+            //    currentModel = new SanPhamModel{
+            //        MaGiayDep = txtMaGiayDep.Text,
+            //        TenGiayDep = txtTenGiayDep.Text,
+            //    };
 
-                controller.Insert(currentModel);
-                txtMaGiayDep.Focus();
-                txtMaGiayDep.SelectAll();
-                //txtTenGiayDep.Text = "";
-                controller.ReviewGrid();
-                bntTaoMoi.Enabled = true;
-                bntLuu.Enabled = true;
-            }
+            //    controller.Insert(currentModel);
+            //    txtMaGiayDep.Focus();
+            //    txtMaGiayDep.SelectAll();
+            //    //txtTenGiayDep.Text = "";
+            //    controller.ReviewGrid();
+            //    bntTaoMoi.Enabled = true;
+            //    bntLuu.Enabled = true;
+            //}
         }
 
         /// <summary>
@@ -213,7 +213,6 @@ namespace App.Views{
             currentModel = (SanPhamModel) dataGridView.CurrentSelected(currentModelList);
             if (currentModel != null){
                 txtMaGiayDep.Text = currentModel.MaGiayDep;
-                txtTenGiayDep.Text = currentModel.TenGiayDep;
             }
             bntLuu.Enabled = true;
             bntTaoMoi.Enabled = true;
@@ -266,20 +265,18 @@ namespace App.Views{
             bntLuu.Enabled = false;
             bntTaoMoi.Enabled = true;
         }
-
         /// <summary>
         ///     Handles the Click event of the bntTaoMoi control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void bntTaoMoi_Click(object sender, EventArgs e){
-            dataGridView.ClearSelection();
-            txtMaGiayDep.Text = "";
-            txtTenGiayDep.Text = "";
-            txtMaGiayDep.Focus();
-            bntLuaChon.Enabled = false;
-            bntTaoMoi.Enabled = false;
-            bntLuu.Enabled = true;
+            controller.ShowSanPhamView(null);
+        }
+        private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            currentModel = (SanPhamModel)dataGridView.CurrentSelected(currentModelList);
+            controller.ShowSanPhamView(currentModel);
         }
     }
 }

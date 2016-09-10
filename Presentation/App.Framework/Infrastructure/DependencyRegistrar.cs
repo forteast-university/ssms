@@ -84,6 +84,7 @@ namespace App.Framework.Infrastructure{
             builder.RegisterType<NuocSanXuatService>().As<INuocSanXuatService>().SingleInstance();
             builder.RegisterType<SanPhamService>().As<ISanPhamService>().SingleInstance();
             builder.RegisterType<TheLoaiService>().As<ITheLoaiService>().SingleInstance();
+            
 
         }
 
