@@ -25,6 +25,7 @@ namespace App.Views {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            //this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.bntLuu = new System.Windows.Forms.Button();
             this.bntHuy = new System.Windows.Forms.Button();
             this.txtMaChatLieu = new System.Windows.Forms.TextBox();
@@ -94,7 +95,7 @@ namespace App.Views {
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AllowUserToResizeRows = false; 
+            this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(12, 68);
@@ -155,6 +156,10 @@ namespace App.Views {
             this.Controls.Add(this.bntHuy);
             this.Controls.Add(this.bntLuu);
             this.Name = "ChatLieuView";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Chất Liệu";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

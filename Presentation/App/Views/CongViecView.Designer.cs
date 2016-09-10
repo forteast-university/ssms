@@ -1,4 +1,6 @@
-﻿namespace App.Views
+﻿using System.Windows.Forms;
+
+namespace App.Views
 {
     partial class CongViecView
     {
@@ -27,7 +29,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
-        {
+        {      //this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.bntTaoMoi = new System.Windows.Forms.Button();
             this.bntXoa = new System.Windows.Forms.Button();
             this.bntLuaChon = new System.Windows.Forms.Button();
@@ -43,7 +45,7 @@
             // 
             // bntTaoMoi
             // 
-            this.bntTaoMoi.Location = new System.Drawing.Point(304, 2);
+            this.bntTaoMoi.Location = new System.Drawing.Point(294, 2);
             this.bntTaoMoi.Name = "bntTaoMoi";
             this.bntTaoMoi.Size = new System.Drawing.Size(75, 23);
             this.bntTaoMoi.TabIndex = 19;
@@ -53,7 +55,8 @@
             // 
             // bntXoa
             // 
-            this.bntXoa.Location = new System.Drawing.Point(33, 389);
+            this.bntXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bntXoa.Location = new System.Drawing.Point(12, 389);
             this.bntXoa.Name = "bntXoa";
             this.bntXoa.Size = new System.Drawing.Size(75, 23);
             this.bntXoa.TabIndex = 18;
@@ -63,7 +66,8 @@
             // 
             // bntLuaChon
             // 
-            this.bntLuaChon.Location = new System.Drawing.Point(114, 389);
+            this.bntLuaChon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bntLuaChon.Location = new System.Drawing.Point(93, 389);
             this.bntLuaChon.Name = "bntLuaChon";
             this.bntLuaChon.Size = new System.Drawing.Size(75, 23);
             this.bntLuaChon.TabIndex = 17;
@@ -75,15 +79,19 @@
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AllowUserToResizeRows = false; this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(32, 62);
+            this.dataGridView.Location = new System.Drawing.Point(12, 62);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(347, 321);
+            this.dataGridView.Size = new System.Drawing.Size(384, 321);
             this.dataGridView.TabIndex = 16;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             this.dataGridView.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView_RowPrePaint);
@@ -123,7 +131,8 @@
             // 
             // bntHuy
             // 
-            this.bntHuy.Location = new System.Drawing.Point(304, 389);
+            this.bntHuy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bntHuy.Location = new System.Drawing.Point(321, 389);
             this.bntHuy.Name = "bntHuy";
             this.bntHuy.Size = new System.Drawing.Size(75, 23);
             this.bntHuy.TabIndex = 11;
@@ -133,7 +142,7 @@
             // 
             // bntLuu
             // 
-            this.bntLuu.Location = new System.Drawing.Point(304, 31);
+            this.bntLuu.Location = new System.Drawing.Point(294, 31);
             this.bntLuu.Name = "bntLuu";
             this.bntLuu.Size = new System.Drawing.Size(75, 23);
             this.bntLuu.TabIndex = 10;
@@ -157,6 +166,10 @@
             this.Controls.Add(this.bntHuy);
             this.Controls.Add(this.bntLuu);
             this.Name = "CongViecView";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Công việc";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

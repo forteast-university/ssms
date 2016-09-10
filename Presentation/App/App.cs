@@ -13,6 +13,8 @@
 // ***********************************************************************
 
 using System;
+using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 using App.Core.Infrastructure;
 using App.Views;
@@ -25,6 +27,10 @@ namespace App {
     public static class App{
         [STAThread]
         public static void Main() {
+            var culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
+            culture.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy";
+            culture.DateTimeFormat.LongTimePattern = "";
+            Thread.CurrentThread.CurrentCulture = culture;
             AppFacade.Initialize(false);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

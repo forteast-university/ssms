@@ -32,7 +32,9 @@
 //</summary>
 // ***********************************************************************
 
+using System.ComponentModel;
 using App.Core.Domain;
+using App.Extensions;
 
 namespace App.Models{
     /// <summary>
@@ -53,7 +55,17 @@ namespace App.Models{
     public class MauModel : Mau { }
     public class MuaModel : Mua { }
     public class NhaCungCapModel : NhaCungCap { }
-    public class NhanVienModel : NhanVien { }
+
+    public class NhanVienModel : NhanVien
+    {
+        [DisplayName("Ngày sinh")]
+        public virtual string NgaySinhModel {
+            get
+            {
+                return NgaySinh.ToDateString();
+            }
+        }
+    }
     public class NuocSanXuatModel : NuocSanXuat { }
     public class SanPhamModel : SanPham { }
     public class TheLoaiModel : TheLoai { }

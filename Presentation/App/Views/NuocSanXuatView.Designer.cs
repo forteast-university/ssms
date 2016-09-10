@@ -1,4 +1,6 @@
-﻿namespace App.Views
+﻿using System.Windows.Forms;
+
+namespace App.Views
 {
     partial class NuocSanXuatView
     {
@@ -26,8 +28,8 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
+            //this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.bntTaoMoi = new System.Windows.Forms.Button();
             this.bntXoa = new System.Windows.Forms.Button();
             this.bntLuaChon = new System.Windows.Forms.Button();
@@ -158,6 +160,9 @@
             this.Controls.Add(this.bntLuu);
             this.Name = "NuocSanXuatView";
             this.Text = "Nước Sản Xuất";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

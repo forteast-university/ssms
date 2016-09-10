@@ -27,7 +27,6 @@ namespace App.Data {
     /// Object context
     /// </summary>
     public class AppContext: DbContext, IDbContext {
-        #region Ctor
 
         /// <summary>
         /// Constructs a new context instance using the given string as the name or connection string for the
@@ -38,10 +37,8 @@ namespace App.Data {
         public AppContext(string nameOrConnectionString = "")
             : base(nameOrConnectionString) {
             base.Configuration.ProxyCreationEnabled = false;
-            //((IObjectContextAdapter) this).ObjectContext.ContextOptions.LazyLoadingEnabled = true;
+            ((IObjectContextAdapter) this).ObjectContext.ContextOptions.LazyLoadingEnabled = false;
         }
-
-        #endregion
 
         #region Utilities
 

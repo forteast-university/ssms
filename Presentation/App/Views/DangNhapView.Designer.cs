@@ -1,4 +1,6 @@
-﻿namespace App.Views {
+﻿using System.Windows.Forms;
+
+namespace App.Views {
     partial class DangNhapView {
         /// <summary>
         /// Required designer variable.
@@ -23,6 +25,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            //this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.bntThoat = new System.Windows.Forms.Button();
             this.bntDongY = new System.Windows.Forms.Button();
             this.txtMaNhanVien = new System.Windows.Forms.TextBox();
@@ -121,6 +124,9 @@
             this.Controls.Add(this.bntThoat);
             this.Name = "DangNhapView";
             this.Text = "Đăng Nhập";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.ResumeLayout(false);
             this.PerformLayout();
 

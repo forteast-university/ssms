@@ -343,7 +343,8 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "AppMediator";
-            this.Text = "Form1";
+            this.Text = "SSMS";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabPage3.ResumeLayout(false);

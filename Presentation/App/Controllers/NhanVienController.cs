@@ -35,10 +35,10 @@ namespace App.Controllers{
         private readonly INhanVienService currentService;
 
         /// <summary>
-        ///     The view
+        ///     The dangNhapView
         /// </summary>
-        private readonly DangNhapView view;
-        private readonly NhanVienView viewNhanVien;
+        private readonly DangNhapView dangNhapView;
+        private readonly NhanVienView nhanVienView;
 
         public void CloseParent() {
 
@@ -55,13 +55,13 @@ namespace App.Controllers{
             if (a != null){
                 if (value.MatKhau == a.MatKhau){
                     //todo: pass
-                    //view.Hide();
+                    //dangNhapView.Hide();
                 }
             }
             else{
                 //Notification(Mediator.DANGNHAP_KHONG_THANH_CONG, new AppEvent<NhanVienModel>{}); return;
             }
-            view.Hide();
+            dangNhapView.Hide();
         }
         public event EventHandler<AppEvent<NhanVienModel>> Notification;
 
@@ -71,8 +71,8 @@ namespace App.Controllers{
         /// <param name="currentService">The chat lieu service.</param>
         public NhanVienController(INhanVienService currentService){
             this.currentService = currentService;
-            view = new DangNhapView(this);
-            //viewNhanVien = new NhanVienView(this);
+            dangNhapView = new DangNhapView(this);
+            nhanVienView = new NhanVienView(this);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace App.Controllers{
         /// </summary>
         public void View(){
             PostView();
-            view.View();
+            nhanVienView.View();
         }
 
         /// <summary>
@@ -148,18 +148,18 @@ namespace App.Controllers{
         }
 
         public void ShowDangNhap() {
-            view.ShowDialog();
+            dangNhapView.ShowDialog();
         }
 
         
 
         /// <summary>
-        ///     Posts the view.
+        ///     Posts the dangNhapView.
         /// </summary>
         private void PostView(){
             IEnumerable<NhanVien> a = currentService.GetAll();
             List<NhanVienModel> listModel = a.Select(b => b.ToModel()).ToList();
-            view.PostView(listModel);
+            nhanVienView.PostView(listModel);
         }
 
         protected virtual NhanVien ModelToEntity(NhanVienModel model){

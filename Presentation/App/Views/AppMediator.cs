@@ -194,7 +194,7 @@ namespace App.Views {
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void bntNhanVien_Click(object sender, EventArgs e) {
             try {
-                var a = app.Resolve<IBaseController<NhanVienModel>>();
+                var a = app.Resolve<INhanVienController<NhanVienModel>>();
                 a.Notification += Eventlistener;
                 a.View();
             } catch(ComponentNotRegisteredException exception) {

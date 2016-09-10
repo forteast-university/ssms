@@ -25,6 +25,7 @@ namespace App.Views {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            //this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.bntLuu = new System.Windows.Forms.Button();
             this.bntHuy = new System.Windows.Forms.Button();
             this.txtMaCo = new System.Windows.Forms.TextBox();
@@ -155,6 +156,9 @@ namespace App.Views {
             this.Controls.Add(this.bntLuu);
             this.Name = "KichCoView";
             this.Text = "Kích cỡ";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

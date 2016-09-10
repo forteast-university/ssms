@@ -1,4 +1,6 @@
-﻿namespace App.Views
+﻿using System.Windows.Forms;
+
+namespace App.Views
 {
     partial class SanPhamView
     {
@@ -26,8 +28,8 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
+            //this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.label1 = new System.Windows.Forms.Label();
             this.txtMaSanPham = new System.Windows.Forms.TextBox();
             this.txtSoLuongSanPham = new System.Windows.Forms.TextBox();
@@ -430,6 +432,9 @@
             this.Controls.Add(this.label1);
             this.MinimizeBox = false;
             this.Name = "SanPhamView";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sản Phẩm";
             this.ResumeLayout(false);

@@ -100,8 +100,11 @@ namespace App.Infrastructure{
             mapperConfiguration.CreateMap<NhaCungCapModel, NhaCungCap>();
             mapperConfiguration.CreateMap<NhaCungCap, NhaCungCapModel>();
 
-            mapperConfiguration.CreateMap<NhanVienModel, NhanVien>();
-            mapperConfiguration.CreateMap<NhanVien, NhanVienModel>();
+            mapperConfiguration.CreateMap<NhanVienModel, NhanVien>()
+                ;
+            mapperConfiguration.CreateMap<NhanVien, NhanVienModel>()
+                .ForMember(a => a.NgaySinhModel, b => b.Ignore())
+                ;
 
             mapperConfiguration.CreateMap<NuocSanXuatModel, NuocSanXuat>();
             mapperConfiguration.CreateMap<NuocSanXuat, NuocSanXuatModel>();

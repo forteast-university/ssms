@@ -98,6 +98,12 @@
     <Compile Include="Views\DoiTuongView.Designer.cs">
       <DependentUpon>DoiTuongView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\NhanVienView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\NhanVienView.Designer.cs">
+      <DependentUpon>NhanVienView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\SanPhanListView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,12 +115,6 @@
     </Compile>
     <Compile Include="Views\MauView.Designer.cs">
       <DependentUpon>MauView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\NhanVienView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\NhanVienView.Designer.cs">
-      <DependentUpon>NhanVienView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\NuocSanXuatView.cs">
       <SubType>Form</SubType>
@@ -191,14 +191,14 @@
     <EmbeddedResource Include="Views\DoiTuongView.resx">
       <DependentUpon>DoiTuongView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\NhanVienView.resx">
+      <DependentUpon>NhanVienView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\SanPhanListView.resx">
       <DependentUpon>SanPhanListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MauView.resx">
       <DependentUpon>MauView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\NhanVienView.resx">
-      <DependentUpon>NhanVienView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\NuocSanXuatView.resx">
       <DependentUpon>NuocSanXuatView.cs</DependentUpon>

@@ -226,7 +226,6 @@ namespace App.Views
 
         private void bntHuy_Click(object sender, EventArgs e)
         {
-
             Hide();
         }
 

@@ -15,10 +15,13 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 using App.Core.Domain;
+using App.Core.Infrastructure;
 using App.Infrastructure;
 using App.Models;
 
@@ -128,6 +131,35 @@ namespace App.Extensions{
 
             return Convert.ToDouble(m);
         }
+        public static string ToDateString(this DateTime? superset) {
+            var m = superset;
+            if(m == null)
+                return "";
+            var dt=m.Value.ToString("dd/MM/yyyy");
+            return dt;
+        }
+        /// <summary>
+        /// To the date time with format: dd/MM/yyyy
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="superset">The superset.</param>
+        /// <returns>DateTime.</returns>
+        public static DateTime ToDateTime<T>(this T superset) {
+            var m = superset as string;
+            if(m == null)
+                return DateTime.Now;
+            if(m.Trim() == "")
+                return DateTime.Now;
+            try
+            {
+                var dt = DateTime.ParseExact(m, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                return dt;
+            }
+            catch
+            {
+                return DateTime.Now;
+            }
+        }
         /// <summary>
         /// To the boolean.
         /// </summary>
@@ -140,8 +172,23 @@ namespace App.Extensions{
                 return false;
             if(m.Trim() == "")
                 return false;
-
             return Convert.ToBoolean(m);
+        }
+        /// <summary>
+        /// To the encrypt.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="superset">The superset.</param>
+        /// <returns>System.String.</returns>
+        public static string ToEncrypt<T>(this T superset) {
+            var m = superset as string ?? "";
+            var a = new MD5CryptoServiceProvider();
+            var bs = Encoding.UTF8.GetBytes(m);
+            bs = a.ComputeHash(bs);
+            var s = new StringBuilder();
+            foreach(var b in bs)
+                s.Append(b.ToString("x2"));
+            return s.ToString();
         }
         /// <summary>
         /// Serializes the specified superset.
@@ -150,8 +197,8 @@ namespace App.Extensions{
         /// <param name="superset">The superset.</param>
         /// <returns>System.String.</returns>
         public static string Serialize<T>(this IEnumerable<T> superset){
-            //if (Singleton<JavaScriptSerializer>.Instance == null){
-            //    Singleton<JavaScriptSerializer>.Instance = new JavaScriptSerializer {MaxJsonLength = Int32.MaxValue};
+            //if(Singleton<JavaScriptSerializer>.Instance == null) {
+            //    Singleton<JavaScriptSerializer>.Instance = new JavaScriptSerializer { MaxJsonLength = Int32.MaxValue };
             //}
             //var k = Singleton<JavaScriptSerializer>.Instance;
             ////var result = new ContentResult {
