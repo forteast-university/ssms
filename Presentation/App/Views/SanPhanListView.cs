@@ -232,13 +232,13 @@ namespace App.Views{
         private void bntTimKiem_Click(object sender, EventArgs e)
         {
             var dataModelList = currentModelList.Where(c => c.MaGiayDep.Contains(txtTimKiem.Text.Trim()) || c.TenGiayDep.Contains(txtTimKiem.Text.Trim()));
-            if (dataModelList.Any())
+            if (    dataModelList.Any())
             {
                 dataGridView.DataSource = new BindingSource { DataSource = dataModelList };
             }
             else
             {
-                MessageBox.Show("không tìm thấy sản phẩm hoặc mã sản phẩm là:" + txtTimKiem.Text);
+                MessageBox.Show("không tìm thấy sản phẩm,mã sản phẩm :" + txtTimKiem.Text+"!!!");
             }
             // todo: tìm kiếm
             //if (txtMaGiayDep.Text == ""){
