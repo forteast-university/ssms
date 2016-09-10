@@ -231,14 +231,28 @@ namespace App.Views{
      
         private void bntTimKiem_Click(object sender, EventArgs e)
         {
-            var dataModelList = currentModelList.Where(c => c.MaGiayDep.Contains(txtTimKiem.Text.Trim()) || c.TenGiayDep.Contains(txtTimKiem.Text.Trim()));
-            if (    dataModelList.Any())
+            var dataModelList = currentModelList;
+            // var dataModelList= currentModelList.Where(c => c.MaGiayDep.Contains(txtTimKiem.Text.Trim()) || c.TenGiayDep.Contains(txtTimKiem.Text.Trim()));      
+            if (cbbTimKiem.SelectedItem == "Danh mục tìm kiếm")
+            {
+                MessageBox.Show("bạn chưa chọn danh mục tìm kiếm!");
+                return;
+            }
+            else if (cbbTimKiem.SelectedItem == "Mã sản phẩm")
+            {
+                dataModelList = currentModelList.Where(c => c.MaGiayDep.Contains(txtTimKiem.Text.Trim()));
+            }
+            else if (cbbTimKiem.SelectedItem == "Tên sản phẩm")
+            {
+                dataModelList = currentModelList.Where(c => c.TenGiayDep.Contains(txtTimKiem.Text.Trim())); 
+            }
+            if (dataModelList.Any())
             {
                 dataGridView.DataSource = new BindingSource { DataSource = dataModelList };
             }
             else
             {
-                MessageBox.Show("không tìm thấy sản phẩm,mã sản phẩm :" + txtTimKiem.Text+"!!!");
+                MessageBox.Show("không tìm thấy sản phẩm !!!");
             }
             // todo: tìm kiếm
             //if (txtMaGiayDep.Text == ""){
@@ -302,6 +316,13 @@ namespace App.Views{
             //    bntTaoMoi.Enabled = true;
             //    bntLuu.Enabled = true;
             //}
+        }
+
+        string[] danhSachT = { "Danh mục tìm kiếm", "Mã sản phẩm", "Tên sản phẩm" };
+
+        private void SanPhanListView_Load(object sender, EventArgs e)
+        {
+            cbbTimKiem.DataSource = danhSachT;
         }
     }
 }

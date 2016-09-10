@@ -32,12 +32,14 @@ namespace App.Views {
             this.bntLuaChon = new System.Windows.Forms.Button();
             this.bntXoa = new System.Windows.Forms.Button();
             this.bntTaoMoi = new System.Windows.Forms.Button();
+            this.cbbTimKiem = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // bntTimKiem
             // 
-            this.bntTimKiem.Location = new System.Drawing.Point(311, 9);
+            this.bntTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bntTimKiem.Location = new System.Drawing.Point(406, 7);
             this.bntTimKiem.Name = "bntTimKiem";
             this.bntTimKiem.Size = new System.Drawing.Size(75, 23);
             this.bntTimKiem.TabIndex = 0;
@@ -47,9 +49,9 @@ namespace App.Views {
             // 
             // txtTimKiem
             // 
-            this.txtTimKiem.Location = new System.Drawing.Point(88, 11);
+            this.txtTimKiem.Location = new System.Drawing.Point(73, 10);
             this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(217, 20);
+            this.txtTimKiem.Size = new System.Drawing.Size(193, 20);
             this.txtTimKiem.TabIndex = 2;
             // 
             // label1
@@ -77,7 +79,7 @@ namespace App.Views {
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(456, 217);
+            this.dataGridView.Size = new System.Drawing.Size(467, 234);
             this.dataGridView.TabIndex = 6;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             this.dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
@@ -87,7 +89,7 @@ namespace App.Views {
             // bntLuaChon
             // 
             this.bntLuaChon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bntLuaChon.Location = new System.Drawing.Point(94, 261);
+            this.bntLuaChon.Location = new System.Drawing.Point(94, 278);
             this.bntLuaChon.Name = "bntLuaChon";
             this.bntLuaChon.Size = new System.Drawing.Size(75, 23);
             this.bntLuaChon.TabIndex = 7;
@@ -98,7 +100,7 @@ namespace App.Views {
             // bntXoa
             // 
             this.bntXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bntXoa.Location = new System.Drawing.Point(13, 261);
+            this.bntXoa.Location = new System.Drawing.Point(13, 278);
             this.bntXoa.Name = "bntXoa";
             this.bntXoa.Size = new System.Drawing.Size(75, 23);
             this.bntXoa.TabIndex = 8;
@@ -108,8 +110,8 @@ namespace App.Views {
             // 
             // bntTaoMoi
             // 
-            this.bntTaoMoi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bntTaoMoi.Location = new System.Drawing.Point(393, 9);
+            this.bntTaoMoi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bntTaoMoi.Location = new System.Drawing.Point(175, 278);
             this.bntTaoMoi.Name = "bntTaoMoi";
             this.bntTaoMoi.Size = new System.Drawing.Size(75, 23);
             this.bntTaoMoi.TabIndex = 9;
@@ -117,11 +119,20 @@ namespace App.Views {
             this.bntTaoMoi.UseVisualStyleBackColor = true;
             this.bntTaoMoi.Click += new System.EventHandler(this.bntTaoMoi_Click);
             // 
+            // cbbTimKiem
+            // 
+            this.cbbTimKiem.FormattingEnabled = true;
+            this.cbbTimKiem.Location = new System.Drawing.Point(272, 9);
+            this.cbbTimKiem.Name = "cbbTimKiem";
+            this.cbbTimKiem.Size = new System.Drawing.Size(121, 21);
+            this.cbbTimKiem.TabIndex = 10;
+            // 
             // SanPhanListView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 296);
+            this.ClientSize = new System.Drawing.Size(493, 313);
+            this.Controls.Add(this.cbbTimKiem);
             this.Controls.Add(this.bntTaoMoi);
             this.Controls.Add(this.bntXoa);
             this.Controls.Add(this.bntLuaChon);
@@ -131,6 +142,7 @@ namespace App.Views {
             this.Controls.Add(this.bntTimKiem);
             this.Name = "SanPhanListView";
             this.Text = "sản phẩm";
+            this.Load += new System.EventHandler(this.SanPhanListView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -146,5 +158,6 @@ namespace App.Views {
         private System.Windows.Forms.Button bntLuaChon;
         private Button bntXoa;
         private Button bntTaoMoi;
+        private ComboBox cbbTimKiem;
     }
 }
