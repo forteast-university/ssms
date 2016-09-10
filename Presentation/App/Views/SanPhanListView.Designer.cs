@@ -121,6 +121,7 @@ namespace App.Views {
             // 
             // cbbTimKiem
             // 
+            this.cbbTimKiem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbTimKiem.FormattingEnabled = true;
             this.cbbTimKiem.Location = new System.Drawing.Point(272, 9);
             this.cbbTimKiem.Name = "cbbTimKiem";

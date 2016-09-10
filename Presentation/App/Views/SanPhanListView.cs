@@ -303,12 +303,7 @@ namespace App.Views{
         {
             var dataModelList = currentModelList;
             // var dataModelList= currentModelList.Where(c => c.MaGiayDep.Contains(txtTimKiem.Text.Trim()) || c.TenGiayDep.Contains(txtTimKiem.Text.Trim()));      
-            if (cbbTimKiem.SelectedItem == "Danh mục tìm kiếm")
-            {
-                MessageBox.Show("bạn chưa chọn danh mục tìm kiếm!");
-                return;
-            }
-            else if (cbbTimKiem.SelectedItem == "Mã sản phẩm")
+            if (cbbTimKiem.SelectedItem == "Mã sản phẩm")
             {
                 dataModelList = currentModelList.Where(c => c.MaGiayDep.Contains(txtTimKiem.Text.Trim()));
             }
