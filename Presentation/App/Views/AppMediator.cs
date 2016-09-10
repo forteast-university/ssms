@@ -148,7 +148,7 @@ namespace App.Views {
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void bntKichCo_Click(object sender, EventArgs e) {
             try {
-                var a = app.Resolve<IBaseController<TheLoaiModel>>();
+                var a = app.Resolve<IBaseController<KichCoModel>>();
                 a.Notification += Eventlistener;
                 a.View();
             } catch(ComponentNotRegisteredException exception) {
