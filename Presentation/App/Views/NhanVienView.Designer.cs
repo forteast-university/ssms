@@ -35,7 +35,6 @@ namespace App.Views {
             this.txtMatKhau = new System.Windows.Forms.TextBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.txtDienThoai = new System.Windows.Forms.TextBox();
-            this.txtNgaySinh = new System.Windows.Forms.TextBox();
             this.txtGioiTinh = new System.Windows.Forms.TextBox();
             this.txtTenNhanVien = new System.Windows.Forms.TextBox();
             this.txtMaNhanVien = new System.Windows.Forms.TextBox();
@@ -50,13 +49,14 @@ namespace App.Views {
             this.txtMatKhau2 = new System.Windows.Forms.TextBox();
             this.bntCongViec = new System.Windows.Forms.Button();
             this.bntSuaMatKhau = new System.Windows.Forms.Button();
+            this.txtNgaySinh = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // bntLuu
             // 
             this.bntLuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bntLuu.Location = new System.Drawing.Point(364, 193);
+            this.bntLuu.Location = new System.Drawing.Point(427, 193);
             this.bntLuu.Name = "bntLuu";
             this.bntLuu.Size = new System.Drawing.Size(75, 23);
             this.bntLuu.TabIndex = 10;
@@ -67,7 +67,7 @@ namespace App.Views {
             // bntHuy
             // 
             this.bntHuy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bntHuy.Location = new System.Drawing.Point(364, 432);
+            this.bntHuy.Location = new System.Drawing.Point(427, 432);
             this.bntHuy.Name = "bntHuy";
             this.bntHuy.Size = new System.Drawing.Size(75, 23);
             this.bntHuy.TabIndex = 15;
@@ -91,7 +91,7 @@ namespace App.Views {
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(426, 204);
+            this.dataGridView.Size = new System.Drawing.Size(489, 204);
             this.dataGridView.TabIndex = 12;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             this.dataGridView.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgv_RowPrePaint);
@@ -122,7 +122,7 @@ namespace App.Views {
             // bntTaoMoi
             // 
             this.bntTaoMoi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bntTaoMoi.Location = new System.Drawing.Point(364, 168);
+            this.bntTaoMoi.Location = new System.Drawing.Point(427, 168);
             this.bntTaoMoi.Name = "bntTaoMoi";
             this.bntTaoMoi.Size = new System.Drawing.Size(75, 23);
             this.bntTaoMoi.TabIndex = 11;
@@ -157,13 +157,6 @@ namespace App.Views {
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.Size = new System.Drawing.Size(264, 20);
             this.txtDienThoai.TabIndex = 5;
-            // 
-            // txtNgaySinh
-            // 
-            this.txtNgaySinh.Location = new System.Drawing.Point(94, 92);
-            this.txtNgaySinh.Name = "txtNgaySinh";
-            this.txtNgaySinh.Size = new System.Drawing.Size(264, 20);
-            this.txtNgaySinh.TabIndex = 4;
             // 
             // txtGioiTinh
             // 
@@ -285,11 +278,19 @@ namespace App.Views {
             this.bntSuaMatKhau.UseVisualStyleBackColor = true;
             this.bntSuaMatKhau.Click += new System.EventHandler(this.bntSuaMatKhau_Click);
             // 
+            // txtNgaySinh
+            // 
+            this.txtNgaySinh.Location = new System.Drawing.Point(94, 92);
+            this.txtNgaySinh.Name = "txtNgaySinh";
+            this.txtNgaySinh.Size = new System.Drawing.Size(130, 20);
+            this.txtNgaySinh.TabIndex = 4;
+            // 
             // NhanVienView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 467);
+            this.ClientSize = new System.Drawing.Size(513, 467);
+            this.Controls.Add(this.txtNgaySinh);
             this.Controls.Add(this.bntSuaMatKhau);
             this.Controls.Add(this.bntCongViec);
             this.Controls.Add(this.txtMatKhau2);
@@ -297,7 +298,6 @@ namespace App.Views {
             this.Controls.Add(this.txtMatKhau);
             this.Controls.Add(this.txtDiaChi);
             this.Controls.Add(this.txtDienThoai);
-            this.Controls.Add(this.txtNgaySinh);
             this.Controls.Add(this.txtGioiTinh);
             this.Controls.Add(this.txtTenNhanVien);
             this.Controls.Add(this.txtMaNhanVien);
@@ -338,7 +338,6 @@ namespace App.Views {
         private TextBox txtMatKhau;
         private TextBox txtDiaChi;
         private TextBox txtDienThoai;
-        private TextBox txtNgaySinh;
         private TextBox txtGioiTinh;
         private TextBox txtTenNhanVien;
         private TextBox txtMaNhanVien;
@@ -353,5 +352,6 @@ namespace App.Views {
         private TextBox txtMatKhau2;
         private Button bntCongViec;
         private Button bntSuaMatKhau;
+        private DateTimePicker txtNgaySinh;
     }
 }

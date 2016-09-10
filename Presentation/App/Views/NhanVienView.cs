@@ -51,6 +51,8 @@ namespace App.Views{
             InitializeComponent();
             bntLuaChon.Enabled = false;
             bntXoa.Enabled = false;
+            txtNgaySinh.Format = DateTimePickerFormat.Custom;
+            txtNgaySinh.CustomFormat = "dd-MM-yyyy";
         }
 
         /// <summary>

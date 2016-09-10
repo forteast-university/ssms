@@ -304,8 +304,8 @@
             this.tabMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabMain.Controls.Add(this.tabPage3);
             this.tabMain.Controls.Add(this.tabSanPham);
+            this.tabMain.Controls.Add(this.tabPage3);
             this.tabMain.Location = new System.Drawing.Point(13, 28);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
