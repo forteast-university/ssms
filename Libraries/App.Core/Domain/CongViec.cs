@@ -42,6 +42,6 @@ namespace App.Core.Domain {
         [DisplayName("Tên công việc")]
         public string TenCV { get; set; }
 
-        // public virtual ICollection<NhanVien> NhanVien { get; set; }
+        
     }
 }

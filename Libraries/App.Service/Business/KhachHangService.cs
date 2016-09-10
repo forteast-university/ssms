@@ -37,7 +37,7 @@ namespace App.Service.Business
 
         public KhachHang GetByMa(string ma)
         {
-            var query = from a in repos.Table where a.MaKhach != ma select a;
+            var query = from a in repos.Table where a.MaKhach == ma select a;
             return query.FirstOrDefault();
         }
 

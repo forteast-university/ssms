@@ -37,7 +37,7 @@ namespace App.Service.Business
 
         public HoaDonBan GetByMa(string ma)
         {
-            var query = from a in repos.Table where a.SoHDB != ma select a;
+            var query = from a in repos.Table where a.SoHDB == ma select a;
             return query.FirstOrDefault();
         }
 

@@ -37,7 +37,7 @@ namespace App.Service.Business
 
         public HoaDonNhap GetByMa(string ma)
         {
-            var query = from a in repos.Table where a.SoHDN != ma select a;
+            var query = from a in repos.Table where a.SoHDN == ma select a;
             return query.FirstOrDefault();
         }
 

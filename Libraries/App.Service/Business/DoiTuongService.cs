@@ -37,7 +37,7 @@ namespace App.Service.Business
 
         public DoiTuong GetByMa(string ma)
         {
-            var query = from a in repos.Table where a.MaDoiTuong != ma select a;
+            var query = from a in repos.Table where a.MaDoiTuong == ma select a;
             return query.FirstOrDefault();
         }
 

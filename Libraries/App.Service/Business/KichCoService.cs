@@ -37,7 +37,7 @@ namespace App.Service.Business
 
         public KichCo GetByMa(string ma)
         {
-            var query = from a in repos.Table where a.MaCo != ma select a;
+            var query = from a in repos.Table where a.MaCo == ma select a;
             return query.FirstOrDefault();
         }
 

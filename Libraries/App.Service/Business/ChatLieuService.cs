@@ -34,7 +34,7 @@ namespace App.Service.Business{
 
         public ChatLieu GetByMa(string ma)
         {
-            var query = from a in chatlieu.Table where a.MaChatLieu != ma select a;
+            var query = from a in chatlieu.Table where a.MaChatLieu == ma select a;
             return query.FirstOrDefault();
         }
 

@@ -171,6 +171,15 @@ namespace App.Extensions{
             if (dataGridView.CurrentRow != null)
                 dataGridView.Rows[dataGridView.CurrentRow.Index].Cells[key].Value = value;
         }
+        /// <summary>
+        /// Displays the specified data grid view column.
+        /// </summary>
+        /// <param name="dataGridViewColumn">The data grid view column.</param>
+        /// <param name="value">if set to <c>true</c> [value].</param>
+        public static void Display(this DataGridViewColumn dataGridViewColumn, bool value) {
+            if(dataGridViewColumn != null)
+                dataGridViewColumn.Visible = value;
+        }
 
         /// <summary>
         /// Currents the selected.

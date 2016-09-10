@@ -63,6 +63,7 @@ namespace App.Views {
             panel.Controls.Add(a);
             b.SetSanPhamListView(a);
             a.Show();
+            b.ReviewGrid();
         }
 
 

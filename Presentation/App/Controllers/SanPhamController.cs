@@ -36,7 +36,7 @@ namespace App.Controllers
         /// </summary>
         private readonly ISanPhamService sanPhamService;
         private readonly ITheLoaiService theLoaiService;
-        private readonly IKichCoService kinhCoService;
+        private readonly IKichCoService KichCoService;
         private readonly IChatLieuService chatLieuService;
         private readonly IMauService mauService;
         private readonly IMuaService muaService;
@@ -55,11 +55,11 @@ namespace App.Controllers
         ///     Initializes a new instance of the <see cref="SanPhamController" /> class.
         /// </summary>
         /// <param name="SanPhamService">The chat lieu service.</param>
-        public SanPhamController(ISanPhamService sanPhamService, ITheLoaiService theLoaiService, IKichCoService kinhCoService, IChatLieuService chatLieuService, IMauService mauService, IMuaService muaService, IDoiTuongService doiTuongService, INuocSanXuatService nuocSxService)
+        public SanPhamController(ISanPhamService sanPhamService, ITheLoaiService theLoaiService, IKichCoService KichCoService, IChatLieuService chatLieuService, IMauService mauService, IMuaService muaService, IDoiTuongService doiTuongService, INuocSanXuatService nuocSxService)
         {
             this.sanPhamService = sanPhamService;
             this.theLoaiService = theLoaiService;
-            this.kinhCoService = kinhCoService;
+            this.KichCoService = KichCoService;
             this.chatLieuService = chatLieuService;
             this.mauService = mauService;
             this.muaService = muaService;
@@ -95,7 +95,7 @@ namespace App.Controllers
         {
             try
             {
-                SanPham entity = value.ToEntity();
+                var entity = value.ToEntity();
                 sanPhamService.Insert(entity);
             }
             catch (Exception ex)
@@ -148,24 +148,33 @@ namespace App.Controllers
             }
         }
 
-        public IList<string> ValidationModel(SanPhamModel value)
+        public IList<string> ValidateAndFillup(SanPhamModel value)
         {
             var a = new List<string>();
             var loai     =  theLoaiService.GetByMa(value.MaLoai);
-            var co       =  kinhCoService.GetByMa(value.MaCo);
+            var co       =  KichCoService.GetByMa(value.MaCo);
             var chatLieu =  chatLieuService.GetByMa(value.MaChatLieu);
             var mau      =  mauService.GetByMa(value.MaMau);
             var doiTuong =  doiTuongService.GetByMa(value.MaDoiTuong);
             var mua      =  muaService.GetByMa(value.MaMua);
-            var nuocSX   =  nuocSXService.GetByMa(value.MaNuocSX);
+            var nuocSx   =  nuocSXService.GetByMa(value.MaNuocSX);
 
-            if(loai    ==null)a.Add("MaLoai");
-            if(co      ==null)a.Add("MaCo");
-            if(chatLieu==null)a.Add("MaChatLieu");
-            if(mau     ==null)a.Add("MaMau");
-            if(doiTuong==null)a.Add("MaDoiTuong");
-            if(mua     ==null)a.Add("MaMua");
-            if(nuocSX  ==null)a.Add("MaNuocSX");
+            if(loai    ==null){a.Add("MaLoai");}
+            if(co      ==null){a.Add("MaCo");}
+            if(chatLieu==null){a.Add("MaChatLieu");}
+            if(mau     ==null){a.Add("MaMau");}
+            if(doiTuong==null){a.Add("MaDoiTuong");}
+            if(mua     ==null){a.Add("MaMua");}
+            if(nuocSx  ==null){a.Add("MaNuocSX");}
+
+            if(loai    !=null){value.TheLoaiID = loai.ID;}
+            if(co      !=null){value.KichCoID = co.ID;}
+            if(chatLieu!=null){value.ChatLieuID = chatLieu.ID;}
+            if(mau     !=null){value.MauID = mau.ID;}
+            if(doiTuong!=null){value.DoiTuongID = doiTuong.ID;}
+            if(mua     !=null){value.MuaID = mau.ID;}
+            if(nuocSx  !=null){value.NuocSanXuatID = nuocSx.ID;}
+
             return a;
         }
 

@@ -25,6 +25,39 @@ namespace App.Views {
             currentModel = value;
             isCreateNew = (value == null);
             this.Text = (value == null) ? "Tạo Sản phẩm" : "Sửa Sản phẩm";
+            if (isCreateNew)
+            {
+                txtMaSanPham.Text = "";
+                txtTenSanPham.Text = "";
+                txtSoLuongSanPham.Text = "";
+                txtMaChatLieu.Text = "";
+                txtDonGiaNhap.Text = "";
+                txtDonGiaBan.Text = "";
+                txtMaLoai.Text = "";
+                txtMaCo.Text = "";
+                txtMaChatLieu.Text = "";
+                txtMaMau.Text = "";
+                txtMaDoiTuong.Text = "";
+                txtMaMua.Text = "";
+                txtMaNuocSanXuat.Text = "";
+            }
+            else
+            {
+
+                txtMaSanPham.Text = value.MaGiayDep;
+                txtTenSanPham.Text = value.TenGiayDep;
+                txtSoLuongSanPham.Text = value.SoLuong.ToString();
+                txtMaChatLieu.Text = value.Anh;
+                txtDonGiaNhap.Text = value.DonGiaNhap.ToString();
+                txtDonGiaBan.Text = value.DonGiaBan.ToString();
+                txtMaLoai.Text = value.MaLoai;
+                txtMaCo.Text = value.MaCo;
+                txtMaChatLieu.Text = value.MaChatLieu;
+                txtMaMau.Text = value.MaMau;
+                txtMaDoiTuong.Text = value.MaDoiTuong;
+                txtMaMua.Text = value.MaMua;
+                txtMaNuocSanXuat.Text = value.MaNuocSX;
+            }
         }
 
         private SanPhamModel FulfilmentFild(SanPhamModel value) {
@@ -66,7 +99,7 @@ namespace App.Views {
 
         private void OnSetSave(bool isContinue) {
             var a = FulfilmentFild(currentModel);
-            var validate = currentController.ValidationModel(a);
+            var validate = currentController.ValidateAndFillup(a);
             if(validate != null) {
                 if(validate.Contains("MaLoai")) {
                     txtMaLoai.Focus();
@@ -111,6 +144,8 @@ namespace App.Views {
             }
             if(!isContinue)
                 currentController.HideSanPhamView();
+
+            currentController.ReviewGrid();
         }
 
         private void bntThoat_Click(object sender, EventArgs e) {

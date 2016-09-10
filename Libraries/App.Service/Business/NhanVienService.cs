@@ -37,7 +37,7 @@ namespace App.Service.Business
 
         public NhanVien GetByMa(string ma)
         {
-            var query = from a in repos.Table where a.MaNhanVien != ma select a;
+            var query = from a in repos.Table where a.MaNhanVien == ma select a;
             return query.FirstOrDefault();
         }
 

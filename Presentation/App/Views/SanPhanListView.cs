@@ -70,11 +70,24 @@ namespace App.Views{
             dataGridView.Columns.Clear();
             var c = new DataGridViewCheckBoxColumn{Name = "CB", HeaderText = "", Width = 24, AutoSizeMode = DataGridViewAutoSizeColumnMode.None, ReadOnly = true};
             dataGridView.Columns.Add(c);
-
             dataGridView.DataSource = new BindingSource{DataSource = value};
-            DataGridViewColumn dataGridViewColumn = dataGridView.Columns["ID"];
-            if (dataGridViewColumn != null)
-                dataGridViewColumn.Visible = false;
+            
+            dataGridView.Columns["ID"].Display(false);
+            dataGridView.Columns["TheLoaiID"].Display(false);
+            dataGridView.Columns["KichCoID"].Display(false);
+            dataGridView.Columns["ChatLieuID"].Display(false);
+            dataGridView.Columns["MauID"].Display(false);	
+            dataGridView.Columns["DoiTuongID"].Display(false);	
+            dataGridView.Columns["MuaID"].Display(false);
+            dataGridView.Columns["NuocSanXuatID"].Display(false);
+
+            dataGridView.Columns["TheLoai"].Display(false);
+            dataGridView.Columns["KichCo"].Display(false);
+            dataGridView.Columns["ChatLieu"].Display(false);
+            dataGridView.Columns["Mau"].Display(false);	
+            dataGridView.Columns["DoiTuong"].Display(false);	
+            dataGridView.Columns["Mua"].Display(false);
+            dataGridView.Columns["NuocSanXuat"].Display(false);
 
             dataGridView.ClearSelection();
             dataGridView.CurrentCell = null;

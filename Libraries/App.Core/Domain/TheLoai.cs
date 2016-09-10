@@ -24,11 +24,6 @@ namespace App.Core.Domain {
         /// <summary>
         /// Initializes a new instance of the <see cref="TheLoai"/> class.
         /// </summary>
-        public TheLoai() {
-            //this.SanPham = new HashSet<SanPham>();
-        }
-
-
         /// <summary>
         /// Gets or sets the ma loai.
         /// </summary>
@@ -42,6 +37,6 @@ namespace App.Core.Domain {
         [DisplayName("Tên loại")]
         public string TenLoai { get; set; }
 
-        // public virtual ICollection<SanPham> SanPham { get; set; }
+        
     }
 }

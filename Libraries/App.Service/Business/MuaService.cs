@@ -37,7 +37,7 @@ namespace App.Service.Business
 
         public Mua GetByMa(string ma)
         {
-            var query = from a in repos.Table where a.MaMua != ma select a;
+            var query = from a in repos.Table where a.MaMua == ma select a;
             return query.FirstOrDefault();
         }
 

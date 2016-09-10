@@ -24,7 +24,7 @@ namespace App.Controllers.Interface{
     /// </summary>
     public interface ISanPhamController<T>: IBaseController<T> {
 
-        IList<string> ValidationModel(T value);
+        IList<string> ValidateAndFillup(T value);
         void HideSanPhamView();
         void ShowSanPhamView(T value);
         void SetSanPhamListView(Form value);

@@ -37,7 +37,7 @@ namespace App.Service.Business
 
         public CongViec GetByMa(string ma)
         {
-            var query = from a in repos.Table where a.MaCV != ma select a;
+            var query = from a in repos.Table where a.MaCV == ma select a;
             return query.FirstOrDefault();
         }
 

@@ -69,7 +69,6 @@ namespace App.Core.Domain {
         /// <value>The nha cung cap identifier.</value>
         public Nullable<int> NhaCungCapID { get; set; }
 
-        // public virtual ICollection<ChiTietHDN> ChiTietHDN { get; set; }
         /// <summary>
         /// Gets or sets the nha cung cap.
         /// </summary>

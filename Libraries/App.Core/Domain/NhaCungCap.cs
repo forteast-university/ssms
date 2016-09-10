@@ -54,6 +54,5 @@ namespace App.Core.Domain {
         [DisplayName("Điện thoại")]
         public string DienThoai { get; set; }
 
-        // public virtual ICollection<HoaDonNhap> HoaDonNhap { get; set; }
     }
 }

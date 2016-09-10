@@ -87,7 +87,7 @@ namespace App.Data.Mapping{
     public class MuaMap : AppEntityTypeConfiguration<Mua>{
         public MuaMap(){
             ToTable("Mua");
-            HasKey(c => c.MaMua);
+            HasKey(c => c.ID);
             Property(obj => obj.ID).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnName("ID");
         }
     }

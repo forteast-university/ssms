@@ -13,6 +13,9 @@
 // ***********************************************************************
 
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace App.Core.Domain {
     using System;
     using System.Collections.Generic;
@@ -117,7 +120,7 @@ namespace App.Core.Domain {
         /// Gets or sets the kinh co identifier.
         /// </summary>
         /// <value>The kinh co identifier.</value>
-        public Nullable<int> KinhCoID { get; set; }
+        public Nullable<int> KichCoID { get; set; }
         /// <summary>
         /// Gets or sets the chat lieu identifier.
         /// </summary>
@@ -144,42 +147,51 @@ namespace App.Core.Domain {
         /// <value>The nuoc san xuat identifier.</value>
         public Nullable<int> NuocSanXuatID { get; set; }
 
+
         /// <summary>
         /// Gets or sets the chat lieu.
         /// </summary>
         /// <value>The chat lieu.</value>
+
+        [ForeignKey("ChatLieuID")]
         public virtual ChatLieu ChatLieu { get; set; }
-        // public virtual ICollection<ChiTietHDB> ChiTietHDB { get; set; }
         /// <summary>
         /// Gets or sets the doi tuong.
         /// </summary>
         /// <value>The doi tuong.</value>
+        [ForeignKey("DoiTuongID")]
         public virtual DoiTuong DoiTuong { get; set; }
         /// <summary>
         /// Gets or sets the kich co.
         /// </summary>
         /// <value>The kich co.</value>
+        [ForeignKey("KichCoID")]
         public virtual KichCo KichCo { get; set; }
         /// <summary>
         /// Gets or sets the mau.
         /// </summary>
         /// <value>The mau.</value>
+        [ForeignKey("MauID")]
         public virtual Mau Mau { get; set; }
         /// <summary>
         /// Gets or sets the mua.
         /// </summary>
         /// <value>The mua.</value>
+        [ForeignKey("MuaID")]
         public virtual Mua Mua { get; set; }
         /// <summary>
         /// Gets or sets the nuoc san xuat.
         /// </summary>
         /// <value>The nuoc san xuat.</value>
+        [ForeignKey("NuocSanXuatID")]
         public virtual NuocSanXuat NuocSanXuat { get; set; }
-        // public virtual ICollection<ChiTietHDN> ChiTietHDN { get; set; }
         /// <summary>
         /// Gets or sets the loai.
         /// </summary>
         /// <value>The loai.</value>
+        [ForeignKey("TheLoaiID")]
         public virtual TheLoai TheLoai { get; set; }
+
+
     }
 }

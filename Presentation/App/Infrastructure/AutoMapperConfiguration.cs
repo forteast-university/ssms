@@ -106,8 +106,18 @@ namespace App.Infrastructure{
             mapperConfiguration.CreateMap<NuocSanXuatModel, NuocSanXuat>();
             mapperConfiguration.CreateMap<NuocSanXuat, NuocSanXuatModel>();
 
-            mapperConfiguration.CreateMap<SanPhamModel, SanPham>();
-            mapperConfiguration.CreateMap<SanPham, SanPhamModel>();
+            mapperConfiguration.CreateMap<SanPhamModel, SanPham>()
+                .ForMember(a => a.KichCo, b => b.Ignore())
+                .ForMember(a => a.Mau, b => b.Ignore())
+                .ForMember(a => a.DoiTuong, b => b.Ignore())
+                .ForMember(a => a.ChatLieu, b => b.Ignore())
+                .ForMember(a => a.Mua, b => b.Ignore())
+                .ForMember(a => a.NuocSanXuat, b => b.Ignore())
+                .ForMember(a => a.TheLoai, b => b.Ignore())
+                ;
+            mapperConfiguration.CreateMap<SanPham, SanPhamModel>()
+                //.ForMember(a => a.Test, b => b.Ignore())
+                ;
 
             mapperConfiguration.CreateMap<TheLoaiModel, TheLoai>();
             mapperConfiguration.CreateMap<TheLoai, TheLoaiModel>();

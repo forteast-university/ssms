@@ -12,36 +12,27 @@
 // <summary></summary>
 // ***********************************************************************
 
-using System.ComponentModel;  
-namespace App.Core.Domain {
-    using System;
-    using System.Collections.Generic;
+using System.ComponentModel;
 
+namespace App.Core.Domain
+{
     /// <summary>
-    /// Class ChatLieu.
+    ///     Class ChatLieu.
     /// </summary>
-    public partial class ChatLieu : BaseEntity {
+    public class ChatLieu : BaseEntity
+    {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChatLieu"/> class.
-        /// </summary>
-        public ChatLieu() {
-            //this.SanPham = new HashSet<SanPham>();
-        }
-
-
-        /// <summary>
-        /// Gets or sets the ma chat lieu.
+        ///     Gets or sets the ma chat lieu.
         /// </summary>
         /// <value>The ma chat lieu.</value>
         [DisplayName("Mã chất liệu")]
         public string MaChatLieu { get; set; }
+
         /// <summary>
-        /// Gets or sets the ten chat lieu.
+        ///     Gets or sets the ten chat lieu.
         /// </summary>
         /// <value>The ten chat lieu.</value>
         [DisplayName("Tên chất liệu")]
         public string TenChatLieu { get; set; }
-
-        // public virtual ICollection<SanPham> SanPham { get; set; }
     }
 }

@@ -89,7 +89,6 @@ namespace App.Core.Domain {
         /// </summary>
         /// <value>The cong viec.</value>
         public virtual CongViec CongViec { get; set; }
-        // public virtual ICollection<HoaDonBan> HoaDonBan { get; set; }
-        // public virtual ICollection<HoaDonNhap> HoaDonNhap { get; set; }
+
     }
 }

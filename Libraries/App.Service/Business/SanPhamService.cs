@@ -37,7 +37,7 @@ namespace App.Service.Business
 
         public SanPham GetByMa(string ma)
         {
-            var query = from a in repos.Table where a.MaGiayDep != ma select a;
+            var query = from a in repos.Table where a.MaGiayDep == ma select a;
             return query.FirstOrDefault();
         }
 
