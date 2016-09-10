@@ -35,6 +35,12 @@ namespace App.Service.Business
             this.db = db;
         }
 
+        public NhaCungCap GetByMa(string ma)
+        {
+            var query = from a in repos.Table where a.MaNCC != ma select a;
+            return query.FirstOrDefault();
+        }
+
         public NhaCungCap GetById(int id)
         {
             return repos.GetById(id);

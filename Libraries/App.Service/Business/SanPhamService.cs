@@ -35,6 +35,12 @@ namespace App.Service.Business
             this.db = db;
         }
 
+        public SanPham GetByMa(string ma)
+        {
+            var query = from a in repos.Table where a.MaGiayDep != ma select a;
+            return query.FirstOrDefault();
+        }
+
         public SanPham GetById(int id)
         {
             return repos.GetById(id);

@@ -35,6 +35,12 @@ namespace App.Service.Business
             this.db = db;
         }
 
+        public HoaDonNhap GetByMa(string ma)
+        {
+            var query = from a in repos.Table where a.SoHDN != ma select a;
+            return query.FirstOrDefault();
+        }
+
         public HoaDonNhap GetById(int id)
         {
             return repos.GetById(id);

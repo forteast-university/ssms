@@ -35,6 +35,12 @@ namespace App.Service.Business
             this.db = db;
         }
 
+        public HoaDonBan GetByMa(string ma)
+        {
+            var query = from a in repos.Table where a.SoHDB != ma select a;
+            return query.FirstOrDefault();
+        }
+
         public HoaDonBan GetById(int id)
         {
             return repos.GetById(id);

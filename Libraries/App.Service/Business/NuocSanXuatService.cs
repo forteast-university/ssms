@@ -35,6 +35,12 @@ namespace App.Service.Business
             this.db = db;
         }
 
+        public NuocSanXuat GetByMa(string ma)
+        {
+            var query = from a in repos.Table where a.MaNuocSX != ma select a;
+            return query.FirstOrDefault();
+        }
+
         public NuocSanXuat GetById(int id)
         {
             return repos.GetById(id);

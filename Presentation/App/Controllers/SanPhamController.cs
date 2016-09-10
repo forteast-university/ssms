@@ -34,7 +34,14 @@ namespace App.Controllers
         /// <summary>
         ///     The chat lieu service
         /// </summary>
-        private readonly ISanPhamService SanPhamService;
+        private readonly ISanPhamService sanPhamService;
+        private readonly ITheLoaiService theLoaiService;
+        private readonly IKichCoService kinhCoService;
+        private readonly IChatLieuService chatLieuService;
+        private readonly IMauService mauService;
+        private readonly IMuaService muaService;
+        private readonly IDoiTuongService doiTuongService;
+        private readonly INuocSanXuatService nuocSXService;
 
         private SanPhamView sanPhamView;
 
@@ -48,10 +55,16 @@ namespace App.Controllers
         ///     Initializes a new instance of the <see cref="SanPhamController" /> class.
         /// </summary>
         /// <param name="SanPhamService">The chat lieu service.</param>
-        public SanPhamController(ISanPhamService SanPhamService)
+        public SanPhamController(ISanPhamService sanPhamService, ITheLoaiService theLoaiService, IKichCoService kinhCoService, IChatLieuService chatLieuService, IMauService mauService, IMuaService muaService, IDoiTuongService doiTuongService, INuocSanXuatService nuocSxService)
         {
-            this.SanPhamService = SanPhamService;
-            //view = new SanPhanListView(this);
+            this.sanPhamService = sanPhamService;
+            this.theLoaiService = theLoaiService;
+            this.kinhCoService = kinhCoService;
+            this.chatLieuService = chatLieuService;
+            this.mauService = mauService;
+            this.muaService = muaService;
+            this.doiTuongService = doiTuongService;
+            nuocSXService = nuocSxService;
             sanPhamView = new SanPhamView(this);
         }
 
@@ -83,7 +96,7 @@ namespace App.Controllers
             try
             {
                 SanPham entity = value.ToEntity();
-                SanPhamService.Insert(entity);
+                sanPhamService.Insert(entity);
             }
             catch (Exception ex)
             {
@@ -100,7 +113,7 @@ namespace App.Controllers
         public void Update(SanPhamModel value)
         {
             SanPham entity = ModelToEntity(value);
-            SanPhamService.Update(entity);
+            sanPhamService.Update(entity);
         }
 
         /// <summary>
@@ -109,8 +122,8 @@ namespace App.Controllers
         /// <param name="value">The value.</param>
         public void Delete(int value)
         {
-            SanPham entity = SanPhamService.GetById(value);
-            SanPhamService.Delete(entity);
+            SanPham entity = sanPhamService.GetById(value);
+            sanPhamService.Delete(entity);
         }
 
         /// <summary>
@@ -135,6 +148,27 @@ namespace App.Controllers
             }
         }
 
+        public IList<string> ValidationModel(SanPhamModel value)
+        {
+            var a = new List<string>();
+            var loai     =  theLoaiService.GetByMa(value.MaLoai);
+            var co       =  kinhCoService.GetByMa(value.MaCo);
+            var chatLieu =  chatLieuService.GetByMa(value.MaChatLieu);
+            var mau      =  mauService.GetByMa(value.MaMau);
+            var doiTuong =  doiTuongService.GetByMa(value.MaDoiTuong);
+            var mua      =  muaService.GetByMa(value.MaMua);
+            var nuocSX   =  nuocSXService.GetByMa(value.MaNuocSX);
+
+            if(loai    ==null)a.Add("MaLoai");
+            if(co      ==null)a.Add("MaCo");
+            if(chatLieu==null)a.Add("MaChatLieu");
+            if(mau     ==null)a.Add("MaMau");
+            if(doiTuong==null)a.Add("MaDoiTuong");
+            if(mua     ==null)a.Add("MaMua");
+            if(nuocSX  ==null)a.Add("MaNuocSX");
+            return a;
+        }
+
         public void HideSanPhamView()
         {
             sanPhamView.Hide();
@@ -156,14 +190,14 @@ namespace App.Controllers
         /// </summary>
         private void PostView()
         {
-            IEnumerable<SanPham> a = SanPhamService.GetAll();
+            IEnumerable<SanPham> a = sanPhamService.GetAll();
             List<SanPhamModel> listModel = a.Select(b => b.ToModel()).ToList();
             sanPhanListView.PostView(listModel);
         }
 
         protected virtual SanPham ModelToEntity(SanPhamModel model)
         {
-            SanPham a = SanPhamService.GetById(model.ID);
+            SanPham a = sanPhamService.GetById(model.ID);
             return a == null ? null : model.ToEntity(a);
         }
     }

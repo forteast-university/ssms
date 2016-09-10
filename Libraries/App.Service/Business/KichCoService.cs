@@ -35,6 +35,12 @@ namespace App.Service.Business
             this.db = db;
         }
 
+        public KichCo GetByMa(string ma)
+        {
+            var query = from a in repos.Table where a.MaCo != ma select a;
+            return query.FirstOrDefault();
+        }
+
         public KichCo GetById(int id)
         {
             return repos.GetById(id);

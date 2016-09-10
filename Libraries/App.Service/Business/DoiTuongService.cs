@@ -35,6 +35,12 @@ namespace App.Service.Business
             this.db = db;
         }
 
+        public DoiTuong GetByMa(string ma)
+        {
+            var query = from a in repos.Table where a.MaDoiTuong != ma select a;
+            return query.FirstOrDefault();
+        }
+
         public DoiTuong GetById(int id)
         {
             return repos.GetById(id);

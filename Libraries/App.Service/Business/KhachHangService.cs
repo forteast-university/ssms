@@ -35,6 +35,12 @@ namespace App.Service.Business
             this.db = db;
         }
 
+        public KhachHang GetByMa(string ma)
+        {
+            var query = from a in repos.Table where a.MaKhach != ma select a;
+            return query.FirstOrDefault();
+        }
+
         public KhachHang GetById(int id)
         {
             return repos.GetById(id);

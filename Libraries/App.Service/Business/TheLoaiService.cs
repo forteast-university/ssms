@@ -35,6 +35,12 @@ namespace App.Service.Business
             this.db = db;
         }
 
+        public TheLoai GetByMa(string ma)
+        {
+            var query = from a in repos.Table where a.MaLoai != ma select a;
+            return query.FirstOrDefault();
+        }
+
         public TheLoai GetById(int id)
         {
             return repos.GetById(id);

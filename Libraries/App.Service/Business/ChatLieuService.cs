@@ -32,6 +32,12 @@ namespace App.Service.Business{
             this.db = db;
         }
 
+        public ChatLieu GetByMa(string ma)
+        {
+            var query = from a in chatlieu.Table where a.MaChatLieu != ma select a;
+            return query.FirstOrDefault();
+        }
+
         public ChatLieu GetById(int id){
             return chatlieu.GetById(id);
         }

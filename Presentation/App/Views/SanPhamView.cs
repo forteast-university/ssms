@@ -27,7 +27,7 @@ namespace App.Views {
             this.Text = (value == null) ? "Tạo Sản phẩm" : "Sửa Sản phẩm";
         }
 
-        private void SetLuu(SanPhamModel value) {
+        private SanPhamModel FulfilmentFild(SanPhamModel value) {
             if(isCreateNew) {
                 value = new SanPhamModel {
                     MaGiayDep = txtMaSanPham.Text,
@@ -44,7 +44,6 @@ namespace App.Views {
                     MaMua = txtMaMua.Text,
                     MaNuocSX = txtMaNuocSanXuat.Text
                 };
-                currentController.Insert(value);
             } else {
 
                 value.MaGiayDep = txtMaSanPham.Text;
@@ -53,6 +52,7 @@ namespace App.Views {
                 value.Anh = txtMaChatLieu.Text;
                 value.DonGiaNhap = txtDonGiaNhap.Text.ToDecimal();
                 value.DonGiaBan = txtDonGiaBan.Text.ToDecimal();
+
                 value.MaLoai = txtMaLoai.Text;
                 value.MaCo = txtMaCo.Text;
                 value.MaChatLieu = txtMaChatLieu.Text;
@@ -60,9 +60,57 @@ namespace App.Views {
                 value.MaDoiTuong = txtMaDoiTuong.Text;
                 value.MaMua = txtMaMua.Text;
                 value.MaNuocSX = txtMaNuocSanXuat.Text;
-
-                currentController.Update(currentModel);
             }
+            return value;
+        }
+
+        private void OnSetSave(bool isContinue) {
+            var a = FulfilmentFild(currentModel);
+            var validate = currentController.ValidationModel(a);
+            if(validate != null) {
+                if(validate.Contains("MaLoai")) {
+                    txtMaLoai.Focus();
+                    txtMaLoai.SelectAll();
+                    return;
+                }
+                if(validate.Contains("MaCo")) {
+                    txtMaCo.Focus();
+                    txtMaCo.SelectAll();
+                    return;
+                }
+                if(validate.Contains("MaChatLieu")) {
+                    txtMaChatLieu.Focus();
+                    txtMaChatLieu.SelectAll();
+                    return;
+                }
+                if(validate.Contains("MaMau")) {
+                    txtMaMau.Focus();
+                    txtMaMau.SelectAll();
+                    return;
+                }
+                if(validate.Contains("MaDoiTuong")) {
+                    txtMaDoiTuong.Focus();
+                    txtMaDoiTuong.SelectAll();
+                    return;
+                }
+                if(validate.Contains("MaMua")) {
+                    txtMaMua.Focus();
+                    txtMaMua.SelectAll();
+                    return;
+                }
+                if(validate.Contains("MaNuocSanXuat")) {
+                    txtMaNuocSanXuat.Focus();
+                    txtMaNuocSanXuat.SelectAll();
+                    return;
+                }
+            }
+            if(isCreateNew) {
+                currentController.Insert(a);
+            } else {
+                currentController.Update(a);
+            }
+            if(!isContinue)
+                currentController.HideSanPhamView();
         }
 
         private void bntThoat_Click(object sender, EventArgs e) {
@@ -70,8 +118,8 @@ namespace App.Views {
         }
 
         private void btnLuu_Click(object sender, EventArgs e) {
-            SetLuu(currentModel);
-            currentController.HideSanPhamView();
+
+            OnSetSave(false);
         }
 
         private void btnAnh_Click(object sender, EventArgs e) {
@@ -107,7 +155,7 @@ namespace App.Views {
         }
 
         private void bntLuuTiepTuc_Click(object sender, EventArgs e) {
-            SetLuu(currentModel);
+            OnSetSave(false);
         }
     }
 }

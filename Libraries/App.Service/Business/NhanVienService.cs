@@ -35,6 +35,12 @@ namespace App.Service.Business
             this.db = db;
         }
 
+        public NhanVien GetByMa(string ma)
+        {
+            var query = from a in repos.Table where a.MaNhanVien != ma select a;
+            return query.FirstOrDefault();
+        }
+
         public NhanVien GetById(int id)
         {
             return repos.GetById(id);

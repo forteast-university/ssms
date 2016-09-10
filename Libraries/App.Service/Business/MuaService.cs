@@ -35,6 +35,12 @@ namespace App.Service.Business
             this.db = db;
         }
 
+        public Mua GetByMa(string ma)
+        {
+            var query = from a in repos.Table where a.MaMua != ma select a;
+            return query.FirstOrDefault();
+        }
+
         public Mua GetById(int id)
         {
             return repos.GetById(id);

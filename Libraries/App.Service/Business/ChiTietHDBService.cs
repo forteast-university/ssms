@@ -35,6 +35,11 @@ namespace App.Service.Business
             this.db = db;
         }
 
+        public ChiTietHDB GetByMa(string ma)
+        {
+            throw new NotImplementedException();
+        }
+
         public ChiTietHDB GetById(int id)
         {
             return repos.GetById(id);

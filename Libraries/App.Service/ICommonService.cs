@@ -21,6 +21,12 @@ namespace App.Service {
     public interface ICommonService<T>{
 
         /// <summary>
+        /// Gets the by ma.
+        /// </summary>
+        /// <param name="ma">The ma.</param>
+        /// <returns>T.</returns>
+        T GetByMa(string ma);
+        /// <summary>
         /// Gets the by identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>

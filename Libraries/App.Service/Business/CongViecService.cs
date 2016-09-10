@@ -35,6 +35,12 @@ namespace App.Service.Business
             this.db = db;
         }
 
+        public CongViec GetByMa(string ma)
+        {
+            var query = from a in repos.Table where a.MaCV != ma select a;
+            return query.FirstOrDefault();
+        }
+
         public CongViec GetById(int id)
         {
             return repos.GetById(id);
