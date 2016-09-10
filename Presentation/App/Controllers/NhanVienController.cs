@@ -38,7 +38,8 @@ namespace App.Controllers{
         ///     The view
         /// </summary>
         private readonly DangNhapView view;
-        
+        private readonly NhanVienView viewNhanVien;
+
         public void CloseParent() {
 
             var a = new AppEvent<NhanVienModel>{value = new NhanVienModel{
@@ -72,6 +73,7 @@ namespace App.Controllers{
         public NhanVienController(INhanVienService currentService){
             this.currentService = currentService;
             view = new DangNhapView(this);
+            //viewNhanVien = new NhanVienView(this);
         }
 
         /// <summary>

@@ -137,7 +137,6 @@ namespace App.Views
             currentModel = (MauModel)dataGridView.CurrentSelected(MauModelList);
             if (currentModel != null)
             {
-
                 var cm = MauModelList.Where(c => c.MaMau == txtMaMau.Text &&
                     c.ID != currentModel.ID);
                 if (cm.Any())
@@ -254,9 +253,5 @@ namespace App.Views
         {
              e.PaintParts &= ~DataGridViewPaintParts.Focus;
         }
-
-
-
-  
     }
 }
