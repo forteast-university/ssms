@@ -157,16 +157,30 @@ namespace App.Extensions{
                 return null;
             if(m.Trim() == "")
                 return null;
-
+            if (m=="1")
+            {
+                q.StartTime = (year+"-01-01 00:00:00").ToDateTime();
+                q.EndTime = (year+"-03-31 23:59:59").ToDateTime();
+            }
+            else if (m == "2")
+            {
+                q.StartTime = (year + "-04-01 00:00:00").ToDateTime();
+                q.EndTime = (year + "-06-31 23:59:59").ToDateTime();
+            }
+            else if (m == "3")
+            {
+                q.StartTime = (year + "-07-01 00:00:00").ToDateTime();
+                q.EndTime = (year + "-09-31 23:59:59").ToDateTime();
+            }
+            else if (m == "4")
+            {
+                q.StartTime = (year + "-10-01 00:00:00").ToDateTime();
+                q.EndTime = (year + "-12-31 23:59:59").ToDateTime();
+            }
+            //từ tháng 1-> tháng 3
             //m="1","2","3","4"
-            //todo: m to model
-
-            q.StartTime = "2016-01-01 00:00:00".ToDateTime();
-            q.EndTime   = "2016-03-31 23:59:59".ToDateTime();
+            //todo: m to model         
             //todo:  
-
-
-
             return q;
         }
         /// <summary>
