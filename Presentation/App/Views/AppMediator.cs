@@ -40,6 +40,7 @@ namespace App.Views {
 
             //InitializeFirst();
             LoadSanPhamView();
+            LoadHoaDonNhapView();
 
         }
         public void Eventlistener<T>(object sender, AppEvent<T> e) {
@@ -57,7 +58,14 @@ namespace App.Views {
                 Alert(exception.Message);
             }
         }
-
+        private void LoadHoaDonNhapView() {
+            var b = app.Resolve<IHoaDonNhapController<HoaDonNhapModel>>();
+            var a = new HoaDonNhapListView(b) { TopLevel = false, Parent = this, Dock = DockStyle.Fill, FormBorderStyle = FormBorderStyle.None };
+            panel1.Controls.Add(a);
+            b.SetHoaDonNhapListView(a);
+            a.Show();
+            b.ReviewGrid();
+        }
         private void LoadSanPhamView() {
             var b = app.Resolve<ISanPhamController<SanPhamModel>>();
             var a = new SanPhanListView(b) { TopLevel = false, Parent = this, Dock = DockStyle.Fill, FormBorderStyle = FormBorderStyle.None };

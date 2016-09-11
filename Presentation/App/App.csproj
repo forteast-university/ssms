@@ -56,6 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Interface\ICongViecController.cs" />
+    <Compile Include="Controllers\HoaDonNhapController.cs" />
+    <Compile Include="Controllers\Interface\IHoaDonNhapController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\CongViecController.cs" />
     <Compile Include="Controllers\DoiTuongController.cs" />
@@ -105,11 +107,23 @@
     <Compile Include="Views\DoiTuongView.Designer.cs">
       <DependentUpon>DoiTuongView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\HoaDonNhapView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\HoaDonNhapView.Designer.cs">
+      <DependentUpon>HoaDonNhapView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\NhanVienView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\NhanVienView.Designer.cs">
       <DependentUpon>NhanVienView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HoaDonNhapListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\HoaDonNhapListView.Designer.cs">
+      <DependentUpon>HoaDonNhapListView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\SanPhanListView.cs">
       <SubType>Form</SubType>
@@ -201,8 +215,14 @@
     <EmbeddedResource Include="Views\DoiTuongView.resx">
       <DependentUpon>DoiTuongView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\HoaDonNhapView.resx">
+      <DependentUpon>HoaDonNhapView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\NhanVienView.resx">
       <DependentUpon>NhanVienView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\HoaDonNhapListView.resx">
+      <DependentUpon>HoaDonNhapListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SanPhanListView.resx">
       <DependentUpon>SanPhanListView.cs</DependentUpon>

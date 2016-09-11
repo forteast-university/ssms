@@ -44,7 +44,7 @@
             this.tsmHuongDan = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtCauHinh = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.bntHoaDonBan = new System.Windows.Forms.Button();
             this.bntHoaDonNhap = new System.Windows.Forms.Button();
@@ -64,13 +64,17 @@
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabSanPham = new System.Windows.Forms.TabPage();
             this.panel = new System.Windows.Forms.Panel();
+            this.tabHoaDonNhap = new System.Windows.Forms.TabPage();
+            this.tabHoaDonBan = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.txtCauHinh.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.tabSanPham.SuspendLayout();
+            this.tabHoaDonNhap.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -222,17 +226,17 @@
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
             // 
-            // tabPage3
+            // txtCauHinh
             // 
-            this.tabPage3.Controls.Add(this.groupBox3);
-            this.tabPage3.Controls.Add(this.groupBox2);
-            this.tabPage3.Controls.Add(this.groupBox1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(709, 396);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Cấu hình";
+            this.txtCauHinh.Controls.Add(this.groupBox3);
+            this.txtCauHinh.Controls.Add(this.groupBox2);
+            this.txtCauHinh.Controls.Add(this.groupBox1);
+            this.txtCauHinh.Location = new System.Drawing.Point(4, 22);
+            this.txtCauHinh.Margin = new System.Windows.Forms.Padding(0);
+            this.txtCauHinh.Name = "txtCauHinh";
+            this.txtCauHinh.Size = new System.Drawing.Size(709, 396);
+            this.txtCauHinh.TabIndex = 2;
+            this.txtCauHinh.Text = "Cấu hình";
             // 
             // groupBox3
             // 
@@ -410,7 +414,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabMain.Controls.Add(this.tabSanPham);
-            this.tabMain.Controls.Add(this.tabPage3);
+            this.tabMain.Controls.Add(this.txtCauHinh);
+            this.tabMain.Controls.Add(this.tabHoaDonNhap);
+            this.tabMain.Controls.Add(this.tabHoaDonBan);
             this.tabMain.Location = new System.Drawing.Point(0, 28);
             this.tabMain.Margin = new System.Windows.Forms.Padding(0);
             this.tabMain.Name = "tabMain";
@@ -441,6 +447,38 @@
             this.panel.Size = new System.Drawing.Size(702, 389);
             this.panel.TabIndex = 0;
             // 
+            // tabHoaDonNhap
+            // 
+            this.tabHoaDonNhap.Controls.Add(this.panel1);
+            this.tabHoaDonNhap.Location = new System.Drawing.Point(4, 22);
+            this.tabHoaDonNhap.Margin = new System.Windows.Forms.Padding(0);
+            this.tabHoaDonNhap.Name = "tabHoaDonNhap";
+            this.tabHoaDonNhap.Size = new System.Drawing.Size(709, 396);
+            this.tabHoaDonNhap.TabIndex = 4;
+            this.tabHoaDonNhap.Text = "Hóa đơn nhập";
+            this.tabHoaDonNhap.UseVisualStyleBackColor = true;
+            // 
+            // tabHoaDonBan
+            // 
+            this.tabHoaDonBan.Location = new System.Drawing.Point(4, 22);
+            this.tabHoaDonBan.Margin = new System.Windows.Forms.Padding(0);
+            this.tabHoaDonBan.Name = "tabHoaDonBan";
+            this.tabHoaDonBan.Size = new System.Drawing.Size(709, 396);
+            this.tabHoaDonBan.TabIndex = 5;
+            this.tabHoaDonBan.Text = "Hóa đơn bán";
+            this.tabHoaDonBan.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Location = new System.Drawing.Point(4, 1);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(702, 389);
+            this.panel1.TabIndex = 0;
+            // 
             // AppMediator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -454,12 +492,13 @@
             this.Text = "Quản lý Cửa hàng Giày dép";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
+            this.txtCauHinh.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.tabMain.ResumeLayout(false);
             this.tabSanPham.ResumeLayout(false);
+            this.tabHoaDonNhap.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -473,7 +512,7 @@
         private System.Windows.Forms.ToolStripMenuItem báoCáoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hướngDẫnToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage txtCauHinh;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button bntHoaDonBan;
         private System.Windows.Forms.Button bntHoaDonNhap;
@@ -507,6 +546,9 @@
         private System.Windows.Forms.ToolStripMenuItem tsmSanPham;
         private System.Windows.Forms.ToolStripMenuItem tsmHuongDan;
         private System.Windows.Forms.ToolStripMenuItem tsmAbout;
+        private System.Windows.Forms.TabPage tabHoaDonNhap;
+        private System.Windows.Forms.TabPage tabHoaDonBan;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

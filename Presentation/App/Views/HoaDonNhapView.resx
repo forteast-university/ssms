@@ -117,24 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="richTextBox1.Text" xml:space="preserve">
-    <value>Nhóm 09 cùng các thành viên thực hiện đề tài:
-------------------------------------------------
-Quản lý cửa hàng giày dép
-------------------------------------------------
-Nguồn phát triển và đăng tải: 
-- https://github.com/forteast-university/ssms
-Tại liệu hướng dẫn: 
-- https://drive.google.com/drive/folders/0Bz8yXf9Yha3aOHNmQVVuT3R5Z0E?usp=sharing
-Diễn đàn phát triển
-- https://www.facebook.com/groups/1605655876393860/
-
--------------
-Thành viên quản lý dự án: 
-Cang Nguyen:trcangit@gmail.com
-Hung Le: hung@odcup.com
--------------
-Giáo viên hướng dẫn:
-M.Sc Trần Đức Cường:  tranduccuong121@gmail.com</value>
-  </data>
 </root>

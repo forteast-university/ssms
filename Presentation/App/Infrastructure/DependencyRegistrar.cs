@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
 // Assembly         : App
 // Author           : Hung Le
-// Created          : 08-18-2016
+// Created          : 08-28-2016
 //
 // Last Modified By : Hung Le
-// Last Modified On : 08-18-2016
+// Last Modified On : 08-28-2016
 // ***********************************************************************
 // <copyright file="DependencyRegistrar.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
@@ -19,10 +19,8 @@ using App.Core.Configuration;
 using App.Core.Infrastructure;
 using App.Core.Infrastructure.DependencyManagement;
 using App.Models;
-using App.Service.Business;
 using App.Views;
 using Autofac;
-using Autofac.Core;
 
 namespace App.Infrastructure {
     /// <summary>
@@ -37,12 +35,6 @@ namespace App.Infrastructure {
         /// <param name="config">Config</param>
         /// <exception cref="System.NotImplementedException"></exception>
         public void Register(ContainerBuilder builder, ITypeFinder typeFinder, ServerConfig config) {
-            //
-            //we cache presentation models between requests
-            //builder.RegisterType<ErrorController>().WithParameter(ResolvedParameter.ForNamed<ICacheManager>("app_cache_static"));
-            //builder.RegisterType<ChatLieuController>().WithParameter(ResolvedParameter.ForNamed<ICacheManager>("0"));
-            //builder.RegisterType<ChatLieuController>().WithParameter(ResolvedParameter.ForNamed<IChatLieuController>("0"));
-
             builder.RegisterType<ChatLieuController>().As<IBaseController<ChatLieuModel>>().SingleInstance();
             builder.RegisterType<CongViecController>().As<ICongViecController<CongViecModel>>().SingleInstance();
             builder.RegisterType<KhachHangController>().As<IBaseController<KhachHangModel>>().SingleInstance();
@@ -55,10 +47,10 @@ namespace App.Infrastructure {
             builder.RegisterType<DoiTuongController>().As<IBaseController<DoiTuongModel>>().SingleInstance();
             builder.RegisterType<NhanVienController>().As<INhanVienController<NhanVienModel>>().SingleInstance();
             builder.RegisterType<SanPhamController>().As<ISanPhamController<SanPhamModel>>().SingleInstance();
-
+            builder.RegisterType<HoaDonNhapController>().As<IHoaDonNhapController<HoaDonNhapModel>>().SingleInstance();
+          
           //  builder.RegisterType<ChiTietHDBController>().As<IBaseController<ChiTietHDBModel>>().SingleInstance();
           //  builder.RegisterType<ChiTietHDNController>().As<IBaseController<ChiTietHDNModel>>().SingleInstance();
-          //  builder.RegisterType<HoaDonBanController>().As<IBaseController<HoaDonBanModel>>().SingleInstance();
           //  builder.RegisterType<HoaDonNhapController>().As<IBaseController<HoaDonNhapModel>>().SingleInstance();
             
 

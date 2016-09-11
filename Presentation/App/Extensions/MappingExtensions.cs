@@ -3,7 +3,7 @@
 // Author           : Hung Le
 // Created          : 08-29-2016
 //
-// Last Modified By : Hung Le
+// Last Modified By : Hung Le, Cang Nguyen
 // Last Modified On : 09-10-2016
 // ***********************************************************************
 // <copyright file="MappingExtensions.cs" company="Thanh Dong University">
@@ -21,15 +21,14 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 using App.Core.Domain;
-using App.Core.Infrastructure;
 using App.Infrastructure;
 using App.Models;
 
-namespace App.Extensions{
+namespace App.Extensions {
     /// <summary>
     /// Class MappingExtensions.
     /// </summary>
-    public static class MappingExtensions{
+    public static class MappingExtensions {
         /// <summary>
         /// Maps to.
         /// </summary>
@@ -37,7 +36,7 @@ namespace App.Extensions{
         /// <typeparam name="TDestination">The type of the t destination.</typeparam>
         /// <param name="source">The source.</param>
         /// <returns>TDestination.</returns>
-        public static TDestination MapTo<TSource, TDestination>(this TSource source){
+        public static TDestination MapTo<TSource, TDestination>(this TSource source) {
             return AutoMapperConfiguration.Mapper.Map<TSource, TDestination>(source);
         }
 
@@ -49,7 +48,7 @@ namespace App.Extensions{
         /// <param name="source">The source.</param>
         /// <param name="destination">The destination.</param>
         /// <returns>TDestination.</returns>
-        public static TDestination MapTo<TSource, TDestination>(this TSource source, TDestination destination){
+        public static TDestination MapTo<TSource, TDestination>(this TSource source, TDestination destination) {
             return AutoMapperConfiguration.Mapper.Map(source, destination);
         }
 
@@ -59,11 +58,11 @@ namespace App.Extensions{
         /// <typeparam name="T"></typeparam>
         /// <param name="superset">The superset.</param>
         /// <returns>System.String.</returns>
-        public static string ToEncodeLink<T>(this T superset){
+        public static string ToEncodeLink<T>(this T superset) {
             var m = superset as string;
-            if (m == null)
+            if(m == null)
                 return "";
-            if (m.Trim() == "")
+            if(m.Trim() == "")
                 return "";
 
             byte[] plainTextBytes = Encoding.UTF8.GetBytes(m);
@@ -76,11 +75,11 @@ namespace App.Extensions{
         /// <typeparam name="T"></typeparam>
         /// <param name="superset">The superset.</param>
         /// <returns>System.String.</returns>
-        public static string ToDecodeLink<T>(this T superset){
+        public static string ToDecodeLink<T>(this T superset) {
             var m = superset as string;
-            if (m == null)
+            if(m == null)
                 return "";
-            if (m.Trim() == "")
+            if(m.Trim() == "")
                 return "";
 
             byte[] base64EncodedBytes = Convert.FromBase64String(m);
@@ -147,61 +146,66 @@ namespace App.Extensions{
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="superset">The superset.</param>
-        /// <param name="year">The year.</param>
+        /// <param name="nyear">The year.</param>
         /// <returns>QuyModel.</returns>
-        public static QuyModel ToQuy<T>(this T superset, string year)
-        {
+        public static QuyModel ToQuy<T>(this T superset, string nyear) {
             var q = new QuyModel();
-            var m = superset as string;
-            if(m == null)
+            var quy = superset as string;
+            if(quy == null)
                 return null;
-            if(m.Trim() == "")
+            if(quy.Trim() == "")
                 return null;
-            if (m=="1")
-            {
-                q.StartTime = (year+"-01-01 00:00:00").ToDateTime();
-                q.EndTime = (year+"-03-31 23:59:59").ToDateTime();
+
+            string year;
+            if(nyear == null) {
+                year = DateTime.Now.Year.ToString(CultureInfo.InvariantCulture);
+            } else if(string.IsNullOrEmpty(nyear.Trim())) {
+                year = DateTime.Now.Year.ToString(CultureInfo.InvariantCulture);
+            } else {
+                year = nyear;
             }
-            else if (m == "2")
+
+
+            const string f = "yyyy-MM-dd HH:mm:ss";
+            switch (quy)
             {
-                q.StartTime = (year + "-04-01 00:00:00").ToDateTime();
-                q.EndTime = (year + "-06-31 23:59:59").ToDateTime();
+                case "1":
+                    q.StartTime = (year + "-01-01 00:00:00").ToDateTime(f);
+                    q.EndTime = (year + "-03-31 23:59:59").ToDateTime(f);
+                    break;
+                case "2":
+                    q.StartTime = (year + "-04-01 00:00:00").ToDateTime(f);
+                    q.EndTime = (year + "-06-31 23:59:59").ToDateTime(f);
+                    break;
+                case "3":
+                    q.StartTime = (year + "-07-01 00:00:00").ToDateTime(f);
+                    q.EndTime = (year + "-09-31 23:59:59").ToDateTime(f);
+                    break;
+                case "4":
+                    q.StartTime = (year + "-10-01 00:00:00").ToDateTime(f);
+                    q.EndTime = (year + "-12-31 23:59:59").ToDateTime(f);
+                    break;
             }
-            else if (m == "3")
-            {
-                q.StartTime = (year + "-07-01 00:00:00").ToDateTime();
-                q.EndTime = (year + "-09-31 23:59:59").ToDateTime();
-            }
-            else if (m == "4")
-            {
-                q.StartTime = (year + "-10-01 00:00:00").ToDateTime();
-                q.EndTime = (year + "-12-31 23:59:59").ToDateTime();
-            }
-            //từ tháng 1-> tháng 3
-            //m="1","2","3","4"
-            //todo: m to model         
-            //todo:  
             return q;
         }
+
         /// <summary>
         /// To the date time with format: dd/MM/yyyy
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="superset">The superset.</param>
+        /// <param name="f"></param>
         /// <returns>DateTime.</returns>
-        public static DateTime ToDateTime<T>(this T superset) {
+        public static DateTime ToDateTime<T>(this T superset, string f = "dd/MM/yyyy") {
             var m = superset as string;
             if(m == null)
                 return DateTime.Now;
             if(m.Trim() == "")
                 return DateTime.Now;
-            try
-            {
-                var dt = DateTime.ParseExact(m, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            try {
+                var dt = DateTime.ParseExact(m, f, CultureInfo.InvariantCulture);
                 return dt;
-            }
-            catch
-            {
+            } catch {
                 return DateTime.Now;
             }
         }
@@ -241,7 +245,7 @@ namespace App.Extensions{
         /// <typeparam name="T"></typeparam>
         /// <param name="superset">The superset.</param>
         /// <returns>System.String.</returns>
-        public static string Serialize<T>(this IEnumerable<T> superset){
+        public static string Serialize<T>(this IEnumerable<T> superset) {
             //if(Singleton<JavaScriptSerializer>.Instance == null) {
             //    Singleton<JavaScriptSerializer>.Instance = new JavaScriptSerializer { MaxJsonLength = Int32.MaxValue };
             //}
@@ -259,8 +263,8 @@ namespace App.Extensions{
         /// <param name="dataGridView">The data grid view.</param>
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
-        public static void UpdateView(this DataGridView dataGridView,string key, string value){
-            if (dataGridView.CurrentRow != null)
+        public static void UpdateView(this DataGridView dataGridView, string key, string value) {
+            if(dataGridView.CurrentRow != null)
                 dataGridView.Rows[dataGridView.CurrentRow.Index].Cells[key].Value = value;
         }
         /// <summary>
@@ -280,14 +284,14 @@ namespace App.Extensions{
         /// <param name="value">The value.</param>
         /// <returns>BaseEntity.</returns>
         public static BaseEntity CurrentSelected(this DataGridView grid, IEnumerable<BaseEntity> value) {
-            if (grid.SelectedCells.Count > 0) {
+            if(grid.SelectedCells.Count > 0) {
                 int selectedrowindex = grid.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = grid.Rows[selectedrowindex];
                 string rowindex = Convert.ToString(selectedRow.Cells["ID"].Value);
                 return value.FirstOrDefault(c => c.ID == Convert.ToInt32(rowindex));
 
-           }
-           return null;
+            }
+            return null;
         }
 
         /// <summary>
@@ -301,11 +305,11 @@ namespace App.Extensions{
             dgv.Rows.Clear();
             int rowCount = 0;
 
-            foreach (DataRow dr in ds.Tables[dataTable].Rows) {
-                int row = dgv.Rows.Add();
-                int colCount = 0;
+            foreach(DataRow dr in ds.Tables[dataTable].Rows) {
+                var row = dgv.Rows.Add();
+                var colCount = 0;
 
-                foreach (DataColumn col in ds.Tables[dataTable].Columns) {
+                foreach(DataColumn col in ds.Tables[dataTable].Columns) {
                     dgv.Rows[rowCount].Cells[colCount].Value = dr[colCount].ToString();
                     colCount++;
                 }
@@ -319,7 +323,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>ChatLieuModel.</returns>
-        public static ChatLieuModel ToModel(this ChatLieu entity){
+        public static ChatLieuModel ToModel(this ChatLieu entity) {
             return entity.MapTo<ChatLieu, ChatLieuModel>();
         }
 
@@ -328,7 +332,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>ChatLieu.</returns>
-        public static ChatLieu ToEntity(this ChatLieuModel model){
+        public static ChatLieu ToEntity(this ChatLieuModel model) {
             return model.MapTo<ChatLieuModel, ChatLieu>();
         }
 
@@ -338,7 +342,7 @@ namespace App.Extensions{
         /// <param name="model">The model.</param>
         /// <param name="destination">The destination.</param>
         /// <returns>ChatLieu.</returns>
-        public static ChatLieu ToEntity(this ChatLieuModel model, ChatLieu destination){
+        public static ChatLieu ToEntity(this ChatLieuModel model, ChatLieu destination) {
             return model.MapTo(destination);
         }
 
@@ -347,7 +351,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>ChiTietHdbModel.</returns>
-        public static ChiTietHdbModel ToModel(this ChiTietHDB entity){
+        public static ChiTietHdbModel ToModel(this ChiTietHDB entity) {
             return entity.MapTo<ChiTietHDB, ChiTietHdbModel>();
         }
 
@@ -356,7 +360,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>ChiTietHDB.</returns>
-        public static ChiTietHDB ToEntity(this ChiTietHdbModel model){
+        public static ChiTietHDB ToEntity(this ChiTietHdbModel model) {
             return model.MapTo<ChiTietHdbModel, ChiTietHDB>();
         }
 
@@ -366,7 +370,7 @@ namespace App.Extensions{
         /// <param name="model">The model.</param>
         /// <param name="destination">The destination.</param>
         /// <returns>ChiTietHDB.</returns>
-        public static ChiTietHDB ToEntity(this ChiTietHdbModel model, ChiTietHDB destination){
+        public static ChiTietHDB ToEntity(this ChiTietHdbModel model, ChiTietHDB destination) {
             return model.MapTo(destination);
         }
 
@@ -375,7 +379,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>ChiTietHdnModel.</returns>
-        public static ChiTietHdnModel ToModel(this ChiTietHDN entity){
+        public static ChiTietHdnModel ToModel(this ChiTietHDN entity) {
             return entity.MapTo<ChiTietHDN, ChiTietHdnModel>();
         }
 
@@ -384,7 +388,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>ChiTietHDN.</returns>
-        public static ChiTietHDN ToEntity(this ChiTietHdnModel model){
+        public static ChiTietHDN ToEntity(this ChiTietHdnModel model) {
             return model.MapTo<ChiTietHdnModel, ChiTietHDN>();
         }
 
@@ -394,7 +398,7 @@ namespace App.Extensions{
         /// <param name="model">The model.</param>
         /// <param name="destination">The destination.</param>
         /// <returns>ChiTietHDN.</returns>
-        public static ChiTietHDN ToEntity(this ChiTietHdnModel model, ChiTietHDN destination){
+        public static ChiTietHDN ToEntity(this ChiTietHdnModel model, ChiTietHDN destination) {
             return model.MapTo(destination);
         }
 
@@ -403,7 +407,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>CongViecModel.</returns>
-        public static CongViecModel ToModel(this CongViec entity){
+        public static CongViecModel ToModel(this CongViec entity) {
             return entity.MapTo<CongViec, CongViecModel>();
         }
 
@@ -412,7 +416,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>CongViec.</returns>
-        public static CongViec ToEntity(this CongViecModel model){
+        public static CongViec ToEntity(this CongViecModel model) {
             return model.MapTo<CongViecModel, CongViec>();
         }
 
@@ -422,7 +426,7 @@ namespace App.Extensions{
         /// <param name="model">The model.</param>
         /// <param name="destination">The destination.</param>
         /// <returns>CongViec.</returns>
-        public static CongViec ToEntity(this CongViecModel model, CongViec destination){
+        public static CongViec ToEntity(this CongViecModel model, CongViec destination) {
             return model.MapTo(destination);
         }
 
@@ -431,7 +435,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>DoiTuongModel.</returns>
-        public static DoiTuongModel ToModel(this DoiTuong entity){
+        public static DoiTuongModel ToModel(this DoiTuong entity) {
             return entity.MapTo<DoiTuong, DoiTuongModel>();
         }
 
@@ -440,7 +444,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>DoiTuong.</returns>
-        public static DoiTuong ToEntity(this DoiTuongModel model){
+        public static DoiTuong ToEntity(this DoiTuongModel model) {
             return model.MapTo<DoiTuongModel, DoiTuong>();
         }
 
@@ -450,7 +454,7 @@ namespace App.Extensions{
         /// <param name="model">The model.</param>
         /// <param name="destination">The destination.</param>
         /// <returns>DoiTuong.</returns>
-        public static DoiTuong ToEntity(this DoiTuongModel model, DoiTuong destination){
+        public static DoiTuong ToEntity(this DoiTuongModel model, DoiTuong destination) {
             return model.MapTo(destination);
         }
 
@@ -459,7 +463,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>HoaDonBanModel.</returns>
-        public static HoaDonBanModel ToModel(this HoaDonBan entity){
+        public static HoaDonBanModel ToModel(this HoaDonBan entity) {
             return entity.MapTo<HoaDonBan, HoaDonBanModel>();
         }
 
@@ -468,7 +472,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>HoaDonBan.</returns>
-        public static HoaDonBan ToEntity(this HoaDonBanModel model){
+        public static HoaDonBan ToEntity(this HoaDonBanModel model) {
             return model.MapTo<HoaDonBanModel, HoaDonBan>();
         }
 
@@ -478,7 +482,7 @@ namespace App.Extensions{
         /// <param name="model">The model.</param>
         /// <param name="destination">The destination.</param>
         /// <returns>HoaDonBan.</returns>
-        public static HoaDonBan ToEntity(this HoaDonBanModel model, HoaDonBan destination){
+        public static HoaDonBan ToEntity(this HoaDonBanModel model, HoaDonBan destination) {
             return model.MapTo(destination);
         }
 
@@ -487,7 +491,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>HoaDonNhapModel.</returns>
-        public static HoaDonNhapModel ToModel(this HoaDonNhap entity){
+        public static HoaDonNhapModel ToModel(this HoaDonNhap entity) {
             return entity.MapTo<HoaDonNhap, HoaDonNhapModel>();
         }
 
@@ -496,7 +500,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>HoaDonNhap.</returns>
-        public static HoaDonNhap ToEntity(this HoaDonNhapModel model){
+        public static HoaDonNhap ToEntity(this HoaDonNhapModel model) {
             return model.MapTo<HoaDonNhapModel, HoaDonNhap>();
         }
 
@@ -506,7 +510,7 @@ namespace App.Extensions{
         /// <param name="model">The model.</param>
         /// <param name="destination">The destination.</param>
         /// <returns>HoaDonNhap.</returns>
-        public static HoaDonNhap ToEntity(this HoaDonNhapModel model, HoaDonNhap destination){
+        public static HoaDonNhap ToEntity(this HoaDonNhapModel model, HoaDonNhap destination) {
             return model.MapTo(destination);
         }
 
@@ -515,7 +519,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>KhachHangModel.</returns>
-        public static KhachHangModel ToModel(this KhachHang entity){
+        public static KhachHangModel ToModel(this KhachHang entity) {
             return entity.MapTo<KhachHang, KhachHangModel>();
         }
 
@@ -524,7 +528,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>KhachHang.</returns>
-        public static KhachHang ToEntity(this KhachHangModel model){
+        public static KhachHang ToEntity(this KhachHangModel model) {
             return model.MapTo<KhachHangModel, KhachHang>();
         }
 
@@ -534,7 +538,7 @@ namespace App.Extensions{
         /// <param name="model">The model.</param>
         /// <param name="destination">The destination.</param>
         /// <returns>KhachHang.</returns>
-        public static KhachHang ToEntity(this KhachHangModel model, KhachHang destination){
+        public static KhachHang ToEntity(this KhachHangModel model, KhachHang destination) {
             return model.MapTo(destination);
         }
 
@@ -543,7 +547,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>KichCoModel.</returns>
-        public static KichCoModel ToModel(this KichCo entity){
+        public static KichCoModel ToModel(this KichCo entity) {
             return entity.MapTo<KichCo, KichCoModel>();
         }
 
@@ -552,7 +556,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>KichCo.</returns>
-        public static KichCo ToEntity(this KichCoModel model){
+        public static KichCo ToEntity(this KichCoModel model) {
             return model.MapTo<KichCoModel, KichCo>();
         }
 
@@ -562,7 +566,7 @@ namespace App.Extensions{
         /// <param name="model">The model.</param>
         /// <param name="destination">The destination.</param>
         /// <returns>KichCo.</returns>
-        public static KichCo ToEntity(this KichCoModel model, KichCo destination){
+        public static KichCo ToEntity(this KichCoModel model, KichCo destination) {
             return model.MapTo(destination);
         }
 
@@ -571,7 +575,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>MauModel.</returns>
-        public static MauModel ToModel(this Mau entity){
+        public static MauModel ToModel(this Mau entity) {
             return entity.MapTo<Mau, MauModel>();
         }
 
@@ -580,7 +584,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>Mau.</returns>
-        public static Mau ToEntity(this MauModel model){
+        public static Mau ToEntity(this MauModel model) {
             return model.MapTo<MauModel, Mau>();
         }
 
@@ -590,7 +594,7 @@ namespace App.Extensions{
         /// <param name="model">The model.</param>
         /// <param name="destination">The destination.</param>
         /// <returns>Mau.</returns>
-        public static Mau ToEntity(this MauModel model, Mau destination){
+        public static Mau ToEntity(this MauModel model, Mau destination) {
             return model.MapTo(destination);
         }
 
@@ -599,7 +603,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>MuaModel.</returns>
-        public static MuaModel ToModel(this Mua entity){
+        public static MuaModel ToModel(this Mua entity) {
             return entity.MapTo<Mua, MuaModel>();
         }
 
@@ -608,7 +612,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>Mua.</returns>
-        public static Mua ToEntity(this MuaModel model){
+        public static Mua ToEntity(this MuaModel model) {
             return model.MapTo<MuaModel, Mua>();
         }
 
@@ -618,7 +622,7 @@ namespace App.Extensions{
         /// <param name="model">The model.</param>
         /// <param name="destination">The destination.</param>
         /// <returns>Mua.</returns>
-        public static Mua ToEntity(this MuaModel model, Mua destination){
+        public static Mua ToEntity(this MuaModel model, Mua destination) {
             return model.MapTo(destination);
         }
 
@@ -627,7 +631,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>NhaCungCapModel.</returns>
-        public static NhaCungCapModel ToModel(this NhaCungCap entity){
+        public static NhaCungCapModel ToModel(this NhaCungCap entity) {
             return entity.MapTo<NhaCungCap, NhaCungCapModel>();
         }
 
@@ -636,7 +640,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>NhaCungCap.</returns>
-        public static NhaCungCap ToEntity(this NhaCungCapModel model){
+        public static NhaCungCap ToEntity(this NhaCungCapModel model) {
             return model.MapTo<NhaCungCapModel, NhaCungCap>();
         }
 
@@ -646,7 +650,7 @@ namespace App.Extensions{
         /// <param name="model">The model.</param>
         /// <param name="destination">The destination.</param>
         /// <returns>NhaCungCap.</returns>
-        public static NhaCungCap ToEntity(this NhaCungCapModel model, NhaCungCap destination){
+        public static NhaCungCap ToEntity(this NhaCungCapModel model, NhaCungCap destination) {
             return model.MapTo(destination);
         }
 
@@ -655,7 +659,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>NhanVienModel.</returns>
-        public static NhanVienModel ToModel(this NhanVien entity){
+        public static NhanVienModel ToModel(this NhanVien entity) {
             return entity.MapTo<NhanVien, NhanVienModel>();
         }
 
@@ -664,7 +668,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>NhanVien.</returns>
-        public static NhanVien ToEntity(this NhanVienModel model){
+        public static NhanVien ToEntity(this NhanVienModel model) {
             return model.MapTo<NhanVienModel, NhanVien>();
         }
 
@@ -674,7 +678,7 @@ namespace App.Extensions{
         /// <param name="model">The model.</param>
         /// <param name="destination">The destination.</param>
         /// <returns>NhanVien.</returns>
-        public static NhanVien ToEntity(this NhanVienModel model, NhanVien destination){
+        public static NhanVien ToEntity(this NhanVienModel model, NhanVien destination) {
             return model.MapTo(destination);
         }
 
@@ -683,7 +687,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>NuocSanXuatModel.</returns>
-        public static NuocSanXuatModel ToModel(this NuocSanXuat entity){
+        public static NuocSanXuatModel ToModel(this NuocSanXuat entity) {
             return entity.MapTo<NuocSanXuat, NuocSanXuatModel>();
         }
 
@@ -692,7 +696,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>NuocSanXuat.</returns>
-        public static NuocSanXuat ToEntity(this NuocSanXuatModel model){
+        public static NuocSanXuat ToEntity(this NuocSanXuatModel model) {
             return model.MapTo<NuocSanXuatModel, NuocSanXuat>();
         }
 
@@ -702,7 +706,7 @@ namespace App.Extensions{
         /// <param name="model">The model.</param>
         /// <param name="destination">The destination.</param>
         /// <returns>NuocSanXuat.</returns>
-        public static NuocSanXuat ToEntity(this NuocSanXuatModel model, NuocSanXuat destination){
+        public static NuocSanXuat ToEntity(this NuocSanXuatModel model, NuocSanXuat destination) {
             return model.MapTo(destination);
         }
 
@@ -711,7 +715,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>SanPhamModel.</returns>
-        public static SanPhamModel ToModel(this SanPham entity){
+        public static SanPhamModel ToModel(this SanPham entity) {
             return entity.MapTo<SanPham, SanPhamModel>();
         }
 
@@ -720,7 +724,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>SanPham.</returns>
-        public static SanPham ToEntity(this SanPhamModel model){
+        public static SanPham ToEntity(this SanPhamModel model) {
             return model.MapTo<SanPhamModel, SanPham>();
         }
 
@@ -730,7 +734,7 @@ namespace App.Extensions{
         /// <param name="model">The model.</param>
         /// <param name="destination">The destination.</param>
         /// <returns>SanPham.</returns>
-        public static SanPham ToEntity(this SanPhamModel model, SanPham destination){
+        public static SanPham ToEntity(this SanPhamModel model, SanPham destination) {
             return model.MapTo(destination);
         }
 
@@ -739,7 +743,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>TheLoaiModel.</returns>
-        public static TheLoaiModel ToModel(this TheLoai entity){
+        public static TheLoaiModel ToModel(this TheLoai entity) {
             return entity.MapTo<TheLoai, TheLoaiModel>();
         }
 
@@ -748,7 +752,7 @@ namespace App.Extensions{
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>TheLoai.</returns>
-        public static TheLoai ToEntity(this TheLoaiModel model){
+        public static TheLoai ToEntity(this TheLoaiModel model) {
             return model.MapTo<TheLoaiModel, TheLoai>();
         }
 
@@ -758,7 +762,7 @@ namespace App.Extensions{
         /// <param name="model">The model.</param>
         /// <param name="destination">The destination.</param>
         /// <returns>TheLoai.</returns>
-        public static TheLoai ToEntity(this TheLoaiModel model, TheLoai destination){
+        public static TheLoai ToEntity(this TheLoaiModel model, TheLoai destination) {
             return model.MapTo(destination);
         }
 

@@ -9,7 +9,9 @@
 // <copyright file="Program.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
 // </copyright>
-// <summary></summary>
+// <summary>
+// Tutor: M.Sc Cuong Tran: tranduccuong121@gmail.com
+//</summary>
 // ***********************************************************************
 
 using System;
