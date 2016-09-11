@@ -161,36 +161,54 @@ namespace App.Views {
 
         }
 
-        private void bntMaChatLieu_Click(object sender, EventArgs e) {
-
-        }
-
-        private void bntDoiTuong_Click(object sender, EventArgs e) {
-
-        }
-
-        private void bntMua_Click(object sender, EventArgs e) {
-
-        }
-
-        private void bntLoai_Click(object sender, EventArgs e) {
-
-        }
-
-        private void bntCo_Click(object sender, EventArgs e) {
-
-        }
-
-        private void bntMau_Click(object sender, EventArgs e) {
-
-        }
-
-        private void bntNuocSanXuat_Click(object sender, EventArgs e) {
-
-        }
-
         private void bntLuuTiepTuc_Click(object sender, EventArgs e) {
             OnSetSave(false);
         }
+
+        public void SetTxtMaTheLoai(string value) {
+            txtMaLoai.Text = value;
+        }
+        public void SetTxtMaKichCo(string value) {
+            txtMaCo.Text = value;
+        }
+        public void SetTxtMaChatLieu(string value) {
+            txtMaChatLieu.Text = value;
+        }
+        public void SetTxtMaMau(string value) {
+            txtMaMau.Text = value;
+        }
+        public void SetTxtMaDoiTuong(string value) {
+            txtMaDoiTuong.Text = value;
+        }
+        public void SetTxtMaMua(string value) {
+            txtMaMua.Text = value;
+        }
+        public void SetTxtMaNuocSanXuat(string value) {
+            txtMaNuocSanXuat.Text = value;
+        }
+        private void bntMaChatLieu_Click(object sender, EventArgs e) {
+            currentController.ShowChatLieuView(txtMaChatLieu.Text);
+        }
+
+        private void bntLoai_Click(object sender, EventArgs e) {
+            currentController.ShowTheLoaiView(txtMaLoai.Text);
+        }
+        private void bntCo_Click(object sender, EventArgs e) {
+            currentController.ShowKichCoView(txtMaCo.Text);
+        }
+        private void bntMau_Click(object sender, EventArgs e) {
+            currentController.ShowMauView(txtMaMau.Text);
+        }
+        private void bntDoiTuong_Click(object sender, EventArgs e) {
+            currentController.ShowDoiTuongView(txtMaDoiTuong.Text);
+        }
+        private void bntMua_Click(object sender, EventArgs e) {
+            currentController.ShowMuaView(txtMaMua.Text);
+        }
+        private void bntNuocSanXuat_Click(object sender, EventArgs e) {
+            currentController.ShowNuocSanXuatView(txtMaNuocSanXuat.Text);
+        }
+
+
     }
 }

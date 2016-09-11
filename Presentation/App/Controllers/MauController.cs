@@ -58,7 +58,11 @@ namespace App.Controllers
 
         public void Select(MauModel value)
         {
-            throw new NotImplementedException();
+            //Mau
+            if(Notification != null) {
+                Notification(Mediator.SAN_PHAM_CALL_MAU_GET_MA, new AppEvent<MauModel> { value = value });
+                Notification = null;
+            }
         }
 
         /// <summary>

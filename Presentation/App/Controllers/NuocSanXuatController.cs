@@ -55,7 +55,11 @@ namespace App.Controllers {
 
         public void Select(NuocSanXuatModel value)
         {
-            throw new NotImplementedException();
+            //NuocSanXuat
+            if(Notification != null) {
+                Notification(Mediator.SAN_PHAM_CALL_NUOC_SANXUAT_GET_MA, new AppEvent<NuocSanXuatModel> { value = value });
+                Notification = null;
+            }
         }
 
         /// <summary>

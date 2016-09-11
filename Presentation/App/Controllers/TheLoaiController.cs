@@ -55,7 +55,11 @@ namespace App.Controllers {
 
         public void Select(TheLoaiModel value)
         {
-            throw new NotImplementedException();
+            //TheLoai
+            if(Notification != null) {
+                Notification(Mediator.SAN_PHAM_CALL_THE_LOAI_GET_MA, new AppEvent<TheLoaiModel> { value = value });
+                Notification = null;
+            }
         }
 
         /// <summary>

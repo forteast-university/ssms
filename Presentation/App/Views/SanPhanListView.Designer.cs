@@ -38,8 +38,7 @@ namespace App.Views {
             // 
             // bntTimKiem
             // 
-            this.bntTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bntTimKiem.Location = new System.Drawing.Point(406, 7);
+            this.bntTimKiem.Location = new System.Drawing.Point(366, 8);
             this.bntTimKiem.Name = "bntTimKiem";
             this.bntTimKiem.Size = new System.Drawing.Size(75, 23);
             this.bntTimKiem.TabIndex = 0;
@@ -51,8 +50,9 @@ namespace App.Views {
             // 
             this.txtTimKiem.Location = new System.Drawing.Point(73, 10);
             this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(193, 20);
+            this.txtTimKiem.Size = new System.Drawing.Size(177, 20);
             this.txtTimKiem.TabIndex = 2;
+            this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
             // 
             // label1
             // 
@@ -79,7 +79,7 @@ namespace App.Views {
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(467, 234);
+            this.dataGridView.Size = new System.Drawing.Size(707, 234);
             this.dataGridView.TabIndex = 6;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             this.dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
@@ -110,8 +110,8 @@ namespace App.Views {
             // 
             // bntTaoMoi
             // 
-            this.bntTaoMoi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bntTaoMoi.Location = new System.Drawing.Point(175, 278);
+            this.bntTaoMoi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bntTaoMoi.Location = new System.Drawing.Point(644, 8);
             this.bntTaoMoi.Name = "bntTaoMoi";
             this.bntTaoMoi.Size = new System.Drawing.Size(75, 23);
             this.bntTaoMoi.TabIndex = 9;
@@ -123,16 +123,16 @@ namespace App.Views {
             // 
             this.cbbTimKiem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbTimKiem.FormattingEnabled = true;
-            this.cbbTimKiem.Location = new System.Drawing.Point(272, 9);
+            this.cbbTimKiem.Location = new System.Drawing.Point(256, 9);
             this.cbbTimKiem.Name = "cbbTimKiem";
-            this.cbbTimKiem.Size = new System.Drawing.Size(121, 21);
+            this.cbbTimKiem.Size = new System.Drawing.Size(104, 21);
             this.cbbTimKiem.TabIndex = 10;
             // 
             // SanPhanListView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(493, 313);
+            this.ClientSize = new System.Drawing.Size(733, 313);
             this.Controls.Add(this.cbbTimKiem);
             this.Controls.Add(this.bntTaoMoi);
             this.Controls.Add(this.bntXoa);

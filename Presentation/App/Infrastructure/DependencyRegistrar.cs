@@ -44,7 +44,7 @@ namespace App.Infrastructure {
             //builder.RegisterType<ChatLieuController>().WithParameter(ResolvedParameter.ForNamed<IChatLieuController>("0"));
 
             builder.RegisterType<ChatLieuController>().As<IBaseController<ChatLieuModel>>().SingleInstance();
-            builder.RegisterType<CongViecController>().As<IBaseController<CongViecModel>>().SingleInstance();
+            builder.RegisterType<CongViecController>().As<ICongViecController<CongViecModel>>().SingleInstance();
             builder.RegisterType<KhachHangController>().As<IBaseController<KhachHangModel>>().SingleInstance();
             builder.RegisterType<KichCoController>().As<IBaseController<KichCoModel>>().SingleInstance();
             builder.RegisterType<MauController>().As<IBaseController<MauModel>>().SingleInstance();

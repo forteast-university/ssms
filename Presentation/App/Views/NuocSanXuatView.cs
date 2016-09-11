@@ -221,7 +221,7 @@ namespace App.Views
         {
 
             currentModel = (NuocSanXuatModel)dataGridView.CurrentSelected(NuocSanXuatModelList);
-            MessageBox.Show(currentModel.MaNuocSX);
+            controller.Select(currentModel);
         }
 
         private void bntHuy_Click(object sender, EventArgs e)

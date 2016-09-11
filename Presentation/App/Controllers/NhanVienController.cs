@@ -85,7 +85,7 @@ namespace App.Controllers{
         }
         public void ShowCongViecView(string ma){
             try {
-                var a = app.Resolve<IBaseController<CongViecModel>>();
+                var a = app.Resolve<ICongViecController<CongViecModel>>();
                 a.Notification += AddEventListener;
                 a.ShowForm();
             } catch(ComponentNotRegisteredException exception) {

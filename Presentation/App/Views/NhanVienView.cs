@@ -140,8 +140,8 @@ namespace App.Views{
                 currentModel.TenNhanVien = txtTenNhanVien.Text;
                 currentModel.DiaChi = txtDiaChi.Text;
                 currentModel.DienThoai = txtDienThoai.Text;
-                currentModel.GioiTinh = txtDienThoai.Text;
-                currentModel.NgaySinh = txtDienThoai.Text.ToDateTime();
+                currentModel.GioiTinh = txtGioiTinh.Text;
+                currentModel.NgaySinh = txtNgaySinh.Text.ToDateTime();
                 currentModel.MaCV = txtMaCV.Text;
 
                 controller.Update(currentModel);
@@ -339,7 +339,6 @@ namespace App.Views{
             txtMaCV.Text = ma;
         }
         private void bntCongViec_Click(object sender, EventArgs e) {
-            //todo: congviec
             controller.ShowCongViecView(txtMaCV.Text);
         }
 

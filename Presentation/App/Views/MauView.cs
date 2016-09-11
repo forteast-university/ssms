@@ -220,7 +220,7 @@ namespace App.Views
         private void bntLuaChon_Click(object sender, EventArgs e)
         {
              currentModel = (MauModel)dataGridView.CurrentSelected(MauModelList);
-            MessageBox.Show(currentModel.MaMau);
+             controller.Select(currentModel);
         }
 
         private void bntHuy_Click(object sender, EventArgs e)

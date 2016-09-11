@@ -160,7 +160,7 @@ namespace App.Views{
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void bntLuaChon_Click(object sender, EventArgs e){
             currentModel = (TheLoaiModel) dataGridView.CurrentSelected(currentModelList);
-            MessageBox.Show(currentModel.MaLoai);
+            controller.Select(currentModel);
         }
 
         /// <summary>

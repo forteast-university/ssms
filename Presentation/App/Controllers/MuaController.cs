@@ -55,7 +55,11 @@ namespace App.Controllers {
 
         public void Select(MuaModel value)
         {
-            throw new NotImplementedException();
+            //Mua
+            if(Notification != null) {
+                Notification(Mediator.SAN_PHAM_CALL_MUA_GET_MA, new AppEvent<MuaModel> { value = value });
+                Notification = null;
+            }
         }
 
         /// <summary>

@@ -55,7 +55,11 @@ namespace App.Controllers {
 
         public void Select(KichCoModel value)
         {
-            throw new NotImplementedException();
+            //KichCo
+            if(Notification != null) {
+                Notification(Mediator.SAN_PHAM_CALL_KICH_CO_GET_MA, new AppEvent<KichCoModel> { value = value });
+                Notification = null;
+            }
         }
 
         /// <summary>

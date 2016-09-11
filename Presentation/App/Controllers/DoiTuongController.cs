@@ -58,7 +58,11 @@ namespace App.Controllers
 
         public void Select(DoiTuongModel value)
         {
-            throw new NotImplementedException();
+            //DoiTuong
+            if(Notification != null) {
+                Notification(Mediator.SAN_PHAM_CALL_DOI_TUONG_GET_MA, new AppEvent<DoiTuongModel> { value = value });
+                Notification = null;
+            }
         }
 
         /// <summary>

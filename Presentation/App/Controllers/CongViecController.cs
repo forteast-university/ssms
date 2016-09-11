@@ -18,7 +18,7 @@ namespace App.Controllers
     /// <summary>
     /// Class CongViecController.
     /// </summary>
-    public partial class CongViecController : IBaseController<CongViecModel>
+    public partial class CongViecController: ICongViecController<CongViecModel>
     {
 
         /// <summary>
@@ -40,13 +40,7 @@ namespace App.Controllers
             this.CongViecService = CongViecService;
             view = new CongViecView(this);
         }
-
-        public event EventHandler<AppEvent<CongViecModel>> Notification;
-
-        public void Select(CongViecModel value)
-        {
-            Notification(Mediator.NHAN_VIEN_CALL_CONG_VIEC_GET_MA, new AppEvent<CongViecModel>{value = value});
-        }
+        
 
         /// <summary>
         /// Views this instance.
@@ -99,7 +93,7 @@ namespace App.Controllers
         }
         protected virtual CongViec ModelToEntity(CongViecModel model)
         {
-            CongViec a = CongViecService.GetById(model.ID);
+            var a = CongViecService.GetById(model.ID);
             return a == null ? null : model.ToEntity(a);
         }
         /// <summary>
@@ -140,6 +134,14 @@ namespace App.Controllers
             foreach (var i in list)
             {
                 Delete(i);
+            }
+        }
+        public event EventHandler<AppEvent<CongViecModel>> Notification;
+        public void Select(CongViecModel value) {
+            if(Notification != null)
+            {
+                Notification(Mediator.NHAN_VIEN_CALL_CONG_VIEC_GET_MA, new AppEvent<CongViecModel> { value = value });
+                Notification = null;
             }
         }
     }

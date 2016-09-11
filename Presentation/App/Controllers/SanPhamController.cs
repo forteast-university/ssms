@@ -18,11 +18,14 @@ using System.Linq;
 using System.Windows.Forms;
 using App.Controllers.Interface;
 using App.Core.Domain;
+using App.Core.Infrastructure;
 using App.Extensions;
 using App.Models;
 using App.Properties;
 using App.Service.Business;
 using App.Views;
+using Autofac;
+using Autofac.Core.Registration;
 
 namespace App.Controllers
 {
@@ -203,6 +206,149 @@ namespace App.Controllers
         public void SetSanPhamListView(Form value)
         {
             sanPhanListView = (SanPhanListView)value;
+        }
+
+        private readonly IContainer app = AppFacade.Container;
+        public void AddEventListener<T>(object sender, AppEvent<T> e) {
+            var key = sender.ToString();
+            if (key == Mediator.SAN_PHAM_CALL_THE_LOAI_GET_MA)
+            {
+                //---------------------TheLoai
+                if(e == null)
+                    return;
+                if(e.value == null)
+                    return;
+                var m = e.value as TheLoaiModel;
+                if(m == null)
+                    return;
+                sanPhamView.SetTxtMaTheLoai(m.MaLoai);
+                app.Resolve<IBaseController<TheLoaiModel>>().HideForm();
+            }
+            if (key == Mediator.SAN_PHAM_CALL_KICH_CO_GET_MA)
+            {
+                //---------------------KichCo
+                if(e == null)
+                    return;
+                if(e.value == null)
+                    return;
+                var m = e.value as KichCoModel;
+                if(m == null)
+                    return;
+                sanPhamView.SetTxtMaKichCo(m.MaCo);
+                app.Resolve<IBaseController<KichCoModel>>().HideForm();
+            }
+            if (key == Mediator.SAN_PHAM_CALL_CHAT_LIEU_GET_MA)
+            {
+                //---------------------ChatLieu
+                if(e == null)
+                    return;
+                if(e.value == null)
+                    return;
+                var m = e.value as ChatLieuModel;
+                if(m == null)
+                    return;
+                sanPhamView.SetTxtMaChatLieu(m.MaChatLieu);
+                app.Resolve<IBaseController<ChatLieuModel>>().HideForm();
+            }
+            if (key == Mediator.SAN_PHAM_CALL_MAU_GET_MA)
+            {
+                
+                //---------------------Mau
+                if(e == null) return;
+                if(e.value == null)return;
+                var m = e.value as MauModel;
+                if(m == null) return;
+                sanPhamView.SetTxtMaMau(m.MaMau);
+                app.Resolve<IBaseController<MauModel>>().HideForm();
+
+            }
+            if (key == Mediator.SAN_PHAM_CALL_DOI_TUONG_GET_MA)
+            {
+                //---------------------DoiTuong
+                if(e == null) return;
+                if(e.value == null)return;
+                var m = e.value as DoiTuongModel;
+                if(m == null) return;
+                sanPhamView.SetTxtMaDoiTuong(m.MaDoiTuong);
+                app.Resolve<IBaseController<DoiTuongModel>>().HideForm();
+            }
+            if (key == Mediator.SAN_PHAM_CALL_MUA_GET_MA)
+            {
+                //---------------------Mua
+                if(e == null) return;
+                if(e.value == null)return;
+                var m = e.value as MuaModel;
+                if(m == null) return;
+                sanPhamView.SetTxtMaMua(m.MaMua);
+                app.Resolve<IBaseController<MuaModel>>().HideForm();
+                
+            }
+            if (key == Mediator.SAN_PHAM_CALL_NUOC_SANXUAT_GET_MA)
+            {
+                //---------------------NuocSanXuat
+                if(e == null) return;
+                if(e.value == null)return;
+                var m = e.value as NuocSanXuatModel;
+                if(m == null) return;
+                sanPhamView.SetTxtMaNuocSanXuat(m.MaNuocSX);
+                app.Resolve<IBaseController<NuocSanXuatModel>>().HideForm();
+            }
+        }
+        public void ShowTheLoaiView(string ma) {
+            try {
+                var a = app.Resolve<IBaseController<TheLoaiModel>>();
+                a.Notification += AddEventListener;
+                a.ShowForm();
+            } catch(ComponentNotRegisteredException exception) {
+            }
+        }
+        public void ShowKichCoView(string ma) {
+            try {
+                var a = app.Resolve<IBaseController<KichCoModel>>();
+                a.Notification += AddEventListener;
+                a.ShowForm();
+            } catch(ComponentNotRegisteredException exception) {
+            }
+        }
+        public void ShowChatLieuView(string ma) {
+            try {
+                var a = app.Resolve<IBaseController<ChatLieuModel>>();
+                a.Notification += AddEventListener;
+                a.ShowForm();
+            } catch(ComponentNotRegisteredException exception) {
+            }
+        }
+        public void ShowMauView(string ma) {
+            try {
+                var a = app.Resolve<IBaseController<MauModel>>();
+                a.Notification += AddEventListener;
+                a.ShowForm();
+            } catch(ComponentNotRegisteredException exception) {
+            }
+        }
+        public void ShowDoiTuongView(string ma) {
+            try {
+                var a = app.Resolve<IBaseController<DoiTuongModel>>();
+                a.Notification += AddEventListener;
+                a.ShowForm();
+            } catch(ComponentNotRegisteredException exception) {
+            }
+        }
+        public void ShowMuaView(string ma) {
+            try {
+                var a = app.Resolve<IBaseController<MuaModel>>();
+                a.Notification += AddEventListener;
+                a.ShowForm();
+            } catch(ComponentNotRegisteredException exception) {
+            }
+        }
+        public void ShowNuocSanXuatView(string ma) {
+            try {
+                var a = app.Resolve<IBaseController<NuocSanXuatModel>>();
+                a.Notification += AddEventListener;
+                a.ShowForm();
+            } catch(ComponentNotRegisteredException exception) {
+            }
         }
 
         /// <summary>

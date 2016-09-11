@@ -57,7 +57,11 @@ namespace App.Controllers {
 
         public void Select(ChatLieuModel value)
         {
-            throw new NotImplementedException();
+            //ChatLieu
+            if(Notification != null) {
+                Notification(Mediator.SAN_PHAM_CALL_CHAT_LIEU_GET_MA, new AppEvent<ChatLieuModel> { value = value });
+                Notification = null;
+            }
         }
 
         /// <summary>

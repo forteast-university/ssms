@@ -180,7 +180,7 @@ namespace App.Views {
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void bntCongViec_Click(object sender, EventArgs e) {
             try {
-                var a = app.Resolve<IBaseController<CongViecModel>>();
+                var a = app.Resolve<ICongViecController<CongViecModel>>();
                 a.Notification += Eventlistener;
                 a.ShowForm();
             } catch(ComponentNotRegisteredException exception) {

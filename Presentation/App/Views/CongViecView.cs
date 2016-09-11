@@ -14,7 +14,7 @@ namespace App.Views
          /// <summary>
         ///     The controller
         /// </summary>
-        private readonly IBaseController<CongViecModel> controller;
+        private readonly ICongViecController<CongViecModel> controller;
 
         /// <summary>
         ///     The value chat lieu model
@@ -60,7 +60,7 @@ namespace App.Views
         ///     Initializes a new instance of the <see cref="CongViecView" /> class.
         /// </summary>
         /// <param name="value">The value.</param>
-        public CongViecView(IBaseController<CongViecModel> value){
+        public CongViecView(ICongViecController<CongViecModel> value) {
             controller = value;
             InitializeComponent();
             bntLuaChon.Enabled = false;

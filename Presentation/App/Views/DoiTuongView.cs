@@ -210,7 +210,7 @@ namespace App.Views
         private void bntLuaChon_Click(object sender, EventArgs e)
         {
             currentModel = (DoiTuongModel)dataGridView.CurrentSelected(DoiTuongModelList);
-            MessageBox.Show(currentModel.MaDoiTuong);
+            controller.Select(currentModel);
         }
 
 
