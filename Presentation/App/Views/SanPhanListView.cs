@@ -383,7 +383,7 @@ namespace App.Views{
             //}
         }
 
-        string[] danhSachT = { "Danh mục tìm kiếm", "Mã sản phẩm", "Tên sản phẩm" };
+        string[] danhSachT = {"Mã sản phẩm", "Tên sản phẩm" };
 
         private void SanPhanListView_Load(object sender, EventArgs e)
         {
