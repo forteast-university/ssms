@@ -53,13 +53,24 @@ namespace App.Controllers {
 
         public event EventHandler<AppEvent<NhaCungCapModel>> Notification;
 
+        public void Select(NhaCungCapModel value)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Views this instance.
         /// </summary>
-        public void View() {
+        public void ShowForm() {
             PostView();
             view.View();
         }
+
+        public void HideForm()
+        {
+            view.Hide();
+        }
+
         /// <summary>
         /// Reviews the grid.
         /// </summary>

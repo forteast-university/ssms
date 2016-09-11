@@ -23,6 +23,7 @@ namespace App.Extensions {
     public class Mediator{
         public static string DANGNHAP_THANH_CONG = "DANG_NHAP_THANH_CONG";
         public static string DANGNHAP_KHONG_THANH_CONG = "DANG_NHAP_KHONG_THANH_CONG";
+        public static string NHAN_VIEN_CALL_CONG_VIEC_GET_MA = "NHAN_VIEN_CALL_CONG_VIEC_GET_MA";
     }
 
     public class AppEvent<T> : EventArgs{

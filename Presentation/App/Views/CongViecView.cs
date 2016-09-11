@@ -211,7 +211,7 @@ namespace App.Views
         private void bntLuaChon_Click(object sender, EventArgs e)
         {
             currentModel = (CongViecModel)dataGridView.CurrentSelected(currentModelList);
-            MessageBox.Show(currentModel.MaCV);
+            controller.Select(currentModel);
         }
 
         private void bntXoa_Click(object sender, EventArgs e)

@@ -55,13 +55,24 @@ namespace App.Controllers {
 
         public event EventHandler<AppEvent<ChatLieuModel>> Notification;
 
+        public void Select(ChatLieuModel value)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Views this instance.
         /// </summary>
-        public void View() {
+        public void ShowForm() {
             PostView();
             view.View();
         }
+
+        public void HideForm()
+        {
+            view.Hide();
+        }
+
         /// <summary>
         /// Reviews the grid.
         /// </summary>

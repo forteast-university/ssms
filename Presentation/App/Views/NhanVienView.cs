@@ -30,7 +30,7 @@ namespace App.Views{
         /// <summary>
         ///     The controller
         /// </summary>
-        private readonly IBaseController<NhanVienModel> controller;
+        private readonly INhanVienController<NhanVienModel> controller;
 
         /// <summary>
         ///     The value chat lieu model
@@ -46,13 +46,13 @@ namespace App.Views{
         ///     Initializes a new instance of the <see cref="ChatLieuView" /> class.
         /// </summary>
         /// <param name="value">The value.</param>
-        public NhanVienView(IBaseController<NhanVienModel> value) {
+        public NhanVienView(INhanVienController<NhanVienModel> value) {
             controller = value;
             InitializeComponent();
             bntLuaChon.Enabled = false;
             bntXoa.Enabled = false;
             txtNgaySinh.Format = DateTimePickerFormat.Custom;
-            txtNgaySinh.CustomFormat = "dd-MM-yyyy";
+            txtNgaySinh.CustomFormat = "dd/MM/yyyy";
         }
 
         /// <summary>
@@ -140,10 +140,8 @@ namespace App.Views{
                 currentModel.TenNhanVien = txtTenNhanVien.Text;
                 currentModel.DiaChi = txtDiaChi.Text;
                 currentModel.DienThoai = txtDienThoai.Text;
-                
                 currentModel.GioiTinh = txtDienThoai.Text;
                 currentModel.NgaySinh = txtDienThoai.Text.ToDateTime();
-
                 currentModel.MaCV = txtMaCV.Text;
 
                 controller.Update(currentModel);
@@ -153,6 +151,9 @@ namespace App.Views{
                 dataGridView.UpdateView("TenNhanVien", currentModel.TenNhanVien);
                 dataGridView.UpdateView("DiaChi", currentModel.DiaChi);
                 dataGridView.UpdateView("DienThoai", currentModel.DienThoai);
+                dataGridView.UpdateView("GioiTinh", currentModel.GioiTinh);
+                dataGridView.UpdateView("NgaySinh", currentModel.NgaySinhModel);
+                dataGridView.UpdateView("MaCV", currentModel.MaCV);
 
                 txtMaNhanVien.Focus();
                 txtMaNhanVien.SelectAll();
@@ -333,9 +334,13 @@ namespace App.Views{
             txtMatKhau.Visible = (!bntSuaMatKhau.Visible);
             txtMatKhau2.Visible = (!bntSuaMatKhau.Visible);
         }
-
+        public void SetTxtMaCv(string ma)
+        {
+            txtMaCV.Text = ma;
+        }
         private void bntCongViec_Click(object sender, EventArgs e) {
             //todo: congviec
+            controller.ShowCongViecView(txtMaCV.Text);
         }
 
         private void bntSuaMatKhau_Click(object sender, EventArgs e)

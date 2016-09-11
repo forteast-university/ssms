@@ -25,7 +25,22 @@ namespace App.Controllers.Interface{
         /// Views this instance.
         /// </summary>
         event EventHandler<AppEvent<T>> Notification;
-        void View();
+
+        /// <summary>
+        /// Selects the specified ma.
+        /// </summary>
+        /// <param name="ma">The ma.</param>
+        void Select(T value);
+
+        /// <summary>
+        /// Views this instance.
+        /// </summary>
+        void ShowForm();
+
+        /// <summary>
+        /// Hides the form.
+        /// </summary>
+        void HideForm();
         /// <summary>
         /// Reviews the grid.
         /// </summary>

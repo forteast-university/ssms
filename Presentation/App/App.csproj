@@ -74,6 +74,12 @@
     <Compile Include="Extensions\MappingExtensions.cs" />
     <Compile Include="Extensions\Mediator.cs" />
     <Compile Include="Models\AppModel.cs" />
+    <Compile Include="Views\AboutView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AboutView.Designer.cs">
+      <DependentUpon>AboutView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\AppMediator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\AboutView.resx">
+      <DependentUpon>AboutView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\AppMediator.resx">
       <DependentUpon>AppMediator.cs</DependentUpon>
     </EmbeddedResource>

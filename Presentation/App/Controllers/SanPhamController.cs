@@ -70,13 +70,24 @@ namespace App.Controllers
 
         public event EventHandler<AppEvent<SanPhamModel>> Notification;
 
+        public void Select(SanPhamModel value)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         ///     Views this instance.
         /// </summary>
-        public void View()
+        public void ShowForm()
         {
             PostView();
             sanPhanListView.View();
+        }
+
+        public void HideForm()
+        {
+            // we dont hide this form
+            throw new NotImplementedException();
         }
 
         /// <summary>

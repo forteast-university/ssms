@@ -37,6 +37,7 @@ namespace App.Views {
         public AppMediator() {
             InitializeComponent();
             app = AppFacade.Container;
+
             //InitializeFirst();
             LoadSanPhamView();
 
@@ -76,7 +77,7 @@ namespace App.Views {
             try {
                 var a = app.Resolve<IBaseController<ChatLieuModel>>();
                 a.Notification += Eventlistener;
-                a.View();
+                a.ShowForm();
             } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
@@ -91,7 +92,7 @@ namespace App.Views {
             try {
                 var a = app.Resolve<IBaseController<MauModel>>();
                 a.Notification += Eventlistener;
-                a.View();
+                a.ShowForm();
             } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
@@ -106,7 +107,7 @@ namespace App.Views {
             try {
                 var a = app.Resolve<IBaseController<DoiTuongModel>>();
                 a.Notification += Eventlistener;
-                a.View();
+                a.ShowForm();
             } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
@@ -121,7 +122,7 @@ namespace App.Views {
             try {
                 var a = app.Resolve<IBaseController<NuocSanXuatModel>>();
                 a.Notification += Eventlistener;
-                a.View();
+                a.ShowForm();
             } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
@@ -136,7 +137,7 @@ namespace App.Views {
             try {
                 var a = app.Resolve<IBaseController<TheLoaiModel>>();
                 a.Notification += Eventlistener;
-                a.View();
+                a.ShowForm();
             } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
@@ -151,7 +152,7 @@ namespace App.Views {
             try {
                 var a = app.Resolve<IBaseController<KichCoModel>>();
                 a.Notification += Eventlistener;
-                a.View();
+                a.ShowForm();
             } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
@@ -166,7 +167,7 @@ namespace App.Views {
             try {
                 var a = app.Resolve<IBaseController<MuaModel>>();
                 a.Notification += Eventlistener;
-                a.View();
+                a.ShowForm();
             } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
@@ -181,7 +182,7 @@ namespace App.Views {
             try {
                 var a = app.Resolve<IBaseController<CongViecModel>>();
                 a.Notification += Eventlistener;
-                a.View();
+                a.ShowForm();
             } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
@@ -196,7 +197,7 @@ namespace App.Views {
             try {
                 var a = app.Resolve<INhanVienController<NhanVienModel>>();
                 a.Notification += Eventlistener;
-                a.View();
+                a.ShowForm();
             } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
@@ -211,7 +212,7 @@ namespace App.Views {
             try {
                 var a = app.Resolve<IBaseController<NhaCungCapModel>>();
                 a.Notification += Eventlistener;
-                a.View();
+                a.ShowForm();
             } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
@@ -226,7 +227,7 @@ namespace App.Views {
             try {
                 var a = app.Resolve<IBaseController<KhachHangModel>>();
                 a.Notification += Eventlistener;
-                a.View();
+                a.ShowForm();
             } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
@@ -241,7 +242,7 @@ namespace App.Views {
             try {
                 var a = app.Resolve<IBaseController<HoaDonNhapModel>>();
                 a.Notification += Eventlistener;
-                a.View();
+                a.ShowForm();
             } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
@@ -256,7 +257,7 @@ namespace App.Views {
             try {
                 var a = app.Resolve<IBaseController<HoaDonBanModel>>();
                 a.Notification += Eventlistener;
-                a.View();
+                a.ShowForm();
             } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
@@ -268,6 +269,54 @@ namespace App.Views {
         /// <param name="value">The value.</param>
         private void Alert(string value) {
             MessageBox.Show("View chưa được cài đặt!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void backupToolStripMenuItem_Click(object sender, EventArgs e) {
+
+        }
+
+        private void tsmThoat_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
+
+        private void tsmImportExcel_Click(object sender, EventArgs e) {
+
+        }
+
+        private void tsmExportExcel_Click(object sender, EventArgs e) {
+
+        }
+
+        private void tsmRestore_Click(object sender, EventArgs e) {
+
+        }
+
+        private void tsmHoaDonNhap_Click(object sender, EventArgs e) {
+
+        }
+
+        private void tsmHoaDonBan_Click(object sender, EventArgs e) {
+
+        }
+
+        private void tsmSanPham_Click(object sender, EventArgs e) {
+
+        }
+
+        private void tsmHuongDan_Click(object sender, EventArgs e) {
+
+        }
+
+        private void tsmAbout_Click(object sender, EventArgs e)
+        {
+            using(var b = new AboutView()) {
+                b.ShowInTaskbar = false;
+                b.ShowDialog(this);
+            }
+        }
+
+        private void tsmTaiKhoan_Click(object sender, EventArgs e) {
+
         }
     }
 }

@@ -43,14 +43,25 @@ namespace App.Controllers
 
         public event EventHandler<AppEvent<CongViecModel>> Notification;
 
+        public void Select(CongViecModel value)
+        {
+            Notification(Mediator.NHAN_VIEN_CALL_CONG_VIEC_GET_MA, new AppEvent<CongViecModel>{value = value});
+        }
+
         /// <summary>
         /// Views this instance.
         /// </summary>
-        public void View()
+        public void ShowForm()
         {
             PostView();
             view.View();
         }
+
+        public void HideForm()
+        {
+            view.Hide();
+        }
+
         /// <summary>
         /// Reviews the grid.
         /// </summary>

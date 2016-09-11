@@ -18,11 +18,14 @@ using System.Linq;
 using System.Windows.Forms;
 using App.Controllers.Interface;
 using App.Core.Domain;
+using App.Core.Infrastructure;
 using App.Extensions;
 using App.Models;
 using App.Properties;
 using App.Service.Business;
 using App.Views;
+using Autofac;
+using Autofac.Core.Registration;
 
 namespace App.Controllers{
     /// <summary>
@@ -34,6 +37,7 @@ namespace App.Controllers{
         /// </summary>
         private readonly INhanVienService currentService;
 
+        private readonly IContainer app = AppFacade.Container;
         /// <summary>
         ///     The dangNhapView
         /// </summary>
@@ -63,6 +67,31 @@ namespace App.Controllers{
             }
             dangNhapView.Hide();
         }
+        public void AddEventListener<T>(object sender, AppEvent<T> e) {
+            var key = sender.ToString();
+            if(key == Mediator.NHAN_VIEN_CALL_CONG_VIEC_GET_MA)
+            {
+                if(e!=null){
+                    if (e.value != null){
+                        var m = e.value as CongViecModel;
+                        if (m != null)
+                        {
+                            nhanVienView.SetTxtMaCv(m.MaCV);
+                            app.Resolve<IBaseController<CongViecModel>>().HideForm();
+                        }
+                    }
+                }
+            }
+        }
+        public void ShowCongViecView(string ma){
+            try {
+                var a = app.Resolve<IBaseController<CongViecModel>>();
+                a.Notification += AddEventListener;
+                a.ShowForm();
+            } catch(ComponentNotRegisteredException exception) {
+            }
+        }
+
         public event EventHandler<AppEvent<NhanVienModel>> Notification;
 
         /// <summary>
@@ -75,12 +104,22 @@ namespace App.Controllers{
             nhanVienView = new NhanVienView(this);
         }
 
+        public void Select(NhanVienModel value)
+        {
+            //Notification(Mediator.DANGNHAP_KHONG_THANH_CONG, new AppEvent<NhanVienModel>{value = value});
+        }
+
         /// <summary>
         ///     Views this instance.
         /// </summary>
-        public void View(){
+        public void ShowForm(){
             PostView();
             nhanVienView.View();
+        }
+
+        public void HideForm()
+        {
+            nhanVienView.Hide();
         }
 
         /// <summary>
