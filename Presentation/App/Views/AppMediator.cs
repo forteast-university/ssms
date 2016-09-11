@@ -75,9 +75,9 @@ namespace App.Views {
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void bntChatLieu_Click(object sender, EventArgs e) {
             try {
-                var a = app.Resolve<IBaseController<ChatLieuModel>>();
-                a.Notification += Eventlistener;
-                a.ShowForm();
+                var b = app.Resolve<IBaseController<ChatLieuModel>>();
+                    b.Notification += Eventlistener;
+                    b.ShowForm();
             } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
