@@ -138,6 +138,37 @@ namespace App.Extensions{
             var dt=m.Value.ToString("dd/MM/yyyy");
             return dt;
         }
+
+        /// <summary>
+        /// To the quy.
+        /// 
+        /// var quy = "1".ToQuy("2016");
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="superset">The superset.</param>
+        /// <param name="year">The year.</param>
+        /// <returns>QuyModel.</returns>
+        public static QuyModel ToQuy<T>(this T superset, string year)
+        {
+            var q = new QuyModel();
+            var m = superset as string;
+            if(m == null)
+                return null;
+            if(m.Trim() == "")
+                return null;
+
+            //m="1","2","3","4"
+            //todo: m to model
+
+            q.StartTime = "2016-01-01 00:00:00".ToDateTime();
+            q.EndTime   = "2016-03-31 23:59:59".ToDateTime();
+            //todo:  
+
+
+
+            return q;
+        }
         /// <summary>
         /// To the date time with format: dd/MM/yyyy
         /// </summary>

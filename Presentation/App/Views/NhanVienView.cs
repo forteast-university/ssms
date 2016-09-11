@@ -185,7 +185,7 @@ namespace App.Views{
                     MatKhau = txtMatKhau.Text.ToEncrypt(),
                     MaCV = txtMaCV.Text
                 };
-
+                
                 controller.Insert(currentModel);
                 txtMaNhanVien.Focus();
                 txtMaNhanVien.SelectAll();

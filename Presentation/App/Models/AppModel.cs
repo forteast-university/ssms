@@ -32,6 +32,7 @@
 //</summary>
 // ***********************************************************************
 
+using System;
 using System.ComponentModel;
 using App.Core.Domain;
 using App.Extensions;
@@ -55,6 +56,12 @@ namespace App.Models{
     public class MauModel : Mau { }
     public class MuaModel : Mua { }
     public class NhaCungCapModel : NhaCungCap { }
+
+    public class QuyModel
+    {
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+    }
 
     public class NhanVienModel : NhanVien
     {
