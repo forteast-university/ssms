@@ -24,10 +24,11 @@ namespace App.Controllers.Interface{
     /// </summary>
     public interface IHoaDonNhapController<T>: IBaseController<T> {
 
-        //IList<string> ValidateAndFillup(T value);
-        //void HideSanPhamView();
-        //void ShowSanPhamView(T value);
+        IList<string> ValidateAndFillup(T value);
+        void HideHoaDonNhapView();
+        void ShowHoaDonNhapView(T value);
         void SetHoaDonNhapListView(Form value);
+
         //void ShowTheLoaiView(string ma);
         //void ShowKichCoView(string ma);
         //void ShowChatLieuView(string ma);

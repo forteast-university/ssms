@@ -42,7 +42,6 @@ namespace App.Models{
     /// Do the right thing :D 
     /// Add your model to here,
     /// Should not inherit Domain Class if you don't know why i do that!
-    /// Class ProductModel.
     /// </summary>
     public class ChatLieuModel : ChatLieu { }
     public class ChiTietHdbModel : ChiTietHDB { }

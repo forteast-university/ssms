@@ -273,7 +273,7 @@ namespace App.Views {
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void bntTaoMoi_Click(object sender, EventArgs e) {
-            //controller.ShowHoaDonNhapView(null);
+            controller.ShowHoaDonNhapView(null);
         }
         /// <summary>
         /// Handles the CellDoubleClick event of the dgv control.
@@ -282,7 +282,7 @@ namespace App.Views {
         /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
             currentModel = (HoaDonNhapModel)dataGridView.CurrentSelected(currentModelList);
-            //controller.ShowHoaDonNhapView(currentModel);
+            controller.ShowHoaDonNhapView(currentModel);
         }
 
         /// <summary>
