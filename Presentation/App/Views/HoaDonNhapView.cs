@@ -94,9 +94,9 @@ namespace App.Views{
             bntLuu.Enabled = true;
             bntTaoMoi.Enabled = false;
 
-            bntSuaMatKhau.Visible = false;
-            txtMatKhau.Visible = (!bntSuaMatKhau.Visible);
-            txtMatKhau2.Visible = (!bntSuaMatKhau.Visible);
+            //bntSuaMatKhau.Visible = false;
+            //txtMatKhau.Visible = (!bntSuaMatKhau.Visible);
+            //txtMatKhau2.Visible = (!bntSuaMatKhau.Visible);
             
             currentModel = null;
 
@@ -268,9 +268,9 @@ namespace App.Views{
 
             bntLuu.Enabled = true;
             bntTaoMoi.Enabled = true;
-            bntSuaMatKhau.Visible = true;
-            txtMatKhau.Visible = (!bntSuaMatKhau.Visible);
-            txtMatKhau2.Visible = (!bntSuaMatKhau.Visible);
+            //bntSuaMatKhau.Visible = true;
+            //txtMatKhau.Visible = (!bntSuaMatKhau.Visible);
+            //txtMatKhau2.Visible = (!bntSuaMatKhau.Visible);
         }
 
         /// <summary>
@@ -342,7 +342,7 @@ namespace App.Views{
         }
         public void SetTxtMaCv(string ma)
         {
-            txtMaCV.Text = ma;
+            //txtMaCV.Text = ma;
         }
         public void InitializeForm(HoaDonNhapModel value)
         {
@@ -354,9 +354,9 @@ namespace App.Views{
 
         private void bntSuaMatKhau_Click(object sender, EventArgs e)
         {
-            bntSuaMatKhau.Visible = false;
-            txtMatKhau.Visible = (!bntSuaMatKhau.Visible);
-            txtMatKhau2.Visible = (!bntSuaMatKhau.Visible);
+            //bntSuaMatKhau.Visible = false;
+            //txtMatKhau.Visible = (!bntSuaMatKhau.Visible);
+            //txtMatKhau2.Visible = (!bntSuaMatKhau.Visible);
         }
     }
 }

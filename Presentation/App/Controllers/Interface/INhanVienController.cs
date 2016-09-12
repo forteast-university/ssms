@@ -22,8 +22,10 @@ namespace App.Controllers.Interface{
     /// <summary>
     /// Interface IChatLieuController
     /// </summary>
-    public interface INhanVienController<T> : IBaseController<T> {
+    public interface INhanVienController<T> : IBaseController<T>
+    {
 
+        IList<string> ValidateAndFillup(NhanVienModel value);
         IList<NhanVienModel> Get(string value);
         void ShowDangNhap();
         void CloseParent();

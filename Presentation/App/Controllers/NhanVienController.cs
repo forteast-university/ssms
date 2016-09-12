@@ -36,6 +36,7 @@ namespace App.Controllers{
         ///     The chat lieu service
         /// </summary>
         private readonly INhanVienService currentService;
+        private readonly ICongViecService congViecService;
 
         private readonly IContainer app = AppFacade.Container;
         /// <summary>
@@ -57,13 +58,14 @@ namespace App.Controllers{
             //todo check account and pass
             var a = currentService.GetNhanVienByMaNhanVien(value.MaNhanVien);
             if (a != null){
-                if (value.MatKhau == a.MatKhau){
-                    //todo: pass
-                    //dangNhapView.Hide();
+                if (value.MatKhau.ToEncrypt() == a.MatKhau){
+                    dangNhapView.Hide();
+                    Notification(Mediator.DANGNHAP_THANH_CONG, new AppEvent<NhanVienModel> { value = value });
+                    return;
                 }
             }
             else{
-                //Notification(Mediator.DANGNHAP_KHONG_THANH_CONG, new AppEvent<NhanVienModel>{}); return;
+                Notification(Mediator.DANGNHAP_KHONG_THANH_CONG, new AppEvent<NhanVienModel>{}); return;
             }
             dangNhapView.Hide();
         }
@@ -108,7 +110,13 @@ namespace App.Controllers{
         {
             //Notification(Mediator.DANGNHAP_KHONG_THANH_CONG, new AppEvent<NhanVienModel>{value = value});
         }
-
+        public IList<string> ValidateAndFillup(NhanVienModel value) {
+            var a = new List<string>();
+            var congviec     =  currentService.GetByMa(value.MaCV);
+            if(congviec == null) { a.Add("MaCV"); }
+            if(congviec != null) { value.CongViecID = congviec.ID; }
+            return a;
+        }
         /// <summary>
         ///     Views this instance.
         /// </summary>

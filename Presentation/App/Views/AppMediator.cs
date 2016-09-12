@@ -37,14 +37,15 @@ namespace App.Views {
         public AppMediator() {
             InitializeComponent();
             app = AppFacade.Container;
-
-            //InitializeFirst();
-            LoadSanPhamView();
-            LoadHoaDonNhapView();
-
+            InitializeFirst();
         }
         public void Eventlistener<T>(object sender, AppEvent<T> e) {
             var key = sender.ToString();
+            if (key == Mediator.DANGNHAP_THANH_CONG)
+            {
+                LoadSanPhamView();
+                LoadHoaDonNhapView();
+            }
             if(key == Mediator.DANGNHAP_KHONG_THANH_CONG) {
                 Application.Exit();
             }

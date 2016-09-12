@@ -22,11 +22,11 @@ using App.Extensions;
 using App.Models;
 using App.Properties;
 
-namespace App.Views{
+namespace App.Views {
     /// <summary>
     ///     Class ChatLieuView.
     /// </summary>
-    public partial class NhanVienView : Form{
+    public partial class NhanVienView: Form {
         /// <summary>
         ///     The controller
         /// </summary>
@@ -58,7 +58,7 @@ namespace App.Views{
         /// <summary>
         ///     Views this instance.
         /// </summary>
-        public void View(){
+        public void View() {
             ShowDialog();
         }
 
@@ -66,14 +66,14 @@ namespace App.Views{
         ///     Posts the view.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void PostView(IEnumerable<NhanVienModel> value){
+        public void PostView(IEnumerable<NhanVienModel> value) {
             currentModelList = value;
 
             dataGridView.Columns.Clear();
-            var c = new DataGridViewCheckBoxColumn{Name = "CB", HeaderText = "", Width = 24, AutoSizeMode = DataGridViewAutoSizeColumnMode.None, ReadOnly = true};
+            var c = new DataGridViewCheckBoxColumn { Name = "CB", HeaderText = "", Width = 24, AutoSizeMode = DataGridViewAutoSizeColumnMode.None, ReadOnly = true };
             dataGridView.Columns.Add(c);
 
-            dataGridView.DataSource = new BindingSource{DataSource = value};
+            dataGridView.DataSource = new BindingSource { DataSource = value };
             dataGridView.Columns["ID"].Display(false);
             dataGridView.Columns["MatKhau"].Display(false);
             dataGridView.Columns["CongViecID"].Display(false);
@@ -85,10 +85,10 @@ namespace App.Views{
             //    dataGridView.Columns["TenNhanVien"].DisplayIndex = 1;
             //if(dataGridView.Columns["GioiTinh"]!=null)
             //    dataGridView.Columns["GioiTinh"].DisplayIndex = 3;
-            if(dataGridView.Columns["NgaySinhModel"]!=null)
+            if(dataGridView.Columns["NgaySinhModel"] != null)
                 dataGridView.Columns["NgaySinhModel"].DisplayIndex = 4;
 
-            
+
             dataGridView.ClearSelection();
             dataGridView.CurrentCell = null;
             bntLuu.Enabled = true;
@@ -97,8 +97,38 @@ namespace App.Views{
             bntSuaMatKhau.Visible = false;
             txtMatKhau.Visible = (!bntSuaMatKhau.Visible);
             txtMatKhau2.Visible = (!bntSuaMatKhau.Visible);
-            
+
             currentModel = null;
+
+        }
+
+        private NhanVienModel FulfilmentFild(NhanVienModel value) {
+            if(value != null) {
+                value.MaNhanVien = txtMaNhanVien.Text;
+                value.TenNhanVien = txtTenNhanVien.Text;
+                value.DiaChi = txtDiaChi.Text;
+                value.DienThoai = txtDienThoai.Text;
+                value.GioiTinh = txtGioiTinh.Text;
+                value.NgaySinh = txtNgaySinh.Text.ToDateTime();
+                value.MaCV = txtMaCV.Text;
+            } else {
+                value = new NhanVienModel {
+                    MaNhanVien = txtMaNhanVien.Text,
+                    TenNhanVien = txtTenNhanVien.Text,
+                    DiaChi = txtDiaChi.Text,
+                    DienThoai = txtDienThoai.Text,
+                    GioiTinh = txtGioiTinh.Text,
+                    NgaySinh = txtNgaySinh.Text.ToDateTime(),
+                    MatKhau = txtMatKhau.Text.ToEncrypt(),
+                    MaCV = txtMaCV.Text
+                };
+
+            }
+
+            return value;
+        }
+
+        private void OnSetSave(bool isContinue) {
 
         }
 
@@ -107,45 +137,55 @@ namespace App.Views{
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void bntLuu_Click(object sender, EventArgs e){
+        private void bntLuu_Click(object sender, EventArgs e) {
 
-            if (txtMaNhanVien.Text == ""){
+            if(txtMaNhanVien.Text == "") {
                 MessageBox.Show("Mã nhân viên không được để rỗng");
                 return;
             }
-            if (txtTenNhanVien.Text == ""){
+            if(txtTenNhanVien.Text == "") {
                 MessageBox.Show("Tên nhân viên không được để rỗng");
                 return;
             }
 
-            currentModel = (NhanVienModel) dataGridView.CurrentSelected(currentModelList);
-            if (currentModel != null){
+            currentModel = (NhanVienModel)dataGridView.CurrentSelected(currentModelList);
+            var isUpdate = (currentModel != null);
+            if(currentModel != null) {
 
                 var cm = currentModelList.Where(c => c.MaNhanVien == txtMaNhanVien.Text &&
                     c.ID != currentModel.ID);
-                if (cm.Any()) {
+                if(cm.Any()) {
                     MessageBox.Show("Mã nhân viên đã tồn tại trong một bản ghi khác");
                     return;
                 }
-                if (!bntSuaMatKhau.Visible)
-                {
-                    if (txtMatKhau.Text != txtMatKhau2.Text)
-                    {
+                if(!bntSuaMatKhau.Visible) {
+                    if(txtMatKhau.Text != txtMatKhau2.Text) {
                         MessageBox.Show("Mật khẩu không giống nhau");
                         return;
                     }
                     currentModel.MatKhau = txtMatKhau.Text.ToEncrypt();
                 }
-                currentModel.MaNhanVien = txtMaNhanVien.Text;
-                currentModel.TenNhanVien = txtTenNhanVien.Text;
-                currentModel.DiaChi = txtDiaChi.Text;
-                currentModel.DienThoai = txtDienThoai.Text;
-                currentModel.GioiTinh = txtGioiTinh.Text;
-                currentModel.NgaySinh = txtNgaySinh.Text.ToDateTime();
-                currentModel.MaCV = txtMaCV.Text;
+            } else {
+                var cm = currentModelList.Where(c => c.MaNhanVien == txtMaNhanVien.Text);
+                if(cm.Any()) {
+                    MessageBox.Show("Mã nhân viên đã tồn tại");
+                    return;
+                }
+                if(txtMatKhau.Text != txtMatKhau2.Text) {
+                    MessageBox.Show("Mật khẩu không giống nhau");
+                    return;
+                }
+            }
 
-                controller.Update(currentModel);
 
+            var validate = controller.ValidateAndFillup(currentModel);
+            if(validate != null) {
+                if(validate.Contains("MaCV")) {
+                    txtMaCV.Focus();
+                    return;
+                }
+            }
+            if(isUpdate) {
                 //re-update UI
                 dataGridView.UpdateView("MaNhanVien", currentModel.MaNhanVien);
                 dataGridView.UpdateView("TenNhanVien", currentModel.TenNhanVien);
@@ -159,33 +199,8 @@ namespace App.Views{
                 txtMaNhanVien.SelectAll();
                 bntTaoMoi.Enabled = true;
                 bntLuu.Enabled = true;
-            }
-            else{
-                var cm = currentModelList.Where(c => c.MaNhanVien == txtMaNhanVien.Text);
-                if (cm.Any()) {
-                    MessageBox.Show("Mã nhân viên đã tồn tại");
-                    return;
-                }
-                if(txtMatKhau.Text != txtMatKhau2.Text) {
-                    MessageBox.Show("Mật khẩu không giống nhau");
-                    return;
-                }
-                //var ct = currentModelList.Where(c => c.TenNhanVien == txtTenNhanVien.Text);
-                //if (ct.Any()) {
-                //    MessageBox.Show("Tên nhân viên đã tồn tại");
-                //    return;
-                //}
-                currentModel = new NhanVienModel{
-                    MaNhanVien = txtMaNhanVien.Text,
-                    TenNhanVien = txtTenNhanVien.Text,
-                    DiaChi = txtDiaChi.Text,
-                    DienThoai = txtDienThoai.Text,
-                    GioiTinh = txtGioiTinh.Text,
-                    NgaySinh = txtNgaySinh.Text.ToDateTime(),
-                    MatKhau = txtMatKhau.Text.ToEncrypt(),
-                    MaCV = txtMaCV.Text
-                };
-                
+                controller.Update(currentModel);
+            } else {
                 controller.Insert(currentModel);
                 txtMaNhanVien.Focus();
                 txtMaNhanVien.SelectAll();
@@ -193,7 +208,7 @@ namespace App.Views{
                 controller.ReviewGrid();
                 bntTaoMoi.Enabled = true;
                 bntLuu.Enabled = true;
-            }
+            }     
         }
 
         /// <summary>
@@ -201,8 +216,8 @@ namespace App.Views{
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void bntLuaChon_Click(object sender, EventArgs e){
-            currentModel = (NhanVienModel) dataGridView.CurrentSelected(currentModelList);
+        private void bntLuaChon_Click(object sender, EventArgs e) {
+            currentModel = (NhanVienModel)dataGridView.CurrentSelected(currentModelList);
             MessageBox.Show(currentModel.MaNhanVien);
         }
 
@@ -211,7 +226,7 @@ namespace App.Views{
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void bntHuy_Click(object sender, EventArgs e){
+        private void bntHuy_Click(object sender, EventArgs e) {
             Hide();
         }
 
@@ -220,10 +235,10 @@ namespace App.Views{
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="PreviewKeyDownEventArgs" /> instance containing the event data.</param>
-        private void dataGridView1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e){
-            if (e.KeyCode != Keys.Enter && e.KeyCode != Keys.Space)
+        private void dataGridView1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if(e.KeyCode != Keys.Enter && e.KeyCode != Keys.Space)
                 return;
-            if (dataGridView.CurrentRow == null)
+            if(dataGridView.CurrentRow == null)
                 return;
             int index = dataGridView.CurrentRow.Index;
             SelectCellAction(index, 0, false);
@@ -235,13 +250,12 @@ namespace App.Views{
         /// <param name="index">The index.</param>
         /// <param name="column"></param>
         /// <param name="isMmouse"></param>
-        private void SelectCellAction(int index, int column, bool isMmouse){
+        private void SelectCellAction(int index, int column, bool isMmouse) {
             dataGridView.Rows[index].Selected = true;
-            if (!isMmouse){
+            if(!isMmouse) {
                 dataGridView[0, index].Value = !Convert.ToBoolean(dataGridView.Rows[index].Cells[0].Value);
-            }
-            else{
-                if (column == 0){
+            } else {
+                if(column == 0) {
                     dataGridView[0, index].Value = !Convert.ToBoolean(dataGridView.Rows[index].Cells[0].Value);
                 }
             }
@@ -250,8 +264,8 @@ namespace App.Views{
             bntLuaChon.Enabled = (dataGridView.CurrentRow != null);
             bntXoa.Enabled = selectedRows.Count > 0;
 
-            currentModel = (NhanVienModel) dataGridView.CurrentSelected(currentModelList);
-            if (currentModel != null){
+            currentModel = (NhanVienModel)dataGridView.CurrentSelected(currentModelList);
+            if(currentModel != null) {
                 txtMaNhanVien.Text = currentModel.MaNhanVien;
                 txtTenNhanVien.Text = currentModel.TenNhanVien;
                 txtDiaChi.Text = currentModel.DiaChi;
@@ -272,8 +286,8 @@ namespace App.Views{
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="DataGridViewCellEventArgs" /> instance containing the event data.</param>
-        private void dgv_CellClick(Object sender, DataGridViewCellEventArgs e){
-            if (e.RowIndex < 0){
+        private void dgv_CellClick(Object sender, DataGridViewCellEventArgs e) {
+            if(e.RowIndex < 0) {
                 return;
             }
             int index = e.RowIndex;
@@ -286,7 +300,7 @@ namespace App.Views{
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="DataGridViewRowPrePaintEventArgs" /> instance containing the event data.</param>
-        private void dgv_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e){
+        private void dgv_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e) {
             e.PaintParts &= ~DataGridViewPaintParts.Focus;
         }
 
@@ -295,17 +309,17 @@ namespace App.Views{
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void bntXoa_Click(object sender, EventArgs e){
+        private void bntXoa_Click(object sender, EventArgs e) {
             List<DataGridViewRow> selectedRows = (from row in dataGridView.Rows.Cast<DataGridViewRow>()
-                where Convert.ToBoolean(row.Cells["CB"].Value)
-                select row).ToList();
-            if (
-                MessageBox.Show(string.Format("Bạn có muốn xóa {0} nhân viên này?", selectedRows.Count), 
+                                                  where Convert.ToBoolean(row.Cells["CB"].Value)
+                                                  select row).ToList();
+            if(
+                MessageBox.Show(string.Format("Bạn có muốn xóa {0} nhân viên này?", selectedRows.Count),
                 Resources.View_Confirm,
-                    MessageBoxButtons.YesNo) == DialogResult.Yes){
+                    MessageBoxButtons.YesNo) == DialogResult.Yes) {
                 var s = (from row in dataGridView.Rows.Cast<DataGridViewRow>() where Convert.ToBoolean(row.Cells["CB"].Value) select row.Cells["ID"].Value.ToString()).ToList();
 
-                if (s.Count == 0)
+                if(s.Count == 0)
                     return;
                 dataGridView.Rows.Clear();
                 controller.Delete(string.Join(",", s.ToArray()));
@@ -320,7 +334,7 @@ namespace App.Views{
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void bntTaoMoi_Click(object sender, EventArgs e){
+        private void bntTaoMoi_Click(object sender, EventArgs e) {
             dataGridView.ClearSelection();
             txtMaNhanVien.Text = "";
             txtTenNhanVien.Text = "";
@@ -334,16 +348,14 @@ namespace App.Views{
             txtMatKhau.Visible = (!bntSuaMatKhau.Visible);
             txtMatKhau2.Visible = (!bntSuaMatKhau.Visible);
         }
-        public void SetTxtMaCv(string ma)
-        {
+        public void SetTxtMaCv(string ma) {
             txtMaCV.Text = ma;
         }
         private void bntCongViec_Click(object sender, EventArgs e) {
             controller.ShowCongViecView(txtMaCV.Text);
         }
 
-        private void bntSuaMatKhau_Click(object sender, EventArgs e)
-        {
+        private void bntSuaMatKhau_Click(object sender, EventArgs e) {
             bntSuaMatKhau.Visible = false;
             txtMatKhau.Visible = (!bntSuaMatKhau.Visible);
             txtMatKhau2.Visible = (!bntSuaMatKhau.Visible);
