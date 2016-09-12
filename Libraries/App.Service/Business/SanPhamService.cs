@@ -135,7 +135,7 @@ namespace App.Service.Business
 
         public List<SanPham> GetSanPhamByTeam(string maGiayDep)
         {
-            var query = from a in repos.Table where a.MaGiayDep != maGiayDep select a;
+            var query = from a in repos.Table where a.MaGiayDep == maGiayDep select a;
             var list = query.ToList();
             return list;
         }

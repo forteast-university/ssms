@@ -135,7 +135,7 @@ namespace App.Service.Business
 
         public List<NhaCungCap> GetNhaCungCapByTeam(string MaNCC)
         {
-            var query = from a in repos.Table where a.MaNCC != MaNCC select a;
+            var query = from a in repos.Table where a.MaNCC == MaNCC select a;
             var list = query.ToList();
             return list;
         }

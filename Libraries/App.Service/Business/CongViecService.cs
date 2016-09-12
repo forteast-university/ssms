@@ -135,7 +135,7 @@ namespace App.Service.Business
 
         public List<CongViec> GetCongViecByTeam(string MaCV)
         {
-            var query = from a in repos.Table where a.MaCV != MaCV select a;
+            var query = from a in repos.Table where a.MaCV == MaCV select a;
             var list = query.ToList();
             return list;
         }

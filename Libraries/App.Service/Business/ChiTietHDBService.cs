@@ -134,7 +134,7 @@ namespace App.Service.Business
 
         public List<ChiTietHDB> GetChiTietHoaDonBanByTeam(string SoHDB)
         {
-            var query = from a in repos.Table where a.SoHDB != SoHDB select a;
+            var query = from a in repos.Table where a.SoHDB == SoHDB select a;
             var list = query.ToList();
             return list;
         }

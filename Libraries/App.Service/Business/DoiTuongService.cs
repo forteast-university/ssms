@@ -135,7 +135,7 @@ namespace App.Service.Business
 
         public List<DoiTuong> GetDoiTuongByTeam(string MaDoiTuong)
         {
-            var query = from a in repos.Table where a.MaDoiTuong != MaDoiTuong select a;
+            var query = from a in repos.Table where a.MaDoiTuong == MaDoiTuong select a;
             var list = query.ToList();
             return list;
         }

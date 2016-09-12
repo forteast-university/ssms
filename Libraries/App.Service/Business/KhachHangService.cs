@@ -135,7 +135,7 @@ namespace App.Service.Business
 
         public List<KhachHang> GetKhachHangByTeam(string MaKhach)
         {
-            var query = from a in repos.Table where a.MaKhach != MaKhach select a;
+            var query = from a in repos.Table where a.MaKhach == MaKhach select a;
             var list = query.ToList();
             return list;
         }

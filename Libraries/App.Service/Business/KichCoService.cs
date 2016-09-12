@@ -135,7 +135,7 @@ namespace App.Service.Business
 
         public List<KichCo> GetKichCoByTeam(string MaCo)
         {
-            var query = from a in repos.Table where a.MaCo != MaCo select a;
+            var query = from a in repos.Table where a.MaCo == MaCo select a;
             var list = query.ToList();
             return list;
         }

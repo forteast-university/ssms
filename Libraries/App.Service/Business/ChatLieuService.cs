@@ -116,7 +116,7 @@ namespace App.Service.Business{
         }
 
         public List<ChatLieu> GetChatLieuByTeam(string maChatLieu){
-            var query = from a in chatlieu.Table where a.MaChatLieu != maChatLieu select a;
+            var query = from a in chatlieu.Table where a.MaChatLieu == maChatLieu select a;
             var list = query.ToList();
             return list;
         }

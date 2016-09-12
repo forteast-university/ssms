@@ -134,7 +134,7 @@ namespace App.Service.Business
 
         public List<ChiTietHDN> GetChiTietHDNByTeam(string SoHDN)
         {
-            var query = from a in repos.Table where a.SoHDN != SoHDN select a;
+            var query = from a in repos.Table where a.SoHDN == SoHDN select a;
             var list = query.ToList();
             return list;
         }

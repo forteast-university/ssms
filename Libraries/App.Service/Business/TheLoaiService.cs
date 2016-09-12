@@ -135,7 +135,7 @@ namespace App.Service.Business
 
         public List<TheLoai> GetTheLoaiByTeam(string MaLoai)
         {
-            var query = from a in repos.Table where a.MaLoai != MaLoai select a;
+            var query = from a in repos.Table where a.MaLoai == MaLoai select a;
             var list = query.ToList();
             return list;
         }

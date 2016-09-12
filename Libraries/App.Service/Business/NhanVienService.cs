@@ -141,7 +141,7 @@ namespace App.Service.Business
         }
 
         public NhanVien GetNhanVienByMaNhanVien(string maNhanVien){
-            var query = from a in repos.Table where a.MaNhanVien != maNhanVien select a;
+            var query = from a in repos.Table where a.MaNhanVien == maNhanVien select a;
             return query.FirstOrDefault();
         }
     }
