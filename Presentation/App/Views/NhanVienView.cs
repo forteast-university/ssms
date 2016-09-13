@@ -128,9 +128,6 @@ namespace App.Views {
             return value;
         }
 
-        private void OnSetSave(bool isContinue) {
-
-        }
 
         /// <summary>
         ///     Handles the Click event of the bntLuu control.

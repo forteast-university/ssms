@@ -54,6 +54,7 @@ namespace App.Controllers{
             Notification(Mediator.DANGNHAP_KHONG_THANH_CONG, a);
         }
 
+        private int CountTime = 0;
         public void DangNhap(NhanVienModel value){
             //todo check account and pass
             var a = currentService.GetNhanVienByMaNhanVien(value.MaNhanVien);
@@ -64,10 +65,18 @@ namespace App.Controllers{
                     return;
                 }
             }
-            else{
-                Notification(Mediator.DANGNHAP_KHONG_THANH_CONG, new AppEvent<NhanVienModel>{}); return;
+            else
+            {
+                CountTime++;
+                dangNhapView.ConfirmWrong();
+                if (CountTime >= 3)
+                {
+                    CountTime = 0;
+                    Notification(Mediator.DANGNHAP_KHONG_THANH_CONG, new AppEvent<NhanVienModel> {});
+                }
+                //return;
             }
-            dangNhapView.Hide();
+            //dangNhapView.Hide();
         }
         public void AddEventListener<T>(object sender, AppEvent<T> e) {
             var key = sender.ToString();

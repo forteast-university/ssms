@@ -40,13 +40,14 @@ namespace App.Views {
             this.bntCongViec = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtMaNCC = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // bntLuu
             // 
             this.bntLuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bntLuu.Location = new System.Drawing.Point(427, 63);
+            this.bntLuu.Location = new System.Drawing.Point(427, 89);
             this.bntLuu.Name = "bntLuu";
             this.bntLuu.Size = new System.Drawing.Size(75, 23);
             this.bntLuu.TabIndex = 10;
@@ -81,7 +82,7 @@ namespace App.Views {
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(489, 308);
+            this.dataGridView.Size = new System.Drawing.Size(489, 282);
             this.dataGridView.TabIndex = 12;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             this.dataGridView.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgv_RowPrePaint);
@@ -112,7 +113,7 @@ namespace App.Views {
             // bntTaoMoi
             // 
             this.bntTaoMoi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bntTaoMoi.Location = new System.Drawing.Point(427, 37);
+            this.bntTaoMoi.Location = new System.Drawing.Point(427, 63);
             this.bntTaoMoi.Name = "bntTaoMoi";
             this.bntTaoMoi.Size = new System.Drawing.Size(75, 23);
             this.bntTaoMoi.TabIndex = 11;
@@ -122,7 +123,8 @@ namespace App.Views {
             // 
             // txtTongTien
             // 
-            this.txtTongTien.Location = new System.Drawing.Point(94, 90);
+            this.txtTongTien.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtTongTien.Location = new System.Drawing.Point(94, 406);
             this.txtTongTien.Name = "txtTongTien";
             this.txtTongTien.Size = new System.Drawing.Size(264, 20);
             this.txtTongTien.TabIndex = 5;
@@ -136,8 +138,9 @@ namespace App.Views {
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(33, 93);
+            this.label5.Location = new System.Drawing.Point(36, 409);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 13);
             this.label5.TabIndex = 20;
@@ -146,7 +149,7 @@ namespace App.Views {
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(34, 67);
+            this.label9.Location = new System.Drawing.Point(29, 68);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(59, 13);
             this.label9.TabIndex = 19;
@@ -155,7 +158,7 @@ namespace App.Views {
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(16, 15);
+            this.label12.Location = new System.Drawing.Point(16, 16);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(72, 13);
             this.label12.TabIndex = 16;
@@ -170,7 +173,7 @@ namespace App.Views {
             // 
             // bntCongViec
             // 
-            this.bntCongViec.Location = new System.Drawing.Point(403, 89);
+            this.bntCongViec.Location = new System.Drawing.Point(94, 89);
             this.bntCongViec.Name = "bntCongViec";
             this.bntCongViec.Size = new System.Drawing.Size(99, 23);
             this.bntCongViec.TabIndex = 24;
@@ -181,7 +184,7 @@ namespace App.Views {
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(48, 41);
+            this.label6.Location = new System.Drawing.Point(41, 42);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 13);
             this.label6.TabIndex = 21;
@@ -194,11 +197,21 @@ namespace App.Views {
             this.txtMaNCC.Size = new System.Drawing.Size(264, 20);
             this.txtMaNCC.TabIndex = 6;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(33, 94);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "Sản phẩm";
+            // 
             // HoaDonNhapView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 467);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNgayNhap);
             this.Controls.Add(this.bntCongViec);
             this.Controls.Add(this.txtMaNCC);
@@ -243,5 +256,6 @@ namespace App.Views {
         private Button bntCongViec;
         private Label label6;
         private TextBox txtMaNCC;
+        private Label label1;
     }
 }

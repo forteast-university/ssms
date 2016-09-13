@@ -28,6 +28,9 @@ namespace App.Controllers.Interface{
         void HideHoaDonNhapView();
         void ShowHoaDonNhapView(T value);
         void SetHoaDonNhapListView(Form value);
+        
+        void HideSanPhamView();
+        void ShowSanPhamView(int mode);
 
         //void ShowTheLoaiView(string ma);
         //void ShowKichCoView(string ma);

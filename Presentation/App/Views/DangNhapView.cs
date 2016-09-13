@@ -52,14 +52,33 @@ namespace App.Views {
             controller.CloseParent();
         }
 
+        public void ConfirmWrong()
+        {
+            txtMaNhanVien.Focus();
+            txtMaNhanVien.SelectAll();
+            Alert("Đăng nhập không thành công, xin kiểm tra lại thông tin");
+        }
+
         private void bntDongY_Click(object sender, EventArgs e) {
+            if (txtMaNhanVien.Text == "")
+            {
+                Alert("Yêu cầu nhập mã nhân viên");
+                return;
+            }
+            if(txtMatKhau.Text == "") {
+                Alert("Yêu cầu nhập mật khẩu");
+                return;
+            }
+
             var a = new NhanVienModel {
                 MaNhanVien = txtMaNhanVien.Text,
                 MatKhau = txtMatKhau.Text
             };
             controller.DangNhap(a);
         }
-
+        public void Alert(string value) {
+            MessageBox.Show(value, "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
         private void linkDangKy_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
 
         }

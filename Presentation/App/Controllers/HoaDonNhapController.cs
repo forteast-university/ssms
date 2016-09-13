@@ -249,6 +249,16 @@ namespace App.Controllers {
             hoaDonNhapListView = (HoaDonNhapListView)value;
         }
 
+        public void HideSanPhamView()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ShowSanPhamView(int mode)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// The application
         /// </summary>

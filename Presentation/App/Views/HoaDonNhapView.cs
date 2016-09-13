@@ -349,7 +349,7 @@ namespace App.Views{
             //txtMaCV.Text = value;
         }
         private void bntCongViec_Click(object sender, EventArgs e) {
-            //controller.ShowCongViecView(txtMaCV.Text);
+            controller.ShowSanPhamView();
         }
 
         private void bntSuaMatKhau_Click(object sender, EventArgs e)
