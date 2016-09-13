@@ -74,8 +74,12 @@
     <Compile Include="Controllers\ChatLieuController.cs" />
     <Compile Include="Controllers\Interface\IBaseController.cs" />
     <Compile Include="Controllers\Interface\IChatLieuController.cs" />
+    <Compile Include="Extensions\DisplayNameHelper.cs" />
     <Compile Include="Extensions\MappingExtensions.cs" />
     <Compile Include="Extensions\Mediator.cs" />
+    <Compile Include="Extensions\MyDialogs.cs" />
+    <Compile Include="Extensions\PropertyHelper.cs" />
+    <Compile Include="Extensions\Rf.cs" />
     <Compile Include="Models\AppModel.cs" />
     <Compile Include="Views\AboutView.cs">
       <SubType>Form</SubType>

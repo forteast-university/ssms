@@ -15,6 +15,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using App.Controllers;
@@ -23,11 +25,11 @@ using App.Extensions;
 using App.Models;
 using App.Properties;
 
-namespace App.Views{
+namespace App.Views {
     /// <summary>
     ///     Class ChatLieuView.
     /// </summary>
-    public partial class HoaDonNhapView : Form{
+    public partial class HoaDonNhapView: Form {
         /// <summary>
         ///     The controller
         /// </summary>
@@ -36,12 +38,12 @@ namespace App.Views{
         /// <summary>
         ///     The value chat lieu model
         /// </summary>
-        private IEnumerable<HoaDonNhapModel> currentModelList;
+        private HoaDonNhapModel currentModelList;
 
         /// <summary>
         ///     The current model
         /// </summary>
-        private HoaDonNhapModel currentModel;
+        private ChiTietHdnModel currentModel;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ChatLieuView" /> class.
@@ -63,7 +65,7 @@ namespace App.Views{
         /// <summary>
         ///     Views this instance.
         /// </summary>
-        public void View(){
+        public void View() {
             ShowDialog();
         }
 
@@ -71,14 +73,14 @@ namespace App.Views{
         ///     Posts the view.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void PostView(IEnumerable<HoaDonNhapModel> value){
+        public void PostView(HoaDonNhapModel value) {
             currentModelList = value;
 
             dataGridView.Columns.Clear();
-            var c = new DataGridViewCheckBoxColumn{Name = "CB", HeaderText = "", Width = 24, AutoSizeMode = DataGridViewAutoSizeColumnMode.None, ReadOnly = true};
+            var c = new DataGridViewCheckBoxColumn { Name = "CB", HeaderText = "", Width = 24, AutoSizeMode = DataGridViewAutoSizeColumnMode.None, ReadOnly = true };
             dataGridView.Columns.Add(c);
 
-            dataGridView.DataSource = new BindingSource { DataSource = value };
+            dataGridView.DataSource = new BindingSource { DataSource = value.ChiTietHDN };
             dataGridView.Columns["ID"].Display(false);
             dataGridView.Columns["SanPhamID"].Display(false);
             dataGridView.Columns["SanPham"].Display(false);
@@ -86,8 +88,10 @@ namespace App.Views{
             dataGridView.Columns["HoaDonNhap"].Display(false);
             dataGridView.Columns["SoHDN"].Display(false);
 
-            if(dataGridView.Columns["MaGiayDep"]!=null)
-                dataGridView.Columns["MaGiayDep"].DisplayIndex = 0;
+            if(dataGridView.Columns["MaGiayDep"] != null)
+                dataGridView.Columns["MaGiayDep"].DisplayIndex = 1;
+
+
             //if(dataGridView.Columns["TenHoaDonNhap"]!=null)
             //    dataGridView.Columns["TenHoaDonNhap"].DisplayIndex = 1;
             //if(dataGridView.Columns["GioiTinh"]!=null)
@@ -95,7 +99,7 @@ namespace App.Views{
             //if(dataGridView.Columns["NgaySinhModel"]!=null)
             //    dataGridView.Columns["NgaySinhModel"].DisplayIndex = 4;
 
-            
+
             dataGridView.ClearSelection();
             dataGridView.CurrentCell = null;
             bntLuu.Enabled = true;
@@ -104,7 +108,7 @@ namespace App.Views{
             //bntSuaMatKhau.Visible = false;
             //txtMatKhau.Visible = (!bntSuaMatKhau.Visible);
             //txtMatKhau2.Visible = (!bntSuaMatKhau.Visible);
-            
+
             currentModel = null;
 
         }
@@ -114,7 +118,7 @@ namespace App.Views{
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void bntLuu_Click(object sender, EventArgs e){
+        private void bntLuu_Click(object sender, EventArgs e) {
 
             /*
             if (txtMaHoaDonNhap.Text == ""){
@@ -212,7 +216,7 @@ namespace App.Views{
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void bntLuaChon_Click(object sender, EventArgs e){
+        private void bntLuaChon_Click(object sender, EventArgs e) {
             //currentModel = (HoaDonNhapModel) dataGridView.CurrentSelected(currentModelList);
             //MessageBox.Show(currentModel.MaHoaDonNhap);
         }
@@ -222,7 +226,7 @@ namespace App.Views{
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void bntHuy_Click(object sender, EventArgs e){
+        private void bntHuy_Click(object sender, EventArgs e) {
             Hide();
         }
 
@@ -231,10 +235,10 @@ namespace App.Views{
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="PreviewKeyDownEventArgs" /> instance containing the event data.</param>
-        private void dataGridView1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e){
-            if (e.KeyCode != Keys.Enter && e.KeyCode != Keys.Space)
+        private void dataGridView1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+            if(e.KeyCode != Keys.Enter && e.KeyCode != Keys.Space)
                 return;
-            if (dataGridView.CurrentRow == null)
+            if(dataGridView.CurrentRow == null)
                 return;
             int index = dataGridView.CurrentRow.Index;
             SelectCellAction(index, 0, false);
@@ -246,13 +250,12 @@ namespace App.Views{
         /// <param name="index">The index.</param>
         /// <param name="column"></param>
         /// <param name="isMmouse"></param>
-        private void SelectCellAction(int index, int column, bool isMmouse){
+        private void SelectCellAction(int index, int column, bool isMmouse) {
             dataGridView.Rows[index].Selected = true;
-            if (!isMmouse){
+            if(!isMmouse) {
                 dataGridView[0, index].Value = !Convert.ToBoolean(dataGridView.Rows[index].Cells[0].Value);
-            }
-            else{
-                if (column == 0){
+            } else {
+                if(column == 0) {
                     dataGridView[0, index].Value = !Convert.ToBoolean(dataGridView.Rows[index].Cells[0].Value);
                 }
             }
@@ -261,8 +264,8 @@ namespace App.Views{
             bntLuaChon.Enabled = (dataGridView.CurrentRow != null);
             bntXoa.Enabled = selectedRows.Count > 0;
 
-            currentModel = (HoaDonNhapModel) dataGridView.CurrentSelected(currentModelList);
-            
+            currentModel = (ChiTietHdnModel)dataGridView.CurrentSelected(currentModelList.ChiTietHDN);
+
             //if (currentModel != null){
             //    txtMaHoaDonNhap.Text = currentModel.MaHoaDonNhap;
             //    txtTenHoaDonNhap.Text = currentModel.TenHoaDonNhap;
@@ -279,27 +282,72 @@ namespace App.Views{
             //txtMatKhau.Visible = (!bntSuaMatKhau.Visible);
             //txtMatKhau2.Visible = (!bntSuaMatKhau.Visible);
         }
+        private void dataGridView_SelectionChanged(object sender, System.EventArgs e) {
+
+        }
+
+        public void SetCellSanPham(SanPhamModel value) {
+            if(dataGridView != null) {
+                if(dataGridView.Rows.Count > 0) {
+                    if(currentRowSelected != -1)
+                        if(currentRowSelected < dataGridView.Rows.Count)
+                            dataGridView.Rows[currentRowSelected].Selected = true;
+                        else {
+                            currentRowSelected = 0;
+                        }
+                }
+            }
+            dataGridView.Rows[currentRowSelected].Cells[Rf.Name<ChiTietHdnModel>(c => c.MaGiayDep)].Value = value.TenGiayDep;
+        }
 
         /// <summary>
         ///     DGV_s the cell click.
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="DataGridViewCellEventArgs" /> instance containing the event data.</param>
-        private void dataGridView1_ChangedValue(Object sender, DataGridViewCellEventArgs e){
-            if (e.RowIndex < 0) {
+        private void dataGridView1_ChangedValue(Object sender, DataGridViewCellEventArgs e) {
+            if(e.RowIndex < 0) {
                 return;
             }
             int row = e.RowIndex;
             int col = e.ColumnIndex;
+            currentRowSelected = row;
 
+            // from 1 no 0
+            if(col > 0) {
+                if(col == 6) {
+                    var id = dataGridView.Rows[row].Cells[Rf.Name<ChiTietHdnModel>(c => c.MaGiayDep)].Value.ToString();
+                    if(id != "-1" && id != "") {
+                        var noex = controller.CheckMaFromSanPham(id);
+                        if(noex == null) {
+                            if(MyDialogs.Question("Mã sản phẩm chưa tồn tại, bạn muốn khai báo không?") == false) {
+                                dataGridView.Rows[row].Cells[Rf.Name<ChiTietHdnModel>(c => c.MaGiayDep)].Value = "-1";
+                            } else {
+                                controller.ShowSanPhamView(0);
+                            }
+                        }
+                    }
+                }
+
+                var a = dataGridView.Rows[row].Cells[Rf.Name<ChiTietHdnModel>(c => c.SoLuong)].Value.ToInt32();
+                var b = dataGridView.Rows[row].Cells[Rf.Name<ChiTietHdnModel>(c => c.DonGia)].Value.ToDecimal();
+                var d = dataGridView.Rows[row].Cells[Rf.Name<ChiTietHdnModel>(c => c.GiamGia)].Value.ToDecimal();
+                if(d > b) {
+                    dataGridView.Rows[row].Cells[Rf.Name<ChiTietHdnModel>(c => c.GiamGia)].Value = d;
+                }
+                var m = a * (b - d);
+                dataGridView.Rows[row].Cells[Rf.Name<ChiTietHdnModel>(c => c.ThanhTien)].Value = m;
+            }
+            var sum = (from r in dataGridView.Rows.Cast<DataGridViewRow>() select r.Cells[Rf.Name<ChiTietHdnModel>(c => c.ThanhTien)].Value.ToDecimal()).Sum(c => c);
+            txtTongTien.Text = sum.ToString(CultureInfo.InvariantCulture);
         }
 
-        private void dgv_CellClick(Object sender, DataGridViewCellEventArgs e){
-            if (e.RowIndex < 0){
+        private void dgv_CellClick(Object sender, DataGridViewCellEventArgs e) {
+            if(e.RowIndex < 0) {
                 return;
             }
             int index = e.RowIndex;
-
+            currentRowSelected = index;
             SelectCellAction(e.RowIndex, e.ColumnIndex, true);
         }
 
@@ -308,7 +356,7 @@ namespace App.Views{
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="DataGridViewRowPrePaintEventArgs" /> instance containing the event data.</param>
-        private void dgv_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e){
+        private void dgv_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e) {
             e.PaintParts &= ~DataGridViewPaintParts.Focus;
         }
 
@@ -317,92 +365,87 @@ namespace App.Views{
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void bntXoa_Click(object sender, EventArgs e){
+        private void bntXoa_Click(object sender, EventArgs e) {
             List<DataGridViewRow> selectedRows = (from row in dataGridView.Rows.Cast<DataGridViewRow>()
-                where Convert.ToBoolean(row.Cells["CB"].Value)
-                select row).ToList();
-            if (
-                MessageBox.Show(string.Format("Bạn có muốn xóa {0} nhân viên này?", selectedRows.Count), 
+                                                  where Convert.ToBoolean(row.Cells["CB"].Value)
+                                                  select row).ToList();
+            if(
+                MessageBox.Show(string.Format("Bạn có muốn xóa {0} nhân viên này?", selectedRows.Count),
                 Resources.View_Confirm,
-                    MessageBoxButtons.YesNo) == DialogResult.Yes){
+                    MessageBoxButtons.YesNo) == DialogResult.Yes) {
                 var s = (from row in dataGridView.Rows.Cast<DataGridViewRow>() where Convert.ToBoolean(row.Cells["CB"].Value) select row.Cells["ID"].Value.ToString()).ToList();
 
-                if (s.Count == 0)
+                if(s.Count == 0)
                     return;
                 dataGridView.Rows.Clear();
-                controller.Delete(string.Join(",", s.ToArray()));
+                //controller.Delete(string.Join(",", s.ToArray()));
                 controller.ReviewGrid();
             }
             bntLuu.Enabled = false;
             bntTaoMoi.Enabled = true;
         }
 
-        /// <summary>
-        ///     Handles the Click event of the bntTaoMoi control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void bntTaoMoi_Click(object sender, EventArgs e){
-            var test = new List<ChiTietHdnModel>();
-            test.Add(new ChiTietHdnModel {
-                ID = -1,
-                SoLuong = 0,
-                DonGia = 0,
-                GiamGia = "0",
-                MaGiayDep = "-1"
-            });
+        private int currentRowSelected = -1;
 
-
-            if (dataGridView.Rows.Count == 0){
-                 
-                //var c = new DataGridViewCheckBoxColumn { Name = "CB", HeaderText = "", Width = 24, AutoSizeMode = DataGridViewAutoSizeColumnMode.None, ReadOnly = true };
-                //dataGridView.Columns.Add(c);
-
-                dataGridView.DataSource = new BindingSource{DataSource = test};
-                dataGridView.Columns["ID"].Display(false);
-                dataGridView.Columns["SanPhamID"].Display(false);
-                dataGridView.Columns["SanPham"].Display(false);
-                dataGridView.Columns["HoaDonNhapID"].Display(false);
-                dataGridView.Columns["HoaDonNhap"].Display(false);
-                dataGridView.Columns["SoHDN"].Display(false);
-
-                if (dataGridView.Columns["MaGiayDep"] != null)
-                    dataGridView.Columns["MaGiayDep"].DisplayIndex = 2;
-            }
-            else{
-                          
-                var row = (DataGridViewRow)dataGridView.Rows[0].Clone();
-                if (row != null){
-
-                    int intColIndex = 0;
-                    foreach (DataGridViewCell cell in dataGridView.Rows[0].Cells) {
-                        row.Cells[intColIndex].Value = cell.Value;
-                        intColIndex++;
-                    }
-                    dataGridView.Rows.Add(row);
-
-
-                    DataRow drToAdd = dataGridView.NewRow();
-
-                    drToAdd["Field1"] = "Value1";
-                    drToAdd["Field2"] = "Value2";
-
-                    dataGridView.Rows.Add(drToAdd);
-
-                    //row.Cells[0].Value = 0;
-                    //row.Cells[1].Value = "-1";
-                    //row.Cells[2].Value = 0;
-                    //row.Cells[3].Value = 0;
-                    //row.Cells[4].Value = "0";
-
-                    //row.Cells["ID"].Value = -1;
-                    //row.Cells["MaGiayDep"].Value = "-1";
-                    //row.Cells["SoLuong"].Value = 0;
-                    //row.Cells["DonGia"].Value = 0;
-                    //row.Cells["GiamGia"].Value = "0";
-                    //dataGridView.Rows.Add(row);
+        private void ReSelectRow() {
+            if(dataGridView != null) {
+                if(dataGridView.Rows.Count > 0) {
+                    if(currentRowSelected != -1)
+                        if(currentRowSelected < dataGridView.Rows.Count)
+                            dataGridView.Rows[currentRowSelected].Selected = true;
+                        else {
+                            currentRowSelected = 0;
+                        }
                 }
             }
+
+        }
+
+        protected List<ChiTietHdnModel> currentListDataTable;
+        protected BindingSource dataBindingSource = new BindingSource();
+        protected DataTable dataSourceDataTable;
+
+        public void AddNewTemplate(DataTable table) {
+            var m = table.NewRow();
+            var a = TemplateNew();
+            m[Rf.Name<ChiTietHdnModel>(c => c.ID)] = a.ID;
+            m[Rf.Name<ChiTietHdnModel>(c => c.DonGia)] = a.DonGia;
+            m[Rf.Name<ChiTietHdnModel>(c => c.GiamGia)] = a.GiamGia;
+            m[Rf.Name<ChiTietHdnModel>(c => c.SoLuong)] = a.SoLuong;
+            m[Rf.Name<ChiTietHdnModel>(c => c.MaGiayDep)] = a.MaGiayDep;
+            m[Rf.Name<ChiTietHdnModel>(c => c.ThanhTien)] = a.ThanhTien;
+            table.Rows.Add(m);
+            //table.AcceptChanges();
+        }
+        private ChiTietHdnModel TemplateNew() { return new ChiTietHdnModel { MaGiayDep = "-1", ID = -1, SoLuong = 0, DonGia = 0, GiamGia = 0 }; }
+
+        private void bntTaoMoi_Click(object sender, EventArgs e) {
+            currentListDataTable = currentListDataTable ?? new List<ChiTietHdnModel>
+            {
+                TemplateNew()
+            };
+
+
+            if(dataGridView.Rows.Count == 0) {
+
+                dataSourceDataTable = currentListDataTable.ToDataTable();
+                dataSourceDataTable.AcceptChanges();
+                dataBindingSource.DataSource = dataSourceDataTable;
+
+                dataGridView.DataSource = dataBindingSource;
+                dataGridView.Columns[Rf.Name<ChiTietHdnModel>(c => c.ID)].Display(false);
+                dataGridView.Columns[Rf.Name<ChiTietHdnModel>(c => c.SanPhamID)].Display(false);
+                dataGridView.Columns[Rf.Name<ChiTietHdnModel>(c => c.SanPham)].Display(false);
+                dataGridView.Columns[Rf.Name<ChiTietHdnModel>(c => c.HoaDonNhapID)].Display(false);
+                dataGridView.Columns[Rf.Name<ChiTietHdnModel>(c => c.HoaDonNhap)].Display(false);
+                dataGridView.Columns[Rf.Name<ChiTietHdnModel>(c => c.SoHDN)].Display(false);
+
+                if(dataGridView.Columns[Rf.Name<ChiTietHdnModel>(c => c.MaGiayDep)] != null)
+                    dataGridView.Columns[Rf.Name<ChiTietHdnModel>(c => c.MaGiayDep)].DisplayIndex = 1;
+            } else {
+                AddNewTemplate((DataTable)dataBindingSource.DataSource);
+            }
+            //ReSelectRow();
 
             //dataGridView.ClearSelection();
             //txtMaHoaDonNhap.Text  = "";
@@ -417,20 +460,17 @@ namespace App.Views{
             //txtMatKhau.Visible  = (!bntSuaMatKhau.Visible);
             //txtMatKhau2.Visible = (!bntSuaMatKhau.Visible);
         }
-        public void SetTxtMaCv(string ma)
-        {
+        public void SetTxtMaCv(string ma) {
             //txtMaCV.Text = ma;
         }
-        public void InitializeForm(HoaDonNhapModel value)
-        {
+        public void InitializeForm(HoaDonNhapModel value) {
             //txtMaCV.Text = value;
         }
         private void bntCongViec_Click(object sender, EventArgs e) {
             controller.ShowSanPhamView(0);
         }
 
-        private void bntSuaMatKhau_Click(object sender, EventArgs e)
-        {
+        private void bntSuaMatKhau_Click(object sender, EventArgs e) {
             //bntSuaMatKhau.Visible = false;
             //txtMatKhau.Visible = (!bntSuaMatKhau.Visible);
             //txtMatKhau2.Visible = (!bntSuaMatKhau.Visible);

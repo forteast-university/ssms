@@ -31,7 +31,7 @@ namespace App.Controllers.Interface{
         
         void HideSanPhamView();
         void ShowSanPhamView(int mode);
-
+        SanPhamModel CheckMaFromSanPham(string ma);
         //void ShowTheLoaiView(string ma);
         //void ShowKichCoView(string ma);
         //void ShowChatLieuView(string ma);

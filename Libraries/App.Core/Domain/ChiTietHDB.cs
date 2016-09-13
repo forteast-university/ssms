@@ -22,21 +22,21 @@ namespace App.Core.Domain {
         ///     Gets or sets the so luong.
         /// </summary>
         /// <value>The so luong.</value>
-        public int? SoLuong { get; set; }
+        public int SoLuong { get; set; }
 
         /// <summary>
         ///     Gets or sets the giam gia.
         /// </summary>
         /// <value>The giam gia.</value>
         [DisplayName("Giảm giá")]
-        public string GiamGia { get; set; }
+        public decimal GiamGia { get; set; }
 
         /// <summary>
         ///     Gets or sets the thanh tien.
         /// </summary>
         /// <value>The thanh tien.</value>
         [DisplayName("Thành tiền")]
-        public string ThanhTien { get; set; }
+        public decimal ThanhTien { get; set; }
 
         /// <summary>
         ///     Gets or sets the ma giay dep.
@@ -56,13 +56,13 @@ namespace App.Core.Domain {
         ///     Gets or sets the san pham identifier.
         /// </summary>
         /// <value>The san pham identifier.</value>
-        public int? SanPhamID { get; set; }
+        public int SanPhamID { get; set; }
 
         /// <summary>
         ///     Gets or sets the hoa don ban identifier.
         /// </summary>
         /// <value>The hoa don ban identifier.</value>
-        public int? HoaDonBanID { get; set; }
+        public int HoaDonBanID { get; set; }
 
         /// <summary>
         ///     Gets or sets the hoa don ban.

@@ -36,6 +36,7 @@ namespace App.Controllers {
         /// The chat lieu service
         /// </summary>
         private readonly IHoaDonNhapService hoaDonNhapService;
+        private readonly ISanPhamService sanPhamService;
         /// <summary>
         /// The loai service
         /// </summary>
@@ -95,7 +96,7 @@ namespace App.Controllers {
         /// <param name="muaService">The mua service.</param>
         /// <param name="doiTuongService">The doi tuong service.</param>
         /// <param name="nuocSxService">The nuoc sx service.</param>
-        public HoaDonNhapController(IHoaDonNhapService hoaDonNhapService, ITheLoaiService theLoaiService, IKichCoService kichCoService, IChatLieuService chatLieuService, IMauService mauService, IMuaService muaService, IDoiTuongService doiTuongService, INuocSanXuatService nuocSxService) {
+        public HoaDonNhapController(IHoaDonNhapService hoaDonNhapService, ITheLoaiService theLoaiService, IKichCoService kichCoService, IChatLieuService chatLieuService, IMauService mauService, IMuaService muaService, IDoiTuongService doiTuongService, INuocSanXuatService nuocSxService, ISanPhamService sanPhamService) {
             this.hoaDonNhapService = hoaDonNhapService;
             this.theLoaiService = theLoaiService;
             this.kichCoService = kichCoService;
@@ -104,6 +105,7 @@ namespace App.Controllers {
             this.muaService = muaService;
             this.doiTuongService = doiTuongService;
             this.nuocSxService = nuocSxService;
+            this.sanPhamService = sanPhamService;
 
             hoaDonNhapView = new HoaDonNhapView(this);
         }
@@ -237,8 +239,9 @@ namespace App.Controllers {
         /// </summary>
         /// <param name="value">The value.</param>
         public void ShowHoaDonNhapView(HoaDonNhapModel value) {
+            if(value==null)value = new HoaDonNhapModel();
             hoaDonNhapView.InitializeForm(value);
-            hoaDonNhapView.PostView(new List<HoaDonNhapModel>());
+            hoaDonNhapView.PostView(value);
             hoaDonNhapView.View();
         }
 
@@ -254,19 +257,7 @@ namespace App.Controllers {
         {
             //throw new NotImplementedException();
         }
-
-        public void ShowSanPhamView(int mode)
-        {
-            //throw new NotImplementedException();
-
-
-            var a = app.Resolve<ISanPhamController<SanPhamModel>>();
-                a.ShowSanPhamView(null);
-
-
-
-        }
-
+    
         /// <summary>
         /// The application
         /// </summary>
@@ -278,174 +269,34 @@ namespace App.Controllers {
         /// <param name="sender">The sender.</param>
         /// <param name="e">The e.</param>
         public void AddEventListener<T>(object sender, AppEvent<T> e) {
-            //var key = sender.ToString();
-            //if (key == Mediator.SAN_PHAM_CALL_THE_LOAI_GET_MA)
-            //{
-            //    //---------------------TheLoai
-            //    if(e == null)
-            //        return;
-            //    if(e.value == null)
-            //        return;
-            //    var m = e.value as TheLoaiModel;
-            //    if(m == null)
-            //        return;
-            //    hoaDonNhapView.SetTxtMaTheLoai(m.MaLoai);
-            //    app.Resolve<IBaseController<TheLoaiModel>>().HideForm();
-            //}
-            //if (key == Mediator.SAN_PHAM_CALL_KICH_CO_GET_MA)
-            //{
-            //    //---------------------KichCo
-            //    if(e == null)
-            //        return;
-            //    if(e.value == null)
-            //        return;
-            //    var m = e.value as KichCoModel;
-            //    if(m == null)
-            //        return;
-            //    hoaDonNhapView.SetTxtMaKichCo(m.MaCo);
-            //    app.Resolve<IBaseController<KichCoModel>>().HideForm();
-            //}
-            //if (key == Mediator.SAN_PHAM_CALL_CHAT_LIEU_GET_MA)
-            //{
-            //    //---------------------ChatLieu
-            //    if(e == null)
-            //        return;
-            //    if(e.value == null)
-            //        return;
-            //    var m = e.value as ChatLieuModel;
-            //    if(m == null)
-            //        return;
-            //    hoaDonNhapView.SetTxtMaChatLieu(m.MaChatLieu);
-            //    app.Resolve<IBaseController<ChatLieuModel>>().HideForm();
-            //}
-            //if (key == Mediator.SAN_PHAM_CALL_MAU_GET_MA)
-            //{
+            var key = sender.ToString();
+            if(key == Mediator.HOA_DON_NHAP_CALL_SAM_PHAM_GET_SANPHAM) {
+                if(e == null)
+                    return;
+                if(e.value == null)
+                    return;
+                var m = e.value as SanPhamModel;
+                if(m == null)
+                    return;
+                hoaDonNhapView.SetCellSanPham(m);
+                app.Resolve<ISanPhamController<SanPhamModel>>().HideForm();
+            }
+        }
+        public void ShowSanPhamView(int mode) {
+            try {
+                var a = app.Resolve<ISanPhamController<SanPhamModel>>();
+                a.Notification += AddEventListener;
+                a.ShowSanPhamViewMode(mode);
+                a.ShowSanPhamView(new SanPhamModel());
+            } catch(ComponentNotRegisteredException exception) {
+            }
+        }
+        public SanPhamModel CheckMaFromSanPham(string ma) {
+            var m = sanPhamService.GetByMa(ma);
+            if (m == null) return null;
+            return m.ToModel();
+        }
 
-            //    //---------------------Mau
-            //    if(e == null) return;
-            //    if(e.value == null)return;
-            //    var m = e.value as MauModel;
-            //    if(m == null) return;
-            //    hoaDonNhapView.SetTxtMaMau(m.MaMau);
-            //    app.Resolve<IBaseController<MauModel>>().HideForm();
-
-            //}
-            //if (key == Mediator.SAN_PHAM_CALL_DOI_TUONG_GET_MA)
-            //{
-            //    //---------------------DoiTuong
-            //    if(e == null) return;
-            //    if(e.value == null)return;
-            //    var m = e.value as DoiTuongModel;
-            //    if(m == null) return;
-            //    hoaDonNhapView.SetTxtMaDoiTuong(m.MaDoiTuong);
-            //    app.Resolve<IBaseController<DoiTuongModel>>().HideForm();
-            //}
-            //if (key == Mediator.SAN_PHAM_CALL_MUA_GET_MA)
-            //{
-            //    //---------------------Mua
-            //    if(e == null) return;
-            //    if(e.value == null)return;
-            //    var m = e.value as MuaModel;
-            //    if(m == null) return;
-            //    hoaDonNhapView.SetTxtMaMua(m.MaMua);
-            //    app.Resolve<IBaseController<MuaModel>>().HideForm();
-
-            //}
-            //if (key == Mediator.SAN_PHAM_CALL_NUOC_SANXUAT_GET_MA)
-            //{
-            //    //---------------------NuocSanXuat
-            //    if(e == null) return;
-            //    if(e.value == null)return;
-            //    var m = e.value as NuocSanXuatModel;
-            //    if(m == null) return;
-            //    hoaDonNhapView.SetTxtMaNuocSanXuat(m.MaNuocSX);
-            //    app.Resolve<IBaseController<NuocSanXuatModel>>().HideForm();
-            //}
-        }
-        /// <summary>
-        /// Shows the loai view.
-        /// </summary>
-        /// <param name="ma">The ma.</param>
-        public void ShowTheLoaiView(string ma) {
-            try {
-                var a = app.Resolve<IBaseController<TheLoaiModel>>();
-                a.Notification += AddEventListener;
-                a.ShowForm();
-            } catch(ComponentNotRegisteredException exception) {
-            }
-        }
-        /// <summary>
-        /// Shows the kich co view.
-        /// </summary>
-        /// <param name="ma">The ma.</param>
-        public void ShowKichCoView(string ma) {
-            try {
-                var a = app.Resolve<IBaseController<KichCoModel>>();
-                a.Notification += AddEventListener;
-                a.ShowForm();
-            } catch(ComponentNotRegisteredException exception) {
-            }
-        }
-        /// <summary>
-        /// Shows the chat lieu view.
-        /// </summary>
-        /// <param name="ma">The ma.</param>
-        public void ShowChatLieuView(string ma) {
-            try {
-                var a = app.Resolve<IBaseController<ChatLieuModel>>();
-                a.Notification += AddEventListener;
-                a.ShowForm();
-            } catch(ComponentNotRegisteredException exception) {
-            }
-        }
-        /// <summary>
-        /// Shows the mau view.
-        /// </summary>
-        /// <param name="ma">The ma.</param>
-        public void ShowMauView(string ma) {
-            try {
-                var a = app.Resolve<IBaseController<MauModel>>();
-                a.Notification += AddEventListener;
-                a.ShowForm();
-            } catch(ComponentNotRegisteredException exception) {
-            }
-        }
-        /// <summary>
-        /// Shows the doi tuong view.
-        /// </summary>
-        /// <param name="ma">The ma.</param>
-        public void ShowDoiTuongView(string ma) {
-            try {
-                var a = app.Resolve<IBaseController<DoiTuongModel>>();
-                a.Notification += AddEventListener;
-                a.ShowForm();
-            } catch(ComponentNotRegisteredException exception) {
-            }
-        }
-        /// <summary>
-        /// Shows the mua view.
-        /// </summary>
-        /// <param name="ma">The ma.</param>
-        public void ShowMuaView(string ma) {
-            try {
-                var a = app.Resolve<IBaseController<MuaModel>>();
-                a.Notification += AddEventListener;
-                a.ShowForm();
-            } catch(ComponentNotRegisteredException exception) {
-            }
-        }
-        /// <summary>
-        /// Shows the nuoc san xuat view.
-        /// </summary>
-        /// <param name="ma">The ma.</param>
-        public void ShowNuocSanXuatView(string ma) {
-            try {
-                var a = app.Resolve<IBaseController<NuocSanXuatModel>>();
-                a.Notification += AddEventListener;
-                a.ShowForm();
-            } catch(ComponentNotRegisteredException exception) {
-            }
-        }
 
         /// <summary>
         /// Posts the view.

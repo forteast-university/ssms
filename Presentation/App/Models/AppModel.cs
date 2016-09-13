@@ -73,7 +73,11 @@ namespace App.Models{
         }
     }
     public class NuocSanXuatModel : NuocSanXuat { }
-    public class SanPhamModel : SanPham { }
+
+    public class SanPhamModel : SanPham
+    {
+        
+    }
     public class TheLoaiModel : TheLoai { }
 
 }

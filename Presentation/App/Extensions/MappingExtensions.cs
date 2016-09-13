@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Globalization;
 using System.Linq;
@@ -92,13 +93,17 @@ namespace App.Extensions {
         /// <param name="superset">The superset.</param>
         /// <returns>System.Int32.</returns>
         public static int ToInt32<T>(this T superset) {
-            var m = superset as string;
-            if(m == null)
-                return 0;
+            var m = superset.ToString();
             if(m.Trim() == "")
                 return 0;
-
-            return Convert.ToInt32(m);
+            try
+            {
+                return Convert.ToInt32(m);
+            }
+            catch (Exception ex)
+            {
+            }
+            return 0;
         }
         /// <summary>
         /// To the decimal.
@@ -107,13 +112,17 @@ namespace App.Extensions {
         /// <param name="superset">The superset.</param>
         /// <returns>System.Decimal.</returns>
         public static decimal ToDecimal<T>(this T superset) {
-            var m = superset as string;
-            if(m == null)
-                return 0;
+            var m = superset.ToString();
             if(m.Trim() == "")
                 return 0;
-
-            return Convert.ToDecimal(m);
+            try
+            {
+                return Convert.ToDecimal(m);
+            }
+            catch (Exception ex)
+            {
+            }
+            return 0;
         }
         /// <summary>
         /// To the double.
@@ -122,13 +131,15 @@ namespace App.Extensions {
         /// <param name="superset">The superset.</param>
         /// <returns>System.Double.</returns>
         public static double ToDouble<T>(this T superset) {
-            var m = superset as string;
-            if(m == null)
-                return 0;
+            var m = superset.ToString();
             if(m.Trim() == "")
                 return 0;
-
-            return Convert.ToDouble(m);
+                                       
+            try {
+                return Convert.ToDouble(m);
+            } catch(Exception ex) {
+            }
+            return 0;
         }
         public static string ToDateString(this DateTime? superset) {
             var m = superset;
@@ -319,7 +330,21 @@ namespace App.Extensions {
             }
             return dgv;
         }
+        public static DataTable ToDataTable<T>(this List<T> list) where T: class {
+            var type = typeof(T);
+            var ps = type.GetProperties();
+            var cols = from p in ps select new DataColumn(DisplayNameHelper.GetDisplayName(p), p.PropertyType);
+            var dt = new DataTable();
+            dt.Columns.AddRange(cols.ToArray());
 
+            list.ForEach((l) => {
+                var objs = new List<object>();
+                objs.AddRange(ps.Select(p => p.GetValue(l, null)));
+                dt.Rows.Add(objs.ToArray());
+            });
+
+            return dt;
+        }
         /// <summary>
         /// To the model.
         /// </summary>

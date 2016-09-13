@@ -85,6 +85,8 @@ namespace App.Views {
             this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_ChangedValue);
             this.dataGridView.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgv_RowPrePaint);
             this.dataGridView.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.dataGridView1_PreviewKeyDown);
+            this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
+            
             // 
             // bntLuaChon
             // 
@@ -215,6 +217,8 @@ namespace App.Views {
             this.PerformLayout();
 
         }
+
+       
 
         #endregion
 

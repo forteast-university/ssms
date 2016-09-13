@@ -27,25 +27,25 @@ namespace App.Core.Domain {
         /// </summary>
         /// <value>The so luong.</value>
         [DisplayName("Số lượng")]
-        public Nullable<int> SoLuong { get; set; }
+        public int SoLuong { get; set; }
         /// <summary>
         /// Gets or sets the don gia.
         /// </summary>
         /// <value>The don gia.</value>
         [DisplayName("Đơn giá")]
-        public Nullable<decimal> DonGia { get; set; }
+        public decimal DonGia { get; set; }
         /// <summary>
         /// Gets or sets the giam gia.
         /// </summary>
         /// <value>The giam gia.</value>
         [DisplayName("Giảm giá")]
-        public string GiamGia { get; set; }
+        public decimal GiamGia { get; set; }
         /// <summary>
         /// Gets or sets the thanh tien.
         /// </summary>
         /// <value>The thanh tien.</value>
         [DisplayName("Thành tiền")]
-        public Nullable<decimal> ThanhTien { get; set; }
+        public decimal ThanhTien { get; set; }
         /// <summary>
         /// Gets or sets the so HDN.
         /// </summary>
@@ -62,12 +62,12 @@ namespace App.Core.Domain {
         /// Gets or sets the san pham identifier.
         /// </summary>
         /// <value>The san pham identifier.</value>
-        public Nullable<int> SanPhamID { get; set; }
+        public int SanPhamID { get; set; }
         /// <summary>
         /// Gets or sets the hoa don nhap identifier.
         /// </summary>
         /// <value>The hoa don nhap identifier.</value>
-        public Nullable<int> HoaDonNhapID { get; set; }
+        public int HoaDonNhapID { get; set; }
 
         /// <summary>
         /// Gets or sets the hoa don nhap.

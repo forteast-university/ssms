@@ -12,6 +12,8 @@
 // <summary></summary>
 // ***********************************************************************
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace App.Core.Domain {
     using System;
     using System.Collections.Generic;
@@ -24,9 +26,11 @@ namespace App.Core.Domain {
         /// Initializes a new instance of the <see cref="HoaDonNhap"/> class.
         /// </summary>
         public HoaDonNhap() {
-            //this.ChiTietHDN = new HashSet<ChiTietHDN>();
+            this.ChiTietHDN = new List<ChiTietHDN>();
         }
-
+        
+        [NotMapped]
+        public List<ChiTietHDN> ChiTietHDN { get; set; }
 
         /// <summary>
         /// Gets or sets the so HDN.

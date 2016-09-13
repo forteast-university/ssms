@@ -20,6 +20,7 @@ namespace App.Views {
         }
 
         private bool isCreateNew = false;
+        private bool isNonSaveDatabase = false;
 
         public void InitializeForm(SanPhamModel value) {
             currentModel = value;
@@ -141,6 +142,15 @@ namespace App.Views {
                     return;
                 }
             }
+
+            if (isNonSaveDatabase)
+            {
+                //currentController.Notification();
+                isNonSaveDatabase = false;
+                currentController.HideSanPhamView();
+                currentController.SendBackToListener(a);
+                return;
+            }
             if(isCreateNew) {
                 currentController.Insert(a);
             } else {
@@ -183,6 +193,11 @@ namespace App.Views {
 
         private void bntLuuTiepTuc_Click(object sender, EventArgs e) {
             OnSetSave(false);
+        }
+
+        public void NonSaveDatabase(int value)
+        {
+            isNonSaveDatabase = (value==0);
         }
 
         public void SetTxtMaTheLoai(string value) {

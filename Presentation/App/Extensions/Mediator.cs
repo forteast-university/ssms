@@ -33,6 +33,8 @@ namespace App.Extensions {
         public static string SAN_PHAM_CALL_MUA_GET_MA = "SAN_PHAM_CALL_MUA_GET_MA";
         public static string SAN_PHAM_CALL_NUOC_SANXUAT_GET_MA = "SAN_PHAM_CALL_NUOCSANXUAT_GET_MA";
 
+        public static string HOA_DON_NHAP_CALL_SAM_PHAM_GET_SANPHAM = "HOA_DON_NHAP_CALL_SAM_PHAM_GET_SANPHAM";
+
     }
 
     public class AppEvent<T> : EventArgs{

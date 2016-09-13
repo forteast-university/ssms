@@ -200,7 +200,13 @@ namespace App.Controllers
         public void ShowSanPhamView(SanPhamModel value)
         {
             sanPhamView.InitializeForm(value);
+            ShowSanPhamViewMode(1);
             sanPhamView.ShowDialog();
+        }
+
+        public void ShowSanPhamViewMode(int value)
+        {
+            sanPhamView.NonSaveDatabase(value);
         }
 
         public void SetSanPhamListView(Form value)
@@ -349,6 +355,11 @@ namespace App.Controllers
                 a.ShowForm();
             } catch(ComponentNotRegisteredException exception) {
             }
+        }
+
+        public void SendBackToListener(SanPhamModel value)
+        {
+            Notification(Mediator.HOA_DON_NHAP_CALL_SAM_PHAM_GET_SANPHAM,new AppEvent<SanPhamModel>{value = value});
         }
 
         /// <summary>
