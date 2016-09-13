@@ -31,5 +31,6 @@ namespace App.Controllers.Interface{
         void CloseParent();
         void DangNhap(T value);
         void ShowCongViecView(string ma);
+        void ShowNhanVienView();
     }
 }

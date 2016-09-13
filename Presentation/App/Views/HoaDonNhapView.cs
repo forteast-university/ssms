@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using App.Controllers;
@@ -53,6 +54,10 @@ namespace App.Views{
             bntXoa.Enabled = false;
             txtNgayNhap.Format = DateTimePickerFormat.Custom;
             txtNgayNhap.CustomFormat = "dd/MM/yyyy";
+
+
+
+
         }
 
         /// <summary>
@@ -73,14 +78,16 @@ namespace App.Views{
             var c = new DataGridViewCheckBoxColumn{Name = "CB", HeaderText = "", Width = 24, AutoSizeMode = DataGridViewAutoSizeColumnMode.None, ReadOnly = true};
             dataGridView.Columns.Add(c);
 
-            dataGridView.DataSource = new BindingSource{DataSource = value};
+            dataGridView.DataSource = new BindingSource { DataSource = value };
             dataGridView.Columns["ID"].Display(false);
-            dataGridView.Columns["NhanVienID"].Display(false);
-            dataGridView.Columns["NhaCungCapID"].Display(false);
-            dataGridView.Columns["NhanVien"].Display(false);
-            dataGridView.Columns["NhaCungCap"].Display(false);
-            //if(dataGridView.Columns["MaHoaDonNhap"]!=null)
-            //    dataGridView.Columns["MaHoaDonNhap"].DisplayIndex = 0;
+            dataGridView.Columns["SanPhamID"].Display(false);
+            dataGridView.Columns["SanPham"].Display(false);
+            dataGridView.Columns["HoaDonNhapID"].Display(false);
+            dataGridView.Columns["HoaDonNhap"].Display(false);
+            dataGridView.Columns["SoHDN"].Display(false);
+
+            if(dataGridView.Columns["MaGiayDep"]!=null)
+                dataGridView.Columns["MaGiayDep"].DisplayIndex = 0;
             //if(dataGridView.Columns["TenHoaDonNhap"]!=null)
             //    dataGridView.Columns["TenHoaDonNhap"].DisplayIndex = 1;
             //if(dataGridView.Columns["GioiTinh"]!=null)
@@ -92,7 +99,7 @@ namespace App.Views{
             dataGridView.ClearSelection();
             dataGridView.CurrentCell = null;
             bntLuu.Enabled = true;
-            bntTaoMoi.Enabled = false;
+            bntTaoMoi.Enabled = true;
 
             //bntSuaMatKhau.Visible = false;
             //txtMatKhau.Visible = (!bntSuaMatKhau.Visible);
@@ -278,6 +285,15 @@ namespace App.Views{
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="DataGridViewCellEventArgs" /> instance containing the event data.</param>
+        private void dataGridView1_ChangedValue(Object sender, DataGridViewCellEventArgs e){
+            if (e.RowIndex < 0) {
+                return;
+            }
+            int row = e.RowIndex;
+            int col = e.ColumnIndex;
+
+        }
+
         private void dgv_CellClick(Object sender, DataGridViewCellEventArgs e){
             if (e.RowIndex < 0){
                 return;
@@ -327,17 +343,78 @@ namespace App.Views{
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void bntTaoMoi_Click(object sender, EventArgs e){
+            var test = new List<ChiTietHdnModel>();
+            test.Add(new ChiTietHdnModel {
+                ID = -1,
+                SoLuong = 0,
+                DonGia = 0,
+                GiamGia = "0",
+                MaGiayDep = "-1"
+            });
+
+
+            if (dataGridView.Rows.Count == 0){
+                 
+                //var c = new DataGridViewCheckBoxColumn { Name = "CB", HeaderText = "", Width = 24, AutoSizeMode = DataGridViewAutoSizeColumnMode.None, ReadOnly = true };
+                //dataGridView.Columns.Add(c);
+
+                dataGridView.DataSource = new BindingSource{DataSource = test};
+                dataGridView.Columns["ID"].Display(false);
+                dataGridView.Columns["SanPhamID"].Display(false);
+                dataGridView.Columns["SanPham"].Display(false);
+                dataGridView.Columns["HoaDonNhapID"].Display(false);
+                dataGridView.Columns["HoaDonNhap"].Display(false);
+                dataGridView.Columns["SoHDN"].Display(false);
+
+                if (dataGridView.Columns["MaGiayDep"] != null)
+                    dataGridView.Columns["MaGiayDep"].DisplayIndex = 2;
+            }
+            else{
+                          
+                var row = (DataGridViewRow)dataGridView.Rows[0].Clone();
+                if (row != null){
+
+                    int intColIndex = 0;
+                    foreach (DataGridViewCell cell in dataGridView.Rows[0].Cells) {
+                        row.Cells[intColIndex].Value = cell.Value;
+                        intColIndex++;
+                    }
+                    dataGridView.Rows.Add(row);
+
+
+                    DataRow drToAdd = dataGridView.NewRow();
+
+                    drToAdd["Field1"] = "Value1";
+                    drToAdd["Field2"] = "Value2";
+
+                    dataGridView.Rows.Add(drToAdd);
+
+                    //row.Cells[0].Value = 0;
+                    //row.Cells[1].Value = "-1";
+                    //row.Cells[2].Value = 0;
+                    //row.Cells[3].Value = 0;
+                    //row.Cells[4].Value = "0";
+
+                    //row.Cells["ID"].Value = -1;
+                    //row.Cells["MaGiayDep"].Value = "-1";
+                    //row.Cells["SoLuong"].Value = 0;
+                    //row.Cells["DonGia"].Value = 0;
+                    //row.Cells["GiamGia"].Value = "0";
+                    //dataGridView.Rows.Add(row);
+                }
+            }
+
             //dataGridView.ClearSelection();
-            //txtMaHoaDonNhap.Text = "";
+            //txtMaHoaDonNhap.Text  = "";
             //txtTenHoaDonNhap.Text = "";
-            //txtDiaChi.Text = "";
-            //txtDienThoai.Text = "";
+            //txtDiaChi.Text        = "";
+            //txtDienThoai.Text     = "";
             //txtMaHoaDonNhap.Focus();
-            //bntLuaChon.Enabled = false;
-            //bntTaoMoi.Enabled = false;
-            //bntLuu.Enabled = true;
+            //bntLuaChon.Enabled    = false;
+            //bntTaoMoi.Enabled     = false;
+            //bntLuu.Enabled        = true;
             //bntSuaMatKhau.Visible = false;
-            //txtMatKhau.Visible = (!bntSuaMatKhau.Visible);
+            //txtMatKhau.Visible  = (!bntSuaMatKhau.Visible);
             //txtMatKhau2.Visible = (!bntSuaMatKhau.Visible);
         }
         public void SetTxtMaCv(string ma)
@@ -349,7 +426,7 @@ namespace App.Views{
             //txtMaCV.Text = value;
         }
         private void bntCongViec_Click(object sender, EventArgs e) {
-            controller.ShowSanPhamView();
+            controller.ShowSanPhamView(0);
         }
 
         private void bntSuaMatKhau_Click(object sender, EventArgs e)

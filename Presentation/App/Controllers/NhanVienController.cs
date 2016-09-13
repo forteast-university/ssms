@@ -103,14 +103,19 @@ namespace App.Controllers{
             }
         }
 
+        public void ShowNhanVienView(){
+            nhanVienView.ShowDialog();
+        }
+
         public event EventHandler<AppEvent<NhanVienModel>> Notification;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="NhanVienController" /> class.
         /// </summary>
         /// <param name="currentService">The chat lieu service.</param>
-        public NhanVienController(INhanVienService currentService){
+        public NhanVienController(INhanVienService currentService, ICongViecService congViecService){
             this.currentService = currentService;
+            this.congViecService = congViecService;
             dangNhapView = new DangNhapView(this);
             nhanVienView = new NhanVienView(this);
         }
@@ -118,10 +123,14 @@ namespace App.Controllers{
         public void Select(NhanVienModel value)
         {
             //Notification(Mediator.DANGNHAP_KHONG_THANH_CONG, new AppEvent<NhanVienModel>{value = value});
+            if (dangNhapView.Visible){
+                dangNhapView.SetTxtMaNhanVien(value.MaNhanVien);
+                nhanVienView.Hide();
+            }
         }
         public IList<string> ValidateAndFillup(NhanVienModel value) {
             var a = new List<string>();
-            var congviec     =  currentService.GetByMa(value.MaCV);
+            var congviec = congViecService.GetByMa(value.MaCV);
             if(congviec == null) { a.Add("MaCV"); }
             if(congviec != null) { value.CongViecID = congviec.ID; }
             return a;

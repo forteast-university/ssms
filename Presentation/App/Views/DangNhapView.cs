@@ -80,7 +80,11 @@ namespace App.Views {
             MessageBox.Show(value, "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         private void linkDangKy_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
+             controller.ShowForm();
+        }
 
+        public void SetTxtMaNhanVien(string ma){
+            txtMaNhanVien.Text = ma;
         }
     }
 }

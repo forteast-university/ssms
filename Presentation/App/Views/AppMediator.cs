@@ -37,7 +37,10 @@ namespace App.Views {
         public AppMediator() {
             InitializeComponent();
             app = AppFacade.Container;
-            InitializeFirst();
+            //InitializeFirst();
+
+            LoadSanPhamView();
+            LoadHoaDonNhapView();
         }
         public void Eventlistener<T>(object sender, AppEvent<T> e) {
             var key = sender.ToString();

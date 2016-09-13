@@ -238,7 +238,8 @@ namespace App.Controllers {
         /// <param name="value">The value.</param>
         public void ShowHoaDonNhapView(HoaDonNhapModel value) {
             hoaDonNhapView.InitializeForm(value);
-            hoaDonNhapView.ShowDialog();
+            hoaDonNhapView.PostView(new List<HoaDonNhapModel>());
+            hoaDonNhapView.View();
         }
 
         /// <summary>
@@ -251,12 +252,19 @@ namespace App.Controllers {
 
         public void HideSanPhamView()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void ShowSanPhamView(int mode)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+
+
+            var a = app.Resolve<ISanPhamController<SanPhamModel>>();
+                a.ShowSanPhamView(null);
+
+
+
         }
 
         /// <summary>

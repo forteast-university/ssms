@@ -174,8 +174,8 @@ namespace App.Views {
                 }
             }
 
-
-            var validate = controller.ValidateAndFillup(currentModel);
+            var dataRaw = FulfilmentFild(currentModel);
+            var validate = controller.ValidateAndFillup(dataRaw);
             if(validate != null) {
                 if(validate.Contains("MaCV")) {
                     txtMaCV.Focus();
@@ -184,21 +184,21 @@ namespace App.Views {
             }
             if(isUpdate) {
                 //re-update UI
-                dataGridView.UpdateView("MaNhanVien", currentModel.MaNhanVien);
-                dataGridView.UpdateView("TenNhanVien", currentModel.TenNhanVien);
-                dataGridView.UpdateView("DiaChi", currentModel.DiaChi);
-                dataGridView.UpdateView("DienThoai", currentModel.DienThoai);
-                dataGridView.UpdateView("GioiTinh", currentModel.GioiTinh);
-                dataGridView.UpdateView("NgaySinh", currentModel.NgaySinhModel);
-                dataGridView.UpdateView("MaCV", currentModel.MaCV);
+                dataGridView.UpdateView("MaNhanVien", dataRaw.MaNhanVien);
+                dataGridView.UpdateView("TenNhanVien", dataRaw.TenNhanVien);
+                dataGridView.UpdateView("DiaChi", dataRaw.DiaChi);
+                dataGridView.UpdateView("DienThoai", dataRaw.DienThoai);
+                dataGridView.UpdateView("GioiTinh", dataRaw.GioiTinh);
+                dataGridView.UpdateView("NgaySinh", dataRaw.NgaySinhModel);
+                dataGridView.UpdateView("MaCV", dataRaw.MaCV);
 
                 txtMaNhanVien.Focus();
                 txtMaNhanVien.SelectAll();
                 bntTaoMoi.Enabled = true;
                 bntLuu.Enabled = true;
-                controller.Update(currentModel);
+                controller.Update(dataRaw);
             } else {
-                controller.Insert(currentModel);
+                controller.Insert(dataRaw);
                 txtMaNhanVien.Focus();
                 txtMaNhanVien.SelectAll();
                 //txtTenChatLieu.Text = "";
@@ -215,7 +215,7 @@ namespace App.Views {
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void bntLuaChon_Click(object sender, EventArgs e) {
             currentModel = (NhanVienModel)dataGridView.CurrentSelected(currentModelList);
-            MessageBox.Show(currentModel.MaNhanVien);
+            controller.Select(currentModel);
         }
 
         /// <summary>

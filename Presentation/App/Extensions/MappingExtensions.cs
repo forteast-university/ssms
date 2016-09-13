@@ -288,6 +288,8 @@ namespace App.Extensions {
                 int selectedrowindex = grid.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = grid.Rows[selectedrowindex];
                 string rowindex = Convert.ToString(selectedRow.Cells["ID"].Value);
+                if (value == null)
+                    return null;
                 return value.FirstOrDefault(c => c.ID == Convert.ToInt32(rowindex));
 
             }
