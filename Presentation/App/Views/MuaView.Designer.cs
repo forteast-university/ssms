@@ -25,7 +25,6 @@ namespace App.Views {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            //this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.bntLuu = new System.Windows.Forms.Button();
             this.bntHuy = new System.Windows.Forms.Button();
             this.txtMaMua = new System.Windows.Forms.TextBox();
@@ -80,7 +79,7 @@ namespace App.Views {
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Mã mua";
+            this.label1.Text = "Mã mùa";
             // 
             // label2
             // 
@@ -89,13 +88,14 @@ namespace App.Views {
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Tên mua";
+            this.label2.Text = "Tên mùa";
             // 
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AllowUserToResizeRows = false; this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(12, 68);
             this.dataGridView.MultiSelect = false;
@@ -154,13 +154,13 @@ namespace App.Views {
             this.Controls.Add(this.txtMaMua);
             this.Controls.Add(this.bntHuy);
             this.Controls.Add(this.bntLuu);
-            this.Name = "MuaView";
-            this.Text = "Mua";
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.Name = "MuaView";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Mùa";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
