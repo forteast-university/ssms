@@ -29,7 +29,6 @@ namespace App.Views
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            //this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.label1 = new System.Windows.Forms.Label();
             this.txtMaSanPham = new System.Windows.Forms.TextBox();
             this.txtSoLuongSanPham = new System.Windows.Forms.TextBox();
@@ -67,6 +66,7 @@ namespace App.Views
             this.bntCo = new System.Windows.Forms.Button();
             this.bntMau = new System.Windows.Forms.Button();
             this.bntNuocSanXuat = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // label1
@@ -430,11 +430,10 @@ namespace App.Views
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtMaSanPham);
             this.Controls.Add(this.label1);
-            
-            this.Name = "SanPhamView";
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.Name = "SanPhamView";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sản Phẩm";
@@ -482,5 +481,6 @@ namespace App.Views
         private System.Windows.Forms.Button bntCo;
         private System.Windows.Forms.Button bntMau;
         private System.Windows.Forms.Button bntNuocSanXuat;
+        private OpenFileDialog openFileDialog1;
     }
 }

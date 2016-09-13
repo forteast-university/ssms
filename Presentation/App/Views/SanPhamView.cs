@@ -40,6 +40,7 @@ namespace App.Views {
                 txtMaDoiTuong.Text = "";
                 txtMaMua.Text = "";
                 txtMaNuocSanXuat.Text = "";
+                txtAnh.Text = "";
             }
             else
             {
@@ -57,6 +58,8 @@ namespace App.Views {
                 txtMaDoiTuong.Text = value.MaDoiTuong;
                 txtMaMua.Text = value.MaMua;
                 txtMaNuocSanXuat.Text = value.MaNuocSX;
+                txtAnh.Text = value.Anh;
+
             }
         }
 
@@ -66,7 +69,7 @@ namespace App.Views {
                     MaGiayDep = txtMaSanPham.Text,
                     TenGiayDep = txtTenSanPham.Text,
                     SoLuong = txtSoLuongSanPham.Text.ToInt32(),
-                    Anh = txtMaChatLieu.Text,
+                    Anh = txtAnh.Text,
                     DonGiaNhap = txtDonGiaNhap.Text.ToDecimal(),
                     DonGiaBan = txtDonGiaBan.Text.ToDecimal(),
                     MaLoai = txtMaLoai.Text,
@@ -76,13 +79,14 @@ namespace App.Views {
                     MaDoiTuong = txtMaDoiTuong.Text,
                     MaMua = txtMaMua.Text,
                     MaNuocSX = txtMaNuocSanXuat.Text
+                   
                 };
             } else {
 
                 value.MaGiayDep = txtMaSanPham.Text;
                 value.TenGiayDep = txtTenSanPham.Text;
                 value.SoLuong = txtSoLuongSanPham.Text.ToInt32();
-                value.Anh = txtMaChatLieu.Text;
+                value.Anh = txtAnh.Text;
                 value.DonGiaNhap = txtDonGiaNhap.Text.ToDecimal();
                 value.DonGiaBan = txtDonGiaBan.Text.ToDecimal();
 
@@ -157,9 +161,25 @@ namespace App.Views {
             OnSetSave(false);
         }
 
-        private void btnAnh_Click(object sender, EventArgs e) {
+        private void btnAnh_Click(object sender, EventArgs e)
+        {
+            
+            openFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
+            openFileDialog1.Title = "Chọn ảnh sản phẩm";
+            openFileDialog1.ShowDialog();
 
-        }
+            if (openFileDialog1.FileName != "" && openFileDialog1.FileName != null)
+                {
+                    txtAnh.Text = openFileDialog1.FileName;
+                    txtAnh.Enabled = false;
+                    var DuongDanAnh = openFileDialog1.FileName;
+                }
+                //else
+                //{
+                //    MessageBox.Show("Bạn chưa chọn ảnh!");
+                //}
+            
+        }  
 
         private void bntLuuTiepTuc_Click(object sender, EventArgs e) {
             OnSetSave(false);
