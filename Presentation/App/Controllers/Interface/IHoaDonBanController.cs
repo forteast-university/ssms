@@ -18,12 +18,12 @@ using System.Windows.Forms;
 using App.Extensions;
 using App.Models;
 
-namespace App.Controllers.Interface {
+namespace App.Controllers.Interface{
     /// <summary>
     /// Interface IChatLieuController
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IHoaDonNhapController<T>: IBaseController<T> {
+    public interface IHoaDonBanController<T>: IBaseController<T> {
 
         /// <summary>
         /// Validates the and fillup.
@@ -32,24 +32,24 @@ namespace App.Controllers.Interface {
         /// <returns>IList&lt;System.String&gt;.</returns>
         IList<string> ValidateAndFillup(T value);
         /// <summary>
-        /// Hides the hoa don nhap view.
+        /// Hides the hoa don ban view.
         /// </summary>
-        void HideHoaDonNhapView();
+        void HideHoaDonBanView();
         /// <summary>
-        /// Shows the hoa don nhap view.
+        /// Shows the hoa don ban view.
         /// </summary>
         /// <param name="value">The value.</param>
-        void ShowHoaDonNhapView(T value);
+        void ShowHoaDonBanView(T value);
         /// <summary>
-        /// Saves the hoa don nhap.
+        /// Saves the hoa don ban.
         /// </summary>
         /// <param name="value">The value.</param>
-        void SaveHoaDonNhap(T value);
+        void SaveHoaDonBan(T value);
         /// <summary>
-        /// Sets the hoa don nhap ListView.
+        /// Sets the hoa don ban ListView.
         /// </summary>
         /// <param name="value">The value.</param>
-        void SetHoaDonNhapListView(Form value);
+        void SetHoaDonBanListView(Form value);
 
         /// <summary>
         /// Hides the san pham view.
@@ -66,6 +66,5 @@ namespace App.Controllers.Interface {
         /// <param name="ma">The ma.</param>
         /// <returns>SanPhamModel.</returns>
         SanPhamModel CheckMaFromSanPham(string ma);
-
     }
 }

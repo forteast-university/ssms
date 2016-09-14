@@ -36,6 +36,9 @@ namespace App.Extensions {
         public static string HOA_DON_NHAP_CALL_SAM_PHAM_GET_SANPHAM = "HOA_DON_NHAP_CALL_SAM_PHAM_GET_SANPHAM";
         public static string HOA_DON_NHAP_CANCEL_SAM_PHAM_GET_SANPHAM = "HOA_DON_NHAP_CANCEL_SAM_PHAM_GET_SANPHAM";
 
+        public static string HOA_DON_BAN_CALL_SAM_PHAM_GET_SANPHAM = "HOA_DON_BAN_CALL_SAM_PHAM_GET_SANPHAM";
+        public static string HOA_DON_BAN_CANCEL_SAM_PHAM_GET_SANPHAM = "HOA_DON_BAN_CANCEL_SAM_PHAM_GET_SANPHAM";
+
     }
 
     public class AppEvent<T> : EventArgs{

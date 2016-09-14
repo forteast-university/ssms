@@ -6,7 +6,7 @@
 // Last Modified By : Hung Le
 // Last Modified On : 09-11-2016
 // ***********************************************************************
-// <copyright file="HoaDonNhapListView.cs" company="Thanh Dong University">
+// <copyright file="HoaDonBanListView.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -24,29 +24,29 @@ using App.Properties;
 
 namespace App.Views {
     /// <summary>
-    /// Class HoaDonNhapListView.
+    /// Class HoaDonBanListView.
     /// </summary>
-    public partial class HoaDonNhapListView: Form {
+    public partial class HoaDonBanListView: Form {
         /// <summary>
         /// The controller
         /// </summary>
-        private readonly IHoaDonNhapController<HoaDonNhapModel> controller;
+        private readonly IHoaDonBanController<HoaDonBanModel> controller;
 
         /// <summary>
         /// The value chat lieu model
         /// </summary>
-        private IEnumerable<HoaDonNhapModel> currentModelList;
+        private IEnumerable<HoaDonBanModel> currentModelList;
 
         /// <summary>
         /// The current model
         /// </summary>
-        private HoaDonNhapModel currentModel;
+        private HoaDonBanModel currentModel;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HoaDonNhapListView" /> class.
+        /// Initializes a new instance of the <see cref="HoaDonBanListView" /> class.
         /// </summary>
         /// <param name="value">The value.</param>
-        public HoaDonNhapListView(IHoaDonNhapController<HoaDonNhapModel> value) {
+        public HoaDonBanListView(IHoaDonBanController<HoaDonBanModel> value) {
             controller = value;
             InitializeComponent();
             bntLuaChon.Enabled = false;
@@ -64,7 +64,7 @@ namespace App.Views {
         /// Posts the view.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void PostView(IEnumerable<HoaDonNhapModel> value) {
+        public void PostView(IEnumerable<HoaDonBanModel> value) {
             currentModelList = value;
 
             dataGridView.Columns.Clear();
@@ -94,26 +94,26 @@ namespace App.Views {
             // todo: tìm kiếm
 
             //if (txtMaGiayDep.Text == ""){
-            //    MessageBox.Show("Mã hóa đơn không được để rỗng");
+            //    MessageBox.Show("Mã sản phẩm không được để rỗng");
             //    return;
             //}
             //if (txtTenGiayDep.Text == ""){
-            //    MessageBox.Show("Tên hóa đơn không được để rỗng");
+            //    MessageBox.Show("Tên sản phẩm không được để rỗng");
             //    return;
             //}
-            //currentModel = (HoaDonNhapModel) dataGridView.CurrentSelected(currentModelList);
+            //currentModel = (HoaDonBanModel) dataGridView.CurrentSelected(currentModelList);
             //if (currentModel != null){
 
             //    var cm = currentModelList.Where(c => c.MaGiayDep == txtMaGiayDep.Text &&
             //        c.ID != currentModel.ID);
             //    if (cm.Any()) {
-            //        MessageBox.Show("Mã hóa đơn đã tồn tại trong một bản ghi khác");
+            //        MessageBox.Show("Mã sản phẩm đã tồn tại trong một bản ghi khác");
             //        return;
             //    }
             //    var ct = currentModelList.Where(c => c.TenGiayDep == txtTenGiayDep.Text &&
             //        c.ID != currentModel.ID);
             //    if (ct.Any()) {
-            //        MessageBox.Show("Tên hóa đơn đã tồn tại trong một bản ghi khác");
+            //        MessageBox.Show("Tên sản phẩm đã tồn tại trong một bản ghi khác");
             //        return;
             //    }
 
@@ -133,15 +133,15 @@ namespace App.Views {
             //else{
             //    var cm = currentModelList.Where(c => c.MaGiayDep == txtMaGiayDep.Text);
             //    if (cm.Any()) {
-            //        MessageBox.Show("Mã hóa đơn đã tồn tại");
+            //        MessageBox.Show("Mã sản phẩm đã tồn tại");
             //        return;
             //    }
             //    var ct = currentModelList.Where(c => c.TenGiayDep == txtTenGiayDep.Text);
             //    if (ct.Any()) {
-            //        MessageBox.Show("Tên hóa đơn đã tồn tại");
+            //        MessageBox.Show("Tên sản phẩm đã tồn tại");
             //        return;
             //    }
-            //    currentModel = new HoaDonNhapModel{
+            //    currentModel = new HoaDonBanModel{
             //        MaGiayDep = txtMaGiayDep.Text,
             //        TenGiayDep = txtTenGiayDep.Text,
             //    };
@@ -162,7 +162,7 @@ namespace App.Views {
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void bntLuaChon_Click(object sender, EventArgs e) {
-            currentModel = (HoaDonNhapModel)dataGridView.CurrentSelected(currentModelList);
+            currentModel = (HoaDonBanModel)dataGridView.CurrentSelected(currentModelList);
             //MessageBox.Show(currentModel.MaGiayDep);
         }
 
@@ -212,7 +212,7 @@ namespace App.Views {
             bntLuaChon.Enabled = (dataGridView.CurrentRow != null);
             bntXoa.Enabled = selectedRows.Count > 0;
 
-            //currentModel = (HoaDonNhapModel)dataGridView.CurrentSelected(currentModelList);
+            //currentModel = (HoaDonBanModel)dataGridView.CurrentSelected(currentModelList);
             //if(currentModel != null) {
             //    txtTimKiem.Text = currentModel.MaGiayDep;
             //}
@@ -273,7 +273,7 @@ namespace App.Views {
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void bntTaoMoi_Click(object sender, EventArgs e) {
-            controller.ShowHoaDonNhapView(null);
+            controller.ShowHoaDonBanView(null);
         }
         /// <summary>
         /// Handles the CellDoubleClick event of the dgv control.
@@ -281,8 +281,8 @@ namespace App.Views {
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
-            currentModel = (HoaDonNhapModel)dataGridView.CurrentSelected(currentModelList);
-            controller.ShowHoaDonNhapView(currentModel);
+            currentModel = (HoaDonBanModel)dataGridView.CurrentSelected(currentModelList);
+            controller.ShowHoaDonBanView(currentModel);
         }
 
         /// <summary>
@@ -301,13 +301,13 @@ namespace App.Views {
         /// <summary>
         /// Datas the tim kiem.
         /// </summary>
-        /// <returns>IEnumerable&lt;HoaDonNhapModel&gt;.</returns>
-        private IEnumerable<HoaDonNhapModel> DataTimKiem() {
+        /// <returns>IEnumerable&lt;HoaDonBanModel&gt;.</returns>
+        private IEnumerable<HoaDonBanModel> DataTimKiem() {
             var dataModelList = currentModelList;
             //// var dataModelList= currentModelList.Where(c => c.MaGiayDep.Contains(txtTimKiem.Text.Trim()) || c.TenGiayDep.Contains(txtTimKiem.Text.Trim()));      
-            //if(cbbTimKiem.SelectedItem == "Mã hóa đơn") {
+            //if(cbbTimKiem.SelectedItem == "Mã sản phẩm") {
             //    dataModelList = currentModelList.Where(c => c.MaGiayDep.Contains(txtTimKiem.Text.Trim()));
-            //} else if(cbbTimKiem.SelectedItem == "Tên hóa đơns") {
+            //} else if(cbbTimKiem.SelectedItem == "Tên sản phẩm") {
             //    dataModelList = currentModelList.Where(c => c.TenGiayDep.Contains(txtTimKiem.Text.Trim()));
             //}
             return dataModelList;
@@ -335,11 +335,11 @@ namespace App.Views {
         {
             "Mã hóa đơn", 
             "Mã nhân viên",
-            "Mã nhà cung cấp"
+            "Mã khách hàng"
         };
 
         /// <summary>
-        /// Handles the Load event of the HoaDonNhapListView control.
+        /// Handles the Load event of the HoaDonBanListView control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>

@@ -55,8 +55,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\HoaDonBanController.cs" />
     <Compile Include="Controllers\Interface\ICongViecController.cs" />
     <Compile Include="Controllers\HoaDonNhapController.cs" />
+    <Compile Include="Controllers\Interface\IHoaDonBanController.cs" />
     <Compile Include="Controllers\Interface\IHoaDonNhapController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\CongViecController.cs" />
@@ -110,6 +112,18 @@
     </Compile>
     <Compile Include="Views\DoiTuongView.Designer.cs">
       <DependentUpon>DoiTuongView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HoaDonBanView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\HoaDonBanView.Designer.cs">
+      <DependentUpon>HoaDonBanView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HoaDonBanListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\HoaDonBanListView.Designer.cs">
+      <DependentUpon>HoaDonBanListView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\HoaDonNhapView.cs">
       <SubType>Form</SubType>
@@ -218,6 +232,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DoiTuongView.resx">
       <DependentUpon>DoiTuongView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\HoaDonBanView.resx">
+      <DependentUpon>HoaDonBanView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\HoaDonBanListView.resx">
+      <DependentUpon>HoaDonBanListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\HoaDonNhapView.resx">
       <DependentUpon>HoaDonNhapView.cs</DependentUpon>

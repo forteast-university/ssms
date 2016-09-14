@@ -40,6 +40,7 @@ namespace App.Views {
             //InitializeFirst();
 
             LoadSanPhamView();
+            LoadHoaDonBanView();
             LoadHoaDonNhapView();
         }
         public void Eventlistener<T>(object sender, AppEvent<T> e) {
@@ -47,6 +48,7 @@ namespace App.Views {
             if (key == Mediator.DANGNHAP_THANH_CONG)
             {
                 LoadSanPhamView();
+                LoadHoaDonBanView();
                 LoadHoaDonNhapView();
             }
             if(key == Mediator.DANGNHAP_KHONG_THANH_CONG) {
@@ -61,6 +63,14 @@ namespace App.Views {
             } catch(ComponentNotRegisteredException exception) {
                 Alert(exception.Message);
             }
+        }
+        private void LoadHoaDonBanView() {
+            var b = app.Resolve<IHoaDonBanController<HoaDonBanModel>>();
+            var a = new HoaDonBanListView(b) { TopLevel = false, Parent = this, Dock = DockStyle.Fill, FormBorderStyle = FormBorderStyle.None };
+            panel2.Controls.Add(a);
+            b.SetHoaDonBanListView(a);
+            a.Show();
+            b.ReviewGrid();
         }
         private void LoadHoaDonNhapView() {
             var b = app.Resolve<IHoaDonNhapController<HoaDonNhapModel>>();

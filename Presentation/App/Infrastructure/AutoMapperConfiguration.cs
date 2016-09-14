@@ -68,7 +68,9 @@ namespace App.Infrastructure {
             mapperConfiguration.CreateMap<ChatLieu, ChatLieuModel>();
 
             mapperConfiguration.CreateMap<ChiTietHdbModel, ChiTietHDB>();
-            mapperConfiguration.CreateMap<ChiTietHDB, ChiTietHdbModel>();
+            mapperConfiguration.CreateMap<ChiTietHDB, ChiTietHdbModel>()
+                .ForMember(a => a.IDModel, b => b.Ignore())
+                ;
 
             mapperConfiguration.CreateMap<ChiTietHdnModel, ChiTietHDN>()
 
@@ -83,8 +85,12 @@ namespace App.Infrastructure {
             mapperConfiguration.CreateMap<DoiTuongModel, DoiTuong>();
             mapperConfiguration.CreateMap<DoiTuong, DoiTuongModel>();
 
-            mapperConfiguration.CreateMap<HoaDonBanModel, HoaDonBan>();
-            mapperConfiguration.CreateMap<HoaDonBan, HoaDonBanModel>();
+            mapperConfiguration.CreateMap<HoaDonBanModel, HoaDonBan>()
+                .ForMember(a => a.ChiTietHDB, b => b.Ignore())
+                ;
+            mapperConfiguration.CreateMap<HoaDonBan, HoaDonBanModel>()
+                .ForMember(a => a.ChiTietHDBModel, b => b.Ignore())
+                ;
 
             mapperConfiguration.CreateMap<HoaDonNhapModel, HoaDonNhap>()
                    .ForMember(a => a.ChiTietHDN, b => b.Ignore())

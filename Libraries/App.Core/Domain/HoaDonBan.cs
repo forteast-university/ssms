@@ -11,73 +11,85 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using System.ComponentModel;
-using System.ComponentModel;
-namespace App.Core.Domain {
-    using System;
-    using System.Collections.Generic;
 
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace App.Core.Domain
+{
     /// <summary>
-    /// Class HoaDonBan.
+    ///     Class HoaDonBan.
     /// </summary>
-    public partial class HoaDonBan: BaseEntity {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="HoaDonBan"/> class.
-        /// </summary>
-        public HoaDonBan() {
-            //this.ChiTietHDB = new HashSet<ChiTietHDB>();
+    public class HoaDonBan : BaseEntity
+    {
+
+        public HoaDonBan()
+        {
+           ChiTietHDB = new List<ChiTietHDB>();
+            NgayBan = DateTime.Now;
         }
 
+        [NotMapped]
+        public List<ChiTietHDB> ChiTietHDB { get; set; }
 
         /// <summary>
-        /// Gets or sets the so HDB.
+        ///     Gets or sets the so HDB.
         /// </summary>
         /// <value>The so HDB.</value>
         [DisplayName("Mã HDB")]
         public string SoHDB { get; set; }
+
         /// <summary>
-        /// Gets or sets the ngay ban.
+        ///     Gets or sets the ngay ban.
         /// </summary>
         /// <value>The ngay ban.</value>
         [DisplayName("Ngày bán")]
-        public Nullable<System.DateTime> NgayBan { get; set; }
+        public DateTime NgayBan { get; set; }
+
         /// <summary>
-        /// Gets or sets the tong tien.
+        ///     Gets or sets the tong tien.
         /// </summary>
         /// <value>The tong tien.</value>
         [DisplayName("Tổng tiền")]
-        public Nullable<decimal> TongTien { get; set; }
+        public decimal TongTien { get; set; }
+
         /// <summary>
-        /// Gets or sets the ma nv.
+        ///     Gets or sets the ma nv.
         /// </summary>
         /// <value>The ma nv.</value>
         [DisplayName("Mã nhân viên")]
         public string MaNV { get; set; }
+
         /// <summary>
-        /// Gets or sets the ma khach.
+        ///     Gets or sets the ma khach.
         /// </summary>
         /// <value>The ma khach.</value>
         [DisplayName("Mã khách")]
         public string MaKhach { get; set; }
+
         /// <summary>
-        /// Gets or sets the khach hang identifier.
+        ///     Gets or sets the khach hang identifier.
         /// </summary>
         /// <value>The khach hang identifier.</value>
-        public Nullable<int> KhachHangID { get; set; }
+        public int KhachHangID { get; set; }
+
         /// <summary>
-        /// Gets or sets the nhan vien identifier.
+        ///     Gets or sets the nhan vien identifier.
         /// </summary>
         /// <value>The nhan vien identifier.</value>
-        public Nullable<int> NhanVienID { get; set; }
+        public int NhanVienID { get; set; }
 
         // public virtual ICollection<ChiTietHDB> ChiTietHDB { get; set; }
         /// <summary>
-        /// Gets or sets the khach hang.
+        ///     Gets or sets the khach hang.
         /// </summary>
         /// <value>The khach hang.</value>
         public virtual KhachHang KhachHang { get; set; }
+
         /// <summary>
-        /// Gets or sets the nhan vien.
+        ///     Gets or sets the nhan vien.
         /// </summary>
         /// <value>The nhan vien.</value>
         public virtual NhanVien NhanVien { get; set; }

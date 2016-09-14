@@ -11,75 +11,85 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace App.Core.Domain {
-    using System;
-    using System.Collections.Generic;
-
+namespace App.Core.Domain
+{
     /// <summary>
-    /// Class HoaDonNhap.
+    ///     Class HoaDonNhap.
     /// </summary>
-    public partial class HoaDonNhap: BaseEntity {
+    public class HoaDonNhap : BaseEntity
+    {
         /// <summary>
-        /// Initializes a new instance of the <see cref="HoaDonNhap"/> class.
+        ///     Initializes a new instance of the <see cref="HoaDonNhap" /> class.
         /// </summary>
-        public HoaDonNhap() {
-            this.ChiTietHDN = new List<ChiTietHDN>();
+        public HoaDonNhap()
+        {
+            ChiTietHDN = new List<ChiTietHDN>();
         }
-        
+
         [NotMapped]
         public List<ChiTietHDN> ChiTietHDN { get; set; }
 
         /// <summary>
-        /// Gets or sets the so HDN.
+        ///     Gets or sets the so HDN.
         /// </summary>
         /// <value>The so HDN.</value>
         [DisplayName("Số HDN")]
         public string SoHDN { get; set; }
+
         /// <summary>
-        /// Gets or sets the ngay nhap.
+        ///     Gets or sets the ngay nhap.
         /// </summary>
         /// <value>The ngay nhap.</value>
         [DisplayName("Ngày nhập")]
-        public Nullable<System.DateTime> NgayNhap { get; set; }
+        public DateTime NgayNhap { get; set; }
+
         /// <summary>
-        /// Gets or sets the tong tien.
+        ///     Gets or sets the tong tien.
         /// </summary>
         /// <value>The tong tien.</value>
         [DisplayName("Tổng tiền")]
-        public Nullable<decimal> TongTien { get; set; }
+        public decimal TongTien { get; set; }
+
         /// <summary>
-        /// Gets or sets the ma nv.
+        ///     Gets or sets the ma nv.
         /// </summary>
         /// <value>The ma nv.</value>
         [DisplayName("Mã nhân viên")]
         public string MaNV { get; set; }
+
         /// <summary>
-        /// Gets or sets the ma NCC.
+        ///     Gets or sets the ma NCC.
         /// </summary>
         /// <value>The ma NCC.</value>
         [DisplayName("Mã NCC")]
         public string MaNCC { get; set; }
-        /// <summary>
-        /// Gets or sets the nhan vien identifier.
-        /// </summary>
-        /// <value>The nhan vien identifier.</value>
-        public Nullable<int> NhanVienID { get; set; }
-        /// <summary>
-        /// Gets or sets the nha cung cap identifier.
-        /// </summary>
-        /// <value>The nha cung cap identifier.</value>
-        public Nullable<int> NhaCungCapID { get; set; }
 
         /// <summary>
-        /// Gets or sets the nha cung cap.
+        ///     Gets or sets the nhan vien identifier.
+        /// </summary>
+        /// <value>The nhan vien identifier.</value>
+        public int NhanVienID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the nha cung cap identifier.
+        /// </summary>
+        /// <value>The nha cung cap identifier.</value>
+        public int NhaCungCapID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the nha cung cap.
         /// </summary>
         /// <value>The nha cung cap.</value>
         public virtual NhaCungCap NhaCungCap { get; set; }
+
         /// <summary>
-        /// Gets or sets the nhan vien.
+        ///     Gets or sets the nhan vien.
         /// </summary>
         /// <value>The nhan vien.</value>
         public virtual NhanVien NhanVien { get; set; }

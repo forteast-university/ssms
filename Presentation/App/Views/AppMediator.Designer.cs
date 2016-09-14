@@ -63,6 +63,7 @@
             this.panel = new System.Windows.Forms.Panel();
             this.tabHoaDonNhap = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.tabHoaDonBan = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             this.txtCauHinh.SuspendLayout();
@@ -422,6 +423,17 @@
             this.tabHoaDonNhap.Text = "Hóa đơn nhập";
             this.tabHoaDonNhap.UseVisualStyleBackColor = true;
             // 
+            // 
+            // tabHoaDonBan
+            // 
+            this.tabHoaDonBan.Controls.Add(this.panel2);
+            this.tabHoaDonBan.Location = new System.Drawing.Point(4, 22);
+            this.tabHoaDonBan.Margin = new System.Windows.Forms.Padding(0);
+            this.tabHoaDonBan.Name = "tabHoaDonBan";
+            this.tabHoaDonBan.Size = new System.Drawing.Size(709, 396);
+            this.tabHoaDonBan.TabIndex = 5;
+            this.tabHoaDonBan.Text = "Hóa đơn bán";
+            this.tabHoaDonBan.UseVisualStyleBackColor = true;
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -432,16 +444,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(702, 389);
             this.panel1.TabIndex = 0;
-            // 
-            // tabHoaDonBan
-            // 
-            this.tabHoaDonBan.Location = new System.Drawing.Point(4, 22);
-            this.tabHoaDonBan.Margin = new System.Windows.Forms.Padding(0);
-            this.tabHoaDonBan.Name = "tabHoaDonBan";
-            this.tabHoaDonBan.Size = new System.Drawing.Size(709, 396);
-            this.tabHoaDonBan.TabIndex = 5;
-            this.tabHoaDonBan.Text = "Hóa đơn bán";
-            this.tabHoaDonBan.UseVisualStyleBackColor = true;
+
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+           | System.Windows.Forms.AnchorStyles.Left)
+           | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Location = new System.Drawing.Point(4, 1);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(702, 389);
+            this.panel2.TabIndex = 0;
+            
             // 
             // AppMediator
             // 
@@ -509,6 +521,7 @@
         private System.Windows.Forms.TabPage tabHoaDonNhap;
         private System.Windows.Forms.TabPage tabHoaDonBan;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

@@ -355,6 +355,7 @@ namespace App.Controllers
             } catch(ComponentNotRegisteredException exception) {
             }
         }
+        //todo: for hoadonnhap & hoadonban
         public void CancelBackToListener() {
             if (Notification != null){
                 Notification(Mediator.HOA_DON_NHAP_CANCEL_SAM_PHAM_GET_SANPHAM, new AppEvent<SanPhamModel>{value = null});

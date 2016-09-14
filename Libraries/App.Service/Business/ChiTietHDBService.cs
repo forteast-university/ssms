@@ -132,7 +132,7 @@ namespace App.Service.Business
             return (a == 1);
         }
 
-        public List<ChiTietHDB> GetChiTietHoaDonBanByTeam(string SoHDB)
+        public List<ChiTietHDB> GetChiTietHDBByTeam(string SoHDB)
         {
             var query = from a in repos.Table where a.SoHDB == SoHDB select a;
             var list = query.ToList();

@@ -148,6 +148,13 @@ namespace App.Extensions {
             var dt=m.Value.ToString("dd/MM/yyyy");
             return dt;
         }
+        public static string ToDateString(this DateTime superset) {
+            var m = superset;
+            if(m == null)
+                return "";
+            var dt=m.ToString("dd/MM/yyyy");
+            return dt;
+        }
 
         /// <summary>
         /// To the quy.

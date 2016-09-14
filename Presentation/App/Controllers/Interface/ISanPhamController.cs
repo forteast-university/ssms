@@ -26,7 +26,10 @@ namespace App.Controllers.Interface{
 
         IList<string> ValidateAndFillup(T value);
         void HideSanPhamView();
+        
         void CancelBackToListener();
+        void SendBackToListener(T value);
+
         void ShowSanPhamView(T value);
         void ShowSanPhamViewMode(int value);
         void SetSanPhamListView(Form value);
@@ -39,7 +42,7 @@ namespace App.Controllers.Interface{
         void ShowDoiTuongView(string ma);
         void ShowMuaView(string ma);
         void ShowNuocSanXuatView(string ma);
-        void SendBackToListener(T value);
+        
 
 
     }

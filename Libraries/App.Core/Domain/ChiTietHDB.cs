@@ -22,7 +22,11 @@ namespace App.Core.Domain {
         ///     Gets or sets the so luong.
         /// </summary>
         /// <value>The so luong.</value>
+        [DisplayName("Số lượng")]
         public int SoLuong { get; set; }
+
+        [DisplayName("Đơn Giá")]
+        public decimal DonGia { get; set; }
 
         /// <summary>
         ///     Gets or sets the giam gia.
