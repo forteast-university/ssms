@@ -77,9 +77,14 @@ namespace App.Views{
                 dataGridViewColumn.Visible = false;
 
             dataGridView.ClearSelection();
+            dataGridView.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dgvCommandos_DataBindingComplete);
             dataGridView.CurrentCell = null;
-            bntLuu.Enabled = false;
-            bntTaoMoi.Enabled = true;
+            bntLuu.Enabled = true;
+            bntTaoMoi.Enabled = false;
+        }
+        void dgvCommandos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dataGridView.ClearSelection();
         }
 
         /// <summary>
@@ -148,8 +153,8 @@ namespace App.Views{
                 txtMaCo.SelectAll();
                 //txtTenCo.Text = "";
                 controller.ReviewGrid();
-                bntTaoMoi.Enabled = true;
-                bntLuu.Enabled = true;
+                 bntLuu.Enabled = true;
+                bntTaoMoi.Enabled = false;
             }
         }
 

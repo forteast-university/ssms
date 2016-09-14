@@ -387,9 +387,6 @@ namespace App.Views {
             List<DataGridViewRow> selectedRows = (from row in dataGridView.Rows.Cast<DataGridViewRow>()
                                                   where Convert.ToBoolean(row.Cells["CB"].Value)
                                                   select row).ToList();
-
-            
-
             if(
                 MessageBox.Show(string.Format("Bạn có chắc chắn xóa {0} đơn hàng này không?", selectedRows.Count),
                 Resources.View_Confirm,
@@ -398,7 +395,6 @@ namespace App.Views {
                 var s = (from row in dataGridView.Rows.Cast<DataGridViewRow>() 
                          where Convert.ToBoolean(row.Cells["CB"].Value) 
                          select row.Index).ToList();
-
                 if(s.Count == 0) return;
 
                 for (int k = s.Count-1; k >= 0; k--){

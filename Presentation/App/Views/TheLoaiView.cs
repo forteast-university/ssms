@@ -78,8 +78,14 @@ namespace App.Views{
 
             dataGridView.ClearSelection();
             dataGridView.CurrentCell = null;
-            bntLuu.Enabled = false;
-            bntTaoMoi.Enabled = true;
+            dataGridView.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dgvCommandos_DataBindingComplete);
+            bntLuu.Enabled = true;
+            bntTaoMoi.Enabled = false;
+
+        }
+        void dgvCommandos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dataGridView.ClearSelection();
         }
 
         /// <summary>

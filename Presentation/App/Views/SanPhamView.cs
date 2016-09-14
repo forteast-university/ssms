@@ -215,9 +215,12 @@ namespace App.Views {
 
             if (openFileDialog1.FileName != "" && openFileDialog1.FileName != null)
                 {
-                    txtAnh.Text = openFileDialog1.FileName;
-                    txtAnh.Enabled = false;
-                    var DuongDanAnh = openFileDialog1.FileName;
+                var fileName = openFileDialog1.SafeFileName.Substring(0, openFileDialog1.SafeFileName.LastIndexOf("."));
+                txtAnh.Text = openFileDialog1.FileName;
+                txtAnh.Enabled = false;
+                var DuongDanAnh = openFileDialog1.FileName;
+
+             
                 }
                 //else
                 //{

@@ -26,6 +26,7 @@ using App.Service.Business;
 using App.Views;
 using Autofac;
 using Autofac.Core.Registration;
+using System.IO;
 
 namespace App.Controllers
 {
@@ -385,5 +386,11 @@ namespace App.Controllers
             SanPham a = sanPhamService.GetById(model.ID);
             return a == null ? null : model.ToEntity(a);
         }
-    }
+        public string GetNewUrlImage(string urlold, string fileName, string NewForderUrl)
+        {
+            string dest = NewForderUrl + "\\" + fileName;
+            File.Copy(urlold, dest, true);
+            return dest;
+        }
+   }
 }
