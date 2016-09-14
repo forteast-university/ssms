@@ -30,6 +30,7 @@ namespace App.Core.Domain
         public HoaDonNhap()
         {
             ChiTietHDN = new List<ChiTietHDN>();
+            NgayNhap = DateTime.Now;
         }
 
         [NotMapped]
