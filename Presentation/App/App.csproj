@@ -303,9 +303,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Views\HoaDonNhapView.cs.mine" />
-    <None Include="Views\HoaDonNhapView.cs.r67" />
-    <None Include="Views\HoaDonNhapView.cs.r69" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\App.Core\App.Core.csproj">
