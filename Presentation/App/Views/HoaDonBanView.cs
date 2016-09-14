@@ -184,6 +184,16 @@ namespace App.Views {
             currentHoaDonBanModel.MaNV = txtMaNhanVien.Text;
             currentHoaDonBanModel.NgayBan = txtNgayBan.Text.ToDateTime();
 
+            if (currentHoaDonBanModel != null)
+            {
+                for (int i = currentHoaDonBanModel.ChiTietHDBModel.Count-1; i >=0 ; i--){
+                    var m = currentHoaDonBanModel.ChiTietHDBModel.ElementAt(i);
+                    if(m.MaGiayDep=="-1"){
+                        currentHoaDonBanModel.ChiTietHDBModel.RemoveAt(i);
+                    }
+                }
+            }
+
             var validate = controller.ValidateAndFillup(currentHoaDonBanModel);
             if (validate != null)
             {
@@ -309,12 +319,15 @@ namespace App.Views {
 
                         var noex = controller.CheckMaFromSanPham(id);
                         if (noex == null){
-                            if (MyDialogs.Question("Mã sản phẩm chưa tồn tại, bạn muốn khai báo không?") == false){
-                                m[Rf.Name<ChiTietHdbModel>(c => c.MaGiayDep)].Value = "-1";
-                            }
-                            else{
-                                controller.ShowSanPhamViewToCreate(id);
-                            }
+                            m[Rf.Name<ChiTietHdbModel>(c => c.MaGiayDep)].Value = "-1";
+                            MessageBox.Show("Sản phẩm chưa tồn tại, cần nhập hàng!");
+                            
+                            //if (MyDialogs.Question("Mã sản phẩm chưa tồn tại, bạn muốn khai báo không?") == false){
+                            //    m[Rf.Name<ChiTietHdbModel>(c => c.MaGiayDep)].Value = "-1";
+                            //}
+                            //else{
+                            //    controller.ShowSanPhamViewToCreate(id);
+                            //}
                         }
                         else{
                             // get back đơn giá nhập!
@@ -517,7 +530,7 @@ namespace App.Views {
         /// <returns>ChiTietHdbModel.</returns>
         private ChiTietHdbModel TemplateNew(){
             return new ChiTietHdbModel{
-                MaGiayDep = "-1", ID = -1, SoLuong = 0, DonGia = 0, GiamGia = 0
+                MaGiayDep = "-1", ID = -1, SoLuong = 1, DonGia = 0, GiamGia = 0
             };
         }
 

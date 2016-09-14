@@ -73,8 +73,8 @@ namespace App.Views {
             dataGridView.DataSource = new BindingSource { DataSource = value };
 
             dataGridView.Columns["ID"].Display(false);
-            dataGridView.Columns["NhaCungCapID"].Display(false);
-            dataGridView.Columns["NhaCungCap"].Display(false);
+            dataGridView.Columns["KhachHangID"].Display(false);
+            dataGridView.Columns["KhachHang"].Display(false);
             dataGridView.Columns["NhanVienID"].Display(false);
             dataGridView.Columns["NhanVien"].Display(false);
 

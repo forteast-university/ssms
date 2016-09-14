@@ -230,7 +230,7 @@ namespace App.Controllers {
             var a = new List<string>();
             var nhanvien     =  nhanVienService.GetByMa(value.MaNV);
             var khach       =  khachHangService.GetByMa(value.MaKhach);
-            var hoadon       =  khachHangService.GetByMa(value.SoHDB);
+            var hoadon       =  hoaDonNhapService.GetByMa(value.SoHDB);
 
             if(nhanvien == null) { a.Add("MaNV"); }
             if(khach == null) { a.Add("MaKhach"); }
@@ -251,23 +251,24 @@ namespace App.Controllers {
             hoaDonNhapService.Insert(hdEntity);
 
             foreach(var hds in value.ChiTietHDBModel) {
-                if(hds.SanPham != null) {
-                    var sp = hds.SanPham;
-                    sp.DonGiaBan = (hds.DonGia + Math.Round(hds.DonGia * (decimal)0.1));
-                    sp.DonGiaNhap = hds.DonGia;
-                    sp.SoLuong = hds.SoLuong;
-                    sanPhamService.Insert(sp);
-                    hds.SanPhamID = sp.ID;
-                } else {
+                //if(hds.SanPham != null) {
+                //    var sp = hds.SanPham;
+                //    sp.DonGiaBan = (hds.DonGia + Math.Round(hds.DonGia * (decimal)0.1));
+                //    sp.DonGiaNhap = hds.DonGia;
+                //    sp.SoLuong = hds.SoLuong;
+                //    sanPhamService.Insert(sp);
+                //    hds.SanPhamID = sp.ID;
+                //} else 
+                //{
                     var sp = sanPhamService.GetByMa(hds.MaGiayDep);
-                    sp.DonGiaBan = (hds.DonGia + Math.Round(hds.DonGia * (decimal)0.1));
+                    //sp.DonGiaBan  = (hds.DonGia + Math.Round(hds.DonGia * (decimal)0.1));
                     sp.DonGiaNhap = hds.DonGia;
-                    sp.SoLuong = sp.SoLuong + hds.SoLuong;
+                    sp.SoLuong    = sp.SoLuong - hds.SoLuong;
 
                     hds.SanPhamID = sp.ID;
 
                     sanPhamService.Update(sp);
-                }
+                //}
                 hds.SoHDB = hdEntity.SoHDB;
                 hds.HoaDonBanID = hdEntity.ID;
                 chiTietHdbService.Insert(hds.ToEntity());
