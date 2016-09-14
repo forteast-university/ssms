@@ -313,6 +313,10 @@ namespace App.Views {
             {
                 dataModelList = currentModelList.Where(c => c.MaKhach.Contains(txtTimKiem.Text.Trim()));
             }
+            else if (cbbTimKiem.SelectedItem == "Mã nhân viên")
+            {
+                dataModelList = currentModelList.Where(c => c.MaNV.Contains(txtTimKiem.Text.Trim()));
+            }
             return dataModelList;
         }
 
@@ -337,7 +341,7 @@ namespace App.Views {
         string[] danhSachT =
         {
             "Mã hóa đơn", 
-            //"Mã nhân viên",
+            "Mã nhân viên",
             "Mã khách hàng"
         };
 
