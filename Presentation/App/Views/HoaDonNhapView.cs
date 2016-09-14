@@ -337,6 +337,9 @@ namespace App.Views {
             List<DataGridViewRow> selectedRows = (from row in dataGridView.Rows.Cast<DataGridViewRow>()
                                                   where Convert.ToBoolean(row.Cells["CB"].Value)
                                                   select row).ToList();
+
+            
+
             if(
                 MessageBox.Show(string.Format("Bạn có muốn xóa {0} nhân viên này?", selectedRows.Count),
                 Resources.View_Confirm,
@@ -348,11 +351,16 @@ namespace App.Views {
 
                 if(s.Count == 0) return;
 
-                for (int k = s.Count-1; k > 0; k--){
+                for (int k = s.Count-1; k >= 0; k--){
                     var i = s.ElementAt(k);
-                    //dataGridView.Rows.RemoveAt(i);
-                    dataSourceDataTable.Rows.RemoveAt(i); 
-
+                    var mx = dataGridView.Rows[i].Cells;
+                    for (int j = 0; j < currentListDataTable.Count; j++){
+                        var m = currentListDataTable.ElementAt(j);
+                        if (m.IDModel == mx[Rf.Name<ChiTietHdnModel>(c => c.IDModel)].Value){
+                            currentListDataTable.RemoveAt(j);break;
+                        }
+                    }
+                    dataSourceDataTable.Rows.RemoveAt(i);
                 }
 
                 //var dt = (DataTable) dataBindingSource.DataSource;
@@ -361,8 +369,13 @@ namespace App.Views {
                 //controller.Delete(string.Join(",", s.ToArray()));
                 //controller.ReviewGrid();
             }
-            //bntLuu.Enabled = false;
-            //bntTaoMoi.Enabled = true;
+
+            if (dataSourceDataTable.Rows.Count == 0) { 
+                bntXoa.Enabled = false;
+                bntLuaChon.Enabled = false;
+                //bntLuu.Enabled = false;
+                //bntTaoMoi.Enabled = true;
+            }
         }
 
         private int currentRowSelected = -1;
