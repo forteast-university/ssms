@@ -28,10 +28,12 @@ namespace App.Service.Business
     public class SanPhamService : AbstractService, ISanPhamService
     {
         private readonly IRepository<SanPham> repos;
+        private readonly IRepository<ChiTietHDB> hodon;
 
-        public SanPhamService(IRepository<SanPham> repos, IDataProvider data, IDbContext db)
+        public SanPhamService(IRepository<SanPham> repos, IDataProvider data, IDbContext db, IRepository<ChiTietHDB> hodon)
         {
             this.repos = repos;
+            this.hodon = hodon;
             this.data = data;
             this.db = db;
         }
@@ -140,6 +142,14 @@ namespace App.Service.Business
             var list = query.ToList();
             return list;
         }
+
+        public List<SanPham> GetHangTonKho()
+        {
+            var qa = (from a in hodon.Table select a.SanPhamID);
+            var qb = (from a in repos.Table where !qa.Contains(a.ID) select a);
+            return qb.ToList();
+        }
+
         public string GetNewUrlImage(string urlold, string fileName, string NewForderUrl)
         {
             string dest = NewForderUrl + "\\" + fileName;

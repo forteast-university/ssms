@@ -13,6 +13,8 @@
 // ***********************************************************************
 
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace App.Core.Domain {
     using System;
     using System.Collections.Generic;
@@ -53,7 +55,11 @@ namespace App.Core.Domain {
         /// <value>The dien thoai.</value>
         [DisplayName("Điện thoại")]
         public string DienThoai { get; set; }
-
+        
+        public override string ToString()
+        {
+            return TenKhach;
+        }
 
     }
 }

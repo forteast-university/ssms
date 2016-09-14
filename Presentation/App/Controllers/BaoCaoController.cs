@@ -28,8 +28,8 @@ using Autofac;
 using Autofac.Core.Registration;
 
 namespace App.Controllers {
-    
-    public class BaoCaoController: IBaoCaoController<BaoCaoModel>{
+
+    public class BaoCaoController: IBaoCaoController<BaoCaoModel> {
 
         private readonly IHoaDonNhapService hoaDonNhapService;
         private readonly IHoaDonBanService hoaDonBanService;
@@ -65,6 +65,29 @@ namespace App.Controllers {
             this.khachHangService = khachHangService;
             this.hoaDonBanService = hoaDonBanService;
         }
+        ///
+        /// Sản phẩm tồn kho
+        /// Tổng tiền nhập hàng theo quý"},
+        /// Tổng tiền bán hàng của một nhân viên"},
+        /// Tổng tiền 3 khách hàng mua nhiều nhất"}
+        /// 
+        public BaoCaoModel GetData(int index, BaoCaoModel value) {
+            if(index == 1) {
+                value.Sanpham = sanPhamService.GetHangTonKho();
+            } else if(index == 2) {
+                value.Hoadonnhap = hoaDonNhapService.GetBaoCaoTheoQuy(value.startTime, value.endTime);
+            } else if(index == 3) {
+                value.Hoadonban = hoaDonBanService.GetHoaDonByNhanVien(value.MaNhanVien);
+            } else if(index == 4) {
+                var a =hoaDonBanService.GetHoaDonTopBestBuy(value.TopBuy);
+                for (int i = 0; i < a.Count; i++){
+                    a.ElementAt(i).KhachHang = khachHangService.GetByMa(a.ElementAt(i).MaKhach);
+                }
+                value.Hoadonban = a;
+            }
+            return value;
+        }
+
         public void ShowForm() {
             PostView();
             baoCaoView.View();

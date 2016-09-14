@@ -134,6 +134,13 @@ namespace App.Service.Business
             return (a == 1);
         }
 
+        public List<HoaDonNhap> GetBaoCaoTheoQuy(DateTime starTime, DateTime endTime)
+        {
+            var query = from a in repos.Table where a.NgayNhap >= starTime where a.NgayNhap <=endTime select a;
+            var list = query.ToList();
+            return list;
+        }
+
         public List<HoaDonNhap> GetHoaDonNhapByTeam(string SoHDN)
         {
             var query = from a in repos.Table where a.SoHDN == SoHDN select a;

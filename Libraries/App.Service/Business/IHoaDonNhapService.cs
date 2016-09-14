@@ -11,6 +11,8 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
+using System;
 using System.Collections.Generic;
 using App.Core.Domain;
 
@@ -26,6 +28,7 @@ namespace App.Service.Business
         /// </summary>
         /// <param name="SoHDN">so hoa don nhap.</param>
         /// <returns>List&lt;HoaDonNhap&gt;.</returns>
+        List<HoaDonNhap> GetBaoCaoTheoQuy(DateTime starTime, DateTime endTime);
         List<HoaDonNhap> GetHoaDonNhapByTeam(string SoHDN);
     }
 }

@@ -133,6 +133,60 @@ namespace App.Service.Business
             return (a == 1);
         }
 
+        public List<HoaDonBan> GetHoaDonTopBestBuy(int top)
+        {
+            //var query = repos.Table
+            //    .GroupBy(l => l.MaKhach)
+            //    .Select(cl => new HoaDonBan {
+            //        MaKhach = cl.First().MaKhach,
+            //        TongTien = cl.Sum(c => c.TongTien)
+            //    });
+
+            //var query = from line in repos.Table
+            //              group line by line.KhachHang into g
+            //            select new HoaDonBan {
+            //                MaKhach = g.First().MaKhach,
+            //                TongTien = g.Sum(c => c.TongTien),
+            //              };
+
+
+            //var query =  from bs in repos.Table
+            //             group bs by bs.KhachHang into g
+            //             orderby g.Sum(x => x.TongTien) descending
+            //             select new {
+            //                 MaKhach = g.First().MaKhach,
+            //                 SoHDB = "",
+            //                 NgayBan = DateTime.Now,
+            //                 MaNV = "-1",
+            //                 KhachHangID = 0,
+            //                 NhanVienID = 0,
+            //                 TongTien = g.Sum(x => x.TongTien)
+            //             };
+
+
+           var query= from r in repos.Table
+            group r by new
+            {
+                r.MaKhach
+            }
+            into g
+            select new 
+            {
+                g.Key.MaKhach,
+                TongTien = g.Sum(x => x.TongTien)
+            };
+
+            var mmm = query.Take(top).ToList().Select(c=>new HoaDonBan{MaKhach = c.MaKhach, TongTien = c.TongTien});
+            return mmm.ToList();
+        }
+
+        public List<HoaDonBan> GetHoaDonByNhanVien(string maNhanVien)
+        {
+            var query = from a in repos.Table where a.MaNV == maNhanVien select a;
+            var list = query.ToList();
+            return list;
+        }
+
         public List<HoaDonBan> GetChiTietHDBByTeam(string SoHDB)
         {
             var query = from a in repos.Table where a.SoHDB == SoHDB select a;

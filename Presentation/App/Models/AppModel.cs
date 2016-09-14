@@ -39,13 +39,29 @@ using App.Extensions;
 namespace App.Models{
 
     /// <summary>
-    /// Class BaoCaoModel.
+    /// Class BaoCaoModel.  new DropdownList{ID=0, Value = "..Lựa chọn báo cáo..."},
+    /// Sản phẩm tồn kho"},
+    /// Tổng tiền nhập hàng theo quý"},
+    /// Tổng tiền bán hàng của một nhân viên"},
+    /// Tổng tiền 3 khách hàng mua nhiều nhất"}
     /// </summary>
     public class BaoCaoModel
     {
         public BaoCaoModel()
         {
+            Sanpham = new List<SanPham>();
+            Hoadonnhap = new List<HoaDonNhap>();
+            Hoadonban = new List<HoaDonBan>();
+            TopBuy = 3;
         }
+        public List<SanPham> Sanpham { get; set; }
+        public List<HoaDonNhap> Hoadonnhap { get; set; }
+        public List<HoaDonBan> Hoadonban { get; set; }
+        public DateTime startTime { get; set; }
+        public DateTime endTime { get; set; }
+        public string MaNhanVien { get; set; }
+        public int TopBuy { get; set; }
+
     }
     public class DropdownList:BaseEntity {
         public DropdownList() {

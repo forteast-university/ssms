@@ -29,6 +29,7 @@ namespace App.Views {
 
         private readonly IBaoCaoController<BaoCaoModel> controller;
         private IEnumerable<BaoCaoModel> currentModelList;
+        private BaoCaoModel currentModel;
         private DataTable currentDrop;
 
         public BaoCaoView(IBaoCaoController<BaoCaoModel> value) {
@@ -44,6 +45,7 @@ namespace App.Views {
                 new DropdownList{ID=3, Value = "Tổng tiền bán hàng của một nhân viên"},
                 new DropdownList{ID=4, Value = "Tổng tiền 3 khách hàng mua nhiều nhất"}
             };
+            currentModel = new BaoCaoModel();
             var b = new BindingSource();
             b.DataSource = a;
             cbbBaoCao.DataSource = b;
@@ -51,21 +53,40 @@ namespace App.Views {
             cbbBaoCao.ValueMember = "ID";
             cbbBaoCao.SelectedValueChanged += new System.EventHandler(comboBox1_SelectedValueChanged);
 
+            label1.Visible = false;
+            label2.Visible = false;
+            label3.Visible = false;
+            txtNam.Visible = false;
+            txtQuy.Visible = false;
+            txtMaNhanVien.Visible = false;
+            txtNam.Text = "2016";
+
         }
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e) {
-            if(cbbBaoCao.SelectedValue != null) {
+            if (cbbBaoCao.SelectedValue != null)
+            {
+                label1.Visible = false;
+                label2.Visible = false;
+                txtQuy.Visible = false;
+                txtMaNhanVien.Visible = false;
                 var current = cbbBaoCao.SelectedValue.ToInt32();
-                if(current == 1) {
-                    // todo: Sản phẩm tồn kho
-                } else if(current == 2) {
-                    // todo: Tổng tiền nhập hàng theo quý
+                
+                if (current == 1)
+                {
+                } else if(current ==2 ) {
+                    label1.Visible = true;
+                    txtQuy.Visible = true;
+
+                    label3.Visible = true;
+                    txtNam.Visible = true;
+
                 } else if(current == 3) {
-                    // todo: Tổng tiền bán hàng của một nhân viên
+                    label2.Visible = true;
+                    txtMaNhanVien.Visible = true;
                 } else if(current == 4) {
-                    // todo: Tổng tiền 3 khách hàng mua nhiều nhất
-                } else {
-                    // todo: clear
+                    
                 }
+                
             }
         }
         public void View() {
@@ -75,22 +96,12 @@ namespace App.Views {
             currentModelList = value;
 
             dataGridView.Columns.Clear();
-            var c = new DataGridViewCheckBoxColumn {
-                Name = "CB",
-                HeaderText = "",
-                Width = 24,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
-                ReadOnly = true
-            };
-            dataGridView.Columns.Add(c);
             dataGridView.DataSource = new BindingSource { DataSource = value };
-
             dataGridView.Columns["ID"].Display(false);
             dataGridView.Columns["KhachHangID"].Display(false);
             dataGridView.Columns["KhachHang"].Display(false);
             dataGridView.Columns["NhanVienID"].Display(false);
             dataGridView.Columns["NhanVien"].Display(false);
-
             dataGridView.ClearSelection();
             dataGridView.CurrentCell = null;
         }
@@ -106,27 +117,6 @@ namespace App.Views {
         }
         private void SelectCellAction(int index, int column, bool isMmouse) {
             dataGridView.Rows[index].Selected = true;
-            if(!isMmouse) {
-                dataGridView[0, index].Value = !Convert.ToBoolean(dataGridView.Rows[index].Cells[0].Value);
-            } else {
-                if(column == 0) {
-                    dataGridView[0, index].Value = !Convert.ToBoolean(dataGridView.Rows[index].Cells[0].Value);
-                }
-            }
-
-            List<DataGridViewRow> selectedRows = (from row in dataGridView.Rows.Cast<DataGridViewRow>()
-                                                  where Convert.ToBoolean(row.Cells["CB"].Value)
-                                                  select row).ToList();
-
-            bntLuaChon.Enabled = (dataGridView.CurrentRow != null);
-            bntXoa.Enabled = selectedRows.Count > 0;
-
-            //currentModel = (BaoCaoModel)dataGridView.CurrentSelected(currentModelList);
-            //if(currentModel != null) {
-            //    txtTimKiem.Text = currentModel.MaGiayDep;
-            //}
-            // bntTimKiem.Enabled = true;
-            // bntTaoMoi.Enabled = true;
         }
         private void dgv_CellClick(Object sender, DataGridViewCellEventArgs e) {
             if(e.RowIndex < 0) {
@@ -145,11 +135,72 @@ namespace App.Views {
             //currentModel = (BaoCaoModel)dataGridView.CurrentSelected(currentModelList);
             //controller.ShowBaoCaoView(currentModel);
         }
-        private void bntTimKiem_Click(object sender, EventArgs e) {
-
-        }
         private void SanPhanListView_Load(object sender, EventArgs e) {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            if(cbbBaoCao.SelectedValue != null) {
+                var current = cbbBaoCao.SelectedValue.ToInt32();
+                dataGridView.Columns.Clear();
+
+               
+
+
+                if(current == 1) {
+                    // todo: Sản phẩm tồn kho
+                    currentModel = controller.GetData(current, currentModel);
+                    dataGridView.DataSource = new BindingSource { DataSource = currentModel.Sanpham };
+                    dataGridView.Columns["ID"].Display(false);
+                    dataGridView.Columns["KhachHangID"].Display(false);
+                    dataGridView.Columns["KhachHang"].Display(false);
+                    dataGridView.Columns["NhanVienID"].Display(false);
+                    dataGridView.Columns["NhanVien"].Display(false);
+
+                } else if(current == 2) {
+                    // todo: Tổng tiền nhập hàng theo quý
+                    var y = txtNam.Text;
+                    var q = txtQuy.SelectedItem.ToString().ToQuy(y);
+                    currentModel.startTime = q.StartTime;
+                    currentModel.endTime = q.EndTime;
+                    currentModel = controller.GetData(current, currentModel);
+                    //-------------------------------
+                    dataGridView.DataSource = new BindingSource { DataSource = currentModel.Hoadonnhap };
+                    dataGridView.Columns["ID"].Display(false);
+                    dataGridView.Columns["KhachHangID"].Display(false);
+                    dataGridView.Columns["KhachHang"].Display(false);
+                    dataGridView.Columns["NhanVienID"].Display(false);
+                    dataGridView.Columns["NhanVien"].Display(false);
+                } else if(current == 3) {
+                    // todo: Tổng tiền bán hàng của một nhân viên
+                    currentModel.MaNhanVien = txtMaNhanVien.Text;
+                    currentModel = controller.GetData(current, currentModel);
+                    //------
+                    dataGridView.DataSource = new BindingSource { DataSource = currentModel.Hoadonban };
+                    dataGridView.Columns["ID"].Display(false);
+                    dataGridView.Columns["KhachHangID"].Display(false);
+                    dataGridView.Columns["KhachHang"].Display(false);
+                    dataGridView.Columns["NhanVienID"].Display(false);
+                    dataGridView.Columns["NhanVien"].Display(false);
+                } else if(current == 4) {
+                    // todo: Tổng tiền 3 khách hàng mua nhiều nhất
+                    currentModel.TopBuy = 3;
+                    currentModel = controller.GetData(current, currentModel);
+
+                    //------
+                    dataGridView.DataSource = new BindingSource { DataSource = currentModel.Hoadonban };
+                    dataGridView.Columns["ID"].Display(false);
+                    dataGridView.Columns["KhachHangID"].Display(false);
+                    dataGridView.Columns["KhachHang"].Display(false);
+                    dataGridView.Columns["NhanVienID"].Display(false);
+                    dataGridView.Columns["NhanVien"].Display(false);
+                } else {
+                    // todo: clear
+                }
+                dataGridView.ClearSelection();
+                dataGridView.CurrentCell = null;
+
+            }
         }
     }
 }

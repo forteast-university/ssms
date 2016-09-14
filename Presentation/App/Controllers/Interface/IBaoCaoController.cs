@@ -27,6 +27,7 @@ namespace App.Controllers.Interface{
         void ShowForm();
         void ReviewGrid();
         void PostView();
+        T GetData(int index, T value);
 
     }
 }
