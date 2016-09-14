@@ -300,7 +300,7 @@ namespace App.Views {
                     if(id != "-1" && id != "") {
 
                         var RowIDs = (from rowx in dataGridView.Rows.Cast<DataGridViewRow>() where (rowx.Cells[Rf.Name<ChiTietHdnModel>(c => c.MaGiayDep)].Value.ToString() == id) select rowx).ToList();
-                        if (RowIDs.Any())
+                        if (RowIDs.Count() > 1)
                         {
                             MessageBox.Show("Mã sản phẩm đã tồn tại!");
                             m[Rf.Name<ChiTietHdnModel>(c => c.MaGiayDep)].Value = "-1";

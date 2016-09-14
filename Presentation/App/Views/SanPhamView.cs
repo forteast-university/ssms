@@ -34,6 +34,7 @@ namespace App.Views {
             {
                 if (isNonSaveDatabase){
                     txtMaSanPham.Text = value != null ? value.MaGiayDep : "";
+                    txtMaSanPham.Enabled = !(txtMaSanPham.Text.Length > 0);
                     txtDonGiaBan.Text = "0";
                     txtDonGiaNhap.Text = "0";
                     txtSoLuongSanPham.Text = "0";
@@ -51,10 +52,13 @@ namespace App.Views {
                 else{
                     txtMaSanPham.Text = "";
                     txtTenSanPham.Text = "";
-                    txtSoLuongSanPham.Text = "";
                     txtMaChatLieu.Text = "";
-                    txtDonGiaNhap.Text = "";
-                    txtDonGiaBan.Text = "";
+                    
+                    txtDonGiaNhap.Text = "0";
+                    txtDonGiaBan.Text = "0";
+                    txtSoLuongSanPham.Text = "0";
+
+
                     txtMaLoai.Text = "";
                     txtMaCo.Text = "";
                     txtMaChatLieu.Text = "";
@@ -63,6 +67,8 @@ namespace App.Views {
                     txtMaMua.Text = "";
                     txtMaNuocSanXuat.Text = "";
                     txtAnh.Text = "";
+                    txtMaSanPham.Enabled = true;
+
                 }
                 
             }
@@ -82,8 +88,11 @@ namespace App.Views {
                 txtMaMua.Text = value.MaMua;
                 txtMaNuocSanXuat.Text = value.MaNuocSX;
                 txtAnh.Text = value.Anh;
-
+                txtMaSanPham.Enabled = false;
             }
+            txtDonGiaBan.Enabled = false;
+            txtDonGiaNhap.Enabled = false;
+            txtSoLuongSanPham.Enabled = false;
         }
 
         private SanPhamModel FulfilmentFild(SanPhamModel value) {

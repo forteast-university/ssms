@@ -45,9 +45,6 @@
             this.tsmAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.txtCauHinh = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.bntHoaDonBan = new System.Windows.Forms.Button();
-            this.bntHoaDonNhap = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.bntKhachHang = new System.Windows.Forms.Button();
             this.bntNhaCungCap = new System.Windows.Forms.Button();
@@ -65,11 +62,10 @@
             this.tabSanPham = new System.Windows.Forms.TabPage();
             this.panel = new System.Windows.Forms.Panel();
             this.tabHoaDonNhap = new System.Windows.Forms.TabPage();
-            this.tabHoaDonBan = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tabHoaDonBan = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             this.txtCauHinh.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabMain.SuspendLayout();
@@ -181,14 +177,14 @@
             // 
             this.tsmHoaDonNhap.Name = "tsmHoaDonNhap";
             this.tsmHoaDonNhap.Size = new System.Drawing.Size(141, 22);
-            this.tsmHoaDonNhap.Text = "Hóa đơn nhập";
+            this.tsmHoaDonNhap.Text = "Nhập hàng";
             this.tsmHoaDonNhap.Click += new System.EventHandler(this.tsmHoaDonNhap_Click);
             // 
             // tsmHoaDonBan
             // 
             this.tsmHoaDonBan.Name = "tsmHoaDonBan";
             this.tsmHoaDonBan.Size = new System.Drawing.Size(141, 22);
-            this.tsmHoaDonBan.Text = "Hóa đơn bán";
+            this.tsmHoaDonBan.Text = "Bán hàng";
             this.tsmHoaDonBan.Click += new System.EventHandler(this.tsmHoaDonBan_Click);
             // 
             // tsmSanPham
@@ -228,7 +224,6 @@
             // 
             // txtCauHinh
             // 
-            this.txtCauHinh.Controls.Add(this.groupBox3);
             this.txtCauHinh.Controls.Add(this.groupBox2);
             this.txtCauHinh.Controls.Add(this.groupBox1);
             this.txtCauHinh.Location = new System.Drawing.Point(4, 22);
@@ -237,37 +232,6 @@
             this.txtCauHinh.Size = new System.Drawing.Size(709, 396);
             this.txtCauHinh.TabIndex = 2;
             this.txtCauHinh.Text = "Cấu hình";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.bntHoaDonBan);
-            this.groupBox3.Controls.Add(this.bntHoaDonNhap);
-            this.groupBox3.Location = new System.Drawing.Point(426, 7);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(211, 232);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Nhóm hóa đơn";
-            // 
-            // bntHoaDonBan
-            // 
-            this.bntHoaDonBan.Location = new System.Drawing.Point(107, 19);
-            this.bntHoaDonBan.Name = "bntHoaDonBan";
-            this.bntHoaDonBan.Size = new System.Drawing.Size(94, 23);
-            this.bntHoaDonBan.TabIndex = 1;
-            this.bntHoaDonBan.Text = "Hóa đơn bán";
-            this.bntHoaDonBan.UseVisualStyleBackColor = true;
-            this.bntHoaDonBan.Click += new System.EventHandler(this.bntHoaDonBan_Click);
-            // 
-            // bntHoaDonNhap
-            // 
-            this.bntHoaDonNhap.Location = new System.Drawing.Point(7, 19);
-            this.bntHoaDonNhap.Name = "bntHoaDonNhap";
-            this.bntHoaDonNhap.Size = new System.Drawing.Size(94, 23);
-            this.bntHoaDonNhap.TabIndex = 0;
-            this.bntHoaDonNhap.Text = "Hóa đơn nhập";
-            this.bntHoaDonNhap.UseVisualStyleBackColor = true;
-            this.bntHoaDonNhap.Click += new System.EventHandler(this.bntHoaDonNhap_Click);
             // 
             // groupBox2
             // 
@@ -413,10 +377,10 @@
             this.tabMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabMain.Controls.Add(this.tabHoaDonBan);
+            this.tabMain.Controls.Add(this.tabHoaDonNhap);
             this.tabMain.Controls.Add(this.tabSanPham);
             this.tabMain.Controls.Add(this.txtCauHinh);
-            this.tabMain.Controls.Add(this.tabHoaDonNhap);
-            this.tabMain.Controls.Add(this.tabHoaDonBan);
             this.tabMain.Location = new System.Drawing.Point(0, 28);
             this.tabMain.Margin = new System.Windows.Forms.Padding(0);
             this.tabMain.Name = "tabMain";
@@ -458,16 +422,6 @@
             this.tabHoaDonNhap.Text = "Hóa đơn nhập";
             this.tabHoaDonNhap.UseVisualStyleBackColor = true;
             // 
-            // tabHoaDonBan
-            // 
-            this.tabHoaDonBan.Location = new System.Drawing.Point(4, 22);
-            this.tabHoaDonBan.Margin = new System.Windows.Forms.Padding(0);
-            this.tabHoaDonBan.Name = "tabHoaDonBan";
-            this.tabHoaDonBan.Size = new System.Drawing.Size(709, 396);
-            this.tabHoaDonBan.TabIndex = 5;
-            this.tabHoaDonBan.Text = "Hóa đơn bán";
-            this.tabHoaDonBan.UseVisualStyleBackColor = true;
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -478,6 +432,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(702, 389);
             this.panel1.TabIndex = 0;
+            // 
+            // tabHoaDonBan
+            // 
+            this.tabHoaDonBan.Location = new System.Drawing.Point(4, 22);
+            this.tabHoaDonBan.Margin = new System.Windows.Forms.Padding(0);
+            this.tabHoaDonBan.Name = "tabHoaDonBan";
+            this.tabHoaDonBan.Size = new System.Drawing.Size(709, 396);
+            this.tabHoaDonBan.TabIndex = 5;
+            this.tabHoaDonBan.Text = "Hóa đơn bán";
+            this.tabHoaDonBan.UseVisualStyleBackColor = true;
             // 
             // AppMediator
             // 
@@ -493,7 +457,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.txtCauHinh.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.tabMain.ResumeLayout(false);
@@ -513,9 +476,6 @@
         private System.Windows.Forms.ToolStripMenuItem hướngDẫnToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.TabPage txtCauHinh;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button bntHoaDonBan;
-        private System.Windows.Forms.Button bntHoaDonNhap;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button bntKhachHang;
         private System.Windows.Forms.Button bntNhaCungCap;

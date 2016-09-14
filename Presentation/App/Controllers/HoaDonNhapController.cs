@@ -36,7 +36,7 @@ namespace App.Controllers {
         /// The chat lieu service
         /// </summary>
         private readonly IHoaDonNhapService hoaDonNhapService;
-        
+
         private readonly ISanPhamService sanPhamService;
         /// <summary>
         /// The loai service
@@ -210,13 +210,12 @@ namespace App.Controllers {
         /// <param name="value">The value.</param>
         public void ShowHoaDonNhapView(HoaDonNhapModel value) {
             // creat
-            if (value == null){
+            if(value == null) {
                 value = new HoaDonNhapModel();
                 hoaDonNhapView.SetModeView(1);
                 hoaDonNhapView.PostView(value);
                 hoaDonNhapView.View();
-            }
-            else{
+            } else {
                 //view only
                 var a = hoaDonNhapService.GetById(value.ID);
                 var b = a.ToModel();
@@ -225,42 +224,41 @@ namespace App.Controllers {
                 hoaDonNhapView.PostView(b);
                 hoaDonNhapView.View();
             }
-            
+
         }
         public IList<string> ValidateAndFillup(HoaDonNhapModel value) {
             var a = new List<string>();
             var nhanvien     =  nhanVienService.GetByMa(value.MaNV);
             var ncc       =  nhaCungCapService.GetByMa(value.MaNCC);
-            var hd       =  nhaCungCapService.GetByMa(value.SoHDN);  
+            var hd       =  nhaCungCapService.GetByMa(value.SoHDN);
 
             if(nhanvien == null) { a.Add("MaNV"); }
             if(ncc == null) { a.Add("MaNCC"); }
-            if(ncc != null) { a.Add("SoHDN"); }
+            if(hd != null) { a.Add("SoHDN"); }
 
             if(nhanvien != null) { value.NhanVienID = nhanvien.ID; }
             if(ncc != null) { value.NhaCungCapID = ncc.ID; }
             return a;
         }
-        public void SaveHoaDonNhap(HoaDonNhapModel value){
+        public void SaveHoaDonNhap(HoaDonNhapModel value) {
             var sanPhamCtrl = app.Resolve<ISanPhamController<SanPhamModel>>();
 
             var hdEntity = value.ToEntity();
-            
-                hdEntity.NhanVienID = nhanVienService.GetByMa(hdEntity.MaNV).ID;
-                hdEntity.NhaCungCapID = nhaCungCapService.GetByMa(hdEntity.MaNCC).ID;
+
+            hdEntity.NhanVienID = nhanVienService.GetByMa(hdEntity.MaNV).ID;
+            hdEntity.NhaCungCapID = nhaCungCapService.GetByMa(hdEntity.MaNCC).ID;
 
             hoaDonNhapService.Insert(hdEntity);
 
-            foreach (var hds in value.ChiTietHDNModel) {
-                if (hds.SanPham != null){
+            foreach(var hds in value.ChiTietHDNModel) {
+                if(hds.SanPham != null) {
                     var sp = hds.SanPham;
-                    sp.DonGiaBan  = (hds.DonGia + Math.Round(hds.DonGia * (decimal)0.1));
+                    sp.DonGiaBan = (hds.DonGia + Math.Round(hds.DonGia * (decimal)0.1));
                     sp.DonGiaNhap = hds.DonGia;
-                    sp.SoLuong    = hds.SoLuong;
+                    sp.SoLuong = hds.SoLuong;
                     sanPhamService.Insert(sp);
                     hds.SanPhamID = sp.ID;
-                }
-                else{
+                } else {
                     var sp = sanPhamService.GetByMa(hds.MaGiayDep);
                     sp.DonGiaBan = (hds.DonGia + Math.Round(hds.DonGia * (decimal)0.1));
                     sp.DonGiaNhap = hds.DonGia;
@@ -270,7 +268,7 @@ namespace App.Controllers {
 
                     sanPhamService.Update(sp);
                 }
-                hds.SoHDN        = hdEntity.SoHDN;
+                hds.SoHDN = hdEntity.SoHDN;
                 hds.HoaDonNhapID = hdEntity.ID;
                 chiTietHdnService.Insert(hds.ToEntity());
             }
@@ -288,11 +286,10 @@ namespace App.Controllers {
             hoaDonNhapListView = (HoaDonNhapListView)value;
         }
 
-        public void HideSanPhamView()
-        {
+        public void HideSanPhamView() {
             //throw new NotImplementedException();
         }
-    
+
         /// <summary>
         /// The application
         /// </summary>
@@ -305,7 +302,7 @@ namespace App.Controllers {
         /// <param name="e">The e.</param>
         public void AddEventListener<T>(object sender, AppEvent<T> e) {
             var key = sender.ToString();
-            if (key == Mediator.HOA_DON_NHAP_CANCEL_SAM_PHAM_GET_SANPHAM){
+            if(key == Mediator.HOA_DON_NHAP_CANCEL_SAM_PHAM_GET_SANPHAM) {
                 hoaDonNhapView.SetCellSanPham(null);
                 app.Resolve<ISanPhamController<SanPhamModel>>().HideSanPhamView();
             }
@@ -326,13 +323,14 @@ namespace App.Controllers {
                 var a = app.Resolve<ISanPhamController<SanPhamModel>>();
                 a.Notification += AddEventListener;
                 a.ShowSanPhamViewMode(0);
-                a.ShowSanPhamView(new SanPhamModel{MaGiayDep = ma});
+                a.ShowSanPhamView(new SanPhamModel { MaGiayDep = ma });
             } catch(ComponentNotRegisteredException exception) {
             }
         }
         public SanPhamModel CheckMaFromSanPham(string ma) {
             var m = sanPhamService.GetByMa(ma);
-            if (m == null) return null;
+            if(m == null)
+                return null;
             return m.ToModel();
         }
 
