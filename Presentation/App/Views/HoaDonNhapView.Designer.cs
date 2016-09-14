@@ -39,6 +39,8 @@ namespace App.Views {
             this.txtNgayNhap = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.txtMaNCC = new System.Windows.Forms.TextBox();
+            this.txtMaHoaDon = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,19 +76,18 @@ namespace App.Views {
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(12, 92);
+            this.dataGridView.Location = new System.Drawing.Point(12, 118);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(489, 308);
+            this.dataGridView.Size = new System.Drawing.Size(489, 282);
             this.dataGridView.TabIndex = 12;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_ChangedValue);
             this.dataGridView.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgv_RowPrePaint);
-            this.dataGridView.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.dataGridView1_PreviewKeyDown);
             this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
-            
+            this.dataGridView.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.dataGridView1_PreviewKeyDown);
             // 
             // bntLuaChon
             // 
@@ -113,7 +114,7 @@ namespace App.Views {
             // bntTaoMoi
             // 
             this.bntTaoMoi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bntTaoMoi.Location = new System.Drawing.Point(404, 63);
+            this.bntTaoMoi.Location = new System.Drawing.Point(404, 89);
             this.bntTaoMoi.Name = "bntTaoMoi";
             this.bntTaoMoi.Size = new System.Drawing.Size(98, 23);
             this.bntTaoMoi.TabIndex = 11;
@@ -131,7 +132,7 @@ namespace App.Views {
             // 
             // txtMaNhanVien
             // 
-            this.txtMaNhanVien.Location = new System.Drawing.Point(94, 12);
+            this.txtMaNhanVien.Location = new System.Drawing.Point(94, 38);
             this.txtMaNhanVien.Name = "txtMaNhanVien";
             this.txtMaNhanVien.Size = new System.Drawing.Size(264, 20);
             this.txtMaNhanVien.TabIndex = 1;
@@ -149,7 +150,7 @@ namespace App.Views {
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(29, 68);
+            this.label9.Location = new System.Drawing.Point(29, 94);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(59, 13);
             this.label9.TabIndex = 19;
@@ -158,7 +159,7 @@ namespace App.Views {
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(16, 16);
+            this.label12.Location = new System.Drawing.Point(16, 42);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(72, 13);
             this.label12.TabIndex = 16;
@@ -166,7 +167,7 @@ namespace App.Views {
             // 
             // txtNgayNhap
             // 
-            this.txtNgayNhap.Location = new System.Drawing.Point(94, 64);
+            this.txtNgayNhap.Location = new System.Drawing.Point(94, 90);
             this.txtNgayNhap.Name = "txtNgayNhap";
             this.txtNgayNhap.Size = new System.Drawing.Size(130, 20);
             this.txtNgayNhap.TabIndex = 4;
@@ -174,7 +175,7 @@ namespace App.Views {
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(41, 42);
+            this.label6.Location = new System.Drawing.Point(41, 68);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 13);
             this.label6.TabIndex = 21;
@@ -182,16 +183,34 @@ namespace App.Views {
             // 
             // txtMaNCC
             // 
-            this.txtMaNCC.Location = new System.Drawing.Point(94, 38);
+            this.txtMaNCC.Location = new System.Drawing.Point(94, 64);
             this.txtMaNCC.Name = "txtMaNCC";
             this.txtMaNCC.Size = new System.Drawing.Size(264, 20);
             this.txtMaNCC.TabIndex = 6;
+            // 
+            // txtMaHoaDon
+            // 
+            this.txtMaHoaDon.Location = new System.Drawing.Point(94, 12);
+            this.txtMaHoaDon.Name = "txtMaHoaDon";
+            this.txtMaHoaDon.Size = new System.Drawing.Size(264, 20);
+            this.txtMaHoaDon.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Mã hóa đơn";
             // 
             // HoaDonNhapView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(513, 467);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtMaHoaDon);
             this.Controls.Add(this.txtNgayNhap);
             this.Controls.Add(this.txtMaNCC);
             this.Controls.Add(this.txtTongTien);
@@ -236,5 +255,7 @@ namespace App.Views {
         private DateTimePicker txtNgayNhap;
         private Label label6;
         private TextBox txtMaNCC;
+        private TextBox txtMaHoaDon;
+        private Label label1;
     }
 }

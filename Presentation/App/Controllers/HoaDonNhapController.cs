@@ -36,6 +36,7 @@ namespace App.Controllers {
         /// The chat lieu service
         /// </summary>
         private readonly IHoaDonNhapService hoaDonNhapService;
+        
         private readonly ISanPhamService sanPhamService;
         /// <summary>
         /// The loai service
@@ -70,6 +71,8 @@ namespace App.Controllers {
         /// The chi tiet HDN service
         /// </summary>
         private readonly IChiTietHDNService chiTietHdnService;
+        private readonly INhanVienService nhanVienService;
+        private readonly INhaCungCapService nhaCungCapService;
 
         /// <summary>
         /// The hoa don nhap view
@@ -96,7 +99,7 @@ namespace App.Controllers {
         /// <param name="muaService">The mua service.</param>
         /// <param name="doiTuongService">The doi tuong service.</param>
         /// <param name="nuocSxService">The nuoc sx service.</param>
-        public HoaDonNhapController(IHoaDonNhapService hoaDonNhapService, ITheLoaiService theLoaiService, IKichCoService kichCoService, IChatLieuService chatLieuService, IMauService mauService, IMuaService muaService, IDoiTuongService doiTuongService, INuocSanXuatService nuocSxService, ISanPhamService sanPhamService) {
+        public HoaDonNhapController(IHoaDonNhapService hoaDonNhapService, ITheLoaiService theLoaiService, IKichCoService kichCoService, IChatLieuService chatLieuService, IMauService mauService, IMuaService muaService, IDoiTuongService doiTuongService, INuocSanXuatService nuocSxService, ISanPhamService sanPhamService, IChiTietHDNService chiTietHdnService, INhanVienService nhanVienService, INhaCungCapService nhaCungCapService) {
             this.hoaDonNhapService = hoaDonNhapService;
             this.theLoaiService = theLoaiService;
             this.kichCoService = kichCoService;
@@ -106,6 +109,9 @@ namespace App.Controllers {
             this.doiTuongService = doiTuongService;
             this.nuocSxService = nuocSxService;
             this.sanPhamService = sanPhamService;
+            this.chiTietHdnService = chiTietHdnService;
+            this.nhanVienService = nhanVienService;
+            this.nhaCungCapService = nhaCungCapService;
 
             hoaDonNhapView = new HoaDonNhapView(this);
         }
@@ -169,7 +175,7 @@ namespace App.Controllers {
         /// </summary>
         /// <param name="value">The value.</param>
         public void Delete(int value) {
-            HoaDonNhap entity = hoaDonNhapService.GetById(value);
+            var entity = hoaDonNhapService.GetById(value);
             hoaDonNhapService.Delete(entity);
         }
 
@@ -239,10 +245,62 @@ namespace App.Controllers {
         /// </summary>
         /// <param name="value">The value.</param>
         public void ShowHoaDonNhapView(HoaDonNhapModel value) {
-            if(value==null)value = new HoaDonNhapModel();
-            hoaDonNhapView.InitializeForm(value);
-            hoaDonNhapView.PostView(value);
-            hoaDonNhapView.View();
+            // creat
+            if (value == null){
+                value = new HoaDonNhapModel();
+                hoaDonNhapView.SetModeView(1);
+                hoaDonNhapView.PostView(value);
+                hoaDonNhapView.View();
+            }
+            else{
+                //view only
+                var a = hoaDonNhapService.GetById(value.ID);
+                var b = a.ToModel();
+                b.ChiTietHDNModel = chiTietHdnService.GetChiTietHDNByTeam(b.SoHDN).Select(c => c.ToModel()).ToList();
+                hoaDonNhapView.SetModeView(0);
+                hoaDonNhapView.PostView(b);
+                hoaDonNhapView.View();
+            }
+            
+        }
+
+        public void SaveHoaDonNhap(HoaDonNhapModel value){
+            var sanPhamCtrl = app.Resolve<ISanPhamController<SanPhamModel>>();
+
+            var hdEntity = value.ToEntity();
+                hdEntity.NhanVienID = nhanVienService.GetByMa(hdEntity.MaNV).ID;
+                hdEntity.NhaCungCapID = nhaCungCapService.GetByMa(hdEntity.MaNCC).ID;
+            hoaDonNhapService.Insert(hdEntity);
+
+            foreach (var hds in value.ChiTietHDNModel) {
+                if (hds.SanPham != null){
+                    var sp = hds.SanPham;
+                    sp.DonGiaBan  = (hds.DonGia + Math.Round(hds.DonGia * (decimal)0.1));
+                    sp.DonGiaNhap = hds.DonGia;
+                    sp.SoLuong    = hds.SoLuong;
+
+                    sanPhamService.Insert(sp);
+                    
+                    hds.SanPhamID = sp.ID;
+                }
+                else{
+                    var sp = sanPhamService.GetByMa(hds.MaGiayDep);
+                    sp.DonGiaBan = (hds.DonGia + Math.Round(hds.DonGia * (decimal)0.1));
+                    sp.DonGiaNhap = hds.DonGia;
+                    sp.SoLuong = sp.SoLuong + hds.SoLuong;
+
+                    hds.SanPhamID = sp.ID;
+
+                    sanPhamService.Update(sp);
+                }
+                hds.SoHDN        = hdEntity.SoHDN;
+                hds.HoaDonNhapID = hdEntity.ID;
+                chiTietHdnService.Insert(hds.ToEntity());
+            }
+            // update UI on SanPham View
+            hoaDonNhapView.HideForm();
+            sanPhamCtrl.ReviewGrid();
+            PostView();
         }
 
         /// <summary>
@@ -270,6 +328,10 @@ namespace App.Controllers {
         /// <param name="e">The e.</param>
         public void AddEventListener<T>(object sender, AppEvent<T> e) {
             var key = sender.ToString();
+            if (key == Mediator.HOA_DON_NHAP_CANCEL_SAM_PHAM_GET_SANPHAM){
+                hoaDonNhapView.SetCellSanPham(null);
+                app.Resolve<ISanPhamController<SanPhamModel>>().HideSanPhamView();
+            }
             if(key == Mediator.HOA_DON_NHAP_CALL_SAM_PHAM_GET_SANPHAM) {
                 if(e == null)
                     return;
@@ -279,15 +341,15 @@ namespace App.Controllers {
                 if(m == null)
                     return;
                 hoaDonNhapView.SetCellSanPham(m);
-                app.Resolve<ISanPhamController<SanPhamModel>>().HideForm();
+                app.Resolve<ISanPhamController<SanPhamModel>>().HideSanPhamView();
             }
         }
-        public void ShowSanPhamView(int mode) {
+        public void ShowSanPhamViewToCreate(string ma) {
             try {
                 var a = app.Resolve<ISanPhamController<SanPhamModel>>();
                 a.Notification += AddEventListener;
-                a.ShowSanPhamViewMode(mode);
-                a.ShowSanPhamView(new SanPhamModel());
+                a.ShowSanPhamViewMode(0);
+                a.ShowSanPhamView(new SanPhamModel{MaGiayDep = ma});
             } catch(ComponentNotRegisteredException exception) {
             }
         }

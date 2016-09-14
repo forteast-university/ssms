@@ -17,11 +17,11 @@ using App.Models;
 using AutoMapper;
 using AutoMapper.Mappers;
 
-namespace App.Infrastructure{
+namespace App.Infrastructure {
     /// <summary>
     /// Class AutoMapperConfiguration.
     /// </summary>
-    public class AutoMapperConfiguration{
+    public class AutoMapperConfiguration {
         /// <summary>
         /// The _mapper configuration. Only use for AutoMapper 5.2
         /// </summary>
@@ -40,7 +40,7 @@ namespace App.Infrastructure{
         /// Gets the mapper.
         /// </summary>
         /// <value>The mapper.</value>
-        public static IMappingEngine Mapper{
+        public static IMappingEngine Mapper {
             get { return mapper; }
         }
 
@@ -53,14 +53,14 @@ namespace App.Infrastructure{
         /// Gets the mapper configuration.
         /// </summary>
         /// <value>The mapper configuration.</value>
-        public static ConfigurationStore MapperConfiguration{
+        public static ConfigurationStore MapperConfiguration {
             get { return mapperConfiguration; }
         }
 
         /// <summary>
         /// Initializes this instance.
         /// </summary>
-        public static void Init(){
+        public static void Init() {
             mapperConfiguration = new ConfigurationStore(new TypeMapFactory(), MapperRegistry.Mappers);
 
             //AutoMapper.Mapper.Initialize(cfg => {
@@ -70,8 +70,12 @@ namespace App.Infrastructure{
             mapperConfiguration.CreateMap<ChiTietHdbModel, ChiTietHDB>();
             mapperConfiguration.CreateMap<ChiTietHDB, ChiTietHdbModel>();
 
-            mapperConfiguration.CreateMap<ChiTietHdnModel, ChiTietHDN>();
-            mapperConfiguration.CreateMap<ChiTietHDN, ChiTietHdnModel>();
+            mapperConfiguration.CreateMap<ChiTietHdnModel, ChiTietHDN>()
+
+                ;
+            mapperConfiguration.CreateMap<ChiTietHDN, ChiTietHdnModel>()
+                .ForMember(a => a.IDModel, b => b.Ignore())
+            ;
 
             mapperConfiguration.CreateMap<CongViecModel, CongViec>();
             mapperConfiguration.CreateMap<CongViec, CongViecModel>();
@@ -82,8 +86,12 @@ namespace App.Infrastructure{
             mapperConfiguration.CreateMap<HoaDonBanModel, HoaDonBan>();
             mapperConfiguration.CreateMap<HoaDonBan, HoaDonBanModel>();
 
-            mapperConfiguration.CreateMap<HoaDonNhapModel, HoaDonNhap>();
-            mapperConfiguration.CreateMap<HoaDonNhap, HoaDonNhapModel>();
+            mapperConfiguration.CreateMap<HoaDonNhapModel, HoaDonNhap>()
+                   .ForMember(a => a.ChiTietHDN, b => b.Ignore())
+                ;
+            mapperConfiguration.CreateMap<HoaDonNhap, HoaDonNhapModel>()
+                .ForMember(a => a.ChiTietHDNModel, b => b.Ignore())
+                ;
 
             mapperConfiguration.CreateMap<KhachHangModel, KhachHang>();
             mapperConfiguration.CreateMap<KhachHang, KhachHangModel>();
@@ -125,7 +133,7 @@ namespace App.Infrastructure{
             mapperConfiguration.CreateMap<TheLoaiModel, TheLoai>();
             mapperConfiguration.CreateMap<TheLoai, TheLoaiModel>();
             //});
-               
+
             mapper = new MappingEngine(mapperConfiguration);
 
             //Only use for AutoMapper 5.2

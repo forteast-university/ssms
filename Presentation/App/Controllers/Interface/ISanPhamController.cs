@@ -26,11 +26,13 @@ namespace App.Controllers.Interface{
 
         IList<string> ValidateAndFillup(T value);
         void HideSanPhamView();
+        void CancelBackToListener();
         void ShowSanPhamView(T value);
         void ShowSanPhamViewMode(int value);
         void SetSanPhamListView(Form value);
 
         void ShowTheLoaiView(string ma);
+        
         void ShowKichCoView(string ma);
         void ShowChatLieuView(string ma);
         void ShowMauView(string ma);

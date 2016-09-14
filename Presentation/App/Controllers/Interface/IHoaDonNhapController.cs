@@ -27,10 +27,11 @@ namespace App.Controllers.Interface{
         IList<string> ValidateAndFillup(T value);
         void HideHoaDonNhapView();
         void ShowHoaDonNhapView(T value);
+        void SaveHoaDonNhap(T value);
         void SetHoaDonNhapListView(Form value);
         
         void HideSanPhamView();
-        void ShowSanPhamView(int mode);
+        void ShowSanPhamViewToCreate(string ma);
         SanPhamModel CheckMaFromSanPham(string ma);
         //void ShowTheLoaiView(string ma);
         //void ShowKichCoView(string ma);

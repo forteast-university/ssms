@@ -33,6 +33,7 @@
 // ***********************************************************************
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using App.Core.Domain;
 using App.Extensions;
@@ -45,11 +46,27 @@ namespace App.Models{
     /// </summary>
     public class ChatLieuModel : ChatLieu { }
     public class ChiTietHdbModel : ChiTietHDB { }
-    public class ChiTietHdnModel : ChiTietHDN { }
+
+    public class ChiTietHdnModel : ChiTietHDN{
+        public ChiTietHdnModel(){
+            IDModel = Guid.NewGuid().ToString();
+        }
+        [DisplayName("GUID")]
+        public string IDModel { get; set; }
+    }
     public class CongViecModel : CongViec { }
     public class DoiTuongModel : DoiTuong { }
     public class HoaDonBanModel : HoaDonBan { }
-    public class HoaDonNhapModel : HoaDonNhap { }
+
+    public class HoaDonNhapModel : HoaDonNhap{
+        public HoaDonNhapModel(){
+            ChiTietHDNModel = new List<ChiTietHdnModel>();
+
+        }
+        public List<ChiTietHdnModel> ChiTietHDNModel { get; set; }
+
+
+    }
     public class KhachHangModel : KhachHang { }
     public class KichCoModel : KichCo { }
     public class MauModel : Mau { }

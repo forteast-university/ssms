@@ -24,28 +24,50 @@ namespace App.Views {
 
         public void InitializeForm(SanPhamModel value) {
             currentModel = value;
-            isCreateNew = (value == null);
-            this.Text = (value == null) ? "Tạo Sản phẩm" : "Sửa Sản phẩm";
+
+
+            isCreateNew = (value == null || isNonSaveDatabase);
+
+
+            this.Text = (value == null|| isNonSaveDatabase) ? "Tạo Sản phẩm" : "Sửa Sản phẩm";
             if (isCreateNew)
             {
-                txtMaSanPham.Text = "";
-                txtTenSanPham.Text = "";
-                txtSoLuongSanPham.Text = "";
-                txtMaChatLieu.Text = "";
-                txtDonGiaNhap.Text = "";
-                txtDonGiaBan.Text = "";
-                txtMaLoai.Text = "";
-                txtMaCo.Text = "";
-                txtMaChatLieu.Text = "";
-                txtMaMau.Text = "";
-                txtMaDoiTuong.Text = "";
-                txtMaMua.Text = "";
-                txtMaNuocSanXuat.Text = "";
-                txtAnh.Text = "";
+                if (isNonSaveDatabase){
+                    txtMaSanPham.Text = value != null ? value.MaGiayDep : "";
+                    txtDonGiaBan.Text = "0";
+                    txtDonGiaNhap.Text = "0";
+                    txtSoLuongSanPham.Text = "0";
+                    txtTenSanPham.Text = "";
+                    txtMaChatLieu.Text = "";
+                    txtMaLoai.Text = "";
+                    txtMaCo.Text = "";
+                    txtMaChatLieu.Text = "";
+                    txtMaMau.Text = "";
+                    txtMaDoiTuong.Text = "";
+                    txtMaMua.Text = "";
+                    txtMaNuocSanXuat.Text = "";
+                    txtAnh.Text = "";
+                }
+                else{
+                    txtMaSanPham.Text = "";
+                    txtTenSanPham.Text = "";
+                    txtSoLuongSanPham.Text = "";
+                    txtMaChatLieu.Text = "";
+                    txtDonGiaNhap.Text = "";
+                    txtDonGiaBan.Text = "";
+                    txtMaLoai.Text = "";
+                    txtMaCo.Text = "";
+                    txtMaChatLieu.Text = "";
+                    txtMaMau.Text = "";
+                    txtMaDoiTuong.Text = "";
+                    txtMaMua.Text = "";
+                    txtMaNuocSanXuat.Text = "";
+                    txtAnh.Text = "";
+                }
+                
             }
             else
             {
-
                 txtMaSanPham.Text = value.MaGiayDep;
                 txtTenSanPham.Text = value.TenGiayDep;
                 txtSoLuongSanPham.Text = value.SoLuong.ToString();
@@ -143,8 +165,7 @@ namespace App.Views {
                 }
             }
 
-            if (isNonSaveDatabase)
-            {
+            if (isNonSaveDatabase){
                 //currentController.Notification();
                 isNonSaveDatabase = false;
                 currentController.HideSanPhamView();
@@ -163,7 +184,12 @@ namespace App.Views {
         }
 
         private void bntThoat_Click(object sender, EventArgs e) {
-            currentController.HideSanPhamView();
+            if (isNonSaveDatabase){
+                currentController.CancelBackToListener();
+            }
+            else{
+                currentController.HideSanPhamView();
+            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e) {
@@ -198,6 +224,23 @@ namespace App.Views {
         public void NonSaveDatabase(int value)
         {
             isNonSaveDatabase = (value==0);
+            if (isNonSaveDatabase){
+
+                txtDonGiaBan.Text = "0";
+                txtDonGiaNhap.Text = "0";
+                txtSoLuongSanPham.Text = "0";
+
+                txtMaSanPham.Enabled = false;
+                txtDonGiaBan.Enabled = false;
+                txtDonGiaNhap.Enabled = false;
+                txtSoLuongSanPham.Enabled = false;
+            }
+            else{
+                txtMaSanPham.Enabled = true;
+                txtDonGiaBan.Enabled = true;
+                txtDonGiaNhap.Enabled = true;
+                txtSoLuongSanPham.Enabled = true;
+            }
         }
 
         public void SetTxtMaTheLoai(string value) {

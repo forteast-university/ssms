@@ -89,8 +89,8 @@ namespace App.Controllers
 
         public void HideForm()
         {
-            // we dont hide this form
-            throw new NotImplementedException();
+            //We don't hide this form
+            //sanPhamView.Hide();
         }
 
         /// <summary>
@@ -200,7 +200,6 @@ namespace App.Controllers
         public void ShowSanPhamView(SanPhamModel value)
         {
             sanPhamView.InitializeForm(value);
-            ShowSanPhamViewMode(1);
             sanPhamView.ShowDialog();
         }
 
@@ -356,10 +355,18 @@ namespace App.Controllers
             } catch(ComponentNotRegisteredException exception) {
             }
         }
-
+        public void CancelBackToListener() {
+            if (Notification != null){
+                Notification(Mediator.HOA_DON_NHAP_CANCEL_SAM_PHAM_GET_SANPHAM, new AppEvent<SanPhamModel>{value = null});
+                Notification = null;
+            }
+        }
         public void SendBackToListener(SanPhamModel value)
         {
-            Notification(Mediator.HOA_DON_NHAP_CALL_SAM_PHAM_GET_SANPHAM,new AppEvent<SanPhamModel>{value = value});
+            if (Notification != null){
+                Notification(Mediator.HOA_DON_NHAP_CALL_SAM_PHAM_GET_SANPHAM, new AppEvent<SanPhamModel>{value = value});
+                Notification = null;
+            }
         }
 
         /// <summary>
