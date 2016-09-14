@@ -133,7 +133,7 @@ namespace App.Views {
                 if (value.NgayNhap != null) txtNgayNhap.Text = value.NgayNhap.ToDateString();
                 if (value.TongTien != null) txtTongTien.Text = value.TongTien.ToString();
             }
-
+            txtMaNhanVien.Text = AppMediator.MANHANVIEN;
             dataGridView.ClearSelection();
             dataGridView.CurrentCell = null;
 

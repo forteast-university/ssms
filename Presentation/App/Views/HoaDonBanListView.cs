@@ -334,7 +334,7 @@ namespace App.Views {
                 MessageBox.Show("không tìm thấy hóa đơn!");
             }
         }
-
+ 
         /// <summary>
         /// The danh sach t
         /// </summary>
