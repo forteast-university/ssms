@@ -352,5 +352,7 @@ namespace App.Views {
         private void SanPhanListView_Load(object sender, EventArgs e) {
             cbbTimKiem.DataSource = danhSachT;
         }
+
+
     }
 }

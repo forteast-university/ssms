@@ -303,13 +303,14 @@ namespace App.Views {
         /// </summary>
         /// <returns>IEnumerable&lt;HoaDonNhapModel&gt;.</returns>
         private IEnumerable<HoaDonNhapModel> DataTimKiem() {
+            //var dataModelList = currentModelList;
             var dataModelList = currentModelList;
-            //// var dataModelList= currentModelList.Where(c => c.MaGiayDep.Contains(txtTimKiem.Text.Trim()) || c.TenGiayDep.Contains(txtTimKiem.Text.Trim()));      
-            //if(cbbTimKiem.SelectedItem == "Mã hóa đơn") {
-            //    dataModelList = currentModelList.Where(c => c.MaGiayDep.Contains(txtTimKiem.Text.Trim()));
-            //} else if(cbbTimKiem.SelectedItem == "Tên hóa đơns") {
-            //    dataModelList = currentModelList.Where(c => c.TenGiayDep.Contains(txtTimKiem.Text.Trim()));
-            //}
+            if (cbbTimKiem.SelectedItem == "Mã hóa đơn")
+            {
+               dataModelList = currentModelList.Where(c => c.SoHDN.Contains(txtTimKiem.Text.Trim()));
+            } else if(cbbTimKiem.SelectedItem == "Mã nhà cung cấp") {
+                dataModelList = currentModelList.Where(c => c.MaNCC.Contains(txtTimKiem.Text.Trim()));
+            }
             return dataModelList;
         }
 
@@ -334,7 +335,7 @@ namespace App.Views {
         string[] danhSachT =
         {
             "Mã hóa đơn", 
-            "Mã nhân viên",
+            //"Mã nhân viên",
             "Mã nhà cung cấp"
         };
 
@@ -346,5 +347,7 @@ namespace App.Views {
         private void SanPhanListView_Load(object sender, EventArgs e) {
             cbbTimKiem.DataSource = danhSachT;
         }
+
+
     }
 }

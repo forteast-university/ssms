@@ -304,12 +304,15 @@ namespace App.Views {
         /// <returns>IEnumerable&lt;HoaDonBanModel&gt;.</returns>
         private IEnumerable<HoaDonBanModel> DataTimKiem() {
             var dataModelList = currentModelList;
-            //// var dataModelList= currentModelList.Where(c => c.MaGiayDep.Contains(txtTimKiem.Text.Trim()) || c.TenGiayDep.Contains(txtTimKiem.Text.Trim()));      
-            //if(cbbTimKiem.SelectedItem == "Mã sản phẩm") {
-            //    dataModelList = currentModelList.Where(c => c.MaGiayDep.Contains(txtTimKiem.Text.Trim()));
-            //} else if(cbbTimKiem.SelectedItem == "Tên sản phẩm") {
-            //    dataModelList = currentModelList.Where(c => c.TenGiayDep.Contains(txtTimKiem.Text.Trim()));
-            //}
+            // var dataModelList= currentModelList.Where(c => c.MaGiayDep.Contains(txtTimKiem.Text.Trim()) || c.TenGiayDep.Contains(txtTimKiem.Text.Trim()));      
+            if (cbbTimKiem.SelectedItem == "Mã hóa đơn")
+            {
+                dataModelList = currentModelList.Where(c => c.SoHDB.Contains(txtTimKiem.Text.Trim()));
+            }
+            else if (cbbTimKiem.SelectedItem == "Mã khách hàng")
+            {
+                dataModelList = currentModelList.Where(c => c.MaKhach.Contains(txtTimKiem.Text.Trim()));
+            }
             return dataModelList;
         }
 
@@ -334,7 +337,7 @@ namespace App.Views {
         string[] danhSachT =
         {
             "Mã hóa đơn", 
-            "Mã nhân viên",
+            //"Mã nhân viên",
             "Mã khách hàng"
         };
 

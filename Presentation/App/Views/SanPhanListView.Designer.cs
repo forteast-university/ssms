@@ -127,6 +127,7 @@ namespace App.Views {
             this.cbbTimKiem.Name = "cbbTimKiem";
             this.cbbTimKiem.Size = new System.Drawing.Size(104, 21);
             this.cbbTimKiem.TabIndex = 10;
+          
             // 
             // SanPhanListView
             // 
