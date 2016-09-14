@@ -197,42 +197,6 @@ namespace App.Controllers {
                 Delete(i);
             }
         }
-
-        /// <summary>
-        /// Validates the and fillup.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns>IList&lt;System.String&gt;.</returns>
-        public IList<string> ValidateAndFillup(HoaDonNhapModel value) {
-            var a = new List<string>();
-
-            //var loai     =  theLoaiService.GetByMa(value.MaLoai);
-            //var co       =  KichCoService.GetByMa(value.MaCo);
-            //var chatLieu =  chatLieuService.GetByMa(value.MaChatLieu);
-            //var mau      =  mauService.GetByMa(value.MaMau);
-            //var doiTuong =  doiTuongService.GetByMa(value.MaDoiTuong);
-            //var mua      =  muaService.GetByMa(value.MaMua);
-            //var nuocSx   =  nuocSXService.GetByMa(value.MaNuocSX);
-
-            //if(loai    ==null){a.Add("MaLoai");}
-            //if(co      ==null){a.Add("MaCo");}
-            //if(chatLieu==null){a.Add("MaChatLieu");}
-            //if(mau     ==null){a.Add("MaMau");}
-            //if(doiTuong==null){a.Add("MaDoiTuong");}
-            //if(mua     ==null){a.Add("MaMua");}
-            //if(nuocSx  ==null){a.Add("MaNuocSX");}
-
-            //if(loai    !=null){value.TheLoaiID = loai.ID;}
-            //if(co      !=null){value.KichCoID = co.ID;}
-            //if(chatLieu!=null){value.ChatLieuID = chatLieu.ID;}
-            //if(mau     !=null){value.MauID = mau.ID;}
-            //if(doiTuong!=null){value.DoiTuongID = doiTuong.ID;}
-            //if(mua     !=null){value.MuaID = mau.ID;}
-            //if(nuocSx  !=null){value.NuocSanXuatID = nuocSx.ID;}
-
-            return a;
-        }
-
         /// <summary>
         /// Hides the hoa don nhap view.
         /// </summary>
@@ -263,13 +227,28 @@ namespace App.Controllers {
             }
             
         }
+        public IList<string> ValidateAndFillup(HoaDonNhapModel value) {
+            var a = new List<string>();
+            var nhanvien     =  nhanVienService.GetByMa(value.MaNV);
+            var ncc       =  nhaCungCapService.GetByMa(value.MaNCC);
+            var hd       =  nhaCungCapService.GetByMa(value.SoHDN);  
 
+            if(nhanvien == null) { a.Add("MaNV"); }
+            if(ncc == null) { a.Add("MaNCC"); }
+            if(ncc != null) { a.Add("SoHDN"); }
+
+            if(nhanvien != null) { value.NhanVienID = nhanvien.ID; }
+            if(ncc != null) { value.NhaCungCapID = ncc.ID; }
+            return a;
+        }
         public void SaveHoaDonNhap(HoaDonNhapModel value){
             var sanPhamCtrl = app.Resolve<ISanPhamController<SanPhamModel>>();
 
             var hdEntity = value.ToEntity();
+            
                 hdEntity.NhanVienID = nhanVienService.GetByMa(hdEntity.MaNV).ID;
                 hdEntity.NhaCungCapID = nhaCungCapService.GetByMa(hdEntity.MaNCC).ID;
+
             hoaDonNhapService.Insert(hdEntity);
 
             foreach (var hds in value.ChiTietHDNModel) {
@@ -278,9 +257,7 @@ namespace App.Controllers {
                     sp.DonGiaBan  = (hds.DonGia + Math.Round(hds.DonGia * (decimal)0.1));
                     sp.DonGiaNhap = hds.DonGia;
                     sp.SoLuong    = hds.SoLuong;
-
                     sanPhamService.Insert(sp);
-                    
                     hds.SanPhamID = sp.ID;
                 }
                 else{

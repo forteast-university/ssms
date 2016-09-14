@@ -4,7 +4,7 @@
 // Created          : 09-08-2016
 //
 // Last Modified By : Hung Le
-// Last Modified On : 09-09-2016
+// Last Modified On : 09-14-2016
 // ***********************************************************************
 // <copyright file="ChatLieuView.cs" company="Thanh Dong University">
 //     Copyright (c) Thanh Dong University. All rights reserved.
@@ -27,26 +27,26 @@ using App.Properties;
 
 namespace App.Views {
     /// <summary>
-    ///     Class ChatLieuView.
+    /// Class ChatLieuView.
     /// </summary>
     public partial class HoaDonNhapView: Form {
         /// <summary>
-        ///     The controller
+        /// The controller
         /// </summary>
         private readonly IHoaDonNhapController<HoaDonNhapModel> controller;
 
         /// <summary>
-        ///     The value chat lieu model
+        /// The value chat lieu model
         /// </summary>
         private HoaDonNhapModel currentHoaDonNhapModel;
 
         /// <summary>
-        ///     The current model
+        /// The current model
         /// </summary>
         private ChiTietHdnModel currentModel;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ChatLieuView" /> class.
+        /// Initializes a new instance of the <see cref="ChatLieuView" /> class.
         /// </summary>
         /// <param name="value">The value.</param>
         public HoaDonNhapView(IHoaDonNhapController<HoaDonNhapModel> value) {
@@ -59,22 +59,28 @@ namespace App.Views {
         }
 
         /// <summary>
-        ///     Views this instance.
+        /// Views this instance.
         /// </summary>
         public void View() {
             ShowDialog();
         }
 
+        /// <summary>
+        /// The is edit mode
+        /// </summary>
         private bool isEditMode = true;
 
+        /// <summary>
+        /// Sets the mode view.
+        /// </summary>
+        /// <param name="mode">The mode.</param>
         public void SetModeView(int mode){
             isEditMode = (mode == 1);
         }
 
         /// <summary>
-        ///     Posts the view.
+        /// Posts the view.
         /// </summary>
-        /// <param name="value">The value.</param>
         public void HideForm(){
             isEditMode = true;
             dataGridView.Columns.Clear();
@@ -89,6 +95,10 @@ namespace App.Views {
             this.Hide();
         }
 
+        /// <summary>
+        /// Posts the view.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public void PostView(HoaDonNhapModel value) {
             currentHoaDonNhapModel = value;
             currentListDataTable = null;
@@ -143,7 +153,7 @@ namespace App.Views {
         }
 
         /// <summary>
-        ///     Handles the Click event of the bntLuu control.
+        /// Handles the Click event of the bntLuu control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
@@ -174,11 +184,34 @@ namespace App.Views {
             currentHoaDonNhapModel.MaNV = txtMaNhanVien.Text;
             currentHoaDonNhapModel.NgayNhap = txtNgayNhap.Text.ToDateTime();
 
+            var validate = controller.ValidateAndFillup(currentHoaDonNhapModel);
+            if (validate != null)
+            {
+                if(validate.Contains("MaNV"))
+                {
+                    txtMaNhanVien.Focus();
+                    txtMaNhanVien.SelectAll();
+                    MessageBox.Show("Mã nhân viên không tồn tại!");
+                    return;
+                }
+                if(validate.Contains("MaNCC")) {
+                    txtMaNCC.Focus();
+                    txtMaNCC.SelectAll();
+                    MessageBox.Show("Mã nhà cung cấp không tồn tại!");
+                    return;
+                }
+                if(validate.Contains("SoHDN")) {
+                    txtMaHoaDon.Focus();
+                    txtMaHoaDon.SelectAll();
+                    MessageBox.Show("Mã hóa đơn đã tồn tại!");
+                    return;
+                }
+            }
             controller.SaveHoaDonNhap(currentHoaDonNhapModel);
 
         }
         /// <summary>
-        ///     Handles the Click event of the bntLuaChon control.
+        /// Handles the Click event of the bntLuaChon control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
@@ -188,7 +221,7 @@ namespace App.Views {
         }
 
         /// <summary>
-        ///     Handles the Click event of the bntHuy control.
+        /// Handles the Click event of the bntHuy control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
@@ -197,7 +230,7 @@ namespace App.Views {
         }
 
         /// <summary>
-        ///     Handles the PreviewKeyDown event of the dataGridView1 control.
+        /// Handles the PreviewKeyDown event of the dataGridView1 control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="PreviewKeyDownEventArgs" /> instance containing the event data.</param>
@@ -211,11 +244,11 @@ namespace App.Views {
         }
 
         /// <summary>
-        ///     Selects the cell action.
+        /// Selects the cell action.
         /// </summary>
         /// <param name="index">The index.</param>
-        /// <param name="column"></param>
-        /// <param name="isMmouse"></param>
+        /// <param name="column">The column.</param>
+        /// <param name="isMmouse">if set to <c>true</c> [is mmouse].</param>
         private void SelectCellAction(int index, int column, bool isMmouse) {
             dataGridView.Rows[index].Selected = true;
             if(!isMmouse) {
@@ -235,14 +268,19 @@ namespace App.Views {
                 bntXoa.Enabled = selectedRows.Count > 0;
             } 
         }
+        /// <summary>
+        /// Handles the SelectionChanged event of the dataGridView control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void dataGridView_SelectionChanged(object sender, System.EventArgs e) {
 
         }
 
-       
+
 
         /// <summary>
-        ///     DGV_s the cell click.
+        /// DGV_s the cell click.
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="DataGridViewCellEventArgs" /> instance containing the event data.</param>
@@ -260,6 +298,15 @@ namespace App.Views {
                 if(dataGridView.Columns[col].Name == Rf.Name<ChiTietHdnModel>(c => c.MaGiayDep)) {
                     var id = m[Rf.Name<ChiTietHdnModel>(c => c.MaGiayDep)].Value.ToString();
                     if(id != "-1" && id != "") {
+
+                        var RowIDs = (from rowx in dataGridView.Rows.Cast<DataGridViewRow>() where (rowx.Cells[Rf.Name<ChiTietHdnModel>(c => c.MaGiayDep)].Value.ToString() == id) select rowx).ToList();
+                        if (RowIDs.Any())
+                        {
+                            MessageBox.Show("Mã sản phẩm đã tồn tại!");
+                            m[Rf.Name<ChiTietHdnModel>(c => c.MaGiayDep)].Value = "-1";
+                            return;
+                        }
+
                         var noex = controller.CheckMaFromSanPham(id);
                         if (noex == null){
                             if (MyDialogs.Question("Mã sản phẩm chưa tồn tại, bạn muốn khai báo không?") == false){
@@ -291,7 +338,6 @@ namespace App.Views {
                 for (int i = 0; i < currentListDataTable.Count; i++){
                     if (currentListDataTable.ElementAt(i).IDModel ==
                         m[Rf.Name<ChiTietHdnModel>(c => c.IDModel)].Value.ToString()){
-                        //currentListDataTable.ElementAt(currentRowSelected).ID = m[Rf.Name<ChiTietHdnModel>(c => c.ID)].Value.ToInt32();
                         currentListDataTable.ElementAt(i).DonGia =
                             m[Rf.Name<ChiTietHdnModel>(c => c.DonGia)].Value.ToDecimal();
                         currentListDataTable.ElementAt(i).GiamGia =
@@ -302,7 +348,6 @@ namespace App.Views {
                             m[Rf.Name<ChiTietHdnModel>(c => c.MaGiayDep)].Value.ToString();
                         currentListDataTable.ElementAt(i).ThanhTien =
                             m[Rf.Name<ChiTietHdnModel>(c => c.ThanhTien)].Value.ToDecimal();
-                        //currentListDataTable.ElementAt(i).IDModel = m[Rf.Name<ChiTietHdnModel>(c => c.IDModel)].Value.ToString();
                     }
                 }
                 currentHoaDonNhapModel.TongTien = txtTongTien.Text.ToDecimal();
@@ -310,6 +355,11 @@ namespace App.Views {
             }
         }
 
+        /// <summary>
+        /// DGV_s the cell click.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
         private void dgv_CellClick(Object sender, DataGridViewCellEventArgs e) {
             if(e.RowIndex < 0) {
                 return;
@@ -320,7 +370,7 @@ namespace App.Views {
         }
 
         /// <summary>
-        ///     Handles the RowPrePaint event of the dgv control.
+        /// Handles the RowPrePaint event of the dgv control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="DataGridViewRowPrePaintEventArgs" /> instance containing the event data.</param>
@@ -329,7 +379,7 @@ namespace App.Views {
         }
 
         /// <summary>
-        ///     Handles the Click event of the bntXoa control.
+        /// Handles the Click event of the bntXoa control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
@@ -341,7 +391,7 @@ namespace App.Views {
             
 
             if(
-                MessageBox.Show(string.Format("Bạn có muốn xóa {0} nhân viên này?", selectedRows.Count),
+                MessageBox.Show(string.Format("Bạn có chắc chắn xóa {0} đơn hàng này không?", selectedRows.Count),
                 Resources.View_Confirm,
                     MessageBoxButtons.YesNo) == DialogResult.Yes) {
                 
@@ -378,8 +428,14 @@ namespace App.Views {
             }
         }
 
+        /// <summary>
+        /// The current row selected
+        /// </summary>
         private int currentRowSelected = -1;
 
+        /// <summary>
+        /// Res the select row.
+        /// </summary>
         private void ReSelectRow() {
             if(dataGridView != null) {
                 if(dataGridView.Rows.Count > 0) {
@@ -394,13 +450,22 @@ namespace App.Views {
 
         }
 
+        /// <summary>
+        /// The current list data table
+        /// </summary>
         protected List<ChiTietHdnModel> currentListDataTable;
+        /// <summary>
+        /// The data binding source
+        /// </summary>
         protected BindingSource dataBindingSource = new BindingSource();
+        /// <summary>
+        /// The data source data table
+        /// </summary>
         protected DataTable dataSourceDataTable;
         /// <summary>
         /// Sets the cell san pham With SanPhamModel from outsite
         /// We need to save it to model of ChiTietHoaDon
-        /// One HoaDon complete - create and pham 
+        /// One HoaDon complete - create and pham
         /// </summary>
         /// <param name="value">The value.</param>
         public void SetCellSanPham(SanPhamModel value) {
@@ -425,6 +490,10 @@ namespace App.Views {
                 }
             }
         }
+        /// <summary>
+        /// Adds the new template.
+        /// </summary>
+        /// <param name="table">The table.</param>
         public void AddNewTemplate(DataTable table) {
             var m = table.NewRow();
             var a = TemplateNew();
@@ -442,12 +511,21 @@ namespace App.Views {
             //table.AcceptChanges();
         }
 
+        /// <summary>
+        /// Templates the new.
+        /// </summary>
+        /// <returns>ChiTietHdnModel.</returns>
         private ChiTietHdnModel TemplateNew(){
             return new ChiTietHdnModel{
                 MaGiayDep = "-1", ID = -1, SoLuong = 0, DonGia = 0, GiamGia = 0
             };
         }
 
+        /// <summary>
+        /// Handles the Click event of the bntTaoMoi control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void bntTaoMoi_Click(object sender, EventArgs e) {
             bntLuu.Enabled = true;
             bntTaoMoi.Enabled = true;
@@ -481,9 +559,17 @@ namespace App.Views {
                 AddNewTemplate((DataTable)dataBindingSource.DataSource);
             }
         }
+        /// <summary>
+        /// Sets the text ma cv.
+        /// </summary>
+        /// <param name="ma">The ma.</param>
         public void SetTxtMaCv(string ma) {
             //txtMaCV.Text = ma;
         }
+        /// <summary>
+        /// Initializes the form.
+        /// </summary>
+        /// <param name="value">The value.</param>
         public void InitializeForm(HoaDonNhapModel value) {
             //txtMaCV.Text = value;
         }

@@ -39,7 +39,7 @@ namespace App.Controllers
         /// </summary>
         private readonly ISanPhamService sanPhamService;
         private readonly ITheLoaiService theLoaiService;
-        private readonly IKichCoService KichCoService;
+        private readonly IKichCoService kichCoService;
         private readonly IChatLieuService chatLieuService;
         private readonly IMauService mauService;
         private readonly IMuaService muaService;
@@ -58,11 +58,11 @@ namespace App.Controllers
         ///     Initializes a new instance of the <see cref="SanPhamController" /> class.
         /// </summary>
         /// <param name="SanPhamService">The chat lieu service.</param>
-        public SanPhamController(ISanPhamService sanPhamService, ITheLoaiService theLoaiService, IKichCoService KichCoService, IChatLieuService chatLieuService, IMauService mauService, IMuaService muaService, IDoiTuongService doiTuongService, INuocSanXuatService nuocSxService)
+        public SanPhamController(ISanPhamService sanPhamService, ITheLoaiService theLoaiService, IKichCoService kichCoService, IChatLieuService chatLieuService, IMauService mauService, IMuaService muaService, IDoiTuongService doiTuongService, INuocSanXuatService nuocSxService)
         {
             this.sanPhamService = sanPhamService;
             this.theLoaiService = theLoaiService;
-            this.KichCoService = KichCoService;
+            this.kichCoService = kichCoService;
             this.chatLieuService = chatLieuService;
             this.mauService = mauService;
             this.muaService = muaService;
@@ -166,7 +166,7 @@ namespace App.Controllers
         {
             var a = new List<string>();
             var loai     =  theLoaiService.GetByMa(value.MaLoai);
-            var co       =  KichCoService.GetByMa(value.MaCo);
+            var co       =  kichCoService.GetByMa(value.MaCo);
             var chatLieu =  chatLieuService.GetByMa(value.MaChatLieu);
             var mau      =  mauService.GetByMa(value.MaMau);
             var doiTuong =  doiTuongService.GetByMa(value.MaDoiTuong);
