@@ -25,7 +25,7 @@ namespace App.Views {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            //this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChatLieuView));
             this.bntLuu = new System.Windows.Forms.Button();
             this.bntHuy = new System.Windows.Forms.Button();
             this.txtMaChatLieu = new System.Windows.Forms.TextBox();
@@ -155,10 +155,11 @@ namespace App.Views {
             this.Controls.Add(this.txtMaChatLieu);
             this.Controls.Add(this.bntHuy);
             this.Controls.Add(this.bntLuu);
-            this.Name = "ChatLieuView";
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.Name = "ChatLieuView";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Chất Liệu";

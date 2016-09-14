@@ -25,7 +25,7 @@ namespace App.Views {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            //this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NhaCungCapView));
             this.bntLuu = new System.Windows.Forms.Button();
             this.bntHuy = new System.Windows.Forms.Button();
             this.txtMaNCC = new System.Windows.Forms.TextBox();
@@ -99,7 +99,8 @@ namespace App.Views {
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AllowUserToResizeRows = false; this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(12, 119);
             this.dataGridView.MultiSelect = false;
@@ -194,13 +195,14 @@ namespace App.Views {
             this.Controls.Add(this.txtMaNCC);
             this.Controls.Add(this.bntHuy);
             this.Controls.Add(this.bntLuu);
-            this.Name = "NhaCungCapView";
-            this.Text = "Nhà Cung Cấp";
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.Name = "NhaCungCapView";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Nhà Cung Cấp";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

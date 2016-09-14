@@ -34,6 +34,9 @@
   <PropertyGroup>
     <StartupObject>App.App</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper">
       <HintPath>..\..\packages\AutoMapper.3.0.2\AutoMapper.dll</HintPath>
@@ -55,11 +58,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BaoCaoController.cs" />
     <Compile Include="Controllers\HoaDonBanController.cs" />
     <Compile Include="Controllers\Interface\ICongViecController.cs" />
     <Compile Include="Controllers\HoaDonNhapController.cs" />
     <Compile Include="Controllers\Interface\IHoaDonBanController.cs" />
     <Compile Include="Controllers\Interface\IHoaDonNhapController.cs" />
+    <Compile Include="Controllers\Interface\IBaoCaoController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\CongViecController.cs" />
     <Compile Include="Controllers\DoiTuongController.cs" />
@@ -112,6 +117,12 @@
     </Compile>
     <Compile Include="Views\DoiTuongView.Designer.cs">
       <DependentUpon>DoiTuongView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BaoCaoView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\BaoCaoView.Designer.cs">
+      <DependentUpon>BaoCaoView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\HoaDonBanView.cs">
       <SubType>Form</SubType>
@@ -233,6 +244,9 @@
     <EmbeddedResource Include="Views\DoiTuongView.resx">
       <DependentUpon>DoiTuongView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\BaoCaoView.resx">
+      <DependentUpon>BaoCaoView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\HoaDonBanView.resx">
       <DependentUpon>HoaDonBanView.cs</DependentUpon>
     </EmbeddedResource>
@@ -321,10 +335,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="Resources\icon.ico" />
     <Content Include="Settings\Settings.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

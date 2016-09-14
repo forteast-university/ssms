@@ -61,7 +61,7 @@ namespace App.Controllers{
             if (a != null){
                 if (value.MatKhau.ToEncrypt() == a.MatKhau){
                     dangNhapView.Hide();
-                    Notification(Mediator.DANGNHAP_THANH_CONG, new AppEvent<NhanVienModel> { value = value });
+                    Notification(Mediator.DANGNHAP_THANH_CONG, new AppEvent<NhanVienModel> { value = a.ToModel() });
                     return;
                 }
             }

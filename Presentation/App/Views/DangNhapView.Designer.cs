@@ -25,12 +25,11 @@ namespace App.Views {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            //this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DangNhapView));
             this.bntThoat = new System.Windows.Forms.Button();
             this.bntDongY = new System.Windows.Forms.Button();
             this.txtMaNhanVien = new System.Windows.Forms.TextBox();
             this.txtMatKhau = new System.Windows.Forms.TextBox();
-            this.chkLuuNho = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.linkDangKy = new System.Windows.Forms.LinkLabel();
@@ -67,18 +66,9 @@ namespace App.Views {
             // 
             this.txtMatKhau.Location = new System.Drawing.Point(124, 40);
             this.txtMatKhau.Name = "txtMatKhau";
+            this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.Size = new System.Drawing.Size(155, 20);
             this.txtMatKhau.TabIndex = 3;
-            // 
-            // chkLuuNho
-            // 
-            this.chkLuuNho.AutoSize = true;
-            this.chkLuuNho.Location = new System.Drawing.Point(124, 67);
-            this.chkLuuNho.Name = "chkLuuNho";
-            this.chkLuuNho.Size = new System.Drawing.Size(65, 17);
-            this.chkLuuNho.TabIndex = 4;
-            this.chkLuuNho.Text = "Lưu nhớ";
-            this.chkLuuNho.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -101,7 +91,7 @@ namespace App.Views {
             // linkDangKy
             // 
             this.linkDangKy.AutoSize = true;
-            this.linkDangKy.Location = new System.Drawing.Point(223, 68);
+            this.linkDangKy.Location = new System.Drawing.Point(16, 98);
             this.linkDangKy.Name = "linkDangKy";
             this.linkDangKy.Size = new System.Drawing.Size(46, 13);
             this.linkDangKy.TabIndex = 8;
@@ -117,17 +107,17 @@ namespace App.Views {
             this.Controls.Add(this.linkDangKy);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.chkLuuNho);
             this.Controls.Add(this.txtMatKhau);
             this.Controls.Add(this.txtMaNhanVien);
             this.Controls.Add(this.bntDongY);
             this.Controls.Add(this.bntThoat);
-            this.Name = "DangNhapView";
-            this.Text = "Đăng Nhập";
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.Name = "DangNhapView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Đăng Nhập";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,7 +129,6 @@ namespace App.Views {
         private System.Windows.Forms.Button bntDongY;
         private System.Windows.Forms.TextBox txtMaNhanVien;
         private System.Windows.Forms.TextBox txtMatKhau;
-        private System.Windows.Forms.CheckBox chkLuuNho;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel linkDangKy;

@@ -37,6 +37,24 @@ using App.Core.Domain;
 using App.Extensions;
 
 namespace App.Models{
+
+    /// <summary>
+    /// Class BaoCaoModel.
+    /// </summary>
+    public class BaoCaoModel
+    {
+        public BaoCaoModel()
+        {
+        }
+    }
+    public class DropdownList:BaseEntity {
+        public DropdownList() {
+        }
+        [DisplayName("Giá trị")]
+        public string Value { get; set; }
+
+    }
+
     /// <summary>
     /// Do the right thing :D
     /// Add your model to here,

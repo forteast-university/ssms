@@ -29,6 +29,7 @@ namespace App.Views
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MauView));
             this.bntTaoMoi = new System.Windows.Forms.Button();
             this.bntXoa = new System.Windows.Forms.Button();
             this.bntLuaChon = new System.Windows.Forms.Button();
@@ -165,6 +166,7 @@ namespace App.Views
             this.Controls.Add(this.bntHuy);
             this.Controls.Add(this.bntLuu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MauView";

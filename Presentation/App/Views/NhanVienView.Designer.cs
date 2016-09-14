@@ -25,6 +25,7 @@ namespace App.Views {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NhanVienView));
             this.bntLuu = new System.Windows.Forms.Button();
             this.bntHuy = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -141,6 +142,7 @@ namespace App.Views {
             // 
             this.txtMatKhau.Location = new System.Drawing.Point(94, 169);
             this.txtMatKhau.Name = "txtMatKhau";
+            this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.Size = new System.Drawing.Size(130, 20);
             this.txtMatKhau.TabIndex = 7;
             // 
@@ -255,6 +257,7 @@ namespace App.Views {
             // 
             this.txtMatKhau2.Location = new System.Drawing.Point(230, 169);
             this.txtMatKhau2.Name = "txtMatKhau2";
+            this.txtMatKhau2.PasswordChar = '*';
             this.txtMatKhau2.Size = new System.Drawing.Size(128, 20);
             this.txtMatKhau2.TabIndex = 8;
             // 
@@ -316,10 +319,10 @@ namespace App.Views {
             this.Controls.Add(this.bntHuy);
             this.Controls.Add(this.bntLuu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Name = "NhanVienView";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nhân viên";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();

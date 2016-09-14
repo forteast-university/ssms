@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 
 namespace App.Views {
-    partial class HoaDonBanListView {
+    partial class BaoCaoView {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -25,44 +25,13 @@ namespace App.Views {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HoaDonBanListView));
-            this.bntTimKiem = new System.Windows.Forms.Button();
-            this.txtTimKiem = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaoCaoView));
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.bntXoa = new System.Windows.Forms.Button();
-            this.bntTaoMoi = new System.Windows.Forms.Button();
-            this.cbbTimKiem = new System.Windows.Forms.ComboBox();
+            this.cbbBaoCao = new System.Windows.Forms.ComboBox();
             this.bntLuaChon = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // bntTimKiem
-            // 
-            this.bntTimKiem.Location = new System.Drawing.Point(366, 8);
-            this.bntTimKiem.Name = "bntTimKiem";
-            this.bntTimKiem.Size = new System.Drawing.Size(75, 23);
-            this.bntTimKiem.TabIndex = 0;
-            this.bntTimKiem.Text = "Tìm kiếm";
-            this.bntTimKiem.UseVisualStyleBackColor = true;
-            this.bntTimKiem.Click += new System.EventHandler(this.bntTimKiem_Click);
-            // 
-            // txtTimKiem
-            // 
-            this.txtTimKiem.Location = new System.Drawing.Point(94, 10);
-            this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(156, 20);
-            this.txtTimKiem.TabIndex = 2;
-            this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Hóa đơn bán";
             // 
             // dataGridView
             // 
@@ -98,25 +67,14 @@ namespace App.Views {
             this.bntXoa.UseVisualStyleBackColor = true;
             this.bntXoa.Click += new System.EventHandler(this.bntXoa_Click);
             // 
-            // bntTaoMoi
+            // cbbBaoCao
             // 
-            this.bntTaoMoi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bntTaoMoi.Location = new System.Drawing.Point(630, 8);
-            this.bntTaoMoi.Name = "bntTaoMoi";
-            this.bntTaoMoi.Size = new System.Drawing.Size(89, 23);
-            this.bntTaoMoi.TabIndex = 9;
-            this.bntTaoMoi.Text = "Tạo hóa đơn";
-            this.bntTaoMoi.UseVisualStyleBackColor = true;
-            this.bntTaoMoi.Click += new System.EventHandler(this.bntTaoMoi_Click);
-            // 
-            // cbbTimKiem
-            // 
-            this.cbbTimKiem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbTimKiem.FormattingEnabled = true;
-            this.cbbTimKiem.Location = new System.Drawing.Point(256, 9);
-            this.cbbTimKiem.Name = "cbbTimKiem";
-            this.cbbTimKiem.Size = new System.Drawing.Size(104, 21);
-            this.cbbTimKiem.TabIndex = 10;
+            this.cbbBaoCao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbBaoCao.FormattingEnabled = true;
+            this.cbbBaoCao.Location = new System.Drawing.Point(13, 10);
+            this.cbbBaoCao.Name = "cbbBaoCao";
+            this.cbbBaoCao.Size = new System.Drawing.Size(237, 21);
+            this.cbbBaoCao.TabIndex = 10;
             // 
             // bntLuaChon
             // 
@@ -129,38 +87,29 @@ namespace App.Views {
             this.bntLuaChon.UseVisualStyleBackColor = true;
             this.bntLuaChon.Click += new System.EventHandler(this.bntLuaChon_Click);
             // 
-            // HoaDonBanListView
+            // BaoCaoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(733, 313);
-            this.Controls.Add(this.cbbTimKiem);
-            this.Controls.Add(this.bntTaoMoi);
+            this.Controls.Add(this.cbbBaoCao);
             this.Controls.Add(this.bntXoa);
             this.Controls.Add(this.bntLuaChon);
             this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtTimKiem);
-            this.Controls.Add(this.bntTimKiem);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "HoaDonBanListView";
-            this.Text = "Hóa đơn bán";
+            this.Name = "BaoCaoView";
+            this.Text = "Báo cáo";
             this.Load += new System.EventHandler(this.SanPhanListView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button bntTimKiem;
-        private System.Windows.Forms.TextBox txtTimKiem;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView;
         private Button bntXoa;
-        private Button bntTaoMoi;
-        private ComboBox cbbTimKiem;
+        private ComboBox cbbBaoCao;
         private Button bntLuaChon;
     }
 }

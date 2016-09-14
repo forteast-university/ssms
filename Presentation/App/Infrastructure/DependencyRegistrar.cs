@@ -49,6 +49,7 @@ namespace App.Infrastructure {
             builder.RegisterType<SanPhamController>().As<ISanPhamController<SanPhamModel>>().SingleInstance();
             builder.RegisterType<HoaDonNhapController>().As<IHoaDonNhapController<HoaDonNhapModel>>().SingleInstance();
             builder.RegisterType<HoaDonBanController>().As<IHoaDonBanController<HoaDonBanModel>>().SingleInstance();
+            builder.RegisterType<BaoCaoController>().As<IBaoCaoController<BaoCaoModel>>().SingleInstance();
             builder.RegisterType<AppMediator>();
         }
 
