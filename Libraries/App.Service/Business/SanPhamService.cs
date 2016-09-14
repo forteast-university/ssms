@@ -18,6 +18,7 @@ using System.Linq;
 using App.Core.Data;
 using App.Core.Domain;
 using App.Data;
+using System.IO;
 
 namespace App.Service.Business
 {
@@ -138,6 +139,12 @@ namespace App.Service.Business
             var query = from a in repos.Table where a.MaGiayDep == maGiayDep select a;
             var list = query.ToList();
             return list;
+        }
+        public string GetNewUrlImage(string urlold, string fileName, string NewForderUrl)
+        {
+            string dest = NewForderUrl + "\\" + fileName;
+            File.Copy(urlold, dest, true);
+            return dest;
         }
     }
 }

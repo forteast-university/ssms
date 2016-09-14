@@ -144,5 +144,10 @@ namespace App.Service.Business
             var query = from a in repos.Table where a.MaNhanVien == maNhanVien select a;
             return query.FirstOrDefault();
         }
+        public string URLCopyImage(string url)
+        {
+
+            return url;
+        }
     }
 }

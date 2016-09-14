@@ -13,5 +13,6 @@ namespace App.Service.Business
         /// <param name="maChatLieu">ma giay dep.</param>
         /// <returns>List&lt;MaGiayDep&gt;.</returns>
         List<SanPham> GetSanPhamByTeam(string maGiayDep);
+        string GetNewUrlImage(string urlold, string fileName, string NewForderUrl);
     }
 }
