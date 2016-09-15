@@ -39,11 +39,11 @@ namespace App.Views {
         public AppMediator() {
             InitializeComponent();
             app = AppFacade.Container;
-            //InitializeFirst();
-            LoadBaoCaoView();
-            LoadSanPhamView();
-            LoadHoaDonBanView();
-            LoadHoaDonNhapView();
+            InitializeFirst();
+            //LoadBaoCaoView();
+            //LoadSanPhamView();
+            //LoadHoaDonBanView();
+            //LoadHoaDonNhapView();
         }
 
         public void Eventlistener<T>(object sender, AppEvent<T> e) {
@@ -53,6 +53,7 @@ namespace App.Views {
                 MANHANVIEN = nhanvien.MaCV;
 
                 txtUserInfo.Text = "Nhân viên: " + nhanvien.TenNhanVien;
+                LoadBaoCaoView();
                 LoadSanPhamView();
                 LoadHoaDonBanView();
                 LoadHoaDonNhapView();

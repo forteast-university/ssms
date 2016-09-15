@@ -93,10 +93,10 @@ namespace App.Views {
             this.linkDangKy.AutoSize = true;
             this.linkDangKy.Location = new System.Drawing.Point(16, 98);
             this.linkDangKy.Name = "linkDangKy";
-            this.linkDangKy.Size = new System.Drawing.Size(46, 13);
+            this.linkDangKy.Size = new System.Drawing.Size(47, 13);
             this.linkDangKy.TabIndex = 8;
             this.linkDangKy.TabStop = true;
-            this.linkDangKy.Text = "đăng ký";
+            this.linkDangKy.Text = "Đăng ký";
             this.linkDangKy.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkDangKy_LinkClicked);
             // 
             // DangNhapView
@@ -112,7 +112,7 @@ namespace App.Views {
             this.Controls.Add(this.bntDongY);
             this.Controls.Add(this.bntThoat);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(new System.ComponentModel.ComponentResourceManager(typeof(AppMediator)).GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DangNhapView";
