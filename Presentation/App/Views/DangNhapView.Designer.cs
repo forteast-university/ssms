@@ -112,7 +112,7 @@ namespace App.Views {
             this.Controls.Add(this.bntDongY);
             this.Controls.Add(this.bntThoat);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon)(new System.ComponentModel.ComponentResourceManager(typeof(AppMediator)).GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DangNhapView";

@@ -175,7 +175,7 @@ namespace App.Views {
             this.Controls.Add(this.bntXoa);
             this.Controls.Add(this.bntLuaChon);
             this.Controls.Add(this.dataGridView);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon)(new System.ComponentModel.ComponentResourceManager(typeof(AppMediator)).GetObject("$this.Icon")));
             this.Name = "BaoCaoView";
             this.Text = "Báo cáo";
             this.Load += new System.EventHandler(this.SanPhanListView_Load);

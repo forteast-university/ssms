@@ -142,7 +142,7 @@ namespace App.Views {
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTimKiem);
             this.Controls.Add(this.bntTimKiem);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon)(new System.ComponentModel.ComponentResourceManager(typeof(AppMediator)).GetObject("$this.Icon")));
             this.Name = "HoaDonBanListView";
             this.Text = "Hóa đơn bán";
             this.Load += new System.EventHandler(this.SanPhanListView_Load);
