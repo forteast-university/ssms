@@ -155,7 +155,12 @@ namespace App.Extensions {
             var dt=m.ToString("dd/MM/yyyy");
             return dt;
         }
-
+        public static string LDM(int year, int iMonth) {
+            var dtTo = new DateTime(year, iMonth, 1);
+            dtTo = dtTo.AddMonths(1);
+            dtTo = dtTo.AddDays(-(dtTo.Day));
+            return dtTo.ToString("yyyy-MM-dd");
+        }
         /// <summary>
         /// To the quy.
         /// 
@@ -182,26 +187,26 @@ namespace App.Extensions {
             } else {
                 year = nyear;
             }
+            
 
-
-            const string f = "yyyy-MM-dd'T'HH:mm:ssK";
+            const string f = "yyyy-MM-dd HH:mm:ss.fff";
             switch (quy)
             {
                 case "1":
-                    q.StartTime = (year + "-01-01T00:00:00").ToDateTime(f);
-                    q.EndTime = (year + "-03-31T23:59:59").ToDateTime(f);
+                    q.StartTime = (year + "-01-01 00:00:00.000").ToDateTime(f);
+                    q.EndTime = (LDM(year.ToInt32(),3)+" 23:59:59.000").ToDateTime(f);
                     break;
                 case "2":
-                    q.StartTime = (year + "-04-01T00:00:00").ToDateTime(f);
-                    q.EndTime = (year + "-06-31T23:59:59").ToDateTime(f);
+                    q.StartTime = (year + "-04-01 00:00:00.000").ToDateTime(f);
+                    q.EndTime = (LDM(year.ToInt32(), 6) + " 23:59:59.000").ToDateTime(f);
                     break;
                 case "3":
-                    q.StartTime = (year + "-07-01T00:00:00").ToDateTime(f);
-                    q.EndTime = (year + "-09-31T23:59:59").ToDateTime(f);
+                    q.StartTime = (year + "-07-01 00:00:00.000").ToDateTime(f);
+                    q.EndTime = (LDM(year.ToInt32(), 9) + " 23:59:59.000").ToDateTime(f);
                     break;
                 case "4":
-                    q.StartTime = (year + "-10-01T00:00:00").ToDateTime(f);
-                    q.EndTime = (year + "-12-31T23:59:59").ToDateTime(f);
+                    q.StartTime = (year + "-10-01 00:00:00.000").ToDateTime(f);
+                    q.EndTime = (LDM(year.ToInt32(), 12) + " 23:59:59.000").ToDateTime(f);
                     break;
             }
             return q;

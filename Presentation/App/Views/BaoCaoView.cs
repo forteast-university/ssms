@@ -68,6 +68,8 @@ namespace App.Views {
                 label1.Visible = false;
                 label2.Visible = false;
                 txtQuy.Visible = false;
+                label3.Visible = false;
+                txtNam.Visible = false;
                 txtMaNhanVien.Visible = false;
                 var current = cbbBaoCao.SelectedValue.ToInt32();
                 
@@ -151,11 +153,23 @@ namespace App.Views {
                     // todo: Sản phẩm tồn kho
                     currentModel = controller.GetData(current, currentModel);
                     dataGridView.DataSource = new BindingSource { DataSource = currentModel.Sanpham };
+                    
                     dataGridView.Columns["ID"].Display(false);
-                    dataGridView.Columns["KhachHangID"].Display(false);
-                    dataGridView.Columns["KhachHang"].Display(false);
-                    dataGridView.Columns["NhanVienID"].Display(false);
-                    dataGridView.Columns["NhanVien"].Display(false);
+                    dataGridView.Columns["TheLoaiID"].Display(false);
+                    dataGridView.Columns["KichCoID"].Display(false);
+                    dataGridView.Columns["ChatLieuID"].Display(false);
+                    dataGridView.Columns["MauID"].Display(false);
+                    dataGridView.Columns["DoiTuongID"].Display(false);
+                    dataGridView.Columns["MuaID"].Display(false);
+                    dataGridView.Columns["NuocSanXuatID"].Display(false);
+
+                    dataGridView.Columns["TheLoai"].Display(false);
+                    dataGridView.Columns["KichCo"].Display(false);
+                    dataGridView.Columns["ChatLieu"].Display(false);
+                    dataGridView.Columns["Mau"].Display(false);
+                    dataGridView.Columns["DoiTuong"].Display(false);
+                    dataGridView.Columns["Mua"].Display(false);
+                    dataGridView.Columns["NuocSanXuat"].Display(false);
 
                 } else if(current == 2) {
                     // todo: Tổng tiền nhập hàng theo quý
@@ -167,8 +181,8 @@ namespace App.Views {
                     //-------------------------------
                     dataGridView.DataSource = new BindingSource { DataSource = currentModel.Hoadonnhap };
                     dataGridView.Columns["ID"].Display(false);
-                    dataGridView.Columns["KhachHangID"].Display(false);
-                    dataGridView.Columns["KhachHang"].Display(false);
+                    dataGridView.Columns["NhaCungCapID"].Display(false);
+                    dataGridView.Columns["NhaCungCap"].Display(false);
                     dataGridView.Columns["NhanVienID"].Display(false);
                     dataGridView.Columns["NhanVien"].Display(false);
                 } else if(current == 3) {
@@ -194,6 +208,13 @@ namespace App.Views {
                     dataGridView.Columns["KhachHang"].Display(false);
                     dataGridView.Columns["NhanVienID"].Display(false);
                     dataGridView.Columns["NhanVien"].Display(false);
+                    dataGridView.Columns["MaNV"].Display(false);
+                    dataGridView.Columns["SoHDB"].Display(false);
+
+                    if(dataGridView.Columns["MaKhach"] != null)
+                        dataGridView.Columns["MaKhach"].DisplayIndex = 0;
+                    if(dataGridView.Columns["TongTien"] != null)
+                        dataGridView.Columns["TongTien"].DisplayIndex = 1;
                 } else {
                     // todo: clear
                 }
