@@ -90,6 +90,7 @@ namespace App.Views {
 
 
             dataGridView.ClearSelection();
+            dataGridView.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dgvCommandos_DataBindingComplete);
             dataGridView.CurrentCell = null;
             bntLuu.Enabled = true;
             bntTaoMoi.Enabled = false;
@@ -101,7 +102,10 @@ namespace App.Views {
             currentModel = null;
 
         }
-
+        void dgvCommandos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dataGridView.ClearSelection();
+        }
         private NhanVienModel FulfilmentFild(NhanVienModel value) {
             if(value != null) {
                 value.MaNhanVien = txtMaNhanVien.Text;
