@@ -160,7 +160,7 @@ namespace App.Views {
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(16, 42);
+            this.label12.Location = new System.Drawing.Point(9, 41);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(72, 13);
             this.label12.TabIndex = 16;
@@ -176,11 +176,11 @@ namespace App.Views {
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(41, 68);
+            this.label6.Location = new System.Drawing.Point(10, 67);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 13);
+            this.label6.Size = new System.Drawing.Size(82, 13);
             this.label6.TabIndex = 21;
-            this.label6.Text = "Mã NCC";
+            this.label6.Text = "Mã khách hàng";
             // 
             // txtMaKhach
             // 
@@ -227,7 +227,7 @@ namespace App.Views {
             this.Controls.Add(this.bntHuy);
             this.Controls.Add(this.bntLuu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(new System.ComponentModel.ComponentResourceManager(typeof(AppMediator)).GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "HoaDonBanView";
             this.ShowInTaskbar = false;
