@@ -287,14 +287,15 @@ namespace App.Views
                     {
                         Directory.CreateDirectory(NewForderUrl);
                     }
-                    dest = NewForderUrl + "\\" + fileName;
+                    //Guid.NewGuid().ToString(); tạo ra 1 chuỗi mới
+                    dest = NewForderUrl + "\\" + Guid.NewGuid().ToString();
                     if (Directory.Exists(dest))
                         File.Copy(urlold, dest, true);
-                    else
-                    {
+                     else
+                     {
                         File.Copy(urlold, dest+"1", true);
-                        dest = dest + "1";
-                    }                      
+                     dest = dest + "1";
+                    }              
                     return dest;
                 }
                 else
@@ -307,13 +308,11 @@ namespace App.Views
         {
             OnSetSave(false);
         }
-
         public void NonSaveDatabase(int value)
         {
             isNonSaveDatabase = (value == 0);
             if (isNonSaveDatabase)
             {
-
                 txtDonGiaBan.Text = "0";
                 txtDonGiaNhap.Text = "0";
                 txtSoLuongSanPham.Text = "0";
