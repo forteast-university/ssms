@@ -94,7 +94,11 @@ namespace App.Views {
                 txtMaMua.Text = value.MaMua;
                 txtMaNuocSanXuat.Text = value.MaNuocSX;
                 txtAnh.Text = value.Anh;
-                pictureBox1.Image = Image.FromFile(value.Anh);
+                if (value.Anh != "" || value.Anh == null)
+                {
+                    pictureBox1.Image = Image.FromFile(value.Anh);
+                }
+                
                 txtMaSanPham.Enabled = false;
             }
             txtDonGiaBan.Enabled = false;
@@ -218,25 +222,46 @@ namespace App.Views {
             
             openFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
             openFileDialog1.Title = "Chọn ảnh sản phẩm";
-            openFileDialog1.ShowDialog();
-            if (openFileDialog1.FileName != "" && openFileDialog1.FileName != null)
+            
+            if (openFileDialog1.ShowDialog()==DialogResult.OK)
+            {
+                if (openFileDialog1.FileName != "" && openFileDialog1.FileName != null)
                 {
-                filename = openFileDialog1.SafeFileName.Substring(0, openFileDialog1.SafeFileName.LastIndexOf("."));
-                urlold = openFileDialog1.FileName;
-                txtAnh.Text = openFileDialog1.FileName;
-                forderUrl = Application.StartupPath + "\\image";
-               //đường dẫn tới file mới
-               // string t = Application.StartupPath + "\\image" + fileName;
-               // txtAnh.Text = System.IO.Path.GetFullPath("\\image");
-                txtAnh.Enabled = false;
-                pictureBox1.Image = Image.FromFile(txtAnh.Text);                         
-                }         
+                    filename = openFileDialog1.SafeFileName.Substring(0, openFileDialog1.SafeFileName.LastIndexOf("."));
+                    urlold = openFileDialog1.FileName;
+                    txtAnh.Text = openFileDialog1.FileName;
+                    forderUrl = Application.StartupPath + "\\image";
+                    //đường dẫn tới file mới
+                    // string t = Application.StartupPath + "\\image" + fileName;
+                    // txtAnh.Text = System.IO.Path.GetFullPath("\\image");
+                    txtAnh.Enabled = false;
+                    pictureBox1.Image = Image.FromFile(txtAnh.Text);
+                }
+            }
+            else 
+	        {
+                txtAnh.Text = "";
+                pictureBox1.Image = null;
+                filename = "";
+                urlold = "";
+                forderUrl = "";
+            }
+            
         }
         public string GetNewUrlImage(string urlold, string fileName, string NewForderUrl)
         {
-            string dest = NewForderUrl + "\\" + fileName;
-            File.Copy(urlold, dest, true);
-            return dest;
+            if (urlold!=null&&urlold!=""&&fileName!=null&&fileName!=""&&NewForderUrl!=null&&NewForderUrl!="")
+            {
+                string dest = NewForderUrl + "\\" + fileName;
+                File.Copy(urlold, dest, true);
+                return dest;
+            }
+            else
+            {
+                return "";
+            }
+
+           
         }
 
         private void bntLuuTiepTuc_Click(object sender, EventArgs e) {

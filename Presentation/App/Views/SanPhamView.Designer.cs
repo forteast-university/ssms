@@ -404,7 +404,7 @@ namespace App.Views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 390);
+            this.ClientSize = new System.Drawing.Size(749, 390);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.bntNuocSanXuat);
             this.Controls.Add(this.bntMau);
