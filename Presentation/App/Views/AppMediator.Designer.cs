@@ -106,14 +106,14 @@
             this.toolStripSeparator2,
             this.tsmThoat});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // tsmImportExcel
             // 
             this.tsmImportExcel.Enabled = false;
             this.tsmImportExcel.Name = "tsmImportExcel";
-            this.tsmImportExcel.Size = new System.Drawing.Size(176, 22);
+            this.tsmImportExcel.Size = new System.Drawing.Size(188, 22);
             this.tsmImportExcel.Text = "Nhập từ Excel";
             this.tsmImportExcel.Click += new System.EventHandler(this.tsmImportExcel_Click);
             // 
@@ -121,20 +121,20 @@
             // 
             this.tsmExportExcel.Enabled = false;
             this.tsmExportExcel.Name = "tsmExportExcel";
-            this.tsmExportExcel.Size = new System.Drawing.Size(176, 22);
+            this.tsmExportExcel.Size = new System.Drawing.Size(188, 22);
             this.tsmExportExcel.Text = "Xuất ra Excel";
             this.tsmExportExcel.Click += new System.EventHandler(this.tsmExportExcel_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(173, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(185, 6);
             // 
             // tsmBackup
             // 
             this.tsmBackup.Enabled = false;
             this.tsmBackup.Name = "tsmBackup";
-            this.tsmBackup.Size = new System.Drawing.Size(176, 22);
+            this.tsmBackup.Size = new System.Drawing.Size(188, 22);
             this.tsmBackup.Text = "Sao lưu cơ sở dữ liệu";
             this.tsmBackup.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
             // 
@@ -142,32 +142,32 @@
             // 
             this.tsmRestore.Enabled = false;
             this.tsmRestore.Name = "tsmRestore";
-            this.tsmRestore.Size = new System.Drawing.Size(176, 22);
+            this.tsmRestore.Size = new System.Drawing.Size(188, 22);
             this.tsmRestore.Text = "Khởi tạo cơ sở dữ liệu";
             this.tsmRestore.Click += new System.EventHandler(this.tsmRestore_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(173, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
             // 
             // tsmTaiKhoan
             // 
             this.tsmTaiKhoan.Enabled = false;
             this.tsmTaiKhoan.Name = "tsmTaiKhoan";
-            this.tsmTaiKhoan.Size = new System.Drawing.Size(176, 22);
+            this.tsmTaiKhoan.Size = new System.Drawing.Size(188, 22);
             this.tsmTaiKhoan.Text = "Tài khoản của tôi";
             this.tsmTaiKhoan.Click += new System.EventHandler(this.tsmTaiKhoan_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(173, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(185, 6);
             // 
             // tsmThoat
             // 
             this.tsmThoat.Name = "tsmThoat";
-            this.tsmThoat.Size = new System.Drawing.Size(176, 22);
+            this.tsmThoat.Size = new System.Drawing.Size(188, 22);
             this.tsmThoat.Text = "Thoát";
             this.tsmThoat.Click += new System.EventHandler(this.tsmThoat_Click);
             // 
@@ -177,27 +177,27 @@
             this.tsmHuongDan,
             this.tsmAbout});
             this.hướngDẫnToolStripMenuItem.Name = "hướngDẫnToolStripMenuItem";
-            this.hướngDẫnToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.hướngDẫnToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.hướngDẫnToolStripMenuItem.Text = "Trợ giúp";
             // 
             // tsmHuongDan
             // 
             this.tsmHuongDan.Name = "tsmHuongDan";
-            this.tsmHuongDan.Size = new System.Drawing.Size(168, 22);
+            this.tsmHuongDan.Size = new System.Drawing.Size(181, 22);
             this.tsmHuongDan.Text = "Hướng dẫn";
             this.tsmHuongDan.Click += new System.EventHandler(this.tsmHuongDan_Click);
             // 
             // tsmAbout
             // 
             this.tsmAbout.Name = "tsmAbout";
-            this.tsmAbout.Size = new System.Drawing.Size(168, 22);
+            this.tsmAbout.Size = new System.Drawing.Size(181, 22);
             this.tsmAbout.Text = "Thông tin sản phẩm";
             this.tsmAbout.Click += new System.EventHandler(this.tsmAbout_Click);
             // 
             // txtUserInfo
             // 
             this.txtUserInfo.Name = "txtUserInfo";
-            this.txtUserInfo.Size = new System.Drawing.Size(39, 20);
+            this.txtUserInfo.Size = new System.Drawing.Size(34, 20);
             this.txtUserInfo.Text = ".....";
             // 
             // contextMenuStrip2
@@ -291,7 +291,7 @@
             this.bntMua.Name = "bntMua";
             this.bntMua.Size = new System.Drawing.Size(94, 23);
             this.bntMua.TabIndex = 6;
-            this.bntMua.Text = "Mua";
+            this.bntMua.Text = "Mùa";
             this.bntMua.UseVisualStyleBackColor = true;
             this.bntMua.Click += new System.EventHandler(this.bntMua_Click);
             // 

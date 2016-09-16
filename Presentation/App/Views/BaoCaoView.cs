@@ -75,7 +75,8 @@ namespace App.Views {
                 
                 if (current == 1)
                 {
-                } else if(current ==2 ) {
+                } 
+                else if(current ==2 ) {
                     label1.Visible = true;
                     txtQuy.Visible = true;
 
@@ -173,18 +174,7 @@ namespace App.Views {
 
                 } else if(current == 2) {
                     // todo: Tổng tiền nhập hàng theo quý
-                    var y = txtNam.Text;
-                    var q = txtQuy.SelectedItem.ToString().ToQuy(y);
-                    currentModel.startTime = q.StartTime;
-                    currentModel.endTime = q.EndTime;
-                    currentModel = controller.GetData(current, currentModel);
-                    //-------------------------------
-                    dataGridView.DataSource = new BindingSource { DataSource = currentModel.Hoadonnhap };
-                    dataGridView.Columns["ID"].Display(false);
-                    dataGridView.Columns["NhaCungCapID"].Display(false);
-                    dataGridView.Columns["NhaCungCap"].Display(false);
-                    dataGridView.Columns["NhanVienID"].Display(false);
-                    dataGridView.Columns["NhanVien"].Display(false);
+                    loadDataQuy(current);
                 } else if(current == 3) {
                     // todo: Tổng tiền bán hàng của một nhân viên
                     currentModel.MaNhanVien = txtMaNhanVien.Text;
@@ -222,6 +212,26 @@ namespace App.Views {
                 dataGridView.CurrentCell = null;
 
             }
+        }
+
+        private void txtQuy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadDataQuy(cbbBaoCao.SelectedValue.ToInt32());
+        }
+        public void loadDataQuy(Int32 current)
+        {
+            var y = txtNam.Text;
+            var q = txtQuy.SelectedItem.ToString().ToQuy(y);
+            currentModel.startTime = q.StartTime;
+            currentModel.endTime = q.EndTime;
+            currentModel = controller.GetData(current, currentModel);
+            //-------------------------------
+            dataGridView.DataSource = new BindingSource { DataSource = currentModel.Hoadonnhap };
+            dataGridView.Columns["ID"].Display(false);
+            dataGridView.Columns["NhaCungCapID"].Display(false);
+            dataGridView.Columns["NhaCungCap"].Display(false);
+            dataGridView.Columns["NhanVienID"].Display(false);
+            dataGridView.Columns["NhanVien"].Display(false);
         }
     }
 }
