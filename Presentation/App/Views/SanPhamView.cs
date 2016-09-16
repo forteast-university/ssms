@@ -94,7 +94,7 @@ namespace App.Views {
                 txtMaMua.Text = value.MaMua;
                 txtMaNuocSanXuat.Text = value.MaNuocSX;
                 txtAnh.Text = value.Anh;
-                if (value.Anh != "" || value.Anh == null)
+                if (value.Anh != "" && value.Anh != null)
                 {
                     pictureBox1.Image = Image.FromFile(value.Anh);
                 }
