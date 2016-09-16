@@ -11,32 +11,37 @@ using App.Extensions;
 using App.Models;
 using System.IO;
 
-namespace App.Views {
-    public partial class SanPhamView: Form {
+namespace App.Views
+{
+    public partial class SanPhamView : Form
+    {
         private ISanPhamController<SanPhamModel> currentController;
-      
+
         private SanPhamModel currentModel;
-        public SanPhamView(ISanPhamController<SanPhamModel> controller) {
+        public SanPhamView(ISanPhamController<SanPhamModel> controller)
+        {
             currentController = controller;
             InitializeComponent();
         }
-    
+
         private bool isCreateNew = false;
         private bool isNonSaveDatabase = false;
-        string urlold="";
+        string urlold = "";
         string filename = "";
         string forderUrl = "";
-        public void InitializeForm(SanPhamModel value) {
+        public void InitializeForm(SanPhamModel value)
+        {
             currentModel = value;
 
 
             isCreateNew = (value == null || isNonSaveDatabase);
 
 
-            this.Text = (value == null|| isNonSaveDatabase) ? "Tạo Sản phẩm" : "Sửa Sản phẩm";
+            this.Text = (value == null || isNonSaveDatabase) ? "Tạo Sản phẩm" : "Sửa Sản phẩm";
             if (isCreateNew)
             {
-                if (isNonSaveDatabase){
+                if (isNonSaveDatabase)
+                {
                     txtMaSanPham.Text = value != null ? value.MaGiayDep : "";
                     txtMaSanPham.Enabled = !(txtMaSanPham.Text.Length > 0);
                     txtDonGiaBan.Text = "0";
@@ -54,11 +59,12 @@ namespace App.Views {
                     txtAnh.Text = "";
                     pictureBox1.Image = null;
                 }
-                else{
+                else
+                {
                     txtMaSanPham.Text = "";
                     txtTenSanPham.Text = "";
                     txtMaChatLieu.Text = "";
-                    
+
                     txtDonGiaNhap.Text = "0";
                     txtDonGiaBan.Text = "0";
                     txtSoLuongSanPham.Text = "0";
@@ -76,7 +82,7 @@ namespace App.Views {
                     pictureBox1.Image = null;
 
                 }
-                
+
             }
             else
             {
@@ -98,21 +104,23 @@ namespace App.Views {
                 {
                     pictureBox1.Image = Image.FromFile(value.Anh);
                 }
-                
                 txtMaSanPham.Enabled = false;
             }
             txtDonGiaBan.Enabled = false;
             txtDonGiaNhap.Enabled = false;
             txtSoLuongSanPham.Enabled = false;
         }
-       
-        private SanPhamModel FulfilmentFild(SanPhamModel value) {
-            if(isCreateNew) {
-                value = new SanPhamModel {
+
+        private SanPhamModel FulfilmentFild(SanPhamModel value)
+        {
+            if (isCreateNew)
+            {
+                value = new SanPhamModel
+                {
                     MaGiayDep = txtMaSanPham.Text,
                     TenGiayDep = txtTenSanPham.Text,
                     SoLuong = txtSoLuongSanPham.Text.ToInt32(),
-                    Anh = GetNewUrlImage(urlold,filename,forderUrl),
+                    Anh = GetNewUrlImage(urlold, filename, forderUrl),
                     DonGiaNhap = txtDonGiaNhap.Text.ToDecimal(),
                     DonGiaBan = txtDonGiaBan.Text.ToDecimal(),
                     MaLoai = txtMaLoai.Text,
@@ -122,9 +130,11 @@ namespace App.Views {
                     MaDoiTuong = txtMaDoiTuong.Text,
                     MaMua = txtMaMua.Text,
                     MaNuocSX = txtMaNuocSanXuat.Text
-                   
+
                 };
-            } else {
+            }
+            else
+            {
 
                 value.MaGiayDep = txtMaSanPham.Text;
                 value.TenGiayDep = txtTenSanPham.Text;
@@ -144,86 +154,103 @@ namespace App.Views {
             return value;
         }
 
-        private void OnSetSave(bool isContinue) {
+        private void OnSetSave(bool isContinue)
+        {
             var a = FulfilmentFild(currentModel);
             var validate = currentController.ValidateAndFillup(a);
-            if(validate != null) {
-                if(validate.Contains("MaLoai")) {
+            if (validate != null)
+            {
+                if (validate.Contains("MaLoai"))
+                {
                     txtMaLoai.Focus();
                     txtMaLoai.SelectAll();
                     return;
                 }
-                if(validate.Contains("MaCo")) {
+                if (validate.Contains("MaCo"))
+                {
                     txtMaCo.Focus();
                     txtMaCo.SelectAll();
                     return;
                 }
-                if(validate.Contains("MaChatLieu")) {
+                if (validate.Contains("MaChatLieu"))
+                {
                     txtMaChatLieu.Focus();
                     txtMaChatLieu.SelectAll();
                     return;
                 }
-                if(validate.Contains("MaMau")) {
+                if (validate.Contains("MaMau"))
+                {
                     txtMaMau.Focus();
                     txtMaMau.SelectAll();
                     return;
                 }
-                if(validate.Contains("MaDoiTuong")) {
+                if (validate.Contains("MaDoiTuong"))
+                {
                     txtMaDoiTuong.Focus();
                     txtMaDoiTuong.SelectAll();
                     return;
                 }
-                if(validate.Contains("MaMua")) {
+                if (validate.Contains("MaMua"))
+                {
                     txtMaMua.Focus();
                     txtMaMua.SelectAll();
                     return;
                 }
-                if(validate.Contains("MaNuocSanXuat")) {
+                if (validate.Contains("MaNuocSanXuat"))
+                {
                     txtMaNuocSanXuat.Focus();
                     txtMaNuocSanXuat.SelectAll();
                     return;
                 }
             }
 
-            if (isNonSaveDatabase){
+            if (isNonSaveDatabase)
+            {
                 //currentController.Notification();
                 isNonSaveDatabase = false;
                 currentController.HideSanPhamView();
                 currentController.SendBackToListener(a);
                 return;
             }
-            if(isCreateNew) {
+            if (isCreateNew)
+            {
                 currentController.Insert(a);
-            } else {
+            }
+            else
+            {
                 currentController.Update(a);
             }
-            if(!isContinue)
+            if (!isContinue)
                 currentController.HideSanPhamView();
 
             currentController.ReviewGrid();
         }
 
-        private void bntThoat_Click(object sender, EventArgs e) {
-            if (isNonSaveDatabase){
+        private void bntThoat_Click(object sender, EventArgs e)
+        {
+            if (isNonSaveDatabase)
+            {
                 currentController.CancelBackToListener();
             }
-            else{
+            else
+            {
                 currentController.HideSanPhamView();
             }
         }
 
-        private void btnLuu_Click(object sender, EventArgs e) {
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
 
             OnSetSave(false);
         }
 
         private void btnAnh_Click(object sender, EventArgs e)
         {
-            
+
             openFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
             openFileDialog1.Title = "Chọn ảnh sản phẩm";
-            
-            if (openFileDialog1.ShowDialog()==DialogResult.OK)
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 if (openFileDialog1.FileName != "" && openFileDialog1.FileName != null)
                 {
@@ -238,40 +265,54 @@ namespace App.Views {
                     pictureBox1.Image = Image.FromFile(txtAnh.Text);
                 }
             }
-            else 
-	        {
+            else
+            {
                 txtAnh.Text = "";
                 pictureBox1.Image = null;
                 filename = "";
                 urlold = "";
                 forderUrl = "";
             }
-            
+
         }
         public string GetNewUrlImage(string urlold, string fileName, string NewForderUrl)
         {
-            if (urlold!=null&&urlold!=""&&fileName!=null&&fileName!=""&&NewForderUrl!=null&&NewForderUrl!="")
-            {
-                string dest = NewForderUrl + "\\" + fileName;
-                File.Copy(urlold, dest, true);
-                return dest;
-            }
-            else
-            {
-                return "";
-            }
+            
+                if (urlold != null && urlold != "" && fileName != null && fileName != "" && NewForderUrl != null && NewForderUrl != "")
+                {
+                    string dest = "";
 
-           
+                    // If the directory doesn't exist, create it.
+                    if (!Directory.Exists(NewForderUrl))
+                    {
+                        Directory.CreateDirectory(NewForderUrl);
+                    }
+                    dest = NewForderUrl + "\\" + fileName;
+                    if (Directory.Exists(dest))
+                        File.Copy(urlold, dest, true);
+                    else
+                    {
+                        File.Copy(urlold, dest+"1", true);
+                        dest = dest + "1";
+                    }                      
+                    return dest;
+                }
+                else
+                {
+                    return "";
+                }         
         }
 
-        private void bntLuuTiepTuc_Click(object sender, EventArgs e) {
+        private void bntLuuTiepTuc_Click(object sender, EventArgs e)
+        {
             OnSetSave(false);
         }
 
         public void NonSaveDatabase(int value)
         {
-            isNonSaveDatabase = (value==0);
-            if (isNonSaveDatabase){
+            isNonSaveDatabase = (value == 0);
+            if (isNonSaveDatabase)
+            {
 
                 txtDonGiaBan.Text = "0";
                 txtDonGiaNhap.Text = "0";
@@ -282,7 +323,8 @@ namespace App.Views {
                 txtDonGiaNhap.Enabled = false;
                 txtSoLuongSanPham.Enabled = false;
             }
-            else{
+            else
+            {
                 txtMaSanPham.Enabled = true;
                 txtDonGiaBan.Enabled = true;
                 txtDonGiaNhap.Enabled = true;
@@ -290,47 +332,61 @@ namespace App.Views {
             }
         }
 
-        public void SetTxtMaTheLoai(string value) {
+        public void SetTxtMaTheLoai(string value)
+        {
             txtMaLoai.Text = value;
         }
-        public void SetTxtMaKichCo(string value) {
+        public void SetTxtMaKichCo(string value)
+        {
             txtMaCo.Text = value;
         }
-        public void SetTxtMaChatLieu(string value) {
+        public void SetTxtMaChatLieu(string value)
+        {
             txtMaChatLieu.Text = value;
         }
-        public void SetTxtMaMau(string value) {
+        public void SetTxtMaMau(string value)
+        {
             txtMaMau.Text = value;
         }
-        public void SetTxtMaDoiTuong(string value) {
+        public void SetTxtMaDoiTuong(string value)
+        {
             txtMaDoiTuong.Text = value;
         }
-        public void SetTxtMaMua(string value) {
+        public void SetTxtMaMua(string value)
+        {
             txtMaMua.Text = value;
         }
-        public void SetTxtMaNuocSanXuat(string value) {
+        public void SetTxtMaNuocSanXuat(string value)
+        {
             txtMaNuocSanXuat.Text = value;
         }
-        private void bntMaChatLieu_Click(object sender, EventArgs e) {
+        private void bntMaChatLieu_Click(object sender, EventArgs e)
+        {
             currentController.ShowChatLieuView(txtMaChatLieu.Text);
         }
 
-        private void bntLoai_Click(object sender, EventArgs e) {
+        private void bntLoai_Click(object sender, EventArgs e)
+        {
             currentController.ShowTheLoaiView(txtMaLoai.Text);
         }
-        private void bntCo_Click(object sender, EventArgs e) {
+        private void bntCo_Click(object sender, EventArgs e)
+        {
             currentController.ShowKichCoView(txtMaCo.Text);
         }
-        private void bntMau_Click(object sender, EventArgs e) {
+        private void bntMau_Click(object sender, EventArgs e)
+        {
             currentController.ShowMauView(txtMaMau.Text);
         }
-        private void bntDoiTuong_Click(object sender, EventArgs e) {
+        private void bntDoiTuong_Click(object sender, EventArgs e)
+        {
             currentController.ShowDoiTuongView(txtMaDoiTuong.Text);
         }
-        private void bntMua_Click(object sender, EventArgs e) {
+        private void bntMua_Click(object sender, EventArgs e)
+        {
             currentController.ShowMuaView(txtMaMua.Text);
         }
-        private void bntNuocSanXuat_Click(object sender, EventArgs e) {
+        private void bntNuocSanXuat_Click(object sender, EventArgs e)
+        {
             currentController.ShowNuocSanXuatView(txtMaNuocSanXuat.Text);
         }
 
