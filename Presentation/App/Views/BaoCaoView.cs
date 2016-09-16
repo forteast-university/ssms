@@ -79,9 +79,11 @@ namespace App.Views {
                 else if(current ==2 ) {
                     label1.Visible = true;
                     txtQuy.Visible = true;
-
+                   
                     label3.Visible = true;
                     txtNam.Visible = true;
+                    txtQuy.SelectedIndex = 0;
+                    loadDataQuy(cbbBaoCao.SelectedValue.ToInt32());
 
                 } else if(current == 3) {
                     label2.Visible = true;
@@ -214,14 +216,11 @@ namespace App.Views {
             }
         }
 
-        private void txtQuy_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            loadDataQuy(cbbBaoCao.SelectedValue.ToInt32());
-        }
         public void loadDataQuy(Int32 current)
         {
             var y = txtNam.Text;
             var q = txtQuy.SelectedItem.ToString().ToQuy(y);
+           
             currentModel.startTime = q.StartTime;
             currentModel.endTime = q.EndTime;
             currentModel = controller.GetData(current, currentModel);

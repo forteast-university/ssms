@@ -107,7 +107,7 @@ namespace App.Views {
             this.txtQuy.Name = "txtQuy";
             this.txtQuy.Size = new System.Drawing.Size(40, 21);
             this.txtQuy.TabIndex = 11;
-            this.txtQuy.SelectedIndexChanged += new System.EventHandler(this.txtQuy_SelectedIndexChanged);
+
             // 
             // label1
             // 
