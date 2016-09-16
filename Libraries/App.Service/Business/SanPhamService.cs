@@ -58,7 +58,7 @@ namespace App.Service.Business
                 .Add("size", size)
                 .Add("sort", sort, 50)
                 .Add("totalrow", 0, -1, true);
-
+             
             var list =
                 db.SqlQuery<SanPham>(sp.ToSpString("GetSanPhamByPagingFilter"), sp.GetObject()).ToList<SanPham>();
 

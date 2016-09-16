@@ -9,19 +9,23 @@ using System.Windows.Forms;
 using App.Controllers.Interface;
 using App.Extensions;
 using App.Models;
+using System.IO;
 
 namespace App.Views {
     public partial class SanPhamView: Form {
         private ISanPhamController<SanPhamModel> currentController;
+      
         private SanPhamModel currentModel;
         public SanPhamView(ISanPhamController<SanPhamModel> controller) {
             currentController = controller;
             InitializeComponent();
         }
-
+    
         private bool isCreateNew = false;
         private bool isNonSaveDatabase = false;
-
+        string urlold="";
+        string filename = "";
+        string forderUrl = "";
         public void InitializeForm(SanPhamModel value) {
             currentModel = value;
 
@@ -48,6 +52,7 @@ namespace App.Views {
                     txtMaMua.Text = "";
                     txtMaNuocSanXuat.Text = "";
                     txtAnh.Text = "";
+                    pictureBox1.Image = null;
                 }
                 else{
                     txtMaSanPham.Text = "";
@@ -68,6 +73,7 @@ namespace App.Views {
                     txtMaNuocSanXuat.Text = "";
                     txtAnh.Text = "";
                     txtMaSanPham.Enabled = true;
+                    pictureBox1.Image = null;
 
                 }
                 
@@ -88,20 +94,21 @@ namespace App.Views {
                 txtMaMua.Text = value.MaMua;
                 txtMaNuocSanXuat.Text = value.MaNuocSX;
                 txtAnh.Text = value.Anh;
+                pictureBox1.Image = Image.FromFile(value.Anh);
                 txtMaSanPham.Enabled = false;
             }
             txtDonGiaBan.Enabled = false;
             txtDonGiaNhap.Enabled = false;
             txtSoLuongSanPham.Enabled = false;
         }
-
+       
         private SanPhamModel FulfilmentFild(SanPhamModel value) {
             if(isCreateNew) {
                 value = new SanPhamModel {
                     MaGiayDep = txtMaSanPham.Text,
                     TenGiayDep = txtTenSanPham.Text,
                     SoLuong = txtSoLuongSanPham.Text.ToInt32(),
-                    Anh = txtAnh.Text,
+                    Anh = GetNewUrlImage(urlold,filename,forderUrl),
                     DonGiaNhap = txtDonGiaNhap.Text.ToDecimal(),
                     DonGiaBan = txtDonGiaBan.Text.ToDecimal(),
                     MaLoai = txtMaLoai.Text,
@@ -118,7 +125,7 @@ namespace App.Views {
                 value.MaGiayDep = txtMaSanPham.Text;
                 value.TenGiayDep = txtTenSanPham.Text;
                 value.SoLuong = txtSoLuongSanPham.Text.ToInt32();
-                value.Anh = txtAnh.Text;
+                value.Anh = GetNewUrlImage(urlold, filename, forderUrl);
                 value.DonGiaNhap = txtDonGiaNhap.Text.ToDecimal();
                 value.DonGiaBan = txtDonGiaBan.Text.ToDecimal();
 
@@ -212,22 +219,25 @@ namespace App.Views {
             openFileDialog1.Filter = "JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
             openFileDialog1.Title = "Chọn ảnh sản phẩm";
             openFileDialog1.ShowDialog();
-
             if (openFileDialog1.FileName != "" && openFileDialog1.FileName != null)
                 {
-                var fileName = openFileDialog1.SafeFileName.Substring(0, openFileDialog1.SafeFileName.LastIndexOf("."));
+                filename = openFileDialog1.SafeFileName.Substring(0, openFileDialog1.SafeFileName.LastIndexOf("."));
+                urlold = openFileDialog1.FileName;
                 txtAnh.Text = openFileDialog1.FileName;
+                forderUrl = Application.StartupPath + "\\image";
+               //đường dẫn tới file mới
+               // string t = Application.StartupPath + "\\image" + fileName;
+               // txtAnh.Text = System.IO.Path.GetFullPath("\\image");
                 txtAnh.Enabled = false;
-                var DuongDanAnh = openFileDialog1.FileName;
-
-             
-                }
-                //else
-                //{
-                //    MessageBox.Show("Bạn chưa chọn ảnh!");
-                //}
-            
-        }  
+                pictureBox1.Image = Image.FromFile(txtAnh.Text);                         
+                }         
+        }
+        public string GetNewUrlImage(string urlold, string fileName, string NewForderUrl)
+        {
+            string dest = NewForderUrl + "\\" + fileName;
+            File.Copy(urlold, dest, true);
+            return dest;
+        }
 
         private void bntLuuTiepTuc_Click(object sender, EventArgs e) {
             OnSetSave(false);

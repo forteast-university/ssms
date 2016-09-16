@@ -68,6 +68,8 @@ namespace App.Views
             this.bntMau = new System.Windows.Forms.Button();
             this.bntNuocSanXuat = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -389,11 +391,21 @@ namespace App.Views
             this.bntNuocSanXuat.UseVisualStyleBackColor = true;
             this.bntNuocSanXuat.Click += new System.EventHandler(this.bntNuocSanXuat_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(344, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(395, 364);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 25;
+            this.pictureBox1.TabStop = false;
+            // 
             // SanPhamView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 390);
+            this.ClientSize = new System.Drawing.Size(751, 390);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.bntNuocSanXuat);
             this.Controls.Add(this.bntMau);
             this.Controls.Add(this.bntCo);
@@ -432,13 +444,14 @@ namespace App.Views
             this.Controls.Add(this.txtMaSanPham);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(new System.ComponentModel.ComponentResourceManager(typeof(AppMediator)).GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SanPhamView";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sản Phẩm";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -484,5 +497,6 @@ namespace App.Views
         private System.Windows.Forms.Button bntMau;
         private System.Windows.Forms.Button bntNuocSanXuat;
         private OpenFileDialog openFileDialog1;
+        private PictureBox pictureBox1;
     }
 }
