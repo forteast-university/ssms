@@ -102,7 +102,15 @@ namespace App.Views
                 txtAnh.Text = value.Anh;
                 if (value.Anh != "" && value.Anh != null)
                 {
-                    pictureBox1.Image = Image.FromFile(value.Anh);
+                    try
+                    {
+                        pictureBox1.Image = Image.FromFile(value.Anh);
+                    }
+                    catch (Exception)
+                    {
+                       
+                    }
+                    
                 }
                 txtMaSanPham.Enabled = false;
             }
