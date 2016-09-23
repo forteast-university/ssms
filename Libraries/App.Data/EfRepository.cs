@@ -19,13 +19,14 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using App.Core.Data;
 using App.Core.Domain;
+using Dapper;
 
 namespace App.Data {
     /// <summary>
     /// Entity Framework repository
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public partial class EfRepository<T>: IRepository<T> where T: BaseEntity {
+    public partial class EfRepository<T> : IRepository<T> where T : BaseEntity {
         #region Fields
 
         /// <summary>
@@ -60,8 +61,8 @@ namespace App.Data {
         /// <returns>Error</returns>
         protected string GetFullErrorText(DbEntityValidationException exc) {
             var msg = string.Empty;
-            foreach(var validationErrors in exc.EntityValidationErrors)
-                foreach(var error in validationErrors.ValidationErrors)
+            foreach (var validationErrors in exc.EntityValidationErrors)
+                foreach (var error in validationErrors.ValidationErrors)
                     msg += string.Format("Property: {0} Error: {1}", error.PropertyName, error.ErrorMessage) + Environment.NewLine;
             return msg;
         }
@@ -89,13 +90,13 @@ namespace App.Data {
         /// <exception cref="System.Exception"></exception>
         public virtual void Insert(T entity) {
             try {
-                if(entity == null)
+                if (entity == null)
                     throw new ArgumentNullException("entity");
 
                 Entities.Add(entity);
 
                 context.SaveChanges();
-            } catch(DbEntityValidationException dbEx) {
+            } catch (DbEntityValidationException dbEx) {
                 throw new Exception(GetFullErrorText(dbEx), dbEx);
             }
         }
@@ -108,14 +109,14 @@ namespace App.Data {
         /// <exception cref="System.Exception"></exception>
         public virtual void Insert(IEnumerable<T> entities) {
             try {
-                if(entities == null)
+                if (entities == null)
                     throw new ArgumentNullException("entities");
 
-                foreach(var entity in entities)
+                foreach (var entity in entities)
                     Entities.Add(entity);
 
                 context.SaveChanges();
-            } catch(DbEntityValidationException dbEx) {
+            } catch (DbEntityValidationException dbEx) {
                 throw new Exception(GetFullErrorText(dbEx), dbEx);
             }
         }
@@ -128,10 +129,10 @@ namespace App.Data {
         /// <exception cref="System.Exception"></exception>
         public virtual void Update(T entity) {
             try {
-                if(entity == null)
+                if (entity == null)
                     throw new ArgumentNullException("entity");
                 context.SaveChanges();
-            } catch(DbEntityValidationException dbEx) {
+            } catch (DbEntityValidationException dbEx) {
                 throw new Exception(GetFullErrorText(dbEx), dbEx);
             }
         }
@@ -143,10 +144,10 @@ namespace App.Data {
         /// <exception cref="System.Exception"></exception>
         public virtual void AddOrUpdate(T entity) {
             try {
-                if(entity == null)
+                if (entity == null)
                     throw new ArgumentNullException("entity");
                 this.Entities.AddOrUpdate(entity);
-            } catch(DbEntityValidationException dbEx) {
+            } catch (DbEntityValidationException dbEx) {
                 throw new Exception(GetFullErrorText(dbEx), dbEx);
             }
         }
@@ -158,11 +159,11 @@ namespace App.Data {
         /// <exception cref="System.Exception"></exception>
         public virtual void Update(IEnumerable<T> entities) {
             try {
-                if(entities == null)
+                if (entities == null)
                     throw new ArgumentNullException("entities");
 
                 context.SaveChanges();
-            } catch(DbEntityValidationException dbEx) {
+            } catch (DbEntityValidationException dbEx) {
                 throw new Exception(GetFullErrorText(dbEx), dbEx);
             }
         }
@@ -175,13 +176,13 @@ namespace App.Data {
         /// <exception cref="System.Exception"></exception>
         public virtual void Delete(T entity) {
             try {
-                if(entity == null)
+                if (entity == null)
                     throw new ArgumentNullException("entity");
 
                 Entities.Remove(entity);
 
                 context.SaveChanges();
-            } catch(DbEntityValidationException dbEx) {
+            } catch (DbEntityValidationException dbEx) {
                 throw new Exception(GetFullErrorText(dbEx), dbEx);
             }
         }
@@ -194,14 +195,14 @@ namespace App.Data {
         /// <exception cref="System.Exception"></exception>
         public virtual void Delete(IEnumerable<T> entities) {
             try {
-                if(entities == null)
+                if (entities == null)
                     throw new ArgumentNullException("entities");
 
-                foreach(var entity in entities)
+                foreach (var entity in entities)
                     Entities.Remove(entity);
 
                 context.SaveChanges();
-            } catch(DbEntityValidationException dbEx) {
+            } catch (DbEntityValidationException dbEx) {
                 throw new Exception(GetFullErrorText(dbEx), dbEx);
             }
         }
@@ -236,12 +237,16 @@ namespace App.Data {
         /// <value>The entities.</value>
         protected virtual IDbSet<T> Entities {
             get {
-                if(entities == null)
+                if (entities == null)
                     entities = context.Set<T>();
                 return entities;
             }
         }
 
         #endregion
+
+       
+
+
     }
 }

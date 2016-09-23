@@ -80,6 +80,16 @@ namespace App.Data {
         /// </summary>
         /// <value><c>true</c> if [automatic detect changes enabled]; otherwise, <c>false</c>.</value>
         bool AutoDetectChangesEnabled { get; set; }
+
+
+
+        //IEnumerable<TEntity> ExecuteStoredProcedureList<TEntity>(string commandText, params object[] parameters)
+        //   where TEntity : BaseEntity, new();
+
+        //IEnumerable<TElement> SqlQuery<TElement>(string sql, params object[] parameters);
+        //int ExecuteSqlCommand(string sql, bool doNotEnsureTransaction = false, int? timeout = null, params object[] parameters);
+
+        //IDbConnection Connection();
        
     }
 }
